@@ -135,6 +135,8 @@ private:
     TabPreferences  *tabPreferences;
     TabAbout        *tabAbout;
 
+    std::unique_ptr<LookAndFeel> lf;
+
 private:
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (EditorComponent)

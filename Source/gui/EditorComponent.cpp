@@ -39,6 +39,9 @@ EditorComponent::EditorComponent (HybridReverb2Processor* const ownerFilter)
       tabPreferences(0),
       tabAbout(0)
 {
+    lf.reset(new LookAndFeel_V3);
+    LookAndFeel::setDefaultLookAndFeel(lf.get());
+
     master = ownerFilter->getMaster();
     myTabbedComponent = new MyTabbedComponent(TabbedButtonBar::TabsAtTop, this);
     addAndMakeVisible(myTabbedComponent);

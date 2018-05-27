@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist>
+  <dict>
+    <key>CFBundleExecutable</key>
+    <string>${EXECUTABLE_NAME}</string>
+    <key>CFBundleIconFile</key>
+    <string></string>
+    <key>CFBundleIdentifier</key>
+    <string>de.rub.ika.borss</string>
+    <key>CFBundleName</key>
+    <string>HybridReverb2</string>
+    <key>CFBundleDisplayName</key>
+    <string>HybridReverb2</string>
+    <key>CFBundlePackageType</key>
+    <string>BNDL</string>
+    <key>CFBundleSignature</key>
+    <string>????</string>
+    <key>CFBundleShortVersionString</key>
+    <string>2.0.2</string>
+    <key>CFBundleVersion</key>
+    <string>2.0.2</string>
+    <key>NSHumanReadableCopyright</key>
+    <string></string>
+    <key>NSHighResolutionCapable</key>
+    <true/>
+    <key>AudioComponents</key>
+    <array>
+      <dict>
+        <key>name</key>
+        <string>Christian Bor&#223;: HybridReverb2</string>
+        <key>description</key>
+        <string>HybridReverb2 Reverb Plugin</string>
+        <key>factoryFunction</key>
+        <string>HybridReverb2AUFactory</string>
+        <key>manufacturer</key>
+        <string>Bor&#223;</string>
+        <key>type</key>
+        <string>aufx</string>
+        <key>subtype</key>
+        <string>HRev</string>
+        <key>version</key>
+        <integer>131074</integer>
+      </dict>
+    </array>
+  </dict>
+</plist>

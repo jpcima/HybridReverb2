@@ -1,0 +1,38 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2017
+
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HybridReverb2 - Standalone Plugin", "HybridReverb2_StandalonePlugin.vcxproj", "{FCE4D7DB-6922-03F5-A5C3-8131394687B2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{856528E6-966D-C8F3-0872-63BBCFFD0A30} = {856528E6-966D-C8F3-0872-63BBCFFD0A30}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HybridReverb2 - VST", "HybridReverb2_VST.vcxproj", "{19FDF14B-ADA3-6EE6-29D5-246FEE9D93F3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{856528E6-966D-C8F3-0872-63BBCFFD0A30} = {856528E6-966D-C8F3-0872-63BBCFFD0A30}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HybridReverb2 - Shared Code", "HybridReverb2_SharedCode.vcxproj", "{856528E6-966D-C8F3-0872-63BBCFFD0A30}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{19FDF14B-ADA3-6EE6-29D5-246FEE9D93F3}.Debug|x64.ActiveCfg = Debug|x64
+		{19FDF14B-ADA3-6EE6-29D5-246FEE9D93F3}.Debug|x64.Build.0 = Debug|x64
+		{19FDF14B-ADA3-6EE6-29D5-246FEE9D93F3}.Release|x64.ActiveCfg = Release|x64
+		{19FDF14B-ADA3-6EE6-29D5-246FEE9D93F3}.Release|x64.Build.0 = Release|x64
+		{FCE4D7DB-6922-03F5-A5C3-8131394687B2}.Debug|x64.ActiveCfg = Debug|x64
+		{FCE4D7DB-6922-03F5-A5C3-8131394687B2}.Debug|x64.Build.0 = Debug|x64
+		{FCE4D7DB-6922-03F5-A5C3-8131394687B2}.Release|x64.ActiveCfg = Release|x64
+		{FCE4D7DB-6922-03F5-A5C3-8131394687B2}.Release|x64.Build.0 = Release|x64
+		{856528E6-966D-C8F3-0872-63BBCFFD0A30}.Debug|x64.ActiveCfg = Debug|x64
+		{856528E6-966D-C8F3-0872-63BBCFFD0A30}.Debug|x64.Build.0 = Debug|x64
+		{856528E6-966D-C8F3-0872-63BBCFFD0A30}.Release|x64.ActiveCfg = Release|x64
+		{856528E6-966D-C8F3-0872-63BBCFFD0A30}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.6)
+cmake_minimum_required(VERSION 3.5)
 
 project(HybridReverb2 VERSION 1.0.0 LANGUAGES CXX C)
 set(HybridReverb2_URI "https://github.com/jpcima/HybridReverb2")

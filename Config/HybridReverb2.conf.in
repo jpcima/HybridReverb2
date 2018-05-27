@@ -1,0 +1,2 @@
+# HybridReverb2 base directory
+basedir = @CMAKE_INSTALL_PREFIX@/share/HybridReverb2

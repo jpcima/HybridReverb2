@@ -175,3 +175,12 @@ if(HybridReverb2_Standalone)
   set_property(TARGET HybridReverb2_Standalone PROPERTY OUTPUT_NAME "HybridReverb2")
   install(TARGETS HybridReverb2_Standalone DESTINATION "bin")
 endif()
+
+install(
+  FILES "Config/partition_wisdom.xml" "Config/preferences.xml"
+  DESTINATION "share/HybridReverb2")
+configure_file(
+  "Config/HybridReverb2.conf.in" "Config/HybridReverb2.conf" @ONLY)
+install(
+  FILES "${PROJECT_BINARY_DIR}/Config/HybridReverb2.conf"
+  DESTINATION "/etc")

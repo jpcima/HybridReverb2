@@ -28,19 +28,7 @@
 
 
 FreqPlot::FreqPlot (MasterAndCommander *m)
-    : master(m),
-      gridX(32),
-      gridY(32),
-      offsetX(32),
-      offsetY(32),
-      numSlider(0),
-      freqSlider(1.0),
-      freqRate(1.0),
-      numLevel(0),
-      freqLevel(1.0),
-      level(0),
-      impulse(0),
-      fs(0)
+    : master(m)
 {
     setSize (776, 460);
 

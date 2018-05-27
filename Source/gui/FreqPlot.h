@@ -48,18 +48,18 @@ public:
 
 private:
     MasterAndCommander *master;
-    int gridX;
-    int gridY;
-    int offsetX;
-    int offsetY;
-    int numSlider;
-    float freqSlider;
-    float freqRate;
-    int numLevel;
-    float freqLevel;
+    int gridX = 32;
+    int gridY = 32;
+    int offsetX = 32;
+    int offsetY = 32;
+    int numSlider = 0;
+    float freqSlider = 1.0;
+    float freqRate = 1.0;
+    int numLevel = 0;
+    float freqLevel = 1.0;
     std::unique_ptr<float[]> level;
     std::unique_ptr<float[]> impulse;
-    float fs;
+    float fs = 0;
 
 private:
     //==============================================================================

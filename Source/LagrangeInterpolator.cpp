@@ -25,8 +25,7 @@
 
 
 LagrangeInterpolation::LagrangeInterpolation(float *y, int n, float x, float r)
-    : data(0),
-      num(n + 4),
+    : num(n + 4),
       first(x / r),
       ratio(r)
 {

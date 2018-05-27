@@ -183,4 +183,4 @@ configure_file(
   "Config/HybridReverb2.conf.in" "Config/HybridReverb2.conf" @ONLY)
 install(
   FILES "${PROJECT_BINARY_DIR}/Config/HybridReverb2.conf"
-  DESTINATION "/etc")
+  DESTINATION "/etc/HybridReverb2")

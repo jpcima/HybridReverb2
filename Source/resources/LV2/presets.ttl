@@ -1,0 +1,22 @@
+@prefix atom:  <http://lv2plug.in/ns/ext/atom#> .
+@prefix lv2:   <http://lv2plug.in/ns/lv2core#> .
+@prefix pset:  <http://lv2plug.in/ns/ext/presets#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix state: <http://lv2plug.in/ns/ext/state#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+
+<https://github.com/jpcima/HybridReverb2#preset001> a pset:Preset ;
+    state:state [
+        <urn:juce:stateBinary> [
+            a atom:Chunk ;
+            rdf:value "VkMyIVUAAAA8SHlicmlkUmV2ZXJiMlNldHRpbmdzIHBsdWdpblZlcnNpb249IjIiIHByZXNldE51bT0iMSIgdWlXaWR0aD0iODI4IiB1aUhlaWdodD0iNTQ4Ii8+AA=="^^xsd:base64Binary ;
+        ] ;
+    ] ;
+
+    lv2:port [
+        lv2:symbol "preset_nr_" ;
+        pset:value 0.000000 ;
+    ] .
+
+

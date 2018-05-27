@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proc_time>
+  <const size="64">0.000002778467</const>
+  <const size="128">0.000004970475</const>
+  <const size="256">0.000009060409</const>
+  <const size="512">0.000019167853</const>
+  <const size="1024">0.000035650128</const>
+  <const size="2048">0.000073372627</const>
+  <const size="4096">0.000155226611</const>
+  <const size="8192">0.000335697934</const>
+  <const size="16384">0.000746945187</const>
+  <const size="32768">0.001750952898</const>
+  <linear size="64">0.000000499790</linear>
+  <linear size="128">0.000001035634</linear>
+  <linear size="256">0.000002023408</linear>
+  <linear size="512">0.000003884983</linear>
+  <linear size="1024">0.000007923553</linear>
+  <linear size="2048">0.000016082964</linear>
+  <linear size="4096">0.000034496221</linear>
+  <linear size="8192">0.000077278108</linear>
+  <linear size="16384">0.000159484112</linear>
+  <linear size="32768">0.000384955239</linear>
+</proc_time>

@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(HybridReverb2 VERSION 1.0.0 LANGUAGES CXX C)
+project(HybridReverb2 VERSION 2.0.2 LANGUAGES CXX C)
 set(HybridReverb2_URI "https://github.com/jpcima/HybridReverb2")
 
 set(HybridReverb2_VST2 "" CACHE STRING "Build VST2")

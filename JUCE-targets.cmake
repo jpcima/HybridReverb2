@@ -78,7 +78,8 @@ else()
   link_directories(${JACK_LIBRARY_DIRS})
   #
   find_package(Freetype REQUIRED)
-  target_link_libraries(juce_graphics PRIVATE Freetype::Freetype)
+  target_link_libraries(juce_graphics PRIVATE ${FREETYPE_LIBRARIES})
+  target_include_directories(juce_graphics PRIVATE ${FREETYPE_INCLUDE_DIRS})
   #
   find_package(X11 REQUIRED)
   target_link_libraries(juce_gui_basics PRIVATE ${X11_LIBRARIES})

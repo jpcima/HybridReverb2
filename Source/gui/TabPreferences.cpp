@@ -185,7 +185,7 @@ TabPreferences::TabPreferences (MasterAndCommander *m)
 
     //[UserPreSize]
     textEditorPreset->addListener (this);
-    comboBoxLatency->setSelectedItemIndex (0, true);
+    comboBoxLatency->setSelectedItemIndex (0, dontSendNotification);
     //[/UserPreSize]
 
     setSize (828, 548);
@@ -326,10 +326,10 @@ void TabPreferences::setPreferences(const ParamPreferences & param)
     paramPreferences = param;
     textEditorPreset->setText(paramPreferences.presetFile, false);
     int sflenIndex = (int)log2(paramPreferences.sflen) - 6;
-    comboBoxLatency->setSelectedItemIndex(sflenIndex, true);
+    comboBoxLatency->setSelectedItemIndex(sflenIndex, dontSendNotification);
     bool isUniform = (paramPreferences.strategy == STRATEGY_UNIFORM);
-    toggleButtonUniform->setToggleState(isUniform, false);
-    toggleButtonLowest->setToggleState(!isUniform, false);
+    toggleButtonUniform->setToggleState(isUniform, dontSendNotification);
+    toggleButtonLowest->setToggleState(!isUniform, dontSendNotification);
 }
 
 

@@ -719,7 +719,7 @@ void TabMain::setComboText(int num, const std::vector<String> & items)
     for (int i = 0; i < size; i++)
     {
         combo->addItem(items[i], i + 1);
-        combo->setSelectedItemIndex(0, false);
+        combo->setSelectedItemIndex(0, sendNotification);
     }
 }
 
@@ -745,7 +745,7 @@ void TabMain::setComboIndex(int num, int index)
         return;
     }
 
-    combo->setSelectedItemIndex(index, true);
+    combo->setSelectedItemIndex(index, dontSendNotification);
 }
 
 

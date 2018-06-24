@@ -880,7 +880,7 @@ void TabPresetEditor::textEditorFocusLost (TextEditor &editor)
 BEGIN_JUCER_METADATA
 
 <JUCER_COMPONENT documentType="Component" className="TabPresetEditor" componentName=""
-                 parentClasses="public Component, public TextEditor::Listener, public Button::Listener, public ListBoxModel"
+                 parentClasses="public Component, public TextEditor::Listener, public ListBoxModel"
                  constructorParams="MasterAndCommander *m" variableInitialisers="master (m),&#10;presetManager(0)"
                  snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330"
                  fixedSize="1" initialWidth="828" initialHeight="548">

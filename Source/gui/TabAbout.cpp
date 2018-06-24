@@ -43,7 +43,7 @@ TabAbout::TabAbout (MasterAndCommander *m)
     label.reset (new Label ("new label",
                             TRANS("FIG2: Me at the \"Social Event\" of the 35th Int. AES conference (\"Audio for Games\"). Please note how extraordinary good the colors of the various image components match the color theme of this plugin!\n")));
     addAndMakeVisible (label.get());
-    label->setFont (Font (15.00f, Font::plain).withTypefaceStyle ("Italic"));
+    label->setFont (Font (Font::getDefaultSerifFontName(), 15.00f, Font::plain).withTypefaceStyle ("Italic"));
     label->setJustificationType (Justification::topLeft);
     label->setEditable (false, false, false);
     label->setColour (TextEditor::textColourId, Colours::black);
@@ -211,8 +211,9 @@ BEGIN_JUCER_METADATA
          explicitFocusOrder="0" pos="464 444 344 64" edTextCol="ff000000"
          edBkgCol="0" labelText="FIG2: Me at the &quot;Social Event&quot; of the 35th Int. AES conference (&quot;Audio for Games&quot;). Please note how extraordinary good the colors of the various image components match the color theme of this plugin!&#10;"
          editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
-         fontname="Default font" fontsize="15.00000000000000000000" kerning="0.00000000000000000000"
-         bold="0" italic="1" justification="9" typefaceStyle="Italic"/>
+         fontname="Default serif font" fontsize="15.00000000000000000000"
+         kerning="0.00000000000000000000" bold="0" italic="1" justification="9"
+         typefaceStyle="Italic"/>
   <TEXTEDITOR name="new text editor" id="b96c3e517f8c9a27" memberName="textEditor"
               virtualName="" explicitFocusOrder="0" pos="24 32 408 464" initialText="&#10;  About Me and HybridReverb2:&#10;&#10;  As a research associate at the Institute of Communication&#10;  Acoustics, Ruhr-Universit&#228;t Bochum, Germany, I'm currently&#10;  persuing a Dr.-Ing. degree in electrical engineering.&#10;  I benefited from free and open source software for so many&#10;  years that I felt that I should give something back to the&#10;  community. As I'm working in the field of virtual acoustics&#10;  and spatial audio, writing a room effect plugin kind of&#10;  suggested itself. I hope you enjoy the sound as much as I&#10;  do!&#10;&#10;  Best regards,&#10;  Christian Bor&#223; &lt;christian.borss@rub.de&gt;&#10;&#10;&#10;  Credits:&#10;&#10;  - Julian Storer for his JUCE library&#10;  - The development team of the Jucetice project (jost, juced,&#10;    etc.)&#10;  - Matteo Frigo, Steven G. Johnson, and anybody else who&#10;    contributed to the FFTW library&#10;  - Prof. Rainer Martin for supporting my research&#10;  - Bj&#246;rn Kapteina for the implementation of the Windows&#10;    installer&#10;&#10;&#10;  References:&#10;&#10;  Bor&#223;, C., Martin, R. (2009). &quot;An Improved Parametric Model&#10;  for Perception-Based Design of Virtual Acoustics&quot;, AES 35th&#10;  Int. Conference, London, UK, Feb. 2009.&#10;&#10;  Bor&#223;, C. (2009). &quot;A Novel Approach for Optimally Matching a&#10;  Late Reverberation Model to an Image Source Model - Or:&#10;  What Does a Football Have to Do With Shoebox Shaped&#10;  Rooms?&quot;, Auralization Symposium of the European Acoustics&#10;  Association, Espoo, Finland, Jun. 2009.&#10;&#10;  Bor&#223;, C. (2009). &quot;A VST Reverberation Effect Plugin Based on&#10;  Synthetic Room Impulse Responses&quot;, 12th Int. Conference&#10;  on Digital Audio Effects (DAFx-09), Como, Italy, Sep. 2009.&#10;"
               multiline="1" retKeyStartsLine="1" readonly="1" scrollbars="1"

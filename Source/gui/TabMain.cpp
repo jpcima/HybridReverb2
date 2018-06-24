@@ -820,10 +820,10 @@ void TabMain::sliderDragEnded (Slider* sliderThatWasMoved)
 BEGIN_JUCER_METADATA
 
 <JUCER_COMPONENT documentType="Component" className="TabMain" componentName=""
-                 parentClasses="public Component, public ComboBox::Listener, public Slider::Listener"
-                 constructorParams="MasterAndCommander *m" variableInitialisers="master (m)"
-                 snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330"
-                 fixedSize="1" initialWidth="828" initialHeight="548">
+                 parentClasses="public Component" constructorParams="MasterAndCommander *m"
+                 variableInitialisers="master (m)" snapPixels="8" snapActive="1"
+                 snapShown="1" overlayOpacity="0.330" fixedSize="1" initialWidth="828"
+                 initialHeight="548">
   <BACKGROUND backgroundColour="ffffe000"/>
   <GROUPCOMPONENT name="new group" id="2aedd7f3e63566ae" memberName="groupComponentNotes"
                   virtualName="" explicitFocusOrder="0" pos="336 8 480 224" title="Notes"/>

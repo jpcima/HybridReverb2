@@ -171,14 +171,14 @@ TabPreferences::TabPreferences (MasterAndCommander *m)
     label.reset (new Label ("new label",
                             TRANS("FIG1: Generation of a sound field as simulated in a virtual environment at a given listener position by a virtual coincidence microphone array with the outlined directivity pattern")));
     addAndMakeVisible (label.get());
-    label->setFont (Font (Font::getDefaultSerifFontName(), 14.00f, Font::plain).withTypefaceStyle ("Italic"));
+    label->setFont (Font (Font::getDefaultSerifFontName(), 15.00f, Font::plain).withTypefaceStyle ("Italic"));
     label->setJustificationType (Justification::topLeft);
     label->setEditable (false, false, false);
     label->setColour (Label::textColourId, Colour (0x89000000));
     label->setColour (TextEditor::textColourId, Colours::black);
     label->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
-    label->setBounds (16, 464, 394, 48);
+    label->setBounds (16, 456, 394, 48);
 
     drawable1.reset (Drawable::createFromImageData (directivity2_svg, directivity2_svgSize));
 
@@ -433,10 +433,10 @@ BEGIN_JUCER_METADATA
               virtualName="" explicitFocusOrder="0" pos="372 32 30 24" tooltip="file chooser"
               buttonText="..." connectedEdges="0" needsCallback="1" radioGroupId="0"/>
   <LABEL name="new label" id="407c242ecc8500cb" memberName="label" virtualName=""
-         explicitFocusOrder="0" pos="16 464 394 48" textCol="89000000"
+         explicitFocusOrder="0" pos="16 456 394 48" textCol="89000000"
          edTextCol="ff000000" edBkgCol="0" labelText="FIG1: Generation of a sound field as simulated in a virtual environment at a given listener position by a virtual coincidence microphone array with the outlined directivity pattern"
          editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
-         fontname="Default serif font" fontsize="14.00000000000000000000"
+         fontname="Default serif font" fontsize="15.00000000000000000000"
          kerning="0.00000000000000000000" bold="0" italic="1" justification="9"
          typefaceStyle="Italic"/>
 </JUCER_COMPONENT>

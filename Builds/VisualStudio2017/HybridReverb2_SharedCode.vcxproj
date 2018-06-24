@@ -147,6 +147,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\libHybridConv\libHybridConv.c"/>
+    <ClCompile Include="..\..\Source\gui\AppLookAndFeel.cpp"/>
     <ClCompile Include="..\..\Source\gui\DownloadDbComponent.cpp"/>
     <ClCompile Include="..\..\Source\gui\Editor.cpp"/>
     <ClCompile Include="..\..\Source\gui\EditorComponent.cpp"/>
@@ -1925,6 +1926,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\libHybridConv\libHybridConv.h"/>
+    <ClInclude Include="..\..\Source\gui\AppLookAndFeel.h"/>
     <ClInclude Include="..\..\Source\gui\DownloadDbComponent.h"/>
     <ClInclude Include="..\..\Source\gui\Editor.h"/>
     <ClInclude Include="..\..\Source\gui\EditorComponent.h"/>
@@ -2668,6 +2670,18 @@
   <ItemGroup>
     <None Include="..\..\Config\partition_wisdom.xml"/>
     <None Include="..\..\Config\preferences.xml"/>
+    <None Include="..\..\Source\resources\LiberationMono-Bold.ttf.gz"/>
+    <None Include="..\..\Source\resources\LiberationMono-BoldItalic.ttf.gz"/>
+    <None Include="..\..\Source\resources\LiberationMono-Italic.ttf.gz"/>
+    <None Include="..\..\Source\resources\LiberationMono-Regular.ttf.gz"/>
+    <None Include="..\..\Source\resources\LiberationSans-Bold.ttf.gz"/>
+    <None Include="..\..\Source\resources\LiberationSans-BoldItalic.ttf.gz"/>
+    <None Include="..\..\Source\resources\LiberationSans-Italic.ttf.gz"/>
+    <None Include="..\..\Source\resources\LiberationSans-Regular.ttf.gz"/>
+    <None Include="..\..\Source\resources\LiberationSerif-Bold.ttf.gz"/>
+    <None Include="..\..\Source\resources\LiberationSerif-BoldItalic.ttf.gz"/>
+    <None Include="..\..\Source\resources\LiberationSerif-Italic.ttf.gz"/>
+    <None Include="..\..\Source\resources\LiberationSerif-Regular.ttf.gz"/>
     <None Include="..\..\Thirdparty\JUCE\modules\juce_audio_formats\codecs\flac\Flac Licence.txt"/>
     <None Include="..\..\Thirdparty\JUCE\modules\juce_audio_formats\codecs\oggvorbis\Ogg Vorbis Licence.txt"/>
     <None Include="..\..\Thirdparty\JUCE\modules\juce_audio_processors\format_types\VST3_SDK\base\LICENSE.txt"/>

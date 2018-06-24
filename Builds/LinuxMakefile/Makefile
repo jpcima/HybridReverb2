@@ -95,6 +95,7 @@ OBJECTS_STANDALONE_PLUGIN := \
 
 OBJECTS_SHARED_CODE := \
   $(JUCE_OBJDIR)/libHybridConv_628888dc.o \
+  $(JUCE_OBJDIR)/AppLookAndFeel_5a47e3fa.o \
   $(JUCE_OBJDIR)/DownloadDbComponent_d04f884.o \
   $(JUCE_OBJDIR)/Editor_6c4d05ca.o \
   $(JUCE_OBJDIR)/EditorComponent_751fd9d.o \
@@ -177,6 +178,11 @@ $(JUCE_OBJDIR)/libHybridConv_628888dc.o: ../../Source/libHybridConv/libHybridCon
 	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
 	@echo "Compiling libHybridConv.c"
 	$(V_AT)$(CC) $(JUCE_CFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/AppLookAndFeel_5a47e3fa.o: ../../Source/gui/AppLookAndFeel.cpp
+	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling AppLookAndFeel.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
 
 $(JUCE_OBJDIR)/DownloadDbComponent_d04f884.o: ../../Source/gui/DownloadDbComponent.cpp
 	-$(V_AT)mkdir -p $(JUCE_OBJDIR)

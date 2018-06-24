@@ -109,10 +109,10 @@ public:
 
     //==============================================================================
     /** Standard Juce paint callback. */
-    void paint (Graphics& g);
+    void paint (Graphics& g) override;
 
     /** Standard Juce resize callback. */
-    void resized();
+    void resized() override;
 
 
 private:

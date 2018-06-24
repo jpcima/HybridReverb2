@@ -5,6 +5,9 @@
     <Filter Include="HybridReverb2\Config">
       <UniqueIdentifier>{058E811E-EA1D-E47F-31D7-590C76B28E92}</UniqueIdentifier>
     </Filter>
+    <Filter Include="HybridReverb2\Source\resources">
+      <UniqueIdentifier>{5FBD4308-13BC-0DD6-8E01-97CEB8F37451}</UniqueIdentifier>
+    </Filter>
     <Filter Include="HybridReverb2\Source\libHybridConv">
       <UniqueIdentifier>{54BA4AA3-94A6-26A2-514B-5B544532C5D5}</UniqueIdentifier>
     </Filter>
@@ -423,6 +426,9 @@
   <ItemGroup>
     <ClCompile Include="..\..\Source\libHybridConv\libHybridConv.c">
       <Filter>HybridReverb2\Source\libHybridConv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\gui\AppLookAndFeel.cpp">
+      <Filter>HybridReverb2\Source\gui</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\gui\DownloadDbComponent.cpp">
       <Filter>HybridReverb2\Source\gui</Filter>
@@ -2396,6 +2402,9 @@
   <ItemGroup>
     <ClInclude Include="..\..\Source\libHybridConv\libHybridConv.h">
       <Filter>HybridReverb2\Source\libHybridConv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\gui\AppLookAndFeel.h">
+      <Filter>HybridReverb2\Source\gui</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\gui\DownloadDbComponent.h">
       <Filter>HybridReverb2\Source\gui</Filter>
@@ -4621,6 +4630,42 @@
     </None>
     <None Include="..\..\Config\preferences.xml">
       <Filter>HybridReverb2\Config</Filter>
+    </None>
+    <None Include="..\..\Source\resources\LiberationMono-Bold.ttf.gz">
+      <Filter>HybridReverb2\Source\resources</Filter>
+    </None>
+    <None Include="..\..\Source\resources\LiberationMono-BoldItalic.ttf.gz">
+      <Filter>HybridReverb2\Source\resources</Filter>
+    </None>
+    <None Include="..\..\Source\resources\LiberationMono-Italic.ttf.gz">
+      <Filter>HybridReverb2\Source\resources</Filter>
+    </None>
+    <None Include="..\..\Source\resources\LiberationMono-Regular.ttf.gz">
+      <Filter>HybridReverb2\Source\resources</Filter>
+    </None>
+    <None Include="..\..\Source\resources\LiberationSans-Bold.ttf.gz">
+      <Filter>HybridReverb2\Source\resources</Filter>
+    </None>
+    <None Include="..\..\Source\resources\LiberationSans-BoldItalic.ttf.gz">
+      <Filter>HybridReverb2\Source\resources</Filter>
+    </None>
+    <None Include="..\..\Source\resources\LiberationSans-Italic.ttf.gz">
+      <Filter>HybridReverb2\Source\resources</Filter>
+    </None>
+    <None Include="..\..\Source\resources\LiberationSans-Regular.ttf.gz">
+      <Filter>HybridReverb2\Source\resources</Filter>
+    </None>
+    <None Include="..\..\Source\resources\LiberationSerif-Bold.ttf.gz">
+      <Filter>HybridReverb2\Source\resources</Filter>
+    </None>
+    <None Include="..\..\Source\resources\LiberationSerif-BoldItalic.ttf.gz">
+      <Filter>HybridReverb2\Source\resources</Filter>
+    </None>
+    <None Include="..\..\Source\resources\LiberationSerif-Italic.ttf.gz">
+      <Filter>HybridReverb2\Source\resources</Filter>
+    </None>
+    <None Include="..\..\Source\resources\LiberationSerif-Regular.ttf.gz">
+      <Filter>HybridReverb2\Source\resources</Filter>
     </None>
     <None Include="..\..\Thirdparty\JUCE\modules\juce_audio_formats\codecs\flac\Flac Licence.txt">
       <Filter>JUCE Modules\juce_audio_formats\codecs\flac</Filter>

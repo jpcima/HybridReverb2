@@ -65,6 +65,7 @@ include("${CMAKE_SOURCE_DIR}/JUCE-targets.cmake")
 
 add_library(HybridReverb2_core STATIC
   "JuceLibraryCode/BinaryData.cpp"
+  "Source/gui/AppLookAndFeel.cpp"
   "Source/gui/Editor.cpp"
   "Source/gui/EditorComponent.cpp"
   "Source/gui/FreqPlot.cpp"

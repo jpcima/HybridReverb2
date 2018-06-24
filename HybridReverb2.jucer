@@ -7,7 +7,7 @@
               version="2.0.2" pluginRTASCategory="8" pluginVSTCategory="kPlugCategRoomFx"
               pluginVST3Category="Reverb" pluginAAXCategory="8" cppLanguageStandard="11"
               bundleIdentifier="de.rub.ika.borss" defines="JUCE_DEFINE_T_MACRO&#10;NO_OMP"
-              includeBinaryInJuceHeader="0">
+              includeBinaryInJuceHeader="0" maxBinaryFileSize="10485760">
   <MAINGROUP id="XTukN1" name="HybridReverb2">
     <GROUP id="{4CD1814B-E97C-B0DF-8D84-59A8C4FC9DC8}" name="Config">
       <FILE id="zgJ2Cw" name="partition_wisdom.xml" compile="0" resource="1"
@@ -15,11 +15,41 @@
       <FILE id="hVH9Lc" name="preferences.xml" compile="0" resource="1" file="Config/preferences.xml"/>
     </GROUP>
     <GROUP id="{75CE6C9D-5D01-DD2B-608C-EFE1A78C6179}" name="Source">
+      <GROUP id="{E6EF9F41-9D5B-0054-FE9D-1867AFA74D69}" name="resources">
+        <FILE id="zUCC0M" name="LiberationMono-Bold.ttf.gz" compile="0" resource="1"
+              file="Source/resources/LiberationMono-Bold.ttf.gz"/>
+        <FILE id="i3x4Zu" name="LiberationMono-BoldItalic.ttf.gz" compile="0"
+              resource="1" file="Source/resources/LiberationMono-BoldItalic.ttf.gz"/>
+        <FILE id="uaXXEW" name="LiberationMono-Italic.ttf.gz" compile="0" resource="1"
+              file="Source/resources/LiberationMono-Italic.ttf.gz"/>
+        <FILE id="mD8Wcu" name="LiberationMono-Regular.ttf.gz" compile="0"
+              resource="1" file="Source/resources/LiberationMono-Regular.ttf.gz"/>
+        <FILE id="O5iCpm" name="LiberationSans-Bold.ttf.gz" compile="0" resource="1"
+              file="Source/resources/LiberationSans-Bold.ttf.gz"/>
+        <FILE id="JW2x9e" name="LiberationSans-BoldItalic.ttf.gz" compile="0"
+              resource="1" file="Source/resources/LiberationSans-BoldItalic.ttf.gz"/>
+        <FILE id="tLHeaS" name="LiberationSans-Italic.ttf.gz" compile="0" resource="1"
+              file="Source/resources/LiberationSans-Italic.ttf.gz"/>
+        <FILE id="ySwt1c" name="LiberationSans-Regular.ttf.gz" compile="0"
+              resource="1" file="Source/resources/LiberationSans-Regular.ttf.gz"/>
+        <FILE id="pqB6jd" name="LiberationSerif-Bold.ttf.gz" compile="0" resource="1"
+              file="Source/resources/LiberationSerif-Bold.ttf.gz"/>
+        <FILE id="jxg6ux" name="LiberationSerif-BoldItalic.ttf.gz" compile="0"
+              resource="1" file="Source/resources/LiberationSerif-BoldItalic.ttf.gz"/>
+        <FILE id="uK4F14" name="LiberationSerif-Italic.ttf.gz" compile="0"
+              resource="1" file="Source/resources/LiberationSerif-Italic.ttf.gz"/>
+        <FILE id="oXKXCZ" name="LiberationSerif-Regular.ttf.gz" compile="0"
+              resource="1" file="Source/resources/LiberationSerif-Regular.ttf.gz"/>
+      </GROUP>
       <GROUP id="{CE8489F1-B7E3-B709-CD19-5D0D863F027E}" name="libHybridConv">
         <FILE id="L5hCnf" name="libHybridConv.c" compile="1" resource="0" file="Source/libHybridConv/libHybridConv.c"/>
         <FILE id="UWmGxU" name="libHybridConv.h" compile="0" resource="0" file="Source/libHybridConv/libHybridConv.h"/>
       </GROUP>
       <GROUP id="{D5C47CB0-DEEA-2A2F-79EB-C4E9E878CAF9}" name="gui">
+        <FILE id="EZ1ZDc" name="AppLookAndFeel.cpp" compile="1" resource="0"
+              file="Source/gui/AppLookAndFeel.cpp"/>
+        <FILE id="OHII9V" name="AppLookAndFeel.h" compile="0" resource="0"
+              file="Source/gui/AppLookAndFeel.h"/>
         <FILE id="GtBx2L" name="DownloadDbComponent.cpp" compile="1" resource="0"
               file="Source/gui/DownloadDbComponent.cpp"/>
         <FILE id="mW54Nd" name="DownloadDbComponent.h" compile="0" resource="0"

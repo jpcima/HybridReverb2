@@ -40,8 +40,8 @@ class PresetManager;
 */
 class TabPresetEditor  : public Component,
                          public TextEditor::Listener,
-                         public Button::Listener,
-                         public ListBoxModel
+                         public ListBoxModel,
+                         public Button::Listener
 {
 public:
     //==============================================================================

@@ -22,6 +22,7 @@
 #include "Editor.h"
 #include "EditorComponent.h"
 #include "DownloadDbComponent.h"
+#include "AppLookAndFeel.h"
 #include "../SystemConfig.h"
 
 
@@ -33,7 +34,7 @@ HybridReverb2Editor::HybridReverb2Editor(
       systemConfig(systemConfig),
       readyListener(readyListener)
 {
-    lf.reset(new LookAndFeel_V3);
+    lf.reset(new AppLookAndFeel);
     LookAndFeel::setDefaultLookAndFeel(lf.get());
 
     EditorComponent *ec = new EditorComponent(ownerFilter);

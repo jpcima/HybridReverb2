@@ -21,6 +21,7 @@
 
 #include "SystemConfig.h"
 #include "gui/TabTimbre.h"
+#include "../JuceLibraryCode/BinaryData.h"
 #include <math.h>
 #include <stdlib.h>
 

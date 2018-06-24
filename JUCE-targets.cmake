@@ -40,6 +40,12 @@ if(CMAKE_SYSTEM_NAME STREQUAL "Windows")
   # Windows
   target_link_libraries(juce_core PRIVATE winmm wininet ws2_32 shlwapi version)
   target_link_libraries(juce_gui_basics PRIVATE imm32)
+  #
+  set(HybridReverb2_ASIO_SDK "${PROJECT_SOURCE_DIR}/Thirdparty/ASIOSDK2.3" CACHE STRING "ASIO SDK location")
+  if(NOT EXISTS "${HybridReverb2_ASIO_SDK}/common/iasiodrv.h")
+    message(FATAL_ERROR "ASIO SDK not found in directory ${HybridReverb2_ASIO_SDK}")
+  endif()
+  target_include_directories(juce_audio_devices PRIVATE "${HybridReverb2_ASIO_SDK}/common")
 elseif(CMAKE_SYSTEM_NAME STREQUAL "Darwin")
   # Mac
   find_library(FOUNDATION_LIBRARY "Foundation")

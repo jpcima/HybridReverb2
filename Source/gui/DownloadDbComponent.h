@@ -68,6 +68,10 @@ private:
     std::unique_ptr<Label> label3;
     std::unique_ptr<Label> label4;
     std::unique_ptr<Label> label5;
+    std::unique_ptr<HyperlinkButton> hyperlinkButton2;
+    std::unique_ptr<Label> label6;
+    std::unique_ptr<HyperlinkButton> hyperlinkButton3;
+    std::unique_ptr<Label> label7;
 
 
     //==============================================================================

@@ -169,10 +169,9 @@ TabPreferences::TabPreferences (MasterAndCommander *m)
     textButton->setBounds (372, 32, 30, 24);
 
     label.reset (new Label ("new label",
-                            TRANS("FIG1: Generation of a sound field as simulated in a virtual environment\n"
-                            "at a given listener position by a virtual coincidence microphone array with the outlined directivity pattern")));
+                            TRANS("FIG1: Generation of a sound field as simulated in a virtual environment at a given listener position by a virtual coincidence microphone array with the outlined directivity pattern")));
     addAndMakeVisible (label.get());
-    label->setFont (Font ("Times New Roman", 14.00f, Font::plain).withTypefaceStyle ("Italic"));
+    label->setFont (Font (Font::getDefaultSerifFontName(), 14.00f, Font::plain).withTypefaceStyle ("Italic"));
     label->setJustificationType (Justification::topLeft);
     label->setEditable (false, false, false);
     label->setColour (Label::textColourId, Colour (0x89000000));
@@ -387,7 +386,7 @@ void TabPreferences::textEditorFocusLost (TextEditor &editor)
 BEGIN_JUCER_METADATA
 
 <JUCER_COMPONENT documentType="Component" className="TabPreferences" componentName=""
-                 parentClasses="public Component, public TextEditor::Listener, public Button::Listener, public ComboBox::Listener"
+                 parentClasses="public Component, public TextEditor::Listener"
                  constructorParams="MasterAndCommander *m" variableInitialisers="master (m)"
                  snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330"
                  fixedSize="0" initialWidth="828" initialHeight="548">
@@ -435,9 +434,9 @@ BEGIN_JUCER_METADATA
               buttonText="..." connectedEdges="0" needsCallback="1" radioGroupId="0"/>
   <LABEL name="new label" id="407c242ecc8500cb" memberName="label" virtualName=""
          explicitFocusOrder="0" pos="16 464 394 48" textCol="89000000"
-         edTextCol="ff000000" edBkgCol="0" labelText="FIG1: Generation of a sound field as simulated in a virtual environment&#10;at a given listener position by a virtual coincidence microphone array with the outlined directivity pattern"
+         edTextCol="ff000000" edBkgCol="0" labelText="FIG1: Generation of a sound field as simulated in a virtual environment at a given listener position by a virtual coincidence microphone array with the outlined directivity pattern"
          editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
-         fontname="Times New Roman" fontsize="14.00000000000000000000"
+         fontname="Default serif font" fontsize="14.00000000000000000000"
          kerning="0.00000000000000000000" bold="0" italic="1" justification="9"
          typefaceStyle="Italic"/>
 </JUCER_COMPONENT>

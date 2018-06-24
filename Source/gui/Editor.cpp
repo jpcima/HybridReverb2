@@ -68,13 +68,18 @@ void HybridReverb2Editor::chooseDbFileAndLoad()
     if (asyncSetupStarted)
         return;
 
+    asyncSetupStarted = true;
+
     FileChooser fc(TRANS("Please choose a file to load..."),
                    File::getSpecialLocation(File::userDocumentsDirectory),
                    "*.zip",
                    true);
 
     if (!fc.browseForFileToOpen())
+    {
+        asyncSetupStarted = false;
         return;
+    }
 
     File chosenFile = fc.getResult();
     File userDir(systemConfig->getUserdir());
@@ -82,9 +87,9 @@ void HybridReverb2Editor::chooseDbFileAndLoad()
     Component::SafePointer<HybridReverb2Editor> safeThis(this);
 
     fprintf(stderr, "Editor: about to launch setup\n");
-    asyncSetupStarted = true;
     MouseCursor::showWaitCursor();
-    MessageManager::callAsync(
+
+    Thread::launch(
         [safeThis, chosenFile, userDir, presetFile]()
             { performAsyncSetup(safeThis, chosenFile, userDir, presetFile); });
 }
@@ -110,9 +115,6 @@ void HybridReverb2Editor::performAsyncSetup(
         Component::SafePointer<HybridReverb2Editor> self,
         const File &zipFile, const File &userDir, const File &presetFile)
 {
-    if (!self)
-        return;
-
     ZipFile zip(zipFile);
 
     fprintf(stderr, "EditorAsync: about to unzip\n");

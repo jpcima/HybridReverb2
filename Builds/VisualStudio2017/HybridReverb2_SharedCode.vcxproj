@@ -147,6 +147,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\libHybridConv\libHybridConv.c"/>
+    <ClCompile Include="..\..\Source\gui\DownloadDbComponent.cpp"/>
+    <ClCompile Include="..\..\Source\gui\Editor.cpp"/>
     <ClCompile Include="..\..\Source\gui\EditorComponent.cpp"/>
     <ClCompile Include="..\..\Source\gui\FreqPlot.cpp"/>
     <ClCompile Include="..\..\Source\gui\IRPlot.cpp"/>
@@ -1839,6 +1841,7 @@
     <ClCompile Include="..\..\Thirdparty\JUCE\modules\juce_gui_extra\juce_gui_extra.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="..\..\JuceLibraryCode\BinaryData.cpp"/>
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_audio_basics.cpp"/>
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_audio_devices.cpp"/>
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_audio_formats.cpp"/>
@@ -1856,6 +1859,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\libHybridConv\libHybridConv.h"/>
+    <ClInclude Include="..\..\Source\gui\DownloadDbComponent.h"/>
+    <ClInclude Include="..\..\Source\gui\Editor.h"/>
     <ClInclude Include="..\..\Source\gui\EditorComponent.h"/>
     <ClInclude Include="..\..\Source\gui\FreqPlot.h"/>
     <ClInclude Include="..\..\Source\gui\IRPlot.h"/>
@@ -2532,9 +2537,12 @@
     <ClInclude Include="..\..\Thirdparty\JUCE\modules\juce_gui_extra\native\juce_mac_CarbonViewWrapperComponent.h"/>
     <ClInclude Include="..\..\Thirdparty\JUCE\modules\juce_gui_extra\juce_gui_extra.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\AppConfig.h"/>
+    <ClInclude Include="..\..\JuceLibraryCode\BinaryData.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h"/>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Config\partition_wisdom.xml"/>
+    <None Include="..\..\Config\preferences.xml"/>
     <None Include="..\..\Thirdparty\JUCE\modules\juce_audio_formats\codecs\flac\Flac Licence.txt"/>
     <None Include="..\..\Thirdparty\JUCE\modules\juce_audio_formats\codecs\oggvorbis\Ogg Vorbis Licence.txt"/>
     <None Include="..\..\Thirdparty\JUCE\modules\juce_graphics\image_formats\jpglib\changes to libjpeg for JUCE.txt"/>

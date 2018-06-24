@@ -95,6 +95,8 @@ OBJECTS_STANDALONE_PLUGIN := \
 
 OBJECTS_SHARED_CODE := \
   $(JUCE_OBJDIR)/libHybridConv_628888dc.o \
+  $(JUCE_OBJDIR)/DownloadDbComponent_d04f884.o \
+  $(JUCE_OBJDIR)/Editor_6c4d05ca.o \
   $(JUCE_OBJDIR)/EditorComponent_751fd9d.o \
   $(JUCE_OBJDIR)/FreqPlot_c975afd6.o \
   $(JUCE_OBJDIR)/IRPlot_48fef67.o \
@@ -116,6 +118,7 @@ OBJECTS_SHARED_CODE := \
   $(JUCE_OBJDIR)/SampleData_f4002ffd.o \
   $(JUCE_OBJDIR)/SystemConfig_fd43e25a.o \
   $(JUCE_OBJDIR)/TextList_c8bb9874.o \
+  $(JUCE_OBJDIR)/BinaryData_ce4232d4.o \
   $(JUCE_OBJDIR)/include_juce_audio_basics_8a4e984a.o \
   $(JUCE_OBJDIR)/include_juce_audio_devices_63111d02.o \
   $(JUCE_OBJDIR)/include_juce_audio_formats_15f82001.o \
@@ -174,6 +177,16 @@ $(JUCE_OBJDIR)/libHybridConv_628888dc.o: ../../Source/libHybridConv/libHybridCon
 	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
 	@echo "Compiling libHybridConv.c"
 	$(V_AT)$(CC) $(JUCE_CFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/DownloadDbComponent_d04f884.o: ../../Source/gui/DownloadDbComponent.cpp
+	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling DownloadDbComponent.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/Editor_6c4d05ca.o: ../../Source/gui/Editor.cpp
+	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling Editor.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
 
 $(JUCE_OBJDIR)/EditorComponent_751fd9d.o: ../../Source/gui/EditorComponent.cpp
 	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
@@ -278,6 +291,11 @@ $(JUCE_OBJDIR)/SystemConfig_fd43e25a.o: ../../Source/SystemConfig.cpp
 $(JUCE_OBJDIR)/TextList_c8bb9874.o: ../../Source/TextList.cpp
 	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
 	@echo "Compiling TextList.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/BinaryData_ce4232d4.o: ../../JuceLibraryCode/BinaryData.cpp
+	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling BinaryData.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
 
 $(JUCE_OBJDIR)/include_juce_audio_basics_8a4e984a.o: ../../JuceLibraryCode/include_juce_audio_basics.cpp

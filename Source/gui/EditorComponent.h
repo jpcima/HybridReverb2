@@ -58,7 +58,7 @@ enum CONST_EDITORCOMPONENT {
     when it's destroyed. When the filter's parameters are changed, it broadcasts
     a message and this editor responds by updating its display.
 */
-class EditorComponent   : public AudioProcessorEditor,
+class EditorComponent   : public Component,
                           public ChangeListener
 {
 
@@ -89,7 +89,7 @@ public:
         When created, this will register itself with the filter for changes. It's
         safe to assume that the filter won't be deleted before this object is.
     */
-    EditorComponent (HybridReverb2Processor* const ownerFilter);
+    explicit EditorComponent(HybridReverb2Processor* processor);
 
     /** Destructor. */
     ~EditorComponent();
@@ -123,19 +123,18 @@ private:
 
     // handy wrapper method to avoid having to cast the filter to a HybridReverb2Processor
     // every time we need it..
-    HybridReverb2Processor* getFilter() const throw()       { return (HybridReverb2Processor*) getAudioProcessor(); }
+    HybridReverb2Processor* getFilter() const throw()       { return processor; }
 
     MasterAndCommander* master;
     MyTabbedComponent* myTabbedComponent;
 
+    HybridReverb2Processor* processor;
     TabMain         *tabMain;
 //    TabModulation   *tabModulation;
     TabTimbre       *tabTimbre;
     TabPresetEditor *tabPresetEditor;
     TabPreferences  *tabPreferences;
     TabAbout        *tabAbout;
-
-    std::unique_ptr<LookAndFeel> lf;
 
 private:
     //==============================================================================

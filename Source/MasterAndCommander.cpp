@@ -42,7 +42,7 @@
 #include <stdio.h>
 
 
-MasterAndCommander::MasterAndCommander (HybridReverb2Processor *ap)
+MasterAndCommander::MasterAndCommander (HybridReverb2Processor *ap, const std::shared_ptr<SystemConfig> &systemConfig)
     : audioPlugin(ap)
 {
     dataOriginal.reset(new SampleData());
@@ -51,14 +51,23 @@ MasterAndCommander::MasterAndCommander (HybridReverb2Processor *ap)
     dataGainDelay.reset(new SampleData());
     dataEnvelope.reset(new SampleData());
 
-    systemConfig.reset(new SystemConfig());
+    this->systemConfig = systemConfig;
     paramPreferences = systemConfig->getPreferences();
-    String presetFilename = systemConfig->getPresetFilename();
     presetManager.reset(new PresetManager());
+}
+
+MasterAndCommander::~MasterAndCommander()
+{
+}
+
+
+void MasterAndCommander::loadInitialPreset()
+{
+    String presetFilename = systemConfig->getPresetFilename();
     currentPreset = presetManager->readFile(presetFilename);
     while (currentPreset < 0)
     {
-        FileChooser fc(JUCE_T("Invalid preset file. Please choose another file to open..."),
+        FileChooser fc(TRANS("Invalid preset file. Please choose another file to open..."),
                        systemConfig->getUserdir(),
                        "*.xml",
                        true);
@@ -70,10 +79,6 @@ MasterAndCommander::MasterAndCommander (HybridReverb2Processor *ap)
             systemConfig->setPreferences(paramPreferences);
         }
     }
-}
-
-MasterAndCommander::~MasterAndCommander()
-{
 }
 
 
@@ -96,12 +101,6 @@ void MasterAndCommander::print(String msg)
     if (tabMain != 0)
         tabMain->setNotes(logMessage);
 #endif
-}
-
-
-const String & MasterAndCommander::getBasedir()
-{
-    return systemConfig->getBasedir();
 }
 
 

@@ -24,6 +24,7 @@
 
 
 #include "../JuceLibraryCode/JuceHeader.h"
+#include "gui/Editor.h"
 #include "SampleData.h"
 #include "HybridConvolver.h"
 #include "HybridConvolverTripple.h"
@@ -36,6 +37,7 @@
 
 // forward declarations
 class MasterAndCommander;
+class SystemConfig;
 
 
 //==============================================================================
@@ -45,11 +47,12 @@ class MasterAndCommander;
 
 */
 class HybridReverb2Processor  : public AudioProcessor,
-                     public ChangeBroadcaster
+                                public HybridReverb2Editor::ReadyListener,
+                                public ChangeBroadcaster
 {
 public:
     //==============================================================================
-    HybridReverb2Processor();
+    explicit HybridReverb2Processor(const std::shared_ptr<SystemConfig> &systemConfig);
     ~HybridReverb2Processor();
 
     //==============================================================================
@@ -65,6 +68,7 @@ public:
     //==============================================================================
     AudioProcessorEditor* createEditor() override;
     bool hasEditor() const override { return true; }
+    void onReadyEditor() override;
 
     //==============================================================================
     const String getName() const override;
@@ -122,6 +126,7 @@ private:
     // this is our current preset - the UI and the host can access this by getting/setting
     // parameter 0.
     int currentPreset = 1;
+    std::shared_ptr<SystemConfig> systemConfig;
     std::unique_ptr<MasterAndCommander> master;
     std::unique_ptr<Partitioner> partitioner;
     std::unique_ptr<HybridConvolver> convolver;

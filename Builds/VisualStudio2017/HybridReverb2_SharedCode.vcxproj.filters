@@ -2,6 +2,9 @@
 
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Filter Include="HybridReverb2\Config">
+      <UniqueIdentifier>{058E811E-EA1D-E47F-31D7-590C76B28E92}</UniqueIdentifier>
+    </Filter>
     <Filter Include="HybridReverb2\Source\libHybridConv">
       <UniqueIdentifier>{54BA4AA3-94A6-26A2-514B-5B544532C5D5}</UniqueIdentifier>
     </Filter>
@@ -372,6 +375,12 @@
   <ItemGroup>
     <ClCompile Include="..\..\Source\libHybridConv\libHybridConv.c">
       <Filter>HybridReverb2\Source\libHybridConv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\gui\DownloadDbComponent.cpp">
+      <Filter>HybridReverb2\Source\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\gui\Editor.cpp">
+      <Filter>HybridReverb2\Source\gui</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\gui\EditorComponent.cpp">
       <Filter>HybridReverb2\Source\gui</Filter>
@@ -2224,6 +2233,9 @@
     <ClCompile Include="..\..\Thirdparty\JUCE\modules\juce_gui_extra\juce_gui_extra.mm">
       <Filter>JUCE Modules\juce_gui_extra</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\JuceLibraryCode\BinaryData.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_audio_basics.cpp">
       <Filter>JUCE Library Code</Filter>
     </ClCompile>
@@ -2270,6 +2282,12 @@
   <ItemGroup>
     <ClInclude Include="..\..\Source\libHybridConv\libHybridConv.h">
       <Filter>HybridReverb2\Source\libHybridConv</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\gui\DownloadDbComponent.h">
+      <Filter>HybridReverb2\Source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\gui\Editor.h">
+      <Filter>HybridReverb2\Source\gui</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\gui\EditorComponent.h">
       <Filter>HybridReverb2\Source\gui</Filter>
@@ -4299,11 +4317,20 @@
     <ClInclude Include="..\..\JuceLibraryCode\AppConfig.h">
       <Filter>JUCE Library Code</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\JuceLibraryCode\BinaryData.h">
+      <Filter>JUCE Library Code</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h">
       <Filter>JUCE Library Code</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Config\partition_wisdom.xml">
+      <Filter>HybridReverb2\Config</Filter>
+    </None>
+    <None Include="..\..\Config\preferences.xml">
+      <Filter>HybridReverb2\Config</Filter>
+    </None>
     <None Include="..\..\Thirdparty\JUCE\modules\juce_audio_formats\codecs\flac\Flac Licence.txt">
       <Filter>JUCE Modules\juce_audio_formats\codecs\flac</Filter>
     </None>

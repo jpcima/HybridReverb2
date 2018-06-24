@@ -21,7 +21,7 @@
 
 #include "HybridReverb2Processor.h"
 #include "MasterAndCommander.h"
-#include "gui/EditorComponent.h"
+#include "SystemConfig.h"
 #include "windows_quirks.h"
 
 
@@ -32,22 +32,24 @@
 */
 AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
-    return new HybridReverb2Processor();
+    std::shared_ptr<SystemConfig> systemConfig(new SystemConfig);
+    return new HybridReverb2Processor(systemConfig);
 }
 
-AudioProcessor* JUCE_CALLTYPE createPluginFilter (const String& commandLine)
+AudioProcessor* JUCE_CALLTYPE createPluginFilter(const String& commandLine)
 {
-    return new HybridReverb2Processor();
+    return createPluginFilter();
 }
 
 
 //==============================================================================
-HybridReverb2Processor::HybridReverb2Processor()
+HybridReverb2Processor::HybridReverb2Processor(const std::shared_ptr<SystemConfig> &systemConfig)
     : AudioProcessor(BusesProperties()
                      .withInput("Input", AudioChannelSet::stereo(), true)
-                     .withOutput("Output", AudioChannelSet::stereo(), true))
+                     .withOutput("Output", AudioChannelSet::stereo(), true)),
+      systemConfig(systemConfig)
 {
-    master.reset(new MasterAndCommander(this));
+    master.reset(new MasterAndCommander(this, systemConfig));
     paramPreferences = master->getPreferences();
     paramPartitionWisdom = master->getPartitionWisdom();
     partitioner.reset(new Partitioner(paramPartitionWisdom));
@@ -185,6 +187,12 @@ void HybridReverb2Processor::releaseResources()
 void HybridReverb2Processor::processBlock (AudioSampleBuffer& buffer,
                                    MidiBuffer& midiMessages)
 {
+    if (!convolver)
+    {
+        buffer.clear();
+        return;
+    }
+
     if (newConvolver)
     {
         newConvolver = false;
@@ -202,17 +210,21 @@ void HybridReverb2Processor::processBlock (AudioSampleBuffer& buffer,
     // guaranteed to be empty - they may contain garbage).
     for (int i = getTotalNumInputChannels(), n = getTotalNumOutputChannels(); i < n; ++i)
     {
-        buffer.clear (i, 0, buffer.getNumSamples());
+        buffer.clear(i, 0, buffer.getNumSamples());
     }
 }
 
 //==============================================================================
 AudioProcessorEditor* HybridReverb2Processor::createEditor()
 {
-    AudioProcessorEditor* ret;
-    ret = new EditorComponent (this);
+    HybridReverb2Editor* editor = new HybridReverb2Editor(this, this, systemConfig);
+    return editor;
+}
+
+void HybridReverb2Processor::onReadyEditor()
+{
+    master->loadInitialPreset();
     master->onGuiReady();
-    return ret;
 }
 
 //==============================================================================

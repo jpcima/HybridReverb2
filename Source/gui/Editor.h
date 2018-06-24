@@ -19,39 +19,49 @@
  ***************************************************************************/
 
 
-#ifndef __SYSTEMCONFIG_H__
-#define __SYSTEMCONFIG_H__
+#ifndef __EDITOR_H__
+#define __EDITOR_H__
 
+#include "../../JuceLibraryCode/JuceHeader.h"
 
-#include "../JuceLibraryCode/JuceHeader.h"
-#include "ParamPreferences.h"
-#include "ParamPartitionWisdom.h"
+class HybridReverb2Processor;
+class EditorComponent;
+class DownloadDbComponent;
+class SystemConfig;
 
-
-class SystemConfig
+class HybridReverb2Editor : public AudioProcessorEditor
 {
 public:
-    SystemConfig ();
-    ~SystemConfig();
+    class ReadyListener;
 
-    const String & getUserdir();
-    const String & getDBdir();
-    String getPresetFilename();
-    const ParamPreferences & getPreferences();
-    void readPreferencesFile();
-    void setPreferences(const ParamPreferences & param);
-    const ParamPartitionWisdom & getPartitionWisdom();
-    void readPartitionWisdomFile();
+    HybridReverb2Editor(
+        HybridReverb2Processor *ownerFilter,
+        ReadyListener *readyListener,
+        const std::shared_ptr<SystemConfig> &systemConfig);
+    ~HybridReverb2Editor();
+
+    class ReadyListener
+    {
+    public:
+        virtual ~ReadyListener() {}
+        virtual void onReadyEditor() = 0;
+    };
+
+    void chooseDbFileAndLoad();
+
+    void paint(Graphics &g) override;
 
 private:
-    bool successfulLoad = false;
-    String userdir;
-    String dbdir;
-    ParamPreferences paramPreferences;
-    ParamPartitionWisdom paramPartitionWisdom;
+    std::shared_ptr<SystemConfig> systemConfig;
+    std::unique_ptr<EditorComponent> editorComponent;
+    std::unique_ptr<DownloadDbComponent> downloadDbComponent;
+    ReadyListener *readyListener = nullptr;
 
-    String getSubText(XmlElement *element);
+    std::unique_ptr<LookAndFeel> lf;
+
+private:
+    //==========================================================================
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(HybridReverb2Editor);
 };
 
-
-#endif   // __SYSTEMCONFIG_H__
+#endif

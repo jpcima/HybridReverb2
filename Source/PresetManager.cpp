@@ -29,7 +29,6 @@ PresetManager::PresetManager()
     : currentPresetNum(1),
       defaultPresetNum(1)
 {
-    filename = String();
     for (int i = 0; i < maxPresets; i++)
         preset.push_back( ParamPreset() );
 }
@@ -110,31 +109,21 @@ void PresetManager::setPresetDB(const std::vector<ParamPreset> & newPresetDB)
 }
 
 
-int PresetManager::readFile(const String &presetFile)
+int PresetManager::readFile(const String &presetFilename)
 {
-    File f(presetFile);
-    if (f.existsAsFile() == false)
-    {
-        String message = JUCE_T("Error: Preset file \"") +
-                         presetFile +
-                         JUCE_T("\" does not exist!");
-        AlertWindow::showMessageBox(AlertWindow::WarningIcon,
-                                    JUCE_T("Error"), message);
-        return -1;
-    }
-    filename = presetFile;
+    File presetFile(presetFilename);
+    this->presetFile = presetFilename;
 
-    xmlDoc.reset(new XmlDocument(f));
+    xmlDoc.reset(new XmlDocument(presetFile));
     xmlRoot.reset(xmlDoc->getDocumentElement());
 
     if (!xmlRoot)
     {
-        String message = JUCE_T("Syntax error in preset file \"") +
-                         presetFile +
-                         JUCE_T("\" :\n") +
+        String message = TRANS("Error reading preset file") + " \"" +
+                         presetFile.getFullPathName() + "\" :\n" +
                          xmlDoc->getLastParseError();
         AlertWindow::showMessageBox(AlertWindow::WarningIcon,
-                                    JUCE_T("Error"), message);
+                                    TRANS("Error"), message);
         xmlDoc.reset();
         return -1;
     }
@@ -163,17 +152,15 @@ int PresetManager::save(void)
     }
 
     String xmlDoc = xmlRoot.createDocument(String());
-    File file(filename);
-    if (file.hasWriteAccess() == false)
+    File file(this->presetFile);
+    if (!file.replaceWithText(xmlDoc))
     {
-        String message = JUCE_T("Preset file \"") +
-                         filename +
-                         JUCE_T("\" is not writable.");
+        String message = TRANS("Error writing preset file") + " \"" +
+                          file.getFullPathName() + "\"";
         AlertWindow::showMessageBox(AlertWindow::WarningIcon,
                                     JUCE_T("Error"), message);
         return -1;
     }
-    file.replaceWithText(xmlDoc);
 
     return 0;
 }
@@ -181,7 +168,7 @@ int PresetManager::save(void)
 
 int PresetManager::saveAs(const String &presetFile)
 {
-    filename = presetFile;
+    this->presetFile = presetFile;
     return save();
 }
 

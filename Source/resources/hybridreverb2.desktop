@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=HybridReverb2
+GenericName=Reverberation
+GenericName[fr]=Réverbération
+Comment=Reverberation using convolution
+Comment[fr]=Réverbération utilisant une convolution
+Icon=HybridReverb2
+TryExec=HybridReverb2
+Exec=HybridReverb2
+Terminal=false
+Categories=Audio;AudioVideo;
+StartupNotify=true

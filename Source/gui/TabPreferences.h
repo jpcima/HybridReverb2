@@ -63,8 +63,8 @@ public:
     void comboBoxChanged (ComboBox* comboBoxThatHasChanged) override;
 
     // Binary resources:
-    static const char* directivity2_svg;
-    static const int directivity2_svgSize;
+    static const char* directivity2_png;
+    static const int directivity2_pngSize;
 
 
 private:
@@ -85,7 +85,7 @@ private:
     std::unique_ptr<TextEditor> textEditorHelp;
     std::unique_ptr<TextButton> textButton;
     std::unique_ptr<Label> label;
-    std::unique_ptr<Drawable> drawable1;
+    Image cachedImage_directivity2_png_1;
 
 
     //==============================================================================

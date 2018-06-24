@@ -65,6 +65,9 @@ HybridReverb2Editor::~HybridReverb2Editor()
 
 void HybridReverb2Editor::chooseDbFileAndLoad()
 {
+    if (asyncSetupStarted)
+        return;
+
     FileChooser fc(TRANS("Please choose a file to load..."),
                    File::getSpecialLocation(File::userDocumentsDirectory),
                    "*.zip",
@@ -74,37 +77,104 @@ void HybridReverb2Editor::chooseDbFileAndLoad()
         return;
 
     File chosenFile = fc.getResult();
-    SystemConfig &cfg = *systemConfig;
+    File userDir(systemConfig->getUserdir());
+    File presetFile(systemConfig->getPresetFilename());
+    Component::SafePointer<HybridReverb2Editor> safeThis(this);
 
-    ZipFile zip(chosenFile);
-    Result zipResult = zip.uncompressTo(cfg.getUserdir());
+    fprintf(stderr, "Editor: about to launch setup\n");
+    asyncSetupStarted = true;
+    MouseCursor::showWaitCursor();
+    MessageManager::callAsync(
+        [safeThis, chosenFile, userDir, presetFile]()
+            { performAsyncSetup(safeThis, chosenFile, userDir, presetFile); });
+}
+
+void HybridReverb2Editor::onSetupSuccess()
+{
+    fprintf(stderr, "Editor: setup success\n");
+    downloadDbComponent->setVisible(false);
+    editorComponent->setVisible(true);
+    MouseCursor::hideWaitCursor();
+    asyncSetupStarted = false;
+    readyListener->onReadyEditor();
+}
+
+void HybridReverb2Editor::onSetupFailure()
+{
+    fprintf(stderr, "Editor: setup failure\n");
+    MouseCursor::hideWaitCursor();
+    asyncSetupStarted = false;
+}
+
+void HybridReverb2Editor::performAsyncSetup(
+        Component::SafePointer<HybridReverb2Editor> self,
+        const File &zipFile, const File &userDir, const File &presetFile)
+{
+    if (!self)
+        return;
+
+    ZipFile zip(zipFile);
+
+    fprintf(stderr, "EditorAsync: about to unzip\n");
+    Result zipResult = zip.uncompressTo(userDir);
 
     if (zipResult.failed())
     {
-        String message = TRANS("Error extracting database file") + " \"" +
-                         chosenFile.getFullPathName() +
-                         "\" :\n" +
-                         zipResult.getErrorMessage();
-        AlertWindow::showMessageBox(AlertWindow::WarningIcon,
-                                    TRANS("Error"), message);
+        fprintf(stderr, "EditorAsync: unzip failure\n");
+
+        MessageManagerLock lock;
+        MessageManager::callAsync(
+            [self, zipFile, zipResult]()
+                {
+                    if (!self)
+                        return;
+
+                    String message = TRANS("Error extracting database file") + " \"" +
+                        zipFile.getFullPathName() +
+                        "\" :\n" +
+                        zipResult.getErrorMessage();
+                    AlertWindow::showMessageBox(AlertWindow::WarningIcon,
+                                                TRANS("Error"), message);
+
+                    self.getComponent()->onSetupFailure();
+                });
         return;
     }
 
-    File presetFile(systemConfig->getPresetFilename());
     if (!presetFile.exists())
     {
-        String message = TRANS("Error extracting database file") + " \"" +
-                         chosenFile.getFullPathName() +
-                         "\" :\n" +
-                         TRANS("the database did not contain valid preset data.");
-        AlertWindow::showMessageBox(AlertWindow::WarningIcon,
-                                    TRANS("Error"), message);
+        fprintf(stderr, "EditorAsync: unzip bad contents\n");
+
+        MessageManagerLock lock;
+        MessageManager::callAsync(
+            [self, zipFile]()
+                {
+                    if (!self)
+                        return;
+
+                    String message = TRANS("Error extracting database file") + " \"" +
+                        zipFile.getFullPathName() +
+                        "\" :\n" +
+                        TRANS("the database did not contain valid preset data.");
+                    AlertWindow::showMessageBox(AlertWindow::WarningIcon,
+                                                TRANS("Error"), message);
+
+                    self.getComponent()->onSetupFailure();
+                });
         return;
     }
 
-    downloadDbComponent->setVisible(false);
-    editorComponent->setVisible(true);
-    readyListener->onReadyEditor();
+    fprintf(stderr, "EditorAsync: unzip success\n");
+
+    MessageManagerLock lock;
+    MessageManager::callAsync(
+        [self]()
+            {
+                if (!self)
+                    return;
+
+                self.getComponent()->onSetupSuccess();
+            });
 }
 
 void HybridReverb2Editor::paint(Graphics &g)

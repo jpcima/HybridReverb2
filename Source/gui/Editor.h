@@ -52,10 +52,17 @@ public:
     void paint(Graphics &g) override;
 
 private:
+    void onSetupSuccess();
+    void onSetupFailure();
+    static void performAsyncSetup(
+        Component::SafePointer<HybridReverb2Editor> self,
+        const File &zipFile, const File &userDir, const File &presetFile);
+
     std::shared_ptr<SystemConfig> systemConfig;
     std::unique_ptr<EditorComponent> editorComponent;
     std::unique_ptr<DownloadDbComponent> downloadDbComponent;
     ReadyListener *readyListener = nullptr;
+    bool asyncSetupStarted = false;
 
     std::unique_ptr<LookAndFeel> lf;
 

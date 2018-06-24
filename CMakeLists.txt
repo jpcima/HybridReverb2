@@ -64,6 +64,8 @@ message("Build Standalone: ${HybridReverb2_Standalone}")
 include("${CMAKE_SOURCE_DIR}/JUCE-targets.cmake")
 
 add_library(HybridReverb2_core STATIC
+  "JuceLibraryCode/BinaryData.cpp"
+  "Source/gui/Editor.cpp"
   "Source/gui/EditorComponent.cpp"
   "Source/gui/FreqPlot.cpp"
   "Source/gui/IRPlot.cpp"
@@ -73,6 +75,7 @@ add_library(HybridReverb2_core STATIC
   "Source/gui/TabPreferences.cpp"
   "Source/gui/TabPresetEditor.cpp"
   "Source/gui/TabTimbre.cpp"
+  "Source/gui/DownloadDbComponent.cpp"
   "Source/libHybridConv/libHybridConv.c"
   "Source/HybridConvolver.cpp"
   "Source/HybridConvolverDual.cpp"
@@ -175,12 +178,3 @@ if(HybridReverb2_Standalone)
   set_property(TARGET HybridReverb2_Standalone PROPERTY OUTPUT_NAME "HybridReverb2")
   install(TARGETS HybridReverb2_Standalone DESTINATION "bin")
 endif()
-
-install(
-  FILES "Config/partition_wisdom.xml" "Config/preferences.xml"
-  DESTINATION "share/HybridReverb2")
-configure_file(
-  "Config/HybridReverb2.conf.in" "Config/HybridReverb2.conf" @ONLY)
-install(
-  FILES "${PROJECT_BINARY_DIR}/Config/HybridReverb2.conf"
-  DESTINATION "/etc/HybridReverb2")

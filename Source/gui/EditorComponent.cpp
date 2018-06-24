@@ -30,8 +30,8 @@
 #include "TabAbout.h"
 
 //==============================================================================
-EditorComponent::EditorComponent (HybridReverb2Processor* const ownerFilter)
-    : AudioProcessorEditor (ownerFilter),
+EditorComponent::EditorComponent(HybridReverb2Processor* processor)
+    : processor(processor),
       tabMain(0),
 //      tabModulation(0),
       tabTimbre(0),
@@ -39,10 +39,7 @@ EditorComponent::EditorComponent (HybridReverb2Processor* const ownerFilter)
       tabPreferences(0),
       tabAbout(0)
 {
-    lf.reset(new LookAndFeel_V3);
-    LookAndFeel::setDefaultLookAndFeel(lf.get());
-
-    master = ownerFilter->getMaster();
+    master = processor->getMaster();
     myTabbedComponent = new MyTabbedComponent(TabbedButtonBar::TabsAtTop, this);
     addAndMakeVisible(myTabbedComponent);
     myTabbedComponent->setTabBarDepth(30);
@@ -97,13 +94,13 @@ EditorComponent::EditorComponent (HybridReverb2Processor* const ownerFilter)
 //    gainSlider->setValue (ownerFilter->getParameter (0), false);
 
     // set our component's initial size to be the last one that was stored in the filter's settings
-    setSize (ownerFilter->lastUIWidth,
-             ownerFilter->lastUIHeight);
+    setSize (processor->lastUIWidth,
+             processor->lastUIHeight);
 
     // register ourselves with the filter - it will use its ChangeBroadcaster base
     // class to tell us when something has changed, and this will call our changeListenerCallback()
     // method.
-    ownerFilter->addChangeListener (this);
+    processor->addChangeListener (this);
 
     master->registerEditorComponent(this);
 }

@@ -48,7 +48,7 @@ public:
     void setDefaultPresetNum(int num);
     const std::vector<ParamPreset> & getPresetDB(void);
     void setPresetDB(const std::vector<ParamPreset> & newPresetDB);
-    int readFile(const String &presetFile);
+    int readFile(const String &presetFilename);
     int save(void);
     int saveAs(const String &presetFile);
     int parseRoot(XmlElement *element);
@@ -89,7 +89,7 @@ public:
 private:
     const String & getSubText(XmlElement *element);
 
-    String filename;
+    String presetFile;
     String retSubText;
     std::unique_ptr<XmlDocument> xmlDoc;
     std::unique_ptr<XmlElement> xmlRoot;

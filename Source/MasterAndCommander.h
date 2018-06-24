@@ -52,13 +52,14 @@ class SystemConfig;
 class MasterAndCommander
 {
 public:
-    MasterAndCommander(HybridReverb2Processor *ap);
+    MasterAndCommander(HybridReverb2Processor *ap, const std::shared_ptr<SystemConfig> &systemConfig);
     ~MasterAndCommander();
+
+    void loadInitialPreset();
 
     // common methods
     void onGuiReady(void);
     void print(String msg);
-    const String & getBasedir();
     const String & getUserdir();
     const String & getDBdir();
     const ParamPreferences & getPreferences();
@@ -122,7 +123,7 @@ private:
     ParamTimbre       *paramTimbre = nullptr;
     ParamPreset       preset;
     ParamPreferences  paramPreferences;
-    std::unique_ptr<SystemConfig>      systemConfig;
+    std::shared_ptr<SystemConfig>      systemConfig;
     std::unique_ptr<PresetManager>     presetManager;
     HybridReverb2Processor      *audioPlugin = nullptr;
     String           logMessage;

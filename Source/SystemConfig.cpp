@@ -24,80 +24,38 @@
 #include <math.h>
 #include <stdlib.h>
 
-#ifndef INSTALL_PREFIX
-#define INSTALL_PREFIX "/usr/local"
-#endif
-
 SystemConfig::SystemConfig()
 {
-#ifdef _WINDOWS
-    extractBasedirWindows();
-    extractUserdirWindows();
-    dbdir = basedir + String("\\RIR_Database\\");
-#else
-    extractBasedirUnix();
-    extractUserdirUnix();
-    dbdir = basedir + String("/RIR_Database/");
-#endif
+    File userdir = File
+        ::getSpecialLocation(File::userApplicationDataDirectory)
+        .getChildFile("HybridReverb2");
+    this->userdir = userdir.getFullPathName() + "/";
 
-    File dstDir(userdir);
-    if (dstDir.isDirectory() == false)
+    File dbdir = userdir.getChildFile("RIR_Database");
+    this->dbdir = dbdir.getFullPathName() + "/";
+
+    userdir.createDirectory();
+
+    File prefFile = userdir.getChildFile("preferences.xml");
+    if (!prefFile.existsAsFile())
     {
-        dstDir.createDirectory();
+        prefFile.create();
+        prefFile.replaceWithData(
+            BinaryData::preferences_xml, BinaryData::preferences_xmlSize);
     }
 
-#ifdef _WINDOWS
-    String filenameDst = userdir + String("\\preferences.xml");
-    String filenameSrc = basedir + String("\\preferences.xml");
-#else
-    String filenameDst = userdir + String("/preferences.xml");
-    String filenameSrc = basedir + String("/preferences.xml");
-#endif
-    File preferencesDst(filenameDst);
-    if (preferencesDst.existsAsFile() == false)
+    File wisdomFile = userdir.getChildFile("partition_wisdom.xml");
+    if (!wisdomFile.existsAsFile())
     {
-        File preferencesSrc(filenameSrc);
-        if (preferencesSrc.existsAsFile() == false)
-        {
-            String message = JUCE_T("Error: Preferences template file \"") +
-                             filenameSrc +
-                             JUCE_T("\" does not exist!");
-            AlertWindow::showMessageBox(AlertWindow::WarningIcon,
-                                        JUCE_T("Error"), message);
-            return;
-        }
-        String content = preferencesSrc.loadFileAsString();
-        preferencesDst.create();
-        preferencesDst.replaceWithText(content);
-    }
-
-#ifdef _WINDOWS
-    filenameDst = userdir + String("\\HybridReverb2_presets.xml");
-    filenameSrc = basedir + String("\\HybridReverb2_presets.xml");
-#else
-    filenameDst = userdir + String("/HybridReverb2_presets.xml");
-    filenameSrc = basedir + String("/HybridReverb2_presets.xml");
-#endif
-    File presetsDst(filenameDst);
-    if (presetsDst.existsAsFile() == false)
-    {
-        File presetsSrc(filenameSrc);
-        if (presetsSrc.existsAsFile() == false)
-        {
-            String message = JUCE_T("Error: Preset template file \"") +
-                             filenameSrc +
-                             JUCE_T("\" does not exist!");
-            AlertWindow::showMessageBox(AlertWindow::WarningIcon,
-                                        JUCE_T("Error"), message);
-            return;
-        }
-        String content = presetsSrc.loadFileAsString();
-        presetsDst.create();
-        presetsDst.replaceWithText(content);
+        wisdomFile.create();
+        wisdomFile.replaceWithData(
+            BinaryData::partition_wisdom_xml, BinaryData::partition_wisdom_xmlSize);
     }
 
     readPreferencesFile();
     readPartitionWisdomFile();
+
+    successfulLoad = true;
 }
 
 SystemConfig::~SystemConfig()
@@ -109,11 +67,6 @@ SystemConfig::~SystemConfig()
 //
 //    public methods
 //
-
-const String & SystemConfig::getBasedir()
-{
-    return basedir;
-}
 
 
 const String & SystemConfig::getUserdir()
@@ -130,21 +83,10 @@ const String & SystemConfig::getDBdir()
 
 String SystemConfig::getPresetFilename()
 {
-    String filename = paramPreferences.presetFile;
-    File file(filename);
-    if (!file.existsAsFile())
-    {
-#ifdef _WINDOWS
-        filename = userdir + String("\\") + paramPreferences.presetFile;
-#else
-        filename = userdir + String("/") + paramPreferences.presetFile;
-#endif
-        file = File(filename);
-    }
-    if (!file.existsAsFile())
-        filename = paramPreferences.presetFile;
-
-    return filename;
+    String presetFilename = paramPreferences.presetFile;
+    if (presetFilename.isEmpty())
+        presetFilename = "HybridReverb2_presets.xml";
+    return File(userdir).getChildFile(presetFilename).getFullPathName();
 }
 
 
@@ -156,34 +98,24 @@ const ParamPreferences & SystemConfig::getPreferences()
 
 void SystemConfig::readPreferencesFile()
 {
-#ifdef _WINDOWS
-    String filename = userdir + String("\\preferences.xml");
-#else
-    String filename = userdir + String("/preferences.xml");
-#endif
-    File preferencesFile(filename);
-    if (preferencesFile.existsAsFile() == false)
-    {
-        String message = JUCE_T("Error: Preferences file \"") +
-                         filename +
-                         JUCE_T("\" does not exist!");
-        AlertWindow::showMessageBox(AlertWindow::WarningIcon,
-                                    JUCE_T("Error"), message);
-        return;
-    }
+    File prefFile = File(userdir).getChildFile("preferences.xml");
 
-    XmlDocument xmlDoc(preferencesFile);
-    std::unique_ptr<XmlElement> element(xmlDoc.getDocumentElement());
+    std::unique_ptr<XmlDocument> xmlDoc(new XmlDocument(prefFile));
+    std::unique_ptr<XmlElement> element(xmlDoc->getDocumentElement());
 
     if (!element)
     {
-        String message = JUCE_T("Syntax error in preferences file \"") +
-                         filename +
-                         JUCE_T("\" :\n") +
-                         xmlDoc.getLastParseError();
+        String message = TRANS("Error reading preferences file") + " \"" +
+                         prefFile.getFullPathName() +
+                         "\" :\n" +
+                         xmlDoc->getLastParseError();
         AlertWindow::showMessageBox(AlertWindow::WarningIcon,
-                                    JUCE_T("Error"), message);
-        return;
+                                    TRANS("Error"), message);
+
+        String xmlData(BinaryData::preferences_xml, BinaryData::preferences_xmlSize);
+        xmlDoc.reset(new XmlDocument(xmlData));
+        element.reset(xmlDoc->getDocumentElement());
+        jassert(element);
     }
 
     forEachXmlChildElement(*element, child)
@@ -210,28 +142,16 @@ void SystemConfig::setPreferences(const ParamPreferences & param)
 {
     paramPreferences = param;
 
-#ifdef _WINDOWS
-    String filename = userdir + String("\\preferences.xml");
-#else
-    String filename = userdir + String("/preferences.xml");
-#endif
-    File preferencesFile(filename);
-    if (preferencesFile.existsAsFile() == false)
-    {
-        String message = JUCE_T("Error: Preferences file \"") +
-                         filename +
-                         JUCE_T("\" does not exist!");
-        AlertWindow::showMessageBox(AlertWindow::WarningIcon,
-                                    JUCE_T("Error"), message);
-        return;
-    }
+    File prefFile = File(userdir).getChildFile("preferences.xml");
+    prefFile.create();
+
     String content = String("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n") +
                      String("<preferences>\n") +
                      String("  <presetFile>") + paramPreferences.presetFile       + String("</presetFile>\n") +
                      String("  <sflen>")      + String(paramPreferences.sflen)    + String("</sflen>\n")      +
                      String("  <strategy>")   + String(paramPreferences.strategy) + String("</strategy>\n")   +
                      String("</preferences>");
-    preferencesFile.replaceWithText(content);
+    prefFile.replaceWithText(content);
 }
 
 
@@ -243,34 +163,24 @@ const ParamPartitionWisdom & SystemConfig::getPartitionWisdom()
 
 void SystemConfig::readPartitionWisdomFile()
 {
-#ifdef _WINDOWS
-    String filename = basedir + String("\\partition_wisdom.xml");
-#else
-    String filename = basedir + String("/partition_wisdom.xml");
-#endif
-    File partitionWisdomFile(filename);
-    if (partitionWisdomFile.existsAsFile() == false)
-    {
-        String message = JUCE_T("Error: Partition wisdom file \"") +
-                         filename +
-                         JUCE_T("\" does not exist!");
-        AlertWindow::showMessageBox(AlertWindow::WarningIcon,
-                                    JUCE_T("Error"), message);
-        return;
-    }
+    File wisdomFile = File(userdir).getChildFile("partition_wisdom.xml");
 
-    XmlDocument xmlDoc(partitionWisdomFile);
-    std::unique_ptr<XmlElement> element(xmlDoc.getDocumentElement());
+    std::unique_ptr<XmlDocument> xmlDoc(new XmlDocument(wisdomFile));
+    std::unique_ptr<XmlElement> element(xmlDoc->getDocumentElement());
 
     if (!element)
     {
-        String message = JUCE_T("Syntax error in partition wisdom file \"") +
-                         filename +
-                         JUCE_T("\" :\n") +
-                         xmlDoc.getLastParseError();
+        String message = TRANS("Error reading wisdom file") + " \"" +
+                         wisdomFile.getFullPathName() +
+                         "\" :\n" +
+                         xmlDoc->getLastParseError();
         AlertWindow::showMessageBox(AlertWindow::WarningIcon,
-                                    JUCE_T("Error"), message);
-        return;
+                                    TRANS("Error"), message);
+
+        String xmlData(BinaryData::partition_wisdom_xml, BinaryData::partition_wisdom_xmlSize);
+        xmlDoc.reset(new XmlDocument(xmlData));
+        element.reset(xmlDoc->getDocumentElement());
+        jassert(element);
     }
 
     int num_const = 0;
@@ -299,85 +209,6 @@ void SystemConfig::readPartitionWisdomFile()
 //
 //    private methods
 //
-
-#ifdef _WINDOWS
-
-void SystemConfig::extractBasedirWindows()
-{
-    TCHAR *programmfiles;
-    size_t len;
-    _tdupenv_s(&programmfiles, &len, _T("ProgramFiles"));
-    len = _tcslen(programmfiles) + _tcslen(_T("\\HybridReverb2")) + 1;
-    TCHAR *defaultDir = new TCHAR[len];
-    defaultDir[0] = '\0';
-    _tcscat_s(defaultDir, len, programmfiles);
-    _tcscat_s(defaultDir, len, _T("\\HybridReverb2"));
-    const String regkey("HKEY_LOCAL_MACHINE\\Software\\HybridReverb2\\BaseDir");
-	basedir = PlatformUtilities::getRegistryValue(regkey, defaultDir);
-    delete[] defaultDir;
-    free(programmfiles);
-}
-
-
-void SystemConfig::extractUserdirWindows()
-{
-    TCHAR *appdata;
-    size_t len;
-    _tdupenv_s(&appdata, &len, _T("APPDATA"));
-    char *cs = new char[len + 1];
-    for (unsigned int i = 0; i < len; i++)
-    cs[i] = (CHAR)appdata[i];
-    cs[len] = '\0';
-    userdir = String(cs) + _T("\\HybridReverb2");
-    delete[] cs;
-    free(appdata);
-}
-
-#else
-
-void SystemConfig::extractBasedirUnix()
-{
-    String configFilename = String(getenv("HOME")) + "/.HybridReverb2/HybridReverb2.conf";
-    File configFile(configFilename);
-
-    if (!configFile.existsAsFile()) {
-        configFilename = "/etc/HybridReverb2/HybridReverb2.conf";
-        configFile = File(configFilename);
-    }
-
-    if (!configFile.existsAsFile())
-    {
-        basedir = INSTALL_PREFIX "/share/HybridReverb2";
-        return;
-    }
-
-    FileInputStream configStream(configFile);
-    String configLine;
-    while (configStream.isExhausted() == false)
-    {
-        configLine = configStream.readNextLine();
-        int pos = configLine.indexOfChar('#');
-        if (pos >= 0)
-            configLine = configLine.substring(0, pos);
-        pos = configLine.indexOfChar('=');
-        if (pos >= 0)
-        {
-            String variable = configLine.substring(0, pos).trim();
-            String value = configLine.substring(pos + 1, configLine.length());
-            if (variable == "basedir" || variable == "BaseDir")
-                basedir = value.trim();
-        }
-    }
-}
-
-
-void SystemConfig::extractUserdirUnix()
-{
-    userdir = String(getenv("HOME")) + "/.HybridReverb2";
-}
-
-#endif
-
 
 String SystemConfig::getSubText(XmlElement *element)
 {

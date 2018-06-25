@@ -18,7 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-
 #ifdef HYBRIDCONV_SSE
 #include <xmmintrin.h>
 #endif
@@ -168,13 +167,16 @@ void hcProcessSingle(HConvSingle *filter)
 	filter->step = (filter->step + 1) % filter->maxstep;
 #endif
 
-	int s, n, start, stop, flen, flen4;
+	int s, n, start, stop, flen;
+#ifdef HYBRIDCONV_SSE
+	int flen4;
 	__m128 *x4_real;
 	__m128 *x4_imag;
 	__m128 *h4_real;
 	__m128 *h4_imag;
 	__m128 *y4_real;
 	__m128 *y4_imag;
+#endif
 	float *x_real;
 	float *x_imag;
 	float *h_real;
@@ -185,8 +187,10 @@ void hcProcessSingle(HConvSingle *filter)
 	flen = filter->framelength;
 	x_real = filter->in_freq_real;
 	x_imag = filter->in_freq_imag;
+#ifdef HYBRIDCONV_SSE
 	x4_real = (__m128*)x_real;
 	x4_imag = (__m128*)x_imag;
+#endif
 	start = filter->steptask[filter->step];
 	stop  = filter->steptask[filter->step + 1];
 	for (s = start; s < stop; s++)
@@ -194,16 +198,16 @@ void hcProcessSingle(HConvSingle *filter)
 		n = (s + filter->mixpos) % filter->num_mixbuf;
 		y_real = filter->mixbuf_freq_real[n];
 		y_imag = filter->mixbuf_freq_imag[n];
-		y4_real = (__m128*)y_real;
-		y4_imag = (__m128*)y_imag;
 		h_real = filter->filterbuf_freq_real[s];
 		h_imag = filter->filterbuf_freq_imag[s];
+#ifdef HYBRIDCONV_SSE
+		y4_real = (__m128*)y_real;
+		y4_imag = (__m128*)y_imag;
 		h4_real = (__m128*)h_real;
 		h4_imag = (__m128*)h_imag;
 		flen4 = flen / 4;
 		for (n = 0; n < flen4; n++)
 		{
-#ifdef HYBRIDCONV_SSE
 			__m128 a = _mm_mul_ps(x4_real[n], h4_real[n]);
 			__m128 b = _mm_mul_ps(x4_imag[n], h4_imag[n]);
 			__m128 c = _mm_sub_ps(a, b);
@@ -212,13 +216,16 @@ void hcProcessSingle(HConvSingle *filter)
 			b = _mm_mul_ps(x4_imag[n], h4_real[n]);
 			c = _mm_add_ps(a, b);
 			y4_imag[n] = _mm_add_ps(y4_imag[n], c);
-#else
-			y4_real[n] += x4_real[n] * h4_real[n] -
-			              x4_imag[n] * h4_imag[n];
-			y4_imag[n] += x4_real[n] * h4_imag[n] +
-			              x4_imag[n] * h4_real[n];
-#endif
 		}
+#else
+		for (n = 0; n < flen; n++)
+		{
+			y_real[n] += x_real[n] * h_real[n] -
+			             x_imag[n] * h_imag[n];
+			y_imag[n] += x_real[n] * h_imag[n] +
+			             x_imag[n] * h_real[n];
+		}
+#endif
 		y_real[flen] += x_real[flen] * h_real[flen] -
 		                x_imag[flen] * h_imag[flen];
 		y_imag[flen] += x_real[flen] * h_imag[flen] +

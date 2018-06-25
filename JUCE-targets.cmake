@@ -24,6 +24,9 @@ target_link_libraries(juce_audio_utils PUBLIC juce_gui_extra juce_audio_processo
 target_link_libraries(juce_gui_basics PUBLIC juce_graphics juce_data_structures)
 target_link_libraries(juce_gui_extra PUBLIC juce_gui_basics)
 
+# define the name of the Jack client
+target_compile_definitions(juce_audio_devices PRIVATE "JUCE_JACK_CLIENT_NAME=\"HybridReverb2\"")
+
 if(CMAKE_SYSTEM_NAME STREQUAL "Windows")
   # need this circular link dependency on Windows
   target_link_libraries(juce_events PUBLIC juce_gui_extra)

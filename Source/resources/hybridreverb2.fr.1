@@ -1,0 +1,66 @@
+.TH HybridReverb2 1 "Juin 25, 2018"
+.SH NAME
+HybridReverb2 \- Effet de réverb' utilisant une convolution d'impulsion hybride
+.SH SYNOPSIS
+.B HybridReverb2
+.br
+.br
+Il n'y a pas d'option en ligne de commande.
+.SH DESCRIPTION
+.B HybridReverb2
+est un effet de réverb' utilisant une convolution d'impulsion hybride.
+.br
+.B HybridReverb2
+est un effet de réverbération basé sur une convolution qui combine la qualité 
+de son supérieure d'une réverb' à convolution avec la capacité de 
+personnalisation d'un réseau de délais en retour.
+.br
+.br
+La qualité sonore d'une réverb' à convolution dépend de la qualité des réponses 
+impulsionnelles des pièces utilisées.
+.br
+.br
+.B HybridReverb2
+utilise un ensemble de réponses impulsionnelles qui ont été synthétisées avec le 
+logiciel "tinyAVE", un logiciel d'auralisation qui fut développé à l'Institut 
+de Communication Acoustique, Université de la Ruhr Bochum (Borß et Martin, 
+2009; Borß, 2009a) par messieurs Christian Borß et Rainer Martin en 2009. 
+.br
+Ces réponses impulsionnelles sont conçues pour une installation de 
+haut-parleurs avec deux haut-parleurs en front, et deux en arrière (Borß, 
+2009b).
+.br
+.br
+Pour un effet sonore surround total, vous aurez besoin de deux instances du 
+logiciel, une qui utilise un préréglage “front” pour les canaux de front, et 
+une deuxième instance qui utilise les préréglages "rear" correspondants pour 
+les canaux arrières. 
+.TE
+.SH BOGUES
+Veuillez rapporter les bogues via
+.B <https://github.com/jpcima/HybridReverb2/issues>
+.
+.SH AUTEUR
+.B HybridReverb2
+a été écrit originellement par Christian Borß
+.B <christian.borss@rub.de>
+et est maintenant maintenu par Jean-Pierre Cimalando
+.B <jp-dev@inbox.ru>
+.SH PAGE D'ACCUEIL
+.B HybridReverb2
+peut être trouvé à :
+.B <https://github.com/jpcima/hybridreverb2/>
+.SH COPYRIGHT
+Copyright (C) 2018 Jean-Pierre Cimalando
+.B <jp-dev@inbox.ru>
+et 2009 Christian Borß
+.B <christian.borss@rub.de>
+.
+.br
+Licencié sous la
+.B GNU Public License V2.
+.PP
+Cette page de manuel a été écrite en anglais et traduite en français par 
+Olivier Humbert 
+.B <trebmuh@tuxfamily.org>
+, pour le projet LibraZiK (mais peut être utilisée par d'autres).

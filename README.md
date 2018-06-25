@@ -4,7 +4,8 @@ Reverb effect using hybrid impulse convolution
 [![Build Status](https://semaphoreci.com/api/v1/jpcima/hybridreverb2/branches/master/badge.svg)](https://semaphoreci.com/jpcima/hybridreverb2)
 
 Original author: Christian Borß  
-Current maintainer: [Jean Pierre Cimalando](https://github.com/jpcima)
+Current maintainer: [Jean Pierre Cimalando](https://github.com/jpcima)  
+Contributor: [Olivier Humbert](https://github.com/trebmuh)
 
 The goal of this project is to keep the HybridReverb2 project maintained and fix the issues.  
 All information and original source code of HybridReverb2 is available on this [project page](http://www2.ika.ruhr-uni-bochum.de/HybridReverb2/).

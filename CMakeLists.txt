@@ -23,7 +23,8 @@ disable_gnu_warning("multichar")
 # this one is all over JUCE code
 disable_gnu_warning("class-memaccess")
 
-if(CMAKE_SYSTEM_PROCESSOR MATCHES "^i.86$")
+if(CMAKE_SYSTEM_PROCESSOR MATCHES "^i.86$" OR
+    CMAKE_SYSTEM_PROCESSOR STREQUAL "x86")
   if(CMAKE_C_COMPILER_ID MATCHES "^(GNU|Clang)$")
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -msse")
   endif()
@@ -112,6 +113,7 @@ set_property(TARGET HybridReverb2_core
   PROPERTY POSITION_INDEPENDENT_CODE ON)
 
 if(CMAKE_SYSTEM_PROCESSOR MATCHES "^i.86$" OR
+    CMAKE_SYSTEM_PROCESSOR STREQUAL "x86" OR
     CMAKE_SYSTEM_PROCESSOR STREQUAL "x86_64")
   target_compile_definitions(HybridReverb2_core PRIVATE "HYBRIDCONV_SSE")
 endif()

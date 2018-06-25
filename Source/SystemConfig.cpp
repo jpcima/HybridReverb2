@@ -108,7 +108,7 @@ void SystemConfig::readPreferencesFile()
     {
         String message = TRANS("Error reading preferences file") + " \"" +
                          prefFile.getFullPathName() +
-                         "\" :\n" +
+                         "\"" + TRANS(":") + "\n" +
                          xmlDoc->getLastParseError();
         AlertWindow::showMessageBox(AlertWindow::WarningIcon,
                                     TRANS("Error"), message);
@@ -173,7 +173,7 @@ void SystemConfig::readPartitionWisdomFile()
     {
         String message = TRANS("Error reading wisdom file") + " \"" +
                          wisdomFile.getFullPathName() +
-                         "\" :\n" +
+                         "\"" + TRANS(":") + "\n" +
                          xmlDoc->getLastParseError();
         AlertWindow::showMessageBox(AlertWindow::WarningIcon,
                                     TRANS("Error"), message);

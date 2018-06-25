@@ -134,7 +134,7 @@ void HybridReverb2Editor::performAsyncSetup(
 
                     String message = TRANS("Error extracting database file") + " \"" +
                         zipFile.getFullPathName() +
-                        "\" :\n" +
+                        "\"" + TRANS(":") + "\n" +
                         zipResult.getErrorMessage();
                     AlertWindow::showMessageBox(AlertWindow::WarningIcon,
                                                 TRANS("Error"), message);
@@ -157,7 +157,7 @@ void HybridReverb2Editor::performAsyncSetup(
 
                     String message = TRANS("Error extracting database file") + " \"" +
                         zipFile.getFullPathName() +
-                        "\" :\n" +
+                        "\"" + TRANS(":") + "\n" +
                         TRANS("the database did not contain valid preset data.");
                     AlertWindow::showMessageBox(AlertWindow::WarningIcon,
                                                 TRANS("Error"), message);

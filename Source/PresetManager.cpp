@@ -120,7 +120,8 @@ int PresetManager::readFile(const String &presetFilename)
     if (!xmlRoot)
     {
         String message = TRANS("Error reading preset file") + " \"" +
-                         presetFile.getFullPathName() + "\" :\n" +
+                         presetFile.getFullPathName() +
+                         "\"" + TRANS(":") + "\n" +
                          xmlDoc->getLastParseError();
         AlertWindow::showMessageBox(AlertWindow::WarningIcon,
                                     TRANS("Error"), message);

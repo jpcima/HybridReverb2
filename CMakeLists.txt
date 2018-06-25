@@ -29,9 +29,17 @@ disable_gnu_warning("multichar")
 # this one is all over JUCE code
 disable_gnu_warning("class-memaccess")
 
+set(HybridReverb2_ENABLE_SSE "OFF")
 if(CMAKE_SYSTEM_PROCESSOR MATCHES "^i.86$" OR
     CMAKE_SYSTEM_PROCESSOR STREQUAL "x86" OR
     CMAKE_SYSTEM_PROCESSOR STREQUAL "x86_64")
+  set(HybridReverb2_ENABLE_SSE "ON")
+endif()
+if(CMAKE_SYSTEM_NAME STREQUAL "Windows") # internal compiler error on MinGW...
+  set(HybridReverb2_ENABLE_SSE "OFF")
+endif()
+
+if(HybridReverb2_ENABLE_SSE)
   if(CMAKE_C_COMPILER_ID MATCHES "^(GNU|Clang)$")
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -msse -msse2")
   endif()
@@ -119,9 +127,7 @@ target_link_libraries(HybridReverb2_core PUBLIC
 set_property(TARGET HybridReverb2_core
   PROPERTY POSITION_INDEPENDENT_CODE ON)
 
-if(CMAKE_SYSTEM_PROCESSOR MATCHES "^i.86$" OR
-    CMAKE_SYSTEM_PROCESSOR STREQUAL "x86" OR
-    CMAKE_SYSTEM_PROCESSOR STREQUAL "x86_64")
+if(HybridReverb2_ENABLE_SSE)
   target_compile_definitions(HybridReverb2_core PRIVATE "HYBRIDCONV_SSE")
 endif()
 

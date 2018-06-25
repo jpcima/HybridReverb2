@@ -191,7 +191,11 @@ endif()
 if(HybridReverb2_LV2)
   add_plugin(HybridReverb2_LV2)
   target_link_libraries(HybridReverb2_LV2 PRIVATE juce_audio_plugin_client_LV2 HybridReverb2_core)
-  require_symbols(HybridReverb2_LV2 "lv2_generate_ttl" "lv2_descriptor" "lv2ui_descriptor")
+  if(CMAKE_SYSTEM_NAME STREQUAL "Windows")
+    target_sources(HybridReverb2_LV2 PRIVATE "${PROJECT_SOURCE_DIR}/Source/link/LV2.def")
+  else()
+    require_symbols(HybridReverb2_LV2 "lv2_generate_ttl" "lv2_descriptor" "lv2ui_descriptor")
+  endif()
   set_property(TARGET HybridReverb2_LV2
     PROPERTY LIBRARY_OUTPUT_DIRECTORY "lv2/HybridReverb2.lv2")
 

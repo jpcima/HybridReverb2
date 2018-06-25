@@ -56,7 +56,7 @@ TabPresetEditor::TabPresetEditor (MasterAndCommander *m)
 
     textEditor->setBounds (24, 32, 248, 428);
 
-    listBox.reset (new ListBox (JUCE_T("new listbox"), this));
+    listBox.reset (new ListBox ("new listbox", this));
     addAndMakeVisible (listBox.get());
     listBox->setName ("new listbox");
 
@@ -562,11 +562,11 @@ void TabPresetEditor::buttonClicked (Button* buttonThatWasClicked)
     {
         //[UserButtonCode_textButtonAdd] -- add your button handler code here..
         ParamPreset newPreset;
-        newPreset.name = JUCE_T("new preset");
-        newPreset.category.cat_1 = JUCE_T("new category");
-        newPreset.category.cat_2 = JUCE_T("new category");
-        newPreset.category.cat_3 = JUCE_T("new category");
-        newPreset.category.cat_4 = JUCE_T("new category");
+        newPreset.name = TRANS("new preset");
+        newPreset.category.cat_1 = TRANS("new category");
+        newPreset.category.cat_2 = TRANS("new category");
+        newPreset.category.cat_3 = TRANS("new category");
+        newPreset.category.cat_4 = TRANS("new category");
         presetDB_copy.insert(presetDB_copy.begin() + selectedRow, newPreset);
         updateListBox();
         //[/UserButtonCode_textButtonAdd]
@@ -627,7 +627,7 @@ void TabPresetEditor::onComponentSelected(void)
 
 String TabPresetEditor::getWavFileChooserOpen(String dir)
 {
-    FileChooser fc(JUCE_T("Choose a WAV file to open..."),
+    FileChooser fc(TRANS("Choose a WAV file to open..."),
                    dir,
                    "*.wav",
                    true);
@@ -644,7 +644,7 @@ String TabPresetEditor::getWavFileChooserOpen(String dir)
 
 String TabPresetEditor::getXmlFileChooserOpen(String dir)
 {
-    FileChooser fc(JUCE_T("Choose a XML file to open..."),
+    FileChooser fc(TRANS("Choose a XML file to open..."),
                    dir,
                    "*.xml",
                    true);
@@ -661,7 +661,7 @@ String TabPresetEditor::getXmlFileChooserOpen(String dir)
 
 String TabPresetEditor::getXmlFileChooserSave(String dir)
 {
-    FileChooser fc(JUCE_T("Choose a XML file to save..."),
+    FileChooser fc(TRANS("Choose a XML file to save..."),
                    dir,
                    "*.xml",
                    true);
@@ -704,11 +704,11 @@ void TabPresetEditor::paintListBoxItem(int rowNumber,
     if (num == defaultPresetNum)
         g.setColour(Colour(0xff800000));
 
-    String text = String::formatted(JUCE_T("%d: "), num);
+    String text = String::formatted("%d: ", num);
     if (num <= presetDB_copy.size())
         text += presetDB_copy[rowNumber].name;
     else
-        text += String(JUCE_T("<Empty>"));
+        text += String(TRANS("<Empty>"));
     g.drawText(text,
                4, 0,
                width - 4, height,
@@ -813,43 +813,43 @@ void TabPresetEditor::textEditorReturnKeyPressed (TextEditor &editor)
 {
     String text = editor.getText();
 
-    if (editor.getName() == String(JUCE_T("textEditorTag")))
+    if (editor.getName() == String("textEditorTag"))
     {
         presetDB_copy[selectedRow].name = text;
     }
-    else if (editor.getName() == String(JUCE_T("textEditorCat1")))
+    else if (editor.getName() == String("textEditorCat1"))
     {
         presetDB_copy[selectedRow].category.cat_1 = text;
     }
-    else if (editor.getName() == String(JUCE_T("textEditorCat2")))
+    else if (editor.getName() == String("textEditorCat2"))
     {
         presetDB_copy[selectedRow].category.cat_2 = text;
     }
-    else if (editor.getName() == String(JUCE_T("textEditorCat3")))
+    else if (editor.getName() == String("textEditorCat3"))
     {
         presetDB_copy[selectedRow].category.cat_3 = text;
     }
-    else if (editor.getName() == String(JUCE_T("textEditorCat4")))
+    else if (editor.getName() == String("textEditorCat4"))
     {
         presetDB_copy[selectedRow].category.cat_4 = text;
     }
-    else if (editor.getName() == String(JUCE_T("textEditorFileLL")))
+    else if (editor.getName() == String("textEditorFileLL"))
     {
         presetDB_copy[selectedRow].impulseResponses.ll = text;
     }
-    else if (editor.getName() == String(JUCE_T("textEditorFileLR")))
+    else if (editor.getName() == String("textEditorFileLR"))
     {
         presetDB_copy[selectedRow].impulseResponses.lr = text;
     }
-    else if (editor.getName() == String(JUCE_T("textEditorFileRL")))
+    else if (editor.getName() == String("textEditorFileRL"))
     {
         presetDB_copy[selectedRow].impulseResponses.rl = text;
     }
-    else if (editor.getName() == String(JUCE_T("textEditorFileRR")))
+    else if (editor.getName() == String("textEditorFileRR"))
     {
         presetDB_copy[selectedRow].impulseResponses.rr = text;
     }
-    else if (editor.getName() == String(JUCE_T("textEditorNotes")))
+    else if (editor.getName() == String("textEditorNotes"))
     {
         presetDB_copy[selectedRow].notes = text;
     }
@@ -893,7 +893,7 @@ BEGIN_JUCER_METADATA
               caret="0" popupmenu="0"/>
   <GENERICCOMPONENT name="new listbox" id="90b42c658c2c4f06" memberName="listBox"
                     virtualName="" explicitFocusOrder="0" pos="27 35 242 424" class="ListBox"
-                    params="JUCE_T(&quot;new listbox&quot;), this"/>
+                    params="&quot;new listbox&quot;, this"/>
   <GROUPCOMPONENT name="new group" id="feef6879e095fd42" memberName="groupNotes"
                   virtualName="" explicitFocusOrder="0" pos="296 232 520 232" title="Notes"/>
   <LABEL name="new label" id="2a92bdd8797a5c0c" memberName="label" virtualName=""

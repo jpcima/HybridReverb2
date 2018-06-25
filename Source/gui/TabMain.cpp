@@ -344,34 +344,34 @@ TabMain::TabMain (MasterAndCommander *m)
 
 
     //[UserPreSize]
-    sliderInitialGap->setTextValueSuffix (T(" ms"));
+    sliderInitialGap->setTextValueSuffix (" " + TRANS("ms"));
     sliderInitialGap->setDoubleClickReturnValue (true, 0.0);
 
-    sliderLength->setTextValueSuffix (T(" s"));
+    sliderLength->setTextValueSuffix (" " + TRANS("s"));
     sliderLength->setDoubleClickReturnValue (true, 1.0);
 
-    sliderPreDelay->setTextValueSuffix (T(" ms"));
+    sliderPreDelay->setTextValueSuffix (" " + TRANS("ms"));
     sliderPreDelay->setDoubleClickReturnValue (true, 0.0);
 
-    sliderDryGain->setTextValueSuffix (T(" dB"));
+    sliderDryGain->setTextValueSuffix (" " + TRANS("dB"));
     sliderDryGain->setDoubleClickReturnValue (true, 0.0);
 
-    sliderWetGain->setTextValueSuffix (T(" dB"));
+    sliderWetGain->setTextValueSuffix (" " + TRANS("dB"));
     sliderWetGain->setDoubleClickReturnValue (true, 0.0);
 
-    sliderMasterGain->setTextValueSuffix (T(" dB"));
+    sliderMasterGain->setTextValueSuffix (" " + TRANS("dB"));
     sliderMasterGain->setDoubleClickReturnValue (true, 0.0);
 
-    slider0ms->setTextValueSuffix (T(" dB"));
+    slider0ms->setTextValueSuffix (" " + TRANS("dB"));
     slider0ms->setDoubleClickReturnValue (true, 0.0);
 
-    slider20ms->setTextValueSuffix (T(" dB"));
+    slider20ms->setTextValueSuffix (" " + TRANS("dB"));
     slider20ms->setDoubleClickReturnValue (true, 0.0);
 
-    slider120ms->setTextValueSuffix (T(" dB"));
+    slider120ms->setTextValueSuffix (" " + TRANS("dB"));
     slider120ms->setDoubleClickReturnValue (true, 0.0);
 
-    sliderENDms->setTextValueSuffix (T(" dB"));
+    sliderENDms->setTextValueSuffix (" " + TRANS("dB"));
     sliderENDms->setDoubleClickReturnValue (true, 0.0);
 
     sliderPresetIncDec->setValue(1, dontSendNotification);

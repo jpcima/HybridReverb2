@@ -44,39 +44,39 @@ EditorComponent::EditorComponent(HybridReverb2Processor* processor)
     myTabbedComponent->setTabBarDepth(30);
 
     tabMain = new TabMain(master);
-    myTabbedComponent->addTab(JUCE_T("Main"),
+    myTabbedComponent->addTab(TRANS("Main"),
                               Colour(0xffffe000),
                               tabMain,
                               true);
 
 /*
     tabModulation = new TabModulation(master);
-    myTabbedComponent->addTab(JUCE_T("Modulation"),
+    myTabbedComponent->addTab(TRANS("Modulation"),
                               Colour(0xffffe000),
                               tabModulation,
                               true);
 */
 
     tabTimbre = new TabTimbre(master);
-    myTabbedComponent->addTab(JUCE_T("Timbre"),
+    myTabbedComponent->addTab(TRANS("Timbre"),
                               Colour(0xffffe000),
                               tabTimbre,
                               true);
 
     tabPresetEditor = new TabPresetEditor(master);
-    myTabbedComponent->addTab(JUCE_T("Preset Editor"),
+    myTabbedComponent->addTab(TRANS("Preset Editor"),
                               Colour(0xffffe000),
                               tabPresetEditor,
                               true);
 
     tabPreferences = new TabPreferences(master);
-    myTabbedComponent->addTab(JUCE_T("Preferences"),
+    myTabbedComponent->addTab(TRANS("Preferences"),
                               Colour(0xffffe000),
                               tabPreferences,
                               true);
 
     tabAbout = new TabAbout(master);
-    myTabbedComponent->addTab(JUCE_T("About"),
+    myTabbedComponent->addTab(TRANS("About"),
                               Colour(0xffffe000),
                               tabAbout,
                               true);
@@ -106,7 +106,7 @@ EditorComponent::EditorComponent(HybridReverb2Processor* processor)
 
 EditorComponent::~EditorComponent()
 {
-    master->print(T("%%% EditorComponent destructor called%%%\n\n"));
+    master->print("%%% EditorComponent destructor called%%%\n\n");
     getFilter()->removeChangeListener (this);
     deleteAndZero (myTabbedComponent);
     myTabbedComponent = 0;

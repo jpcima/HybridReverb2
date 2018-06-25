@@ -89,7 +89,7 @@ void MasterAndCommander::loadInitialPreset()
 
 void MasterAndCommander::onGuiReady(void)
 {
-    print(JUCE_T("MasterAndCommander::onGuiReady()\n"));
+    print("MasterAndCommander::onGuiReady()\n");
     onValueChangedPresetNum(currentPreset, true);
 }
 
@@ -136,7 +136,7 @@ const ParamPartitionWisdom & MasterAndCommander::getPartitionWisdom()
 void MasterAndCommander::registerEditorComponent(EditorComponent *comp)
 {
     compMain = comp;
-    print(JUCE_T("----[ EditorComponent registered ]----\n"));
+    print("----[ EditorComponent registered ]----\n");
 }
 
 
@@ -154,14 +154,14 @@ void MasterAndCommander::registerTabMain(TabMain *tab)
 
 void MasterAndCommander::onValueChangedPresetNum(int value, bool force)
 {
-    print(JUCE_T("MasterAndCommander::onValueChangedPresetNum(") + String(value) + JUCE_T(", ") + (force ? "true" : "false") + JUCE_T(") called \n"));
+    print("MasterAndCommander::onValueChangedPresetNum(" + String(value) + ", " + (force ? "true" : "false") + ") called\n");
     changeFilter = changeFilter || (value != currentPreset);
     if (changeFilter == false && force == false)
         return;
 
     currentPreset = value;
     presetManager->setCurrentPresetNum(value);
-    printf("Master :    new PRESET NUM value : %d\n", value);
+    fprintf(stderr, "Master :    new PRESET NUM value : %d\n", value);
 
     preset = presetManager->getPreset(value);
     paramGainDelay = &preset.gainDelay;
@@ -252,10 +252,10 @@ void MasterAndCommander::onValueChangedPresetNum(int value, bool force)
 void MasterAndCommander::onValueChangedGainDelay(ParamGainDelay *param)
 {
     changeFilter = true;
-    print(JUCE_T("MasterAndCommander::onValueChangedGainDelay() called \n("));
-    printf("Master#  Gain/Delay values : %5.1f %6.3f %6.1f %5.1f %5.1f %5.1f\n",
-           param->initialGap, param->length, param->preDelay,
-           param->dryGain, param->wetGain, param->masterGain);
+    print("MasterAndCommander::onValueChangedGainDelay() called\n(");
+    fprintf(stderr, "Master#  Gain/Delay values : %5.1f %6.3f %6.1f %5.1f %5.1f %5.1f\n",
+            param->initialGap, param->length, param->preDelay,
+            param->dryGain, param->wetGain, param->masterGain);
 
     paramGainDelay->initialGap = param->initialGap;
     paramGainDelay->length     = param->length;
@@ -292,9 +292,9 @@ void MasterAndCommander::onValueChangedGainDelay(ParamGainDelay *param)
 void MasterAndCommander::onValueChangedEnvelope(ParamEnvelope *param)
 {
     changeFilter = true;
-    print(JUCE_T("MasterAndCommander::onValueChangedEnvelope() called \n("));
-    printf("Master#  Envelope values : %7.2f %7.2f %7.2f %7.2f\n",
-           param->db0ms, param->db20ms, param->db120ms, param->dbENDms);
+    print("MasterAndCommander::onValueChangedEnvelope() called\n(");
+    fprintf(stderr, "Master#  Envelope values : %7.2f %7.2f %7.2f %7.2f\n",
+            param->db0ms, param->db20ms, param->db120ms, param->dbENDms);
 
     paramEnvelope->db0ms   = param->db0ms;
     paramEnvelope->db20ms  = param->db20ms;
@@ -341,7 +341,7 @@ void MasterAndCommander::registerTabTimbre(TabTimbre *tab)
 void MasterAndCommander::onValueChangedTimbre(ParamTimbre *param)
 {
     changeFilter = true;
-    print(JUCE_T("MasterAndCommander::onValueChangedTimbre() called \n("));
+    print("MasterAndCommander::onValueChangedTimbre() called\n");
     enabledTimbre = false;
     for (int i = 0; enabledTimbre == false && i < param->num; i++)
     {
@@ -466,7 +466,7 @@ void MasterAndCommander::updateTimbre(void)
 
     dataCurrent = dataOriginal.get();
 
-    printf("enabledTimbre = %d\n", enabledTimbre);
+    fprintf(stderr, "enabledTimbre = %d\n", enabledTimbre);
     if (enabledTimbre)
     {
         // dataCurrent -> dataTimbre
@@ -487,7 +487,7 @@ void MasterAndCommander::updateModulation(void)
         dataCurrent = dataTimbre.get();
     else dataCurrent = dataOriginal.get();
 
-    printf("enabledModulation = %d\n", enabledModulation);
+    fprintf(stderr, "enabledModulation = %d\n", enabledModulation);
     if (enabledModulation)
     {
         // FIXME: add modulation code
@@ -507,7 +507,7 @@ void MasterAndCommander::updateGainDelay(void)
         dataCurrent = dataTimbre.get();
     else dataCurrent = dataOriginal.get();
 
-    printf("enabledGainDelay = %d\n", enabledGainDelay);
+    fprintf(stderr, "enabledGainDelay = %d\n", enabledGainDelay);
     if (enabledGainDelay)
     {
         // dataCurrent -> dataGainDelay
@@ -529,7 +529,7 @@ void MasterAndCommander::updateEnvelope(void)
         dataCurrent = dataTimbre.get();
     else dataCurrent = dataOriginal.get();
 
-    printf("enabledEnvelope = %d\n", enabledEnvelope);
+    fprintf(stderr, "enabledEnvelope = %d\n", enabledEnvelope);
     if (enabledEnvelope)
     {
         // dataCurrent -> dataEnvelope

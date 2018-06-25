@@ -116,11 +116,10 @@ int SampleData::loadSingleFile(String filename, int num)
     if (audioFile.existsAsFile() == false)
     {
         available[num] = false;
-        String message = JUCE_T("Error: The audio file \"") +
-                         filename +
-                         JUCE_T("\" does not exist!");
+        String message = TRANS("Error reading audio file") + " \"" +
+                         filename + "\"";
         AlertWindow::showMessageBox(AlertWindow::WarningIcon,
-                                    JUCE_T("Error"), message);
+                                    TRANS("Error"), message);
         return -1;
     }
 
@@ -130,11 +129,10 @@ int SampleData::loadSingleFile(String filename, int num)
     if (!reader)
     {
         available[num] = false;
-        String message = JUCE_T("Error: \"") +
-                         filename +
-                         JUCE_T("\" is not a valid audio file!");
+        String message = TRANS("Error reading audio file") + " \"" +
+                         filename + "\"";
         AlertWindow::showMessageBox(AlertWindow::WarningIcon,
-                                    JUCE_T("Error"), message);
+                                    TRANS("Error"), message);
         return -1;
     }
 
@@ -144,11 +142,10 @@ int SampleData::loadSingleFile(String filename, int num)
     if (reader->read(readChannels, 1, 0, reader->lengthInSamples, false) == false)
     {
         available[num] = false;
-        String message = JUCE_T("Error: Reading audio data from file \"") +
-                         filename +
-                         JUCE_T("\" failed!");
+        String message = TRANS("Error reading audio file") + " \"" +
+                         filename + "\"";
         AlertWindow::showMessageBox(AlertWindow::WarningIcon,
-                                    JUCE_T("Error"), message);
+                                    TRANS("Error"), message);
         return -1;
     }
 

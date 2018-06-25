@@ -158,7 +158,7 @@ int PresetManager::save(void)
         String message = TRANS("Error writing preset file") + " \"" +
                           file.getFullPathName() + "\"";
         AlertWindow::showMessageBox(AlertWindow::WarningIcon,
-                                    JUCE_T("Error"), message);
+                                    TRANS("Error"), message);
         return -1;
     }
 

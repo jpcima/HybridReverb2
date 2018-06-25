@@ -258,7 +258,7 @@ void TabPreferences::buttonClicked (Button* buttonThatWasClicked)
     {
         //[UserButtonCode_toggleButtonUniform] -- add your button handler code here..
         paramPreferences.strategy = STRATEGY_UNIFORM;
-        master->print(String::formatted(T("TabPreferences: strategy = %d\n"), STRATEGY_UNIFORM));
+        master->print(String::formatted("TabPreferences: strategy = %d\n", STRATEGY_UNIFORM));
         master->onValueChangedPreferences(paramPreferences);
         //[/UserButtonCode_toggleButtonUniform]
     }
@@ -266,7 +266,7 @@ void TabPreferences::buttonClicked (Button* buttonThatWasClicked)
     {
         //[UserButtonCode_toggleButtonLowest] -- add your button handler code here..
         paramPreferences.strategy = STRATEGY_LOWEST;
-        master->print(String::formatted(T("TabPreferences: strategy = %d\n"), STRATEGY_LOWEST));
+        master->print(String::formatted("TabPreferences: strategy = %d\n", STRATEGY_LOWEST));
         master->onValueChangedPreferences(paramPreferences);
         //[/UserButtonCode_toggleButtonLowest]
     }
@@ -278,10 +278,10 @@ void TabPreferences::buttonClicked (Button* buttonThatWasClicked)
         {
             paramPreferences.presetFile = filename;
             textEditorPreset->setText(filename, false);
-            master->print(T("TabPreferences: preset file = ") + filename);
+            master->print("TabPreferences: preset file = " + filename);
             AlertWindow::showMessageBox(AlertWindow::InfoIcon,
-                                        JUCE_T("Info"),
-                                        JUCE_T("HybridReverb2 needs to be restarted to make your changes effective."));
+                                        TRANS("Info"),
+                                        TRANS("HybridReverb2 needs to be restarted to make your changes effective."));
             master->onValueChangedPreferences(paramPreferences);
         }
         //[/UserButtonCode_textButton]
@@ -301,10 +301,10 @@ void TabPreferences::comboBoxChanged (ComboBox* comboBoxThatHasChanged)
         //[UserComboBoxCode_comboBoxLatency] -- add your combo box handling code here..
         int index = comboBoxThatHasChanged->getSelectedItemIndex();
         paramPreferences.sflen = 64 << index;
-        master->print(String::formatted(T("TabPreferences: SFLEN = %d\n"), paramPreferences.sflen));
+        master->print(String::formatted("TabPreferences: SFLEN = %d\n", paramPreferences.sflen));
         AlertWindow::showMessageBox(AlertWindow::InfoIcon,
-                                    JUCE_T("Info"),
-                                    JUCE_T("HybridReverb2 needs to be restarted to make your changes effective."));
+                                    TRANS("Info"),
+                                    TRANS("HybridReverb2 needs to be restarted to make your changes effective."));
 
         master->onValueChangedPreferences(paramPreferences);
         //[/UserComboBoxCode_comboBoxLatency]
@@ -332,7 +332,7 @@ void TabPreferences::setPreferences(const ParamPreferences & param)
 
 String TabPreferences::getFileChooserResult(String dir)
 {
-    FileChooser fc(JUCE_T("Choose a preset file to open..."),
+    FileChooser fc(TRANS("Choose a preset file to open..."),
                    dir,
                    "*.xml",
                    true);
@@ -355,10 +355,10 @@ void TabPreferences::textEditorTextChanged (TextEditor &editor)
 void TabPreferences::textEditorReturnKeyPressed (TextEditor &editor)
 {
     paramPreferences.presetFile = editor.getText();
-    master->print(T("TabPreferences: preset file = ") + paramPreferences.presetFile);
+    master->print("TabPreferences: preset file = " + paramPreferences.presetFile);
     AlertWindow::showMessageBox(AlertWindow::InfoIcon,
-                                JUCE_T("Info"),
-                                JUCE_T("HybridReverb2 needs to be restarted to make your changes effective."));
+                                TRANS("Info"),
+                                TRANS("HybridReverb2 needs to be restarted to make your changes effective."));
     master->onValueChangedPreferences(paramPreferences);
 }
 

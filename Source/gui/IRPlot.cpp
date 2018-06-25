@@ -111,53 +111,53 @@ void IRPlot::paint (Graphics& g)
     // plot tick labels
     g.setColour (Colour(0xff000050));
     g.setFont (Font (14.0000f, Font::plain));
-    g.drawText (  T("dB"),   0,  24 + 2.5 * IRPLOT_GRID_Y, 30, 16,
+    g.drawText (  TRANS("dB"),   0,  24 + 2.5 * IRPLOT_GRID_Y, 30, 16,
                 Justification::centredRight, false);
-    g.drawText (   T("0"),  14,  24, 40, 16,
+    g.drawText (   "0",  14,  24, 40, 16,
                 Justification::centredRight, false);
-    g.drawText ( T("-20"),  14,  24 + 1 * IRPLOT_GRID_Y, 40, 16,
+    g.drawText ( "-20",  14,  24 + 1 * IRPLOT_GRID_Y, 40, 16,
                 Justification::centredRight, false);
-    g.drawText ( T("-40"),  14,  24 + 2 * IRPLOT_GRID_Y, 40, 16,
+    g.drawText ( "-40",  14,  24 + 2 * IRPLOT_GRID_Y, 40, 16,
                 Justification::centredRight, false);
-    g.drawText ( T("-60"),  14,  24 + 3 * IRPLOT_GRID_Y, 40, 16,
+    g.drawText ( "-60",  14,  24 + 3 * IRPLOT_GRID_Y, 40, 16,
                 Justification::centredRight, false);
-    g.drawText ( T("-80"),  14,  24 + 4 * IRPLOT_GRID_Y, 40, 16,
+    g.drawText ( "-80",  14,  24 + 4 * IRPLOT_GRID_Y, 40, 16,
                 Justification::centredRight, false);
-    g.drawText (T("-100"),  14,  24 + 5 * IRPLOT_GRID_Y, 40, 16,
+    g.drawText ("-100",  14,  24 + 5 * IRPLOT_GRID_Y, 40, 16,
                 Justification::centredRight, false);
-    g.drawText (T("ms"),  offsetX - 20 + 2 * IRPLOT_GRID_X,
+    g.drawText (TRANS("ms"),  offsetX - 20 + 2 * IRPLOT_GRID_X,
                 22 + 6 * IRPLOT_GRID_Y, 40, 16,
                 Justification::centred, false);
-    g.drawText (T("ms"),  offsetX - 20 + 6.5 * IRPLOT_GRID_X,
+    g.drawText (TRANS("ms"),  offsetX - 20 + 6.5 * IRPLOT_GRID_X,
                 22 + 6 * IRPLOT_GRID_Y, 40, 16,
                 Justification::centred, false);
-    g.drawText (T("0"),  offsetX - 20,  22 + 5.5 * IRPLOT_GRID_Y, 40, 16,
+    g.drawText ("0",  offsetX - 20,  22 + 5.5 * IRPLOT_GRID_Y, 40, 16,
                 Justification::centred, false);
-    g.drawText (T("5"),  offsetX - 20 + 1 * IRPLOT_GRID_X,
+    g.drawText ("5",  offsetX - 20 + 1 * IRPLOT_GRID_X,
                 22 + 5.5 * IRPLOT_GRID_Y, 40, 16,
                 Justification::centred, false);
-    g.drawText (T("10"),  offsetX - 20 + 2 * IRPLOT_GRID_X,
+    g.drawText ("10",  offsetX - 20 + 2 * IRPLOT_GRID_X,
                 22 + 5.5 * IRPLOT_GRID_Y, 40, 16,
                 Justification::centred, false);
-    g.drawText (T("15"),  offsetX - 20 + 3 * IRPLOT_GRID_X,
+    g.drawText ("15",  offsetX - 20 + 3 * IRPLOT_GRID_X,
                 22 + 5.5 * IRPLOT_GRID_Y, 40, 16,
                 Justification::centred, false);
-    g.drawText (T("20"),  offsetX - 20 + 4 * IRPLOT_GRID_X,
+    g.drawText ("20",  offsetX - 20 + 4 * IRPLOT_GRID_X,
                 22 + 5.5 * IRPLOT_GRID_Y, 40, 16,
                 Justification::centred, false);
-    g.drawText (T("40"),  offsetX - 20 + 5 * IRPLOT_GRID_X,
+    g.drawText ("40",  offsetX - 20 + 5 * IRPLOT_GRID_X,
                 22 + 5.5 * IRPLOT_GRID_Y, 40, 16,
                 Justification::centred, false);
-    g.drawText (T("60"),  offsetX - 20 + 6 * IRPLOT_GRID_X,
+    g.drawText ("60",  offsetX - 20 + 6 * IRPLOT_GRID_X,
                 22 + 5.5 * IRPLOT_GRID_Y, 40, 16,
                 Justification::centred, false);
-    g.drawText (T("80"),  offsetX - 20 + 7 * IRPLOT_GRID_X,
+    g.drawText ("80",  offsetX - 20 + 7 * IRPLOT_GRID_X,
                 22 + 5.5 * IRPLOT_GRID_Y, 40, 16,
                 Justification::centred, false);
-    g.drawText (T("100"),  offsetX - 20 + 8 * IRPLOT_GRID_X,
+    g.drawText ("100",  offsetX - 20 + 8 * IRPLOT_GRID_X,
                 22 + 5.5 * IRPLOT_GRID_Y, 40, 16,
                 Justification::centred, false);
-    g.drawText (T("120"),  offsetX - 20 + 9 * IRPLOT_GRID_X,
+    g.drawText ("120",  offsetX - 20 + 9 * IRPLOT_GRID_X,
                 22 + 5.5 * IRPLOT_GRID_Y, 40, 16,
                 Justification::centred, false);
 
@@ -188,13 +188,13 @@ void IRPlot::paint (Graphics& g)
         g.setColour (Colour(0xff000050));
         if (multi == 1.0)
         {
-            g.drawText (T("s"),  offsetX - 20 + 11.5 * IRPLOT_GRID_X,
+            g.drawText (TRANS("s"),  offsetX - 20 + 11.5 * IRPLOT_GRID_X,
                         22 + 6 * IRPLOT_GRID_Y, 40, 16,
                         Justification::centred, false);
         }
         else
         {
-            g.drawText (T("ms"),  offsetX - 20 + 11.5 * IRPLOT_GRID_X,
+            g.drawText (TRANS("ms"),  offsetX - 20 + 11.5 * IRPLOT_GRID_X,
                         22 + 6 * IRPLOT_GRID_Y, 40, 16,
                         Justification::centred, false);
         }

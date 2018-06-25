@@ -35,7 +35,7 @@ ifeq ($(CONFIG),Debug)
     TARGET_ARCH := -march=native
   endif
 
-  JUCE_CPPFLAGS := $(DEPFLAGS) -DLINUX=1 -DDEBUG=1 -D_DEBUG=1 -DJUCE_DEFINE_T_MACRO -DNO_OMP -DJUCER_LINUX_MAKE_6D53C8B4=1 -DJUCE_APP_VERSION=2.0.2 -DJUCE_APP_VERSION_HEX=0x20002 $(shell pkg-config --cflags fftw3f alsa freetype2 x11 xext xinerama) -pthread -I../../JuceLibraryCode -I../../Thirdparty/JUCE/modules $(CPPFLAGS)
+  JUCE_CPPFLAGS := $(DEPFLAGS) -DLINUX=1 -DDEBUG=1 -D_DEBUG=1 -DNO_OMP -DJUCER_LINUX_MAKE_6D53C8B4=1 -DJUCE_APP_VERSION=2.0.2 -DJUCE_APP_VERSION_HEX=0x20002 $(shell pkg-config --cflags fftw3f alsa freetype2 x11 xext xinerama) -pthread -I../../JuceLibraryCode -I../../Thirdparty/JUCE/modules $(CPPFLAGS)
 
   JUCE_CPPFLAGS_VST := -DJucePlugin_Build_VST=1 -DJucePlugin_Build_VST3=0 -DJucePlugin_Build_AU=0 -DJucePlugin_Build_AUv3=0 -DJucePlugin_Build_RTAS=0 -DJucePlugin_Build_AAX=0 -DJucePlugin_Build_Standalone=0
   JUCE_CFLAGS_VST := -fPIC -fvisibility=hidden
@@ -65,7 +65,7 @@ ifeq ($(CONFIG),Release)
     TARGET_ARCH := -march=native
   endif
 
-  JUCE_CPPFLAGS := $(DEPFLAGS) -DLINUX=1 -DNDEBUG=1 -DJUCE_DEFINE_T_MACRO -DNO_OMP -DJUCER_LINUX_MAKE_6D53C8B4=1 -DJUCE_APP_VERSION=2.0.2 -DJUCE_APP_VERSION_HEX=0x20002 $(shell pkg-config --cflags fftw3f alsa freetype2 x11 xext xinerama) -pthread -I../../JuceLibraryCode -I../../Thirdparty/JUCE/modules $(CPPFLAGS)
+  JUCE_CPPFLAGS := $(DEPFLAGS) -DLINUX=1 -DNDEBUG=1 -DNO_OMP -DJUCER_LINUX_MAKE_6D53C8B4=1 -DJUCE_APP_VERSION=2.0.2 -DJUCE_APP_VERSION_HEX=0x20002 $(shell pkg-config --cflags fftw3f alsa freetype2 x11 xext xinerama) -pthread -I../../JuceLibraryCode -I../../Thirdparty/JUCE/modules $(CPPFLAGS)
 
   JUCE_CPPFLAGS_VST := -DJucePlugin_Build_VST=1 -DJucePlugin_Build_VST3=0 -DJucePlugin_Build_AU=0 -DJucePlugin_Build_AUv3=0 -DJucePlugin_Build_RTAS=0 -DJucePlugin_Build_AAX=0 -DJucePlugin_Build_Standalone=0
   JUCE_CFLAGS_VST := -fPIC -fvisibility=hidden

@@ -118,7 +118,6 @@ add_library(HybridReverb2_core STATIC
   "Source/TextList.cpp")
 target_compile_definitions(HybridReverb2_core PRIVATE "INSTALL_PREFIX=\"${CMAKE_INSTALL_PREFIX}\"")
 target_compile_definitions(HybridReverb2_core PRIVATE "NO_OMP") # OpenMP is not good for realtime
-target_compile_definitions(HybridReverb2_core PRIVATE "JUCE_DEFINE_T_MACRO")
 target_include_directories(HybridReverb2_core PRIVATE "Source")
 target_link_libraries(HybridReverb2_core PUBLIC
   juce_core juce_events juce_data_structures

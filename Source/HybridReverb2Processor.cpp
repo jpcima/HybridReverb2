@@ -105,7 +105,7 @@ void HybridReverb2Processor::setParameter (int index, float newValue)
 const String HybridReverb2Processor::getParameterName (int index)
 {
     if (index == 0)
-        return T("preset nr.");
+        return TRANS("preset nr.");
 
     return String();
 }
@@ -280,7 +280,7 @@ void HybridReverb2Processor::setNewFilterSet(SampleData *impulses)
     int hlen, type, sflen, mflen, lflen;
     std::unique_ptr<HybridConvolver> brandnewConvolver;
 
-    master->print(T("*** updating filter ***\n"));
+    master->print("*** updating filter ***\n");
     paramPreferences = master->getPreferences();
     hlen = impulses->getDataLen();
     sflen = paramPreferences.sflen;

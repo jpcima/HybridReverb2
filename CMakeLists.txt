@@ -205,9 +205,23 @@ if(HybridReverb2_LV2)
   set_property(TARGET HybridReverb2_LV2
     PROPERTY LIBRARY_OUTPUT_DIRECTORY "lv2/HybridReverb2.lv2")
 
+  if(CMAKE_SYSTEM_NAME STREQUAL "Windows")
+    set(LV2_UI_CLASS "ui:WindowsUI")
+  elseif(CMAKE_SYSTEM_NAME STREQUAL "Darwin")
+    set(LV2_UI_CLASS "ui:CocoaUI")
+  else()
+    set(LV2_UI_CLASS "ui:X11UI")
+  endif()
+  set(LV2_BINARY_SUFFIX "${CMAKE_SHARED_MODULE_SUFFIX}")
+
+  configure_file(
+    "${PROJECT_SOURCE_DIR}/Source/resources/LV2/manifest.ttl.in"
+    "${PROJECT_BINARY_DIR}/lv2build/manifest.ttl"
+    @ONLY)
+
   set(HybridReverb2_LV2_MANIFESTS
     "Source/resources/LV2/HybridReverb2_LV2.ttl"
-    "Source/resources/LV2/manifest.ttl"
+    "${PROJECT_BINARY_DIR}/lv2build/manifest.ttl"
     "Source/resources/LV2/presets.ttl")
   add_custom_target(HybridReverb2_LV2_manifests_copy ALL
     COMMAND "${CMAKE_COMMAND}" "-E" "make_directory" "${CMAKE_CURRENT_BINARY_DIR}/lv2/HybridReverb2.lv2/"

@@ -1,0 +1,62 @@
+.TH HybridReverb2 1 "June 25, 2018"
+.SH NAME
+HybridReverb2 \- Reverb effect using hybrid impulse convolution
+.SH SYNOPSIS
+.B HybridReverb2
+.br
+.br
+There are no command line options.
+.SH DESCRIPTION
+The
+.B HybridReverb2
+is a reverb effect using hybrid impulse convolution.
+.br
+.B HybridReverb2
+is a convolution-based reverberation effect which combines the superior sound 
+quality of a convolution reverb with the tuning capability of a feedback delay 
+network.
+.br
+The sound quality of a convolution reverb depends on the quality of the used 
+room impulse responses.
+.br
+.B HybridReverb2
+comes with a set of room impulse responses which were synthesized with tinyAVE, 
+an auralization software which was developed at the Institute of Communication 
+Acoustics, Ruhr-Universität Bochum (Borß and Martin, 2009; Borß, 2009a).
+.br
+These room impulse responses are designed for a speaker setup with two 
+front and two rear speakers (Borß, 2009b).
+.br
+.br
+For a full surround sound effect, you will need two plugins, one plugin which 
+uses a "front" preset for the front channels and a second plugin which uses 
+the corresponding "rear" preset for the rear channels.
+.TE
+.SH BUGS
+Please report bugs via
+.B <https://github.com/jpcima/HybridReverb2/issues>
+.
+.SH AUTHOR
+.B HybridReverb2
+has been originaly written by Christian Borß
+.B <christian.borss@rub.de>
+and is now maintained by Jean-Pierre Cimalando
+.B <jp-dev@inbox.ru>
+.
+.SH HOME PAGE
+.B HybridReverb2
+can be found at:
+.B <https://github.com/jpcima/hybridreverb2/>
+.SH COPYRIGHT
+Copyright (C) 2018 Jean-Pierre Cimalando
+.B <jp-dev@inbox.ru>
+and 2009 Christian Borß
+.B <christian.borss@rub.de>
+.
+.br
+Licensed under the
+.B GNU Public License V2 +.
+.PP
+This manual page was written by Olivier Humbert 
+.B <trebmuh@tuxfamily.org>
+, for the LibraZiK project (but may be used by others).

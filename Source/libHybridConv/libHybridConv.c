@@ -19,12 +19,14 @@
  ***************************************************************************/
 
 
+#ifdef HYBRIDCONV_SSE
 #include <xmmintrin.h>
+#endif
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#ifdef WIN32
-#include <Windows.h>
+#ifdef _WIN32
+#include <windows.h>
 #else
 #include <sys/time.h>
 #endif
@@ -35,7 +37,7 @@
 
 double hcTime(void)
 {
-#ifdef WIN32
+#ifdef _WIN32
 	DWORD t;
 
 	t = GetTickCount();
@@ -201,7 +203,7 @@ void hcProcessSingle(HConvSingle *filter)
 		flen4 = flen / 4;
 		for (n = 0; n < flen4; n++)
 		{
-#ifdef WIN32
+#ifdef HYBRIDCONV_SSE
 			__m128 a = _mm_mul_ps(x4_real[n], h4_real[n]);
 			__m128 b = _mm_mul_ps(x4_imag[n], h4_imag[n]);
 			__m128 c = _mm_sub_ps(a, b);

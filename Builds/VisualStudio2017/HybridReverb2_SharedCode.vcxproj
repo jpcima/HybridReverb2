@@ -1958,7 +1958,6 @@
     <ClInclude Include="..\..\Source\SampleData.h"/>
     <ClInclude Include="..\..\Source\SystemConfig.h"/>
     <ClInclude Include="..\..\Source\TextList.h"/>
-    <ClInclude Include="..\..\Source\windows_quirks.h"/>
     <ClInclude Include="..\..\Thirdparty\JUCE\modules\juce_audio_basics\audio_play_head\juce_AudioPlayHead.h"/>
     <ClInclude Include="..\..\Thirdparty\JUCE\modules\juce_audio_basics\buffers\juce_AudioChannelSet.h"/>
     <ClInclude Include="..\..\Thirdparty\JUCE\modules\juce_audio_basics\buffers\juce_AudioDataConverters.h"/>

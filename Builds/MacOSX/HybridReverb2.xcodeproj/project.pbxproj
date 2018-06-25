@@ -116,7 +116,6 @@
 		5CCDA3257F3E16784F2EE628 = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SystemConfig.cpp; path = ../../Source/SystemConfig.cpp; sourceTree = "SOURCE_ROOT"; };
 		5DD9A33C57FCF6F980BDB3B5 = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TextList.cpp; path = ../../Source/TextList.cpp; sourceTree = "SOURCE_ROOT"; };
 		5F5C1520CE989CD61F3DF55A = {isa = PBXFileReference; lastKnownFileType = file; name = "juce_audio_devices"; path = "../../Thirdparty/JUCE/modules/juce_audio_devices"; sourceTree = "SOURCE_ROOT"; };
-		608823586B936F14EE7C33E0 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "windows_quirks.h"; path = "../../Source/windows_quirks.h"; sourceTree = "SOURCE_ROOT"; };
 		61717EB7111DF4F6EB38B74F = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = "include_juce_graphics.mm"; path = "../../JuceLibraryCode/include_juce_graphics.mm"; sourceTree = "SOURCE_ROOT"; };
 		62E6DBE194BF5A2ECF0B478F = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TabTimbre.cpp; path = ../../Source/gui/TabTimbre.cpp; sourceTree = "SOURCE_ROOT"; };
 		6739346EE18B7143F3CF6AEC = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TabModulation.cpp; path = ../../Source/gui/TabModulation.cpp; sourceTree = "SOURCE_ROOT"; };
@@ -129,11 +128,11 @@
 		79AF646AB01F907551BAE016 = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "include_juce_audio_plugin_client_utils.cpp"; path = "../../JuceLibraryCode/include_juce_audio_plugin_client_utils.cpp"; sourceTree = "SOURCE_ROOT"; };
 		7D28BDABFFAEEA84FD113428 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HybridConvolverSingle.h; path = ../../Source/HybridConvolverSingle.h; sourceTree = "SOURCE_ROOT"; };
 		7E62C0770300BF940596F263 = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-Standalone_Plugin.plist"; path = "Info-Standalone_Plugin.plist"; sourceTree = "SOURCE_ROOT"; };
-		7F2C41C2F3EA942DAE0E15B5 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JuceHeader.h; path = ../../JuceLibraryCode/JuceHeader.h; sourceTree = "SOURCE_ROOT"; };
 		F4FFC64964813C177705AA69 = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HybridReverb2.vst; sourceTree = "BUILT_PRODUCTS_DIR"; };
 		5A8D6208471204D8642BB21C = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HybridReverb2.component; sourceTree = "BUILT_PRODUCTS_DIR"; };
 		656C46010A8C5B7BF5A8E539 = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudioKit.framework; path = System/Library/Frameworks/CoreAudioKit.framework; sourceTree = SDKROOT; };
 		70F8C25B791F384DD8DE95BB = {isa = PBXFileReference; lastKnownFileType = file.gz; name = "LiberationSans-BoldItalic.ttf.gz"; path = "../../Source/resources/LiberationSans-BoldItalic.ttf.gz"; sourceTree = "SOURCE_ROOT"; };
+		7F2C41C2F3EA942DAE0E15B5 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JuceHeader.h; path = ../../JuceLibraryCode/JuceHeader.h; sourceTree = "SOURCE_ROOT"; };
 		81E951653D4B5294404C4827 = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		A354F5F9FA0DE450C615C066 = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		A4995029C816D5950A0A7C77 = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
@@ -278,8 +277,7 @@
 					5CCDA3257F3E16784F2EE628,
 					1721CE866221D8B419A89C4A,
 					5DD9A33C57FCF6F980BDB3B5,
-					5A28036DA662041F6078B969,
-					608823586B936F14EE7C33E0, ); name = Source; sourceTree = "<group>"; };
+					5A28036DA662041F6078B969, ); name = Source; sourceTree = "<group>"; };
 		3EE342B229D2A38FF2C88288 = {isa = PBXGroup; children = (
 					BD0E361013A93B58B5BD2C84,
 					DF48F0481F19433CDCA4E238, ); name = HybridReverb2; sourceTree = "<group>"; };

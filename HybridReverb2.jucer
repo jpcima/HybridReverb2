@@ -134,8 +134,6 @@
       <FILE id="lhoNCb" name="SystemConfig.h" compile="0" resource="0" file="Source/SystemConfig.h"/>
       <FILE id="h8sDdI" name="TextList.cpp" compile="1" resource="0" file="Source/TextList.cpp"/>
       <FILE id="VtDwrf" name="TextList.h" compile="0" resource="0" file="Source/TextList.h"/>
-      <FILE id="qQUI2A" name="windows_quirks.h" compile="0" resource="0"
-            file="Source/windows_quirks.h"/>
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>

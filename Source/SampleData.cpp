@@ -19,7 +19,6 @@
  ***************************************************************************/
 
 
-#include "windows_quirks.h"
 #include "SampleData.h"
 #include "gui/TabMain.h"
 #include <math.h>

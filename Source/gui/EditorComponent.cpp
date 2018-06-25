@@ -19,7 +19,6 @@
  ***************************************************************************/
 
 
-#include "../windows_quirks.h"
 #include "../MasterAndCommander.h"
 #include "EditorComponent.h"
 #include "TabMain.h"

@@ -19,7 +19,6 @@
  ***************************************************************************/
 
 
-#include "windows_quirks.h"
 #include "Partitioner.h"
 #include "ParamPreferences.h"
 #include <math.h>

@@ -19,8 +19,8 @@
  ***************************************************************************/
 
 
-#ifdef _WINDOWS
-#include <Windows.h>
+#ifdef _WIN32
+#include <windows.h>
 #endif
 
 #include "MasterAndCommander.h"

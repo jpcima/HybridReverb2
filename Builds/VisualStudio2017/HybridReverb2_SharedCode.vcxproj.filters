@@ -2499,9 +2499,6 @@
     <ClInclude Include="..\..\Source\TextList.h">
       <Filter>HybridReverb2\Source</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\windows_quirks.h">
-      <Filter>HybridReverb2\Source</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Thirdparty\JUCE\modules\juce_audio_basics\audio_play_head\juce_AudioPlayHead.h">
       <Filter>JUCE Modules\juce_audio_basics\audio_play_head</Filter>
     </ClInclude>

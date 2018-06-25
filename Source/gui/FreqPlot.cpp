@@ -19,7 +19,6 @@
  ***************************************************************************/
 
 
-#include "../windows_quirks.h"
 #include "../MasterAndCommander.h"
 #include "FreqPlot.h"
 #include "TabTimbre.h"

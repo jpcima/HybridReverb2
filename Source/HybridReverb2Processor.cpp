@@ -22,7 +22,6 @@
 #include "HybridReverb2Processor.h"
 #include "MasterAndCommander.h"
 #include "SystemConfig.h"
-#include "windows_quirks.h"
 
 
 //==============================================================================

@@ -18,7 +18,6 @@
 */
 
 //[Headers] You can add your own extra header files here...
-#include "../windows_quirks.h"
 #include "../MasterAndCommander.h"
 //[/Headers]
 

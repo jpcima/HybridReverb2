@@ -23,6 +23,15 @@ disable_gnu_warning("multichar")
 # this one is all over JUCE code
 disable_gnu_warning("class-memaccess")
 
+if(CMAKE_SYSTEM_PROCESSOR MATCHES "^i.86$")
+  if(CMAKE_C_COMPILER_ID MATCHES "^(GNU|Clang)$")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -msse")
+  endif()
+  if(CMAKE_CXX_COMPILER_ID MATCHES "^(GNU|Clang)$")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -msse")
+  endif()
+endif()
+
 if(HybridReverb2_ASSERTIONS)
   add_definitions("-UNDEBUG")
 endif()
@@ -101,6 +110,11 @@ target_link_libraries(HybridReverb2_core PUBLIC
   juce_graphics juce_gui_basics juce_gui_extra)
 set_property(TARGET HybridReverb2_core
   PROPERTY POSITION_INDEPENDENT_CODE ON)
+
+if(CMAKE_SYSTEM_PROCESSOR MATCHES "^i.86$" OR
+    CMAKE_SYSTEM_PROCESSOR STREQUAL "x86_64")
+  target_compile_definitions(HybridReverb2_core PRIVATE "HYBRIDCONV_SSE")
+endif()
 
 include(FindPkgConfig)
 pkg_check_modules(FFTWF "fftw3f" REQUIRED)

@@ -28,7 +28,7 @@
 #include <omp.h>
 #endif
 
-#ifdef _WINDOWS
+#ifdef _WIN32
 #include <malloc.h>
 #define alloca _alloca
 #else

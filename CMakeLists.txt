@@ -30,7 +30,8 @@ disable_gnu_warning("multichar")
 disable_gnu_warning("class-memaccess")
 
 if(CMAKE_SYSTEM_PROCESSOR MATCHES "^i.86$" OR
-    CMAKE_SYSTEM_PROCESSOR STREQUAL "x86")
+    CMAKE_SYSTEM_PROCESSOR STREQUAL "x86" OR
+    CMAKE_SYSTEM_PROCESSOR STREQUAL "x86_64")
   if(CMAKE_C_COMPILER_ID MATCHES "^(GNU|Clang)$")
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -msse")
   endif()

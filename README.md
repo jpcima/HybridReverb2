@@ -3,6 +3,8 @@ Reverb effect using hybrid impulse convolution
 
 [![Build Status](https://semaphoreci.com/api/v1/jpcima/hybridreverb2/branches/master/badge.svg)](https://semaphoreci.com/jpcima/hybridreverb2)
 
+[Windows development builds](http://jpcima.sdf1.org/software/development/HybridReverb2/)
+
 This project is for maintainance of the HybridReverb2 effect by Christian Borß.  
 All information and original source code of HybridReverb2 is available on this [project page](http://www2.ika.ruhr-uni-bochum.de/HybridReverb2/).
 

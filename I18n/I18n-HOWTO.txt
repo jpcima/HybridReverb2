@@ -1,0 +1,16 @@
+
+How to do translation work on HybridReverb2
+===========================================
+
+- Scan source code for new strings. Run:
+  ./Scripts/I18n-update.sh
+
+- Edit translation source I18n/<xx>/HybridReverb2.po
+
+- Convert to JUCE format. Run:
+  ./Scripts/I18n-release.sh
+
+- Open project HybridReverb2.jucer in the Projucer.
+  Do "File > Save Project". (updates BinaryData embeds)
+
+- Rebuild

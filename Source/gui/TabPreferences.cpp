@@ -147,7 +147,7 @@ TabPreferences::TabPreferences (MasterAndCommander *m)
 
     textButton.reset (new TextButton ("new button"));
     addAndMakeVisible (textButton.get());
-    textButton->setTooltip (TRANS("file chooser"));
+    textButton->setTooltip (TRANS("Choose a file"));
     textButton->setButtonText (TRANS("..."));
     textButton->addListener (this);
 
@@ -425,7 +425,7 @@ BEGIN_JUCER_METADATA
               multiline="1" retKeyStartsLine="1" readonly="1" scrollbars="1"
               caret="0" popupmenu="1"/>
   <TEXTBUTTON name="new button" id="f637ba2e28c2e2ba" memberName="textButton"
-              virtualName="" explicitFocusOrder="0" pos="372 32 30 24" tooltip="file chooser"
+              virtualName="" explicitFocusOrder="0" pos="372 32 30 24" tooltip="Choose a file"
               buttonText="..." connectedEdges="0" needsCallback="1" radioGroupId="0"/>
   <LABEL name="new label" id="407c242ecc8500cb" memberName="label" virtualName=""
          explicitFocusOrder="0" pos="16 456 394 48" textCol="89000000"

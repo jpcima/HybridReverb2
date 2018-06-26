@@ -88,7 +88,7 @@ TabMain::TabMain (MasterAndCommander *m)
     comboBox->setJustificationType (Justification::centredLeft);
     comboBox->setTextWhenNothingSelected (String());
     comboBox->setTextWhenNoChoicesAvailable (TRANS("---"));
-    comboBox->addItem (TRANS("channels: front"), 1);
+    comboBox->addItem (TRANS("playback: front"), 1);
     comboBox->addListener (this);
 
     comboBox->setBounds (24, 96, 288, 24);
@@ -375,6 +375,27 @@ TabMain::TabMain (MasterAndCommander *m)
     sliderENDms->setDoubleClickReturnValue (true, 0.0);
 
     sliderPresetIncDec->setValue(1, dontSendNotification);
+
+    (void)NEEDS_TRANS("playback: front");
+    (void)NEEDS_TRANS("playback: rear");
+
+    (void)NEEDS_TRANS("purpose: education");
+    (void)NEEDS_TRANS("purpose: speech");
+    (void)NEEDS_TRANS("purpose: music");
+
+    (void)NEEDS_TRANS("distance: 1m");
+    (void)NEEDS_TRANS("distance: 2m");
+    (void)NEEDS_TRANS("distance: 4m");
+    (void)NEEDS_TRANS("distance: 8m");
+    (void)NEEDS_TRANS("distance: 16m");
+
+    (void)NEEDS_TRANS("room: bathroom");
+    (void)NEEDS_TRANS("room: livingroom");
+    (void)NEEDS_TRANS("room: studio");
+    (void)NEEDS_TRANS("room: small concert hall");
+    (void)NEEDS_TRANS("room: large concert hall");
+    (void)NEEDS_TRANS("room: huge concert hall");
+    (void)NEEDS_TRANS("room: church");
     //[/UserPreSize]
 
     setSize (828, 548);
@@ -718,7 +739,7 @@ void TabMain::setComboText(int num, const std::vector<String> & items)
     int size = items.size();
     for (int i = 0; i < size; i++)
     {
-        combo->addItem(items[i], i + 1);
+        combo->addItem(TRANS(items[i]), i + 1);
         combo->setSelectedItemIndex(0, sendNotification);
     }
 }

@@ -3,7 +3,7 @@
 /* This file is distributed under the same license as the HybridReverb package. */
 /*  <jp-dev@inbox.ru>, 2018. */
 /* */
-"" = "Project-Id-Version: HybridReverb 2\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2018-06-26 15:37+0200\nPO-Revision-Date: 2018-06-26 15:37+0200\nLast-Translator: Automatically generated\nLanguage-Team: none\nLanguage: en_US\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=(n != 1);\n";
+"" = "Project-Id-Version: HybridReverb 2\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2018-06-26 16:04+0200\nPO-Revision-Date: 2018-06-26 16:04+0200\nLast-Translator: Automatically generated\nLanguage-Team: none\nLanguage: en_US\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=(n != 1);\n";
 
 /* File: Source/gui/TabPreferences.cpp:109 */
 "(no choices)" = "(aucun choix)";
@@ -93,6 +93,9 @@
 
 /* File: Source/gui/TabPresetEditor.cpp:664 */
 "Choose a XML file to save..." = "Choisir un fichier XML à enregistrer...";
+
+/* File: Source/gui/TabPreferences.cpp:150 */
+"Choose a file" = "Choisir un fichier";
 
 /* File: Source/gui/TabPreferences.cpp:330 */
 "Choose a preset file to open..." = "Choisir un fichier de préréglage à ouvrir...";
@@ -288,9 +291,6 @@
 /* File: Source/gui/TabPreferences.cpp:56 */
 "XML formatted preset file" = "Fichier de préréglage en format XML";
 
-/* File: Source/gui/TabMain.cpp:91 */
-"channels: front" = "channels: front";
-
 /* File: Source/gui/IRPlot.cpp:114 */
 /* File: Source/gui/TabMain.cpp:356 */
 /* File: Source/gui/TabMain.cpp:359 */
@@ -301,11 +301,21 @@
 /* File: Source/gui/TabMain.cpp:374 */
 "dB" = "dB";
 
-/* File: Source/gui/TabMain.cpp:124 */
-"distance: 1m" = "distance: 1m";
+/* File: Source/gui/TabMain.cpp:390 */
+"distance: 16m" = "distance : 16m";
 
-/* File: Source/gui/TabPreferences.cpp:150 */
-"file chooser" = "file chooser";
+/* File: Source/gui/TabMain.cpp:124 */
+/* File: Source/gui/TabMain.cpp:386 */
+"distance: 1m" = "distance : 1m";
+
+/* File: Source/gui/TabMain.cpp:387 */
+"distance: 2m" = "distance : 2m";
+
+/* File: Source/gui/TabMain.cpp:388 */
+"distance: 4m" = "distance : 4m";
+
+/* File: Source/gui/TabMain.cpp:389 */
+"distance: 8m" = "distance : 8m";
 
 /* File: Source/gui/DownloadDbComponent.cpp:114 */
 /* File: Source/gui/DownloadDbComponent.cpp:117 */
@@ -336,23 +346,56 @@
 /* File: Source/gui/TabPresetEditor.cpp:567 */
 /* File: Source/gui/TabPresetEditor.cpp:568 */
 /* File: Source/gui/TabPresetEditor.cpp:569 */
-"new category" = "new category";
+"new category" = "nouvelle catégorie";
 
 /* File: Source/gui/TabPresetEditor.cpp:565 */
-"new preset" = "new preset";
+"new preset" = "nouveau préréglage";
+
+/* File: Source/gui/TabMain.cpp:91 */
+/* File: Source/gui/TabMain.cpp:379 */
+"playback: front" = "position : avant";
+
+/* File: Source/gui/TabMain.cpp:380 */
+"playback: rear" = "position : arrière";
 
 /* File: Source/HybridReverb2Processor.cpp:109 */
-"preset nr." = "preset nr.";
+"preset nr." = "n° préréglage";
+
+/* File: Source/gui/TabMain.cpp:382 */
+"purpose: education" = "usage : éducatif";
 
 /* File: Source/gui/TabMain.cpp:113 */
-"purpose: music" = "purpose: music";
+/* File: Source/gui/TabMain.cpp:384 */
+"purpose: music" = "usage : musical";
+
+/* File: Source/gui/TabMain.cpp:383 */
+"purpose: speech" = "usage : vocal";
 
 /* File: Source/gui/DownloadDbComponent.cpp:134 */
 /* File: Source/gui/DownloadDbComponent.cpp:138 */
 "rainer.martin@ruhr-uni-bochum.de" = "rainer.martin@ruhr-uni-bochum.de";
 
+/* File: Source/gui/TabMain.cpp:392 */
+"room: bathroom" = "salle : salle de bains";
+
+/* File: Source/gui/TabMain.cpp:398 */
+"room: church" = "salle : église";
+
+/* File: Source/gui/TabMain.cpp:397 */
+"room: huge concert hall" = "salle : énorme salle de concert";
+
 /* File: Source/gui/TabMain.cpp:102 */
-"room: large concert hall" = "room: large concert hall";
+/* File: Source/gui/TabMain.cpp:396 */
+"room: large concert hall" = "salle : grande salle de concert";
+
+/* File: Source/gui/TabMain.cpp:393 */
+"room: livingroom" = "salle : salon";
+
+/* File: Source/gui/TabMain.cpp:395 */
+"room: small concert hall" = "salle : petite salle de concert";
+
+/* File: Source/gui/TabMain.cpp:394 */
+"room: studio" = "salle : studio";
 
 /* File: Source/gui/IRPlot.cpp:191 */
 /* File: Source/gui/TabMain.cpp:350 */

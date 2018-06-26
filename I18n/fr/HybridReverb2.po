@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HybridReverb 2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-26 15:37+0200\n"
+"POT-Creation-Date: 2018-06-26 16:04+0200\n"
 "PO-Revision-Date: 2018-06-26 12:19+0200\n"
 "Last-Translator: Jean Pierre Cimalando <jp-dev@inbox.ru>\n"
 "Language-Team: French\n"
@@ -125,13 +125,14 @@ msgid ""
 msgstr ""
 "À propos de Moi et de HybridReverb2 :\n"
 "\n"
-"En tant qu'associé de recherche à l'Institut d'Acoustique de Communication, Ruhr-"
-"Universität Bochum, Allemagne, je passe actuellement un diplôme de Dr.-Ing. en "
-"ingénierie de l'électronique. Ayant tiré bénéfice des logiciels libres et ouverts pendant "
-"de nombreuses années et j'ai souhaité donner un contribution personnelle à la communauté en retour. "
-"Étant donné que je travaille dans le domaine de l'acoustique virtuelle et l'audio "
-"spatialisé, l'écriture d'un greffon d'effet était une suggestion évidente. J'espère que vous "
-"apprécierez le son autant que moi !\n"
+"En tant qu'associé de recherche à l'Institut d'Acoustique de Communication, "
+"Ruhr-Universität Bochum, Allemagne, je passe actuellement un diplôme de Dr.-"
+"Ing. en ingénierie de l'électronique. Ayant tiré bénéfice des logiciels "
+"libres et ouverts pendant de nombreuses années et j'ai souhaité donner un "
+"contribution personnelle à la communauté en retour. Étant donné que je "
+"travaille dans le domaine de l'acoustique virtuelle et l'audio spatialisé, "
+"l'écriture d'un greffon d'effet était une suggestion évidente. J'espère que "
+"vous apprécierez le son autant que moi !\n"
 "\n"
 "Meilleures salutations,\n"
 "Christian Borß <christian.borss@rub.de>\n"
@@ -201,6 +202,10 @@ msgstr "Choisir un fichier XML à ouvrir..."
 #: Source/gui/TabPresetEditor.cpp:664
 msgid "Choose a XML file to save..."
 msgstr "Choisir un fichier XML à enregistrer..."
+
+#: Source/gui/TabPreferences.cpp:150
+msgid "Choose a file"
+msgstr "Choisir un fichier"
 
 #: Source/gui/TabPreferences.cpp:330
 msgid "Choose a preset file to open..."
@@ -522,10 +527,6 @@ msgstr "Timbre du Signal Traité"
 msgid "XML formatted preset file"
 msgstr "Fichier de préréglage en format XML"
 
-#: Source/gui/TabMain.cpp:91
-msgid "channels: front"
-msgstr ""
-
 #: Source/gui/IRPlot.cpp:114 Source/gui/TabMain.cpp:356
 #: Source/gui/TabMain.cpp:359 Source/gui/TabMain.cpp:362
 #: Source/gui/TabMain.cpp:365 Source/gui/TabMain.cpp:368
@@ -533,13 +534,25 @@ msgstr ""
 msgid "dB"
 msgstr "dB"
 
-#: Source/gui/TabMain.cpp:124
-msgid "distance: 1m"
-msgstr ""
+#: Source/gui/TabMain.cpp:390
+msgid "distance: 16m"
+msgstr "distance : 16m"
 
-#: Source/gui/TabPreferences.cpp:150
-msgid "file chooser"
-msgstr ""
+#: Source/gui/TabMain.cpp:124 Source/gui/TabMain.cpp:386
+msgid "distance: 1m"
+msgstr "distance : 1m"
+
+#: Source/gui/TabMain.cpp:387
+msgid "distance: 2m"
+msgstr "distance : 2m"
+
+#: Source/gui/TabMain.cpp:388
+msgid "distance: 4m"
+msgstr "distance : 4m"
+
+#: Source/gui/TabMain.cpp:389
+msgid "distance: 8m"
+msgstr "distance : 8m"
 
 #: Source/gui/DownloadDbComponent.cpp:114
 #: Source/gui/DownloadDbComponent.cpp:117
@@ -575,28 +588,68 @@ msgstr "ms"
 #: Source/gui/TabPresetEditor.cpp:566 Source/gui/TabPresetEditor.cpp:567
 #: Source/gui/TabPresetEditor.cpp:568 Source/gui/TabPresetEditor.cpp:569
 msgid "new category"
-msgstr ""
+msgstr "nouvelle catégorie"
 
 #: Source/gui/TabPresetEditor.cpp:565
 msgid "new preset"
-msgstr ""
+msgstr "nouveau préréglage"
+
+#: Source/gui/TabMain.cpp:91 Source/gui/TabMain.cpp:379
+msgid "playback: front"
+msgstr "position : avant"
+
+#: Source/gui/TabMain.cpp:380
+msgid "playback: rear"
+msgstr "position : arrière"
 
 #: Source/HybridReverb2Processor.cpp:109
 msgid "preset nr."
-msgstr ""
+msgstr "n° préréglage"
 
-#: Source/gui/TabMain.cpp:113
+#: Source/gui/TabMain.cpp:382
+msgid "purpose: education"
+msgstr "usage : éducatif"
+
+#: Source/gui/TabMain.cpp:113 Source/gui/TabMain.cpp:384
 msgid "purpose: music"
-msgstr ""
+msgstr "usage : musical"
+
+#: Source/gui/TabMain.cpp:383
+msgid "purpose: speech"
+msgstr "usage : vocal"
 
 #: Source/gui/DownloadDbComponent.cpp:134
 #: Source/gui/DownloadDbComponent.cpp:138
 msgid "rainer.martin@ruhr-uni-bochum.de"
 msgstr ""
 
-#: Source/gui/TabMain.cpp:102
+#: Source/gui/TabMain.cpp:392
+msgid "room: bathroom"
+msgstr "salle : salle de bains"
+
+#: Source/gui/TabMain.cpp:398
+msgid "room: church"
+msgstr "salle : église"
+
+#: Source/gui/TabMain.cpp:397
+msgid "room: huge concert hall"
+msgstr "salle : énorme salle de concert"
+
+#: Source/gui/TabMain.cpp:102 Source/gui/TabMain.cpp:396
 msgid "room: large concert hall"
-msgstr ""
+msgstr "salle : grande salle de concert"
+
+#: Source/gui/TabMain.cpp:393
+msgid "room: livingroom"
+msgstr "salle : salon"
+
+#: Source/gui/TabMain.cpp:395
+msgid "room: small concert hall"
+msgstr "salle : petite salle de concert"
+
+#: Source/gui/TabMain.cpp:394
+msgid "room: studio"
+msgstr "salle : studio"
 
 #: Source/gui/IRPlot.cpp:191 Source/gui/TabMain.cpp:350
 msgid "s"

@@ -3,16 +3,7 @@
 //    (See accompanying file LICENSE or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include "../HybridReverb2Processor.h"
-#include "../gui/Editor.h"
-#include <jack/jack.h>
-#include <jack/midiport.h>
-#include <memory>
-#include <thread>
-#include <system_error>
-#include <signal.h>
-#include <unistd.h>
-extern AudioProcessor* JUCE_CALLTYPE createPluginFilter();
+#include "Jack.h"
 
 enum {
     JackNumInputs = 2,
@@ -26,7 +17,8 @@ public:
         : DocumentWindow(
             name,
             LookAndFeel::getDefaultLookAndFeel().findColour(ResizableWindow::backgroundColourId),
-            DocumentWindow::minimiseButton|DocumentWindow::closeButton) {}
+            DocumentWindow::minimiseButton|DocumentWindow::closeButton)
+        {}
 
     void closeButtonPressed() override
         { JUCEApplicationBase::quit(); }
@@ -37,7 +29,9 @@ class Application_Jack : public JUCEApplication
 public:
     void initialise(const String &args) override;
     void shutdown() override;
-    void open(const String &client_name);
+    void open(const String &client_name, const String &pref_file);
+    void save();
+    bool is_open() const { return is_open_; }
     void on_idle();
 
     const String getApplicationName() override
@@ -72,12 +66,42 @@ private:
 
     static void handle_interrupts();
     static sig_atomic_t interrupted_by_signal ;
+
+#if defined(WITH_NSM_SESSION_SUPPORT)
+    static int session_open(const char *path, const char *display_name, const char *client_id, char **out_msg, void *userdata);
+    static int session_save(char **out_msg, void *userdata);
+
+    nsm_client_u nsmclient_;
+    File session_dir_;
+#endif
 };
 
 void Application_Jack::initialise(const String &args)
 {
     handle_interrupts();
-    open(JucePlugin_Name);
+
+#if defined(WITH_NSM_SESSION_SUPPORT)
+    if (const char *url = getenv("NSM_URL")) {
+        nsm_client_t *nsmclient = nsm_new();
+        if (!nsmclient)
+            throw std::runtime_error("nsm_new");
+        nsmclient_.reset(nsmclient);
+
+        if (nsm_init(nsmclient, url) != 0)
+            throw std::runtime_error("nsm_init");
+
+        nsm_set_open_callback(nsmclient, &session_open, this);
+        nsm_set_save_callback(nsmclient, &session_save, this);
+
+        const char *capabilities = "";
+        nsm_send_announce(
+            nsmclient, JucePlugin_Name, capabilities, juce_argv[0]);
+    }
+    else
+#endif
+    {
+        open(JucePlugin_Name, String());
+    }
 
     Idle_Timer *idle_timer = new Idle_Timer(this);
     idle_timer_.reset(idle_timer);
@@ -99,9 +123,15 @@ void Application_Jack::on_idle()
         quit();
         return;
     }
+
+#if defined(WITH_NSM_SESSION_SUPPORT)
+    nsm_client_t *nsmclient = nsmclient_.get();
+    if (nsmclient)
+        nsm_check_nowait(nsmclient);
+#endif
 }
 
-void Application_Jack::open(const String &client_name)
+void Application_Jack::open(const String &client_name, const String &pref_file)
 {
     if (is_open_)
         return;
@@ -134,7 +164,7 @@ void Application_Jack::open(const String &client_name)
     unsigned sample_rate = jack_get_sample_rate(client);
 
     HybridReverb2Processor *processor = static_cast<HybridReverb2Processor *>(
-        createPluginFilter());
+        createPluginFilter(pref_file));
     processor_.reset(processor);
     processor->prepareToPlay(sample_rate, buffer_size);
     processor->setPlayConfigDetails(JackNumInputs, JackNumOutputs, sample_rate, buffer_size);
@@ -152,6 +182,13 @@ void Application_Jack::open(const String &client_name)
         processor->createEditor());
     window->setContentOwned(editor, true);
     window->setVisible(true);
+}
+
+void Application_Jack::save()
+{
+    HybridReverb2Processor &processor = *processor_;
+
+    processor.getSystemConfig().writePreferencesFile();
 }
 
 int Application_Jack::process(jack_nframes_t nframes, void *user_data)
@@ -209,6 +246,46 @@ void Application_Jack::handle_interrupts()
     if (pthread_sigmask(SIG_BLOCK, &sigs, nullptr) == -1)
         throw std::system_error(errno, std::generic_category(), "pthread_sigmask");
 }
+
+#if defined(WITH_NSM_SESSION_SUPPORT)
+int Application_Jack::session_open(const char *path, const char *display_name, const char *client_id, char **out_msg, void *userdata)
+{
+    Application_Jack *self = reinterpret_cast<Application_Jack *>(userdata);
+
+    if (self->is_open())
+        return ERR_GENERAL;
+
+    File session_dir(path);
+    self->session_dir_ = session_dir;
+    session_dir.createDirectory();
+
+    self->open(client_id, session_dir.getFullPathName());
+
+    HybridReverb2Processor &processor = *self->processor_;
+    File state_file = session_dir.getChildFile("state.dat");
+    MemoryBlock state;
+    if (state_file.loadFileAsData(state))
+        processor.setStateInformation(state.getData(), state.getSize());
+
+    return 0;
+}
+
+int Application_Jack::session_save(char **out_msg, void *userdata)
+{
+    Application_Jack *self = reinterpret_cast<Application_Jack *>(userdata);
+
+    self->save();
+
+    HybridReverb2Processor &processor = *self->processor_;
+    const File &session_dir = self->session_dir_;
+    File state_file = session_dir.getChildFile("state.dat");
+    MemoryBlock state;
+    processor.getStateInformation(state);
+    state_file.replaceWithData(state.getData(), state.getSize());
+
+    return 0;
+}
+#endif
 
 sig_atomic_t Application_Jack::interrupted_by_signal = 0;
 

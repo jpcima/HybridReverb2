@@ -92,10 +92,19 @@ if(HybridReverb2_AdvancedJackStandalone STREQUAL "")
   endif()
 endif()
 
+if(HybridReverb2_AdvancedJackStandalone)
+  include(FindPkgConfig)
+  pkg_check_modules(LIBLO "liblo")
+  set(HybridReverb2_NonSessionManager "${LIBLO_FOUND}")
+else()
+  set(HybridReverb2_NonSessionManager "OFF")
+endif()
+
 message("Build VST2: ${HybridReverb2_VST2}")
 message("Build LV2: ${HybridReverb2_LV2}")
 message("Build Standalone: ${HybridReverb2_Standalone}")
 message("Advanced Jack Standalone: ${HybridReverb2_AdvancedJackStandalone}")
+message("Non Session Manager: ${HybridReverb2_NonSessionManager}")
 
 include("${CMAKE_SOURCE_DIR}/JUCE-targets.cmake")
 

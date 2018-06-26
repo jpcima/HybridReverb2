@@ -29,15 +29,13 @@ namespace BinaryData {
     const char *getNamedResource(const char *resourceNameUTF8, int &dataSizeInBytes);
 }
 
-SystemConfig::SystemConfig()
+SystemConfig::SystemConfig(const String &customUserDir)
 {
-    File userdir = File
-        ::getSpecialLocation(File::userApplicationDataDirectory)
-        .getChildFile("HybridReverb2");
-    this->userdir = userdir.getFullPathName() + "/";
+    File userdir = getDefaultUserDir();
 
-    File dbdir = userdir.getChildFile("RIR_Database");
-    this->dbdir = dbdir.getFullPathName() + "/";
+    if(customUserDir.isNotEmpty())
+        userdir = File(customUserDir);
+    this->userdir = userdir.getFullPathName() + "/";
 
     userdir.createDirectory();
 
@@ -74,31 +72,41 @@ SystemConfig::~SystemConfig()
 //
 
 
-const String & SystemConfig::getUserdir()
+String SystemConfig::getDBdir() const
 {
-    return userdir;
+    File dbdir = File(getPresetFilename())
+        .getParentDirectory()
+        .getChildFile("RIR_Database");
+    return dbdir.getFullPathName() + "/";
 }
 
 
-const String & SystemConfig::getDBdir()
+String SystemConfig::getDefaultUserDir()
 {
-    return dbdir;
+    return File::getSpecialLocation(File::userApplicationDataDirectory)
+        .getChildFile("HybridReverb2").getFullPathName() + "/";
 }
 
 
-String SystemConfig::getPresetFilename()
+String SystemConfig::getDefaultPresetFilename()
 {
-    String presetFilename = paramPreferences.presetFile;
+    return File(getDefaultUserDir())
+        .getChildFile("HybridReverb2_presets.xml").getFullPathName();
+}
+
+
+String SystemConfig::getPresetFilename() const
+{
+    const String &presetFilename = paramPreferences.presetFile;
+
     if (presetFilename.isEmpty())
-        presetFilename = "HybridReverb2_presets.xml";
-    return File::isAbsolutePath(presetFilename) ? presetFilename :
-        File(userdir).getChildFile(presetFilename).getFullPathName();
-}
+        return getDefaultPresetFilename();
 
-
-const ParamPreferences & SystemConfig::getPreferences()
-{
-    return paramPreferences;
+    if (File::isAbsolutePath(presetFilename))
+        return File(presetFilename).getFullPathName();
+    else
+        return File(getDefaultUserDir())
+            .getChildFile(presetFilename).getFullPathName();
 }
 
 
@@ -144,10 +152,8 @@ void SystemConfig::readPreferencesFile()
 }
 
 
-void SystemConfig::setPreferences(const ParamPreferences & param)
+void SystemConfig::writePreferencesFile()
 {
-    paramPreferences = param;
-
     File prefFile = File(userdir).getChildFile("preferences.xml");
     prefFile.create();
 
@@ -166,9 +172,10 @@ void SystemConfig::setPreferences(const ParamPreferences & param)
 }
 
 
-const ParamPartitionWisdom & SystemConfig::getPartitionWisdom()
+void SystemConfig::setPreferences(const ParamPreferences & param)
 {
-    return paramPartitionWisdom;
+    paramPreferences = param;
+    writePreferencesFile();
 }
 
 

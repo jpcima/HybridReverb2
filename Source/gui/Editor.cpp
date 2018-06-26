@@ -83,16 +83,13 @@ void HybridReverb2Editor::chooseDbFileAndLoad()
     }
 
     File chosenFile = fc.getResult();
-    File userDir(systemConfig->getUserdir());
-    File presetFile(systemConfig->getPresetFilename());
     Component::SafePointer<HybridReverb2Editor> safeThis(this);
 
     fprintf(stderr, "Editor: about to launch setup\n");
     MouseCursor::showWaitCursor();
 
     Thread::launch(
-        [safeThis, chosenFile, userDir, presetFile]()
-            { performAsyncSetup(safeThis, chosenFile, userDir, presetFile); });
+        [safeThis, chosenFile]() { performAsyncSetup(safeThis, chosenFile); });
 }
 
 void HybridReverb2Editor::onSetupSuccess()
@@ -113,13 +110,15 @@ void HybridReverb2Editor::onSetupFailure()
 }
 
 void HybridReverb2Editor::performAsyncSetup(
-        Component::SafePointer<HybridReverb2Editor> self,
-        const File &zipFile, const File &userDir, const File &presetFile)
+    Component::SafePointer<HybridReverb2Editor> self, const File &zipFile)
 {
     ZipFile zip(zipFile);
 
+    File presetDir = SystemConfig::getDefaultUserDir();
+    File presetFile = SystemConfig::getDefaultPresetFilename();
+
     fprintf(stderr, "EditorAsync: about to unzip\n");
-    Result zipResult = zip.uncompressTo(userDir);
+    Result zipResult = zip.uncompressTo(presetDir);
 
     if (zipResult.failed())
     {

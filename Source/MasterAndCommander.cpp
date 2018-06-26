@@ -110,7 +110,7 @@ const String & MasterAndCommander::getUserdir()
 }
 
 
-const String & MasterAndCommander::getDBdir()
+String MasterAndCommander::getDBdir()
 {
     return systemConfig->getDBdir();
 }

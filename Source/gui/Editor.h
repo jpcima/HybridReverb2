@@ -55,8 +55,7 @@ private:
     void onSetupSuccess();
     void onSetupFailure();
     static void performAsyncSetup(
-        Component::SafePointer<HybridReverb2Editor> self,
-        const File &zipFile, const File &userDir, const File &presetFile);
+        Component::SafePointer<HybridReverb2Editor> self, const File &zipFile);
 
     std::shared_ptr<SystemConfig> systemConfig;
     std::unique_ptr<EditorComponent> editorComponent;

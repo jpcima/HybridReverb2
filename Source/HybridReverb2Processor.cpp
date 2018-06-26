@@ -29,16 +29,16 @@
     This function must be implemented to create a new instance of your
     plugin object.
 */
-AudioProcessor* JUCE_CALLTYPE createPluginFilter()
+AudioProcessor* JUCE_CALLTYPE createPluginFilter(const String &userDir)
 {
-    std::shared_ptr<SystemConfig> systemConfig(new SystemConfig);
+    std::shared_ptr<SystemConfig> systemConfig(new SystemConfig(userDir));
     systemConfig->setupLanguage();
     return new HybridReverb2Processor(systemConfig);
 }
 
-AudioProcessor* JUCE_CALLTYPE createPluginFilter(const String& commandLine)
+AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
-    return createPluginFilter();
+    return createPluginFilter(String());
 }
 
 

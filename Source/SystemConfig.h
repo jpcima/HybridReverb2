@@ -31,24 +31,32 @@
 class SystemConfig
 {
 public:
-    SystemConfig ();
+    explicit SystemConfig(const String &customUserDir);
     ~SystemConfig();
 
-    const String & getUserdir();
-    const String & getDBdir();
-    String getPresetFilename();
-    const ParamPreferences & getPreferences();
+    const String &getUserdir() const
+        { return userdir; }
+    String getDBdir() const;
+
+    static String getDefaultUserDir();
+    static String getDefaultPresetFilename();
+
+    String getPresetFilename() const;
     void readPreferencesFile();
+    void writePreferencesFile();
     void setPreferences(const ParamPreferences & param);
-    const ParamPartitionWisdom & getPartitionWisdom();
     void readPartitionWisdomFile();
+
+    const ParamPreferences & getPreferences() const
+        { return paramPreferences; }
+    const ParamPartitionWisdom & getPartitionWisdom()
+        { return paramPartitionWisdom; }
 
     void setupLanguage();
 
 private:
     bool successfulLoad = false;
     String userdir;
-    String dbdir;
     ParamPreferences paramPreferences;
     ParamPartitionWisdom paramPartitionWisdom;
 

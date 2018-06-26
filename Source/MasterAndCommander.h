@@ -61,7 +61,7 @@ public:
     void onGuiReady(void);
     void print(String msg);
     const String & getUserdir();
-    const String & getDBdir();
+    String getDBdir();
     const ParamPreferences & getPreferences();
     const ParamPartitionWisdom & getPartitionWisdom();
 

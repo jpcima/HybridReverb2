@@ -57,6 +57,7 @@ public:
 
     //==============================================================================
     MasterAndCommander *getMaster() { return master.get(); }
+    SystemConfig &getSystemConfig() { return *systemConfig; }
 
     //==============================================================================
     void prepareToPlay (double sampleRate, int samplesPerBlock) override;

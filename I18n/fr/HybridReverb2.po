@@ -367,7 +367,7 @@ msgstr "Délai Amont"
 
 #: Source/gui/EditorComponent.cpp:73
 msgid "Preferences"
-msgstr "Préferences"
+msgstr "Préférences"
 
 #: Source/gui/EditorComponent.cpp:67
 msgid "Preset Editor"
@@ -375,7 +375,7 @@ msgstr "Éditeur de Préréglages"
 
 #: Source/gui/TabPreferences.cpp:44
 msgid "Preset File:"
-msgstr "Fichier de Préréglage :"
+msgstr "Fichier de Préréglages :"
 
 #: Source/gui/TabPreferences.cpp:130
 msgid ""
@@ -428,7 +428,7 @@ msgstr ""
 "\"Charge de Calcul Uniforme\" : Cette stratégie tente d'éviter les pics de "
 "charge de calcul, augmentant légèrement la charge de calcul moyenne. Il "
 "s'agit du choix recommandé pour un traitement du signal à faible latence.\n"
-"\"Charge de Calcul à Moindre Moyenne\": Cette stratégie aboutit au niveau de "
+"\"Charge de Calcul à Moindre Moyenne\" : Cette stratégie aboutit au niveau de "
 "performance globalement le plus élevé. Il s'agit du choix recommandé pour un "
 "rendu en différé."
 

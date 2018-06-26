@@ -9,7 +9,7 @@
 namespace BinaryData
 {
     extern const char*   I18nResource_fr;
-    const int            I18nResource_frSize = 20737;
+    const int            I18nResource_frSize = 20740;
 
     extern const char*   partition_wisdom_xml;
     const int            partition_wisdom_xmlSize = 959;

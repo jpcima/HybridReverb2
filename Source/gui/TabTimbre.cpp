@@ -201,15 +201,14 @@ TabTimbre::TabTimbre (MasterAndCommander *m)
 //    master->print("TabTimbre::TabTimbre : Waiting for your commands, Sir!");
 
     // FIXME: this is for debugging only
-    float data[25];
-    int   num    = 25;
+    float data[ParamTimbre::num];
     float freq   = 62.5;
     float ratio  = pow(2.0, 1.0/3.0);
     float smooth = 0.0;
-    for (int i = 0; i < num; i++)
+    for (int i = 0; i < ParamTimbre::num; i++)
         data[i] = 0.0;
-    paramTimbre.reset(new ParamTimbre(data, num, freq, ratio, smooth));
-    interpolator.reset(new LagrangeInterpolation(data, num, freq, ratio));
+    paramTimbre.reset(new ParamTimbre(data, freq, ratio, smooth));
+    interpolator.reset(new LagrangeInterpolation(data, ParamTimbre::num, freq, ratio));
 
     freqPlot->init(gridX, gridY, offsetX - 24, offsetY - 32 + 24,
                    numSlider, freq, ratio,
@@ -328,7 +327,7 @@ void TabTimbre::sliderValueChanged (Slider* sliderThatWasMoved)
         if (sliderThatWasMoved == slider[i].get())
         {
             paramTimbre->data[i] = sliderThatWasMoved->getValue();
-            interpolator->update(paramTimbre->data.get());
+            interpolator->update(paramTimbre->data);
         }
     }
 
@@ -383,14 +382,14 @@ void TabTimbre::updateData()
 
 void TabTimbre::setTimbre (ParamTimbre *param)
 {
-    paramTimbre->set(param);
+    *paramTimbre = *param;
     for (int i = 0; i < paramTimbre->num; i++)
     {
         slider[i]->setDoubleClickReturnValue(true, paramTimbre->data[i]);
         slider[i]->setValue (paramTimbre->data[i]);
     }
     sliderSmooth->setValue(paramTimbre->smooth);
-    interpolator->update(paramTimbre->data.get());
+    interpolator->update(paramTimbre->data);
     updateData();
 }
 

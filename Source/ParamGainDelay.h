@@ -26,35 +26,6 @@
 class ParamGainDelay
 {
 public:
-    ParamGainDelay()
-    {
-    }
-
-    ParamGainDelay(const ParamGainDelay &other)
-    {
-        initialGap = other.initialGap;
-        length     = other.length;
-        preDelay   = other.preDelay;
-        dryGain    = other.dryGain;
-        wetGain    = other.wetGain;
-        masterGain = other.masterGain;
-    }
-
-    ~ParamGainDelay()
-    {
-    }
-
-    ParamGainDelay & operator = (const ParamGainDelay &other)
-    {
-        initialGap = other.initialGap;
-        length     = other.length;
-        preDelay   = other.preDelay;
-        dryGain    = other.dryGain;
-        wetGain    = other.wetGain;
-        masterGain = other.masterGain;
-        return *this;
-    }
-
     float initialGap = 0.0;
     float length = -1.0;
     float preDelay = 0.0;

@@ -27,31 +27,6 @@
 class ParamImpulseResponses
 {
 public:
-    ParamImpulseResponses()
-    {
-    }
-
-    ParamImpulseResponses(const ParamImpulseResponses &other)
-    {
-        ll = other.ll;
-        lr = other.lr;
-        rl = other.rl;
-        rr = other.rr;
-    }
-
-    ~ParamImpulseResponses()
-    {
-    }
-
-    ParamImpulseResponses & operator = (const ParamImpulseResponses &other)
-    {
-        ll = other.ll;
-        lr = other.lr;
-        rl = other.rl;
-        rr = other.rr;
-        return *this;
-    }
-
     String ll;
     String lr;
     String rl;

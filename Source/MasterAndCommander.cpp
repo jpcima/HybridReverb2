@@ -349,7 +349,7 @@ void MasterAndCommander::onValueChangedTimbre(ParamTimbre *param)
             enabledTimbre = true;
     }
 
-    paramTimbre->set(param);
+    *paramTimbre = *param;
 
     presetManager->setTimbre(currentPreset, *param);
     updateTimbre();

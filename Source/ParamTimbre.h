@@ -24,7 +24,6 @@
 
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include <math.h>
 
 
 class ParamTimbre
@@ -32,57 +31,19 @@ class ParamTimbre
 public:
     ParamTimbre()
     {
-        data.reset(new float[num]);
+    }
+
+    ParamTimbre(float *y, float f, float r, float s)
+    {
         for (int i = 0; i < num; i++)
-            data[i] = 0.0;
-    }
-
-    ParamTimbre(const ParamTimbre &other)
-    {
-        set(other.data.get(),
-            other.num,
-            other.freq,
-            other.ratio,
-            other.smooth);
-    }
-
-    ParamTimbre(float *y, int n, float f, float r, float s)
-    {
-        set(y, n, f, r, s);
-    }
-
-    ~ParamTimbre()
-    {
-    }
-
-    ParamTimbre & operator = (const ParamTimbre &other)
-    {
-        set(other.data.get(),
-            other.num,
-            other.freq,
-            other.ratio,
-            other.smooth);
-        return *this;
-    }
-
-    void set(float *y, int n, float f, float r, float s)
-    {
-        data.reset(new float[n]);
-        for (int i = 0; i < n; i++)
             data[i] = y[i];
-        num    = n;
         freq   = f;
         ratio  = r;
         smooth = s;
     }
 
-    void set(ParamTimbre *param)
-    {
-        set(param->data.get(), param->num, param->freq, param->ratio, param->smooth);
-    }
-
-    std::unique_ptr<float[]> data;
-    int num = 25;
+    enum { num = 25 };
+    float data[num] = {};
     float freq = 62.5;
     float ratio = 1.25992104989487319;  // 2^(1/3)
     float smooth = 0.0;

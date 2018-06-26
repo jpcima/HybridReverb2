@@ -33,37 +33,6 @@
 class ParamPreset
 {
 public:
-    ParamPreset()
-    {
-    }
-
-    ParamPreset(const ParamPreset &other)
-    {
-        name             = other.name;
-        impulseResponses = other.impulseResponses;
-        category         = other.category;
-        timbre           = other.timbre;
-        gainDelay        = other.gainDelay;
-        envelope         = other.envelope;
-        notes            = other.notes;
-    }
-
-    ~ParamPreset()
-    {
-    }
-
-    ParamPreset & operator = (const ParamPreset &other)
-    {
-        name             = other.name;
-        impulseResponses = other.impulseResponses;
-        category         = other.category;
-        timbre           = other.timbre;
-        gainDelay        = other.gainDelay;
-        envelope         = other.envelope;
-        notes            = other.notes;
-        return *this;
-    }
-
     String name;
     ParamImpulseResponses impulseResponses;
     ParamCategory category;

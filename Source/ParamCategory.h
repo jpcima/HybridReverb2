@@ -27,31 +27,6 @@
 class ParamCategory
 {
 public:
-    ParamCategory()
-    {
-    }
-
-    ParamCategory(const ParamCategory &other)
-    {
-        cat_1 = other.cat_1;
-        cat_2 = other.cat_2;
-        cat_3 = other.cat_3;
-        cat_4 = other.cat_4;
-    }
-
-    ~ParamCategory()
-    {
-    }
-
-    ParamCategory & operator = (const ParamCategory &other)
-    {
-        cat_1 = other.cat_1;
-        cat_2 = other.cat_2;
-        cat_3 = other.cat_3;
-        cat_4 = other.cat_4;
-        return *this;
-    }
-
     String cat_1;
     String cat_2;
     String cat_3;

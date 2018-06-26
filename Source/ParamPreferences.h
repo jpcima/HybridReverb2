@@ -24,7 +24,7 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 
-enum CONST_PARAMPREFERENCES {
+enum {
     STRATEGY_UNIFORM = 0,
     STRATEGY_LOWEST
 };
@@ -33,29 +33,6 @@ enum CONST_PARAMPREFERENCES {
 class ParamPreferences
 {
 public:
-    ParamPreferences()
-    {
-    }
-
-    ParamPreferences(const ParamPreferences &other)
-    {
-        presetFile = other.presetFile;
-        sflen      = other.sflen;
-        strategy   = other.strategy;
-    }
-
-    ~ParamPreferences()
-    {
-    }
-
-    ParamPreferences & operator = (const ParamPreferences &other)
-    {
-        presetFile = other.presetFile;
-        sflen      = other.sflen;
-        strategy   = other.strategy;
-        return *this;
-    }
-
     String presetFile;
     int sflen = 64;
     int strategy = STRATEGY_UNIFORM;

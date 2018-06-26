@@ -26,31 +26,6 @@
 class ParamEnvelope
 {
 public:
-    ParamEnvelope()
-    {
-    }
-
-    ParamEnvelope(const ParamEnvelope &other)
-    {
-        db0ms   = other.db0ms;
-        db20ms  = other.db20ms;
-        db120ms = other.db120ms;
-        dbENDms = other.dbENDms;
-    }
-
-    ~ParamEnvelope()
-    {
-    }
-
-    ParamEnvelope & operator = (const ParamEnvelope &other)
-    {
-        db0ms   = other.db0ms;
-        db20ms  = other.db20ms;
-        db120ms = other.db120ms;
-        dbENDms = other.dbENDms;
-        return *this;
-    }
-
     float db0ms = 0.0;
     float db20ms = 0.0;
     float db120ms = 0.0;

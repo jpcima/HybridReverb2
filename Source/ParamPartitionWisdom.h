@@ -23,7 +23,7 @@
 #define __PARAMPARTITIONWISDOM_H__
 
 
-enum CONST_PARAMPARTITIONWISDOM {
+enum {
     NUM_PARTITIONWISDOM_ENTRIES = 10
 };
 
@@ -38,29 +38,6 @@ public:
             t_const[i]  = 1.0;
             t_linear[i] = 1.0;
         }
-    }
-
-    ParamPartitionWisdom(const ParamPartitionWisdom &other)
-    {
-        for (int i = 0; i < NUM_PARTITIONWISDOM_ENTRIES; i++)
-        {
-            t_const[i]  = other.t_const[i];
-            t_linear[i] = other.t_linear[i];
-        }
-    }
-
-    ~ParamPartitionWisdom()
-    {
-    }
-
-    ParamPartitionWisdom & operator = (const ParamPartitionWisdom &other)
-    {
-        for (int i = 0; i < NUM_PARTITIONWISDOM_ENTRIES; i++)
-        {
-            t_const[i]  = other.t_const[i];
-            t_linear[i] = other.t_linear[i];
-        }
-        return *this;
     }
 
     double t_const[NUM_PARTITIONWISDOM_ENTRIES];

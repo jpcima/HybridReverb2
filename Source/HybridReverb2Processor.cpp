@@ -250,9 +250,9 @@ void HybridReverb2Processor::getStateInformation (MemoryBlock& destData)
 void HybridReverb2Processor::setStateInformation (const void* data, int sizeInBytes)
 {
     // use this helper function to get the XML from this binary blob..
-    XmlElement* const xmlState = getXmlFromBinary (data, sizeInBytes);
+    std::unique_ptr<XmlElement> xmlState(getXmlFromBinary(data, sizeInBytes));
 
-    if (xmlState != 0)
+    if (xmlState)
     {
         // check that it's the right type of xml..
         if (xmlState->hasTagName ("HybridReverb2Settings"))
@@ -269,8 +269,6 @@ void HybridReverb2Processor::setStateInformation (const void* data, int sizeInBy
 
             sendChangeMessage ();
         }
-
-        delete xmlState;
     }
 }
 

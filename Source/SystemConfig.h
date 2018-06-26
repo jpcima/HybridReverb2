@@ -43,6 +43,8 @@ public:
     const ParamPartitionWisdom & getPartitionWisdom();
     void readPartitionWisdomFile();
 
+    void setupLanguage();
+
 private:
     bool successfulLoad = false;
     String userdir;

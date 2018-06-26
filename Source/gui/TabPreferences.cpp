@@ -49,7 +49,7 @@ TabPreferences::TabPreferences (MasterAndCommander *m)
     labelPreset->setColour (TextEditor::textColourId, Colours::black);
     labelPreset->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
-    labelPreset->setBounds (16, 32, 80, 24);
+    labelPreset->setBounds (16, 32, 152, 24);
 
     textEditorPreset.reset (new TextEditor ("new text editor"));
     addAndMakeVisible (textEditorPreset.get());
@@ -62,7 +62,7 @@ TabPreferences::TabPreferences (MasterAndCommander *m)
     textEditorPreset->setPopupMenuEnabled (true);
     textEditorPreset->setText (String());
 
-    textEditorPreset->setBounds (96, 32, 272, 24);
+    textEditorPreset->setBounds (168, 32, 200, 24);
 
     groupComponentStrategy.reset (new GroupComponent ("new group",
                                                       TRANS("Segmentation Strategy")));
@@ -78,16 +78,16 @@ TabPreferences::TabPreferences (MasterAndCommander *m)
     toggleButtonUniform->addListener (this);
     toggleButtonUniform->setToggleState (true, dontSendNotification);
 
-    toggleButtonUniform->setBounds (24, 136, 224, 24);
+    toggleButtonUniform->setBounds (24, 136, 360, 24);
 
     toggleButtonLowest.reset (new ToggleButton ("new toggle button"));
     addAndMakeVisible (toggleButtonLowest.get());
-    toggleButtonLowest->setTooltip (TRANS("lowest overal processing load with load peaks"));
+    toggleButtonLowest->setTooltip (TRANS("lowest overall processing load with load peaks"));
     toggleButtonLowest->setButtonText (TRANS("Lowest Mean Processing Load"));
     toggleButtonLowest->setRadioGroupId (7007);
     toggleButtonLowest->addListener (this);
 
-    toggleButtonLowest->setBounds (24, 160, 224, 24);
+    toggleButtonLowest->setBounds (24, 160, 360, 24);
 
     labelLatency.reset (new Label ("new label",
                                    TRANS("Latency:")));
@@ -395,23 +395,23 @@ BEGIN_JUCER_METADATA
   <GROUPCOMPONENT name="new group" id="735a0a2a7a30ed50" memberName="groupComponentHelp"
                   virtualName="" explicitFocusOrder="0" pos="416 8 400 500" title="Help"/>
   <LABEL name="new label" id="9f5eff377a1b3c8f" memberName="labelPreset"
-         virtualName="" explicitFocusOrder="0" pos="16 32 80 24" edTextCol="ff000000"
+         virtualName="" explicitFocusOrder="0" pos="16 32 152 24" edTextCol="ff000000"
          edBkgCol="0" labelText="Preset File:" editableSingleClick="0"
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
          fontsize="15.00000000000000000000" kerning="0.00000000000000000000"
          bold="0" italic="0" justification="33"/>
   <TEXTEDITOR name="new text editor" id="e8e07b2e8a259e33" memberName="textEditorPreset"
-              virtualName="" explicitFocusOrder="0" pos="96 32 272 24" tooltip="XML formatted preset file"
+              virtualName="" explicitFocusOrder="0" pos="168 32 200 24" tooltip="XML formatted preset file"
               initialText="" multiline="0" retKeyStartsLine="0" readonly="0"
               scrollbars="0" caret="1" popupmenu="1"/>
   <GROUPCOMPONENT name="new group" id="cc8396c955dc75e8" memberName="groupComponentStrategy"
                   virtualName="" explicitFocusOrder="0" pos="8 112 394 88" title="Segmentation Strategy"/>
   <TOGGLEBUTTON name="new toggle button" id="3fe5a25a51b54518" memberName="toggleButtonUniform"
-                virtualName="" explicitFocusOrder="0" pos="24 136 224 24" tooltip="slightly higher, but constant processing load"
+                virtualName="" explicitFocusOrder="0" pos="24 136 360 24" tooltip="slightly higher, but constant processing load"
                 buttonText="Uniform Processing Load" connectedEdges="0" needsCallback="1"
                 radioGroupId="7007" state="1"/>
   <TOGGLEBUTTON name="new toggle button" id="6c86fff6787f71e" memberName="toggleButtonLowest"
-                virtualName="" explicitFocusOrder="0" pos="24 160 224 24" tooltip="lowest overal processing load with load peaks"
+                virtualName="" explicitFocusOrder="0" pos="24 160 360 24" tooltip="lowest overall processing load with load peaks"
                 buttonText="Lowest Mean Processing Load" connectedEdges="0" needsCallback="1"
                 radioGroupId="7007" state="0"/>
   <LABEL name="new label" id="6825c569ae03a38a" memberName="labelLatency"

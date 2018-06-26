@@ -19,6 +19,7 @@
 
 //[Headers] You can add your own extra header files here...
 #include "Editor.h"
+#include "../I18nTools.h"
 //[/Headers]
 
 #include "DownloadDbComponent.h"
@@ -38,14 +39,14 @@ DownloadDbComponent::DownloadDbComponent (HybridReverb2Editor *editor)
                                               TRANS("Setup Preset Database")));
     addAndMakeVisible (groupComponent.get());
 
-    groupComponent->setBounds (0, 0, 600, 368);
+    groupComponent->setBounds (0, 0, 600, 376);
 
     btnLoadFile.reset (new TextButton ("new button"));
     addAndMakeVisible (btnLoadFile.get());
     btnLoadFile->setButtonText (TRANS("Load database file..."));
     btnLoadFile->addListener (this);
 
-    btnLoadFile->setBounds (240, 104, 272, 24);
+    btnLoadFile->setBounds (296, 104, 272, 24);
 
     label.reset (new Label ("new label",
                             TRANS("This software must install some impulse responses to continue.")));
@@ -56,7 +57,7 @@ DownloadDbComponent::DownloadDbComponent (HybridReverb2Editor *editor)
     label->setColour (TextEditor::textColourId, Colours::black);
     label->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
-    label->setBounds (32, 40, 512, 24);
+    label->setBounds (32, 40, 536, 24);
 
     hyperlinkButton.reset (new HyperlinkButton (TRANS("HybridReverb2_large_database.zip"),
                                                 URL ("http://www2.ika.ruhr-uni-bochum.de/HybridReverb2/HybridReverb2_large_database.zip")));
@@ -64,18 +65,18 @@ DownloadDbComponent::DownloadDbComponent (HybridReverb2Editor *editor)
     hyperlinkButton->setTooltip (TRANS("http://www2.ika.ruhr-uni-bochum.de/HybridReverb2/HybridReverb2_large_database.zip"));
     hyperlinkButton->setButtonText (TRANS("HybridReverb2_large_database.zip"));
 
-    hyperlinkButton->setBounds (240, 72, 272, 24);
+    hyperlinkButton->setBounds (296, 72, 272, 24);
 
-    label2.reset (new Label ("new label",
-                             CharPointer_UTF8 ("These room impulse responses for HybridReverb2 are property of the Institute of Communication Acoustics, Ruhr Universit\xc3\xa4t Bochum, Germany.")));
-    addAndMakeVisible (label2.get());
-    label2->setFont (Font (15.00f, Font::plain).withTypefaceStyle ("Regular"));
-    label2->setJustificationType (Justification::centredLeft);
-    label2->setEditable (false, false, false);
-    label2->setColour (TextEditor::textColourId, Colours::black);
-    label2->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
+    propertyLabel.reset (new Label ("new label",
+                                    CharPointer_UTF8 ("These room impulse responses for HybridReverb2 are property of the Institute of Communication Acoustics, Ruhr Universit\xc3\xa4t Bochum, Germany.")));
+    addAndMakeVisible (propertyLabel.get());
+    propertyLabel->setFont (Font (15.00f, Font::plain).withTypefaceStyle ("Regular"));
+    propertyLabel->setJustificationType (Justification::centredLeft);
+    propertyLabel->setEditable (false, false, false);
+    propertyLabel->setColour (TextEditor::textColourId, Colours::black);
+    propertyLabel->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
-    label2->setBounds (32, 176, 520, 32);
+    propertyLabel->setBounds (32, 176, 536, 32);
 
     label3.reset (new Label ("new label",
                              TRANS("Copyright Notice")));
@@ -86,7 +87,7 @@ DownloadDbComponent::DownloadDbComponent (HybridReverb2Editor *editor)
     label3->setColour (TextEditor::textColourId, Colours::black);
     label3->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
-    label3->setBounds (32, 144, 150, 24);
+    label3->setBounds (32, 144, 536, 24);
 
     label4.reset (new Label ("new label",
                              TRANS("Click link to download:")));
@@ -97,7 +98,7 @@ DownloadDbComponent::DownloadDbComponent (HybridReverb2Editor *editor)
     label4->setColour (TextEditor::textColourId, Colours::black);
     label4->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
-    label4->setBounds (56, 72, 168, 24);
+    label4->setBounds (56, 72, 232, 24);
 
     label5.reset (new Label ("new label",
                              TRANS("Install the file:")));
@@ -108,7 +109,7 @@ DownloadDbComponent::DownloadDbComponent (HybridReverb2Editor *editor)
     label5->setColour (TextEditor::textColourId, Colours::black);
     label5->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
-    label5->setBounds (56, 104, 168, 24);
+    label5->setBounds (56, 104, 232, 24);
 
     hyperlinkButton2.reset (new HyperlinkButton (TRANS("http://www.ruhr-uni-bochum.de/ika/"),
                                                  URL ("http://www.ruhr-uni-bochum.de/ika/")));
@@ -119,7 +120,8 @@ DownloadDbComponent::DownloadDbComponent (HybridReverb2Editor *editor)
     hyperlinkButton2->setBounds (40, 216, 272, 24);
 
     label6.reset (new Label ("new label",
-                             TRANS("They are free for non-commercial use. For commercial use, please contact:")));
+                             TRANS("They are free for non-commercial use.\n"
+                             "For commercial use, please contact:")));
     addAndMakeVisible (label6.get());
     label6->setFont (Font (15.00f, Font::plain).withTypefaceStyle ("Regular"));
     label6->setJustificationType (Justification::centredLeft);
@@ -127,7 +129,7 @@ DownloadDbComponent::DownloadDbComponent (HybridReverb2Editor *editor)
     label6->setColour (TextEditor::textColourId, Colours::black);
     label6->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
-    label6->setBounds (32, 248, 520, 24);
+    label6->setBounds (32, 248, 536, 32);
 
     hyperlinkButton3.reset (new HyperlinkButton (TRANS("rainer.martin@ruhr-uni-bochum.de"),
                                                  URL ("mailto:rainer.martin@ruhr-uni-bochum.de")));
@@ -135,7 +137,7 @@ DownloadDbComponent::DownloadDbComponent (HybridReverb2Editor *editor)
     hyperlinkButton3->setTooltip (TRANS("mailto:rainer.martin@ruhr-uni-bochum.de"));
     hyperlinkButton3->setButtonText (TRANS("rainer.martin@ruhr-uni-bochum.de"));
 
-    hyperlinkButton3->setBounds (40, 280, 272, 24);
+    hyperlinkButton3->setBounds (40, 288, 272, 24);
 
     label7.reset (new Label ("new label",
                              TRANS("They were generated with the \"tinyAVE\" software.")));
@@ -146,13 +148,18 @@ DownloadDbComponent::DownloadDbComponent (HybridReverb2Editor *editor)
     label7->setColour (TextEditor::textColourId, Colours::black);
     label7->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
-    label7->setBounds (32, 312, 520, 24);
+    label7->setBounds (32, 320, 536, 24);
 
 
     //[UserPreSize]
+    propertyLabel->setText(
+        TRANS_UTF8(
+            "These room impulse responses for HybridReverb2 are property of the "
+            "Institute of Communication Acoustics, Ruhr Universität Bochum, Germany."),
+        dontSendNotification);
     //[/UserPreSize]
 
-    setSize (600, 368);
+    setSize (600, 378);
 
 
     //[Constructor] You can add your own custom stuff here..
@@ -168,7 +175,7 @@ DownloadDbComponent::~DownloadDbComponent()
     btnLoadFile = nullptr;
     label = nullptr;
     hyperlinkButton = nullptr;
-    label2 = nullptr;
+    propertyLabel = nullptr;
     label3 = nullptr;
     label4 = nullptr;
     label5 = nullptr;
@@ -237,43 +244,43 @@ BEGIN_JUCER_METADATA
 <JUCER_COMPONENT documentType="Component" className="DownloadDbComponent" componentName=""
                  parentClasses="public Component" constructorParams="HybridReverb2Editor *editor"
                  variableInitialisers="" snapPixels="8" snapActive="1" snapShown="1"
-                 overlayOpacity="0.330" fixedSize="0" initialWidth="600" initialHeight="368">
+                 overlayOpacity="0.330" fixedSize="0" initialWidth="600" initialHeight="378">
   <BACKGROUND backgroundColour="ffffe000"/>
   <GROUPCOMPONENT name="new group" id="45a8c1e1ce67cc73" memberName="groupComponent"
-                  virtualName="" explicitFocusOrder="0" pos="0 0 600 368" title="Setup Preset Database"/>
+                  virtualName="" explicitFocusOrder="0" pos="0 0 600 376" title="Setup Preset Database"/>
   <TEXTBUTTON name="new button" id="dee618dad1c2490" memberName="btnLoadFile"
-              virtualName="" explicitFocusOrder="0" pos="240 104 272 24" buttonText="Load database file..."
+              virtualName="" explicitFocusOrder="0" pos="296 104 272 24" buttonText="Load database file..."
               connectedEdges="0" needsCallback="1" radioGroupId="0"/>
   <LABEL name="new label" id="dfed1153e8981211" memberName="label" virtualName=""
-         explicitFocusOrder="0" pos="32 40 512 24" edTextCol="ff000000"
+         explicitFocusOrder="0" pos="32 40 536 24" edTextCol="ff000000"
          edBkgCol="0" labelText="This software must install some impulse responses to continue."
          editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
          fontname="Default font" fontsize="15.00000000000000000000" kerning="0.00000000000000000000"
          bold="0" italic="0" justification="33"/>
   <HYPERLINKBUTTON name="new hyperlink" id="ab2dc46b149cd192" memberName="hyperlinkButton"
-                   virtualName="" explicitFocusOrder="0" pos="240 72 272 24" tooltip="http://www2.ika.ruhr-uni-bochum.de/HybridReverb2/HybridReverb2_large_database.zip"
+                   virtualName="" explicitFocusOrder="0" pos="296 72 272 24" tooltip="http://www2.ika.ruhr-uni-bochum.de/HybridReverb2/HybridReverb2_large_database.zip"
                    buttonText="HybridReverb2_large_database.zip" connectedEdges="0"
                    needsCallback="0" radioGroupId="0" url="http://www2.ika.ruhr-uni-bochum.de/HybridReverb2/HybridReverb2_large_database.zip"/>
-  <LABEL name="new label" id="ed5965b814f8c4c0" memberName="label2" virtualName=""
-         explicitFocusOrder="0" pos="32 176 520 32" edTextCol="ff000000"
+  <LABEL name="new label" id="ed5965b814f8c4c0" memberName="propertyLabel"
+         virtualName="" explicitFocusOrder="0" pos="32 176 536 32" edTextCol="ff000000"
          edBkgCol="0" labelText="These room impulse responses for HybridReverb2 are property of the Institute of Communication Acoustics, Ruhr Universit&#228;t Bochum, Germany."
          editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
          fontname="Default font" fontsize="15.00000000000000000000" kerning="0.00000000000000000000"
          bold="0" italic="0" justification="33"/>
   <LABEL name="new label" id="2683eec4ab09418b" memberName="label3" virtualName=""
-         explicitFocusOrder="0" pos="32 144 150 24" edTextCol="ff000000"
+         explicitFocusOrder="0" pos="32 144 536 24" edTextCol="ff000000"
          edBkgCol="0" labelText="Copyright Notice" editableSingleClick="0"
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
          fontsize="15.00000000000000000000" kerning="0.00000000000000000000"
          bold="1" italic="0" justification="33" typefaceStyle="Bold"/>
   <LABEL name="new label" id="f40fe395ed330642" memberName="label4" virtualName=""
-         explicitFocusOrder="0" pos="56 72 168 24" edTextCol="ff000000"
+         explicitFocusOrder="0" pos="56 72 232 24" edTextCol="ff000000"
          edBkgCol="0" labelText="Click link to download:" editableSingleClick="0"
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
          fontsize="15.00000000000000000000" kerning="0.00000000000000000000"
          bold="0" italic="0" justification="33"/>
   <LABEL name="new label" id="391914e76a33d4d9" memberName="label5" virtualName=""
-         explicitFocusOrder="0" pos="56 104 168 24" edTextCol="ff000000"
+         explicitFocusOrder="0" pos="56 104 232 24" edTextCol="ff000000"
          edBkgCol="0" labelText="Install the file:" editableSingleClick="0"
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
          fontsize="15.00000000000000000000" kerning="0.00000000000000000000"
@@ -283,17 +290,17 @@ BEGIN_JUCER_METADATA
                    buttonText="http://www.ruhr-uni-bochum.de/ika/" connectedEdges="0"
                    needsCallback="0" radioGroupId="0" url="http://www.ruhr-uni-bochum.de/ika/"/>
   <LABEL name="new label" id="f784da25f47214f" memberName="label6" virtualName=""
-         explicitFocusOrder="0" pos="32 248 520 24" edTextCol="ff000000"
-         edBkgCol="0" labelText="They are free for non-commercial use. For commercial use, please contact:"
+         explicitFocusOrder="0" pos="32 248 536 32" edTextCol="ff000000"
+         edBkgCol="0" labelText="They are free for non-commercial use.&#10;For commercial use, please contact:"
          editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
          fontname="Default font" fontsize="15.00000000000000000000" kerning="0.00000000000000000000"
          bold="0" italic="0" justification="33"/>
   <HYPERLINKBUTTON name="new hyperlink" id="cb7948d2fe4c0b41" memberName="hyperlinkButton3"
-                   virtualName="" explicitFocusOrder="0" pos="40 280 272 24" tooltip="mailto:rainer.martin@ruhr-uni-bochum.de"
+                   virtualName="" explicitFocusOrder="0" pos="40 288 272 24" tooltip="mailto:rainer.martin@ruhr-uni-bochum.de"
                    buttonText="rainer.martin@ruhr-uni-bochum.de" connectedEdges="0"
                    needsCallback="0" radioGroupId="0" url="mailto:rainer.martin@ruhr-uni-bochum.de"/>
   <LABEL name="new label" id="70aa8eb69a72c639" memberName="label7" virtualName=""
-         explicitFocusOrder="0" pos="32 312 520 24" edTextCol="ff000000"
+         explicitFocusOrder="0" pos="32 320 536 24" edTextCol="ff000000"
          edBkgCol="0" labelText="They were generated with the &quot;tinyAVE&quot; software."
          editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
          fontname="Default font" fontsize="15.00000000000000000000" kerning="0.00000000000000000000"

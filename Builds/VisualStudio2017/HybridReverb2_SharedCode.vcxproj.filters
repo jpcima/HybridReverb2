@@ -2,6 +2,12 @@
 
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Filter Include="HybridReverb2\I18n\release">
+      <UniqueIdentifier>{3F92631F-A733-AA3D-1902-39871A460D4E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HybridReverb2\I18n">
+      <UniqueIdentifier>{4C3EC0CF-4FAB-734F-AAFF-6A66793B44E2}</UniqueIdentifier>
+    </Filter>
     <Filter Include="HybridReverb2\Config">
       <UniqueIdentifier>{058E811E-EA1D-E47F-31D7-590C76B28E92}</UniqueIdentifier>
     </Filter>
@@ -4622,6 +4628,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\I18n\release\I18nResource_fr">
+      <Filter>HybridReverb2\I18n\release</Filter>
+    </None>
     <None Include="..\..\Config\partition_wisdom.xml">
       <Filter>HybridReverb2\Config</Filter>
     </None>

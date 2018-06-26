@@ -2667,6 +2667,7 @@
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h"/>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\I18n\release\I18nResource_fr"/>
     <None Include="..\..\Config\partition_wisdom.xml"/>
     <None Include="..\..\Config\preferences.xml"/>
     <None Include="..\..\Source\resources\LiberationMono-Bold.ttf.gz"/>

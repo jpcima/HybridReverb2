@@ -25,6 +25,10 @@
 #include <math.h>
 #include <stdlib.h>
 
+namespace BinaryData {
+    const char *getNamedResource(const char *resourceNameUTF8, int &dataSizeInBytes);
+}
+
 SystemConfig::SystemConfig()
 {
     File userdir = File
@@ -221,4 +225,34 @@ String SystemConfig::getSubText(XmlElement *element)
         }
     }
     return String();
+}
+
+void SystemConfig::setupLanguage()
+{
+    String lang = SystemStats::getUserLanguage();
+    fprintf(stderr, "Language: %s\n", lang.toRawUTF8());
+
+    lang = lang.dropLastCharacters(lang.length() - 2);
+    lang = lang.toLowerCase();
+    if (lang.isEmpty())
+        return;
+
+    fprintf(stderr, "Language code: %s\n", lang.toRawUTF8());
+
+    String resourceName = "I18nResource_" + lang;
+
+    unsigned trSize;
+    const char *trData = BinaryData::getNamedResource(
+        resourceName.toRawUTF8(), (int &)trSize);
+
+    if (!trData)
+    {
+        fprintf(stderr, "No translation for language '%s'\n", lang.toRawUTF8());
+        return;
+    }
+
+    std::unique_ptr<LocalisedStrings> ls(
+        new LocalisedStrings(String::fromUTF8(trData, trSize), false));
+    LocalisedStrings::setCurrentMappings(ls.get());
+    ls.release();
 }

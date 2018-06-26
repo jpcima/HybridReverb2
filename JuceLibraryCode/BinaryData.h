@@ -8,6 +8,9 @@
 
 namespace BinaryData
 {
+    extern const char*   I18nResource_fr;
+    const int            I18nResource_frSize = 16029;
+
     extern const char*   partition_wisdom_xml;
     const int            partition_wisdom_xmlSize = 959;
 
@@ -51,7 +54,7 @@ namespace BinaryData
     const int            LiberationSerifRegular_ttf_gzSize = 209087;
 
     // Number of elements in the namedResourceList and originalFileNames arrays.
-    const int namedResourceListSize = 14;
+    const int namedResourceListSize = 15;
 
     // Points to the start of a list of resource names.
     extern const char* namedResourceList[];

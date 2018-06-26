@@ -1,0 +1,510 @@
+# French translations for HybridReverb package.
+# Copyright (C) 2018 THE HybridReverb'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the HybridReverb package.
+#  <jp-dev@inbox.ru>, 2018.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: HybridReverb 2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-06-26 14:38+0200\n"
+"PO-Revision-Date: 2018-06-26 12:19+0200\n"
+"Last-Translator: Jean Pierre Cimalando <jp-dev@inbox.ru>\n"
+"Language-Team: French\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: Source/gui/TabPreferences.cpp:129
+msgid ""
+"\n"
+"  Preset File:\n"
+"\n"
+"  This XML file defines the preset set.\n"
+"  (default: HybridReverb2_presets.xml)\n"
+"\n"
+"\n"
+"  Latency:\n"
+"\n"
+"  HybridReverb2 convolves the input signal with room\n"
+"  impulse responses which are partitioned into segments\n"
+"  of different size. This option specifies the size of the\n"
+"  initial segments which introduce a certain processing\n"
+"  latency. A small segment size results in a lower latency\n"
+"  at the cost of a higher computational complexity. An\n"
+"  effect plugin for musical instruments requires signal\n"
+"  processing with low latency. If the latency is not relevant\n"
+"  for your application, you can choose a larger segment\n"
+"  size for better performance.\n"
+"\n"
+"\n"
+"  Segmentation Strategy:\n"
+"\n"
+"  \"Uniform Processing Load\": This strategy tries to avoid\n"
+"  processing load peaks at the cost of a slightly higher\n"
+"  mean processing load. This is the recommended choice\n"
+"  for signal processing with low latency.\n"
+"  \"Lowest Mean Processing Load\": This strategy results in\n"
+"  the best overall performance. This is the recommended\n"
+"  choice for offline rendering.\n"
+msgstr ""
+
+#: Source/gui/TabPreferences.cpp:109
+msgid "(no choices)"
+msgstr "(aucun choix)"
+
+#: Source/gui/TabMain.cpp:90 Source/gui/TabMain.cpp:101
+#: Source/gui/TabMain.cpp:112 Source/gui/TabMain.cpp:123
+msgid "---"
+msgstr ""
+
+#: Source/gui/TabPreferences.cpp:165 Source/gui/TabPresetEditor.cpp:172
+#: Source/gui/TabPresetEditor.cpp:227 Source/gui/TabPresetEditor.cpp:234
+#: Source/gui/TabPresetEditor.cpp:241
+msgid "..."
+msgstr ""
+
+#: Source/gui/TabMain.cpp:53
+msgid "1"
+msgstr ""
+
+#: Source/gui/TabPreferences.cpp:114
+msgid "1024 samples (latency: 21.3ms at 48kHz)"
+msgstr "1024 échantillons (latence : 21.3ms à 48kHz)"
+
+#: Source/gui/TabMain.cpp:73
+msgid "123456789012345678901234"
+msgstr ""
+
+#: Source/gui/TabPreferences.cpp:111
+msgid "128 samples (latency: 2.7ms at 48kHz)"
+msgstr "128 échantillons (latence : 2.7ms à 48kHz)"
+
+#: Source/gui/TabPreferences.cpp:115
+msgid "2048 samples (latency: 42.7ms at 48kHz)"
+msgstr "2048 échantillons (latence : 42.7ms à 48kHz)"
+
+#: Source/gui/TabPreferences.cpp:112
+msgid "256 samples (latency: 5.3ms at 48kHz)"
+msgstr "256 échantillons (latence : 5.3ms à 48kHz)"
+
+#: Source/gui/TabPreferences.cpp:116
+msgid "4096 samples (latency: 85.3ms at 48kHz)"
+msgstr "4096 échantillons (latence : 85.3ms à 48kHz)"
+
+#: Source/gui/TabPreferences.cpp:113
+msgid "512 samples (latency: 10.7ms at 48kHz)"
+msgstr "512 échantillons (latence : 10.7ms à 48kHz)"
+
+#: Source/gui/TabPreferences.cpp:110
+msgid "64 samples (latency: 1.3ms at 48kHz)"
+msgstr "64 échantillons (latence : 1.3ms à 48kHz)"
+
+#: Source/PresetManager.cpp:124 Source/SystemConfig.cpp:115
+#: Source/SystemConfig.cpp:180 Source/gui/Editor.cpp:137
+#: Source/gui/Editor.cpp:160
+msgid ":"
+msgstr ": "
+
+#: Source/gui/TabPresetEditor.cpp:711
+msgid "<Empty>"
+msgstr "<Vide>"
+
+#: Source/gui/EditorComponent.cpp:79
+msgid "About"
+msgstr "À propos"
+
+#: Source/gui/TabPresetEditor.cpp:348
+msgid "Add"
+msgstr "Ajouter"
+
+#: Source/gui/TabPresetEditor.cpp:334
+msgid "Apply"
+msgstr "Appliquer"
+
+#: Source/gui/TabAbout.cpp:38
+msgid "Background Information and Credits"
+msgstr "Informations Générales et Accréditations"
+
+#: Source/gui/TabPresetEditor.cpp:83
+msgid "Category 1:"
+msgstr "Catégorie 1 :"
+
+#: Source/gui/TabPresetEditor.cpp:94
+msgid "Category 2:"
+msgstr "Catégorie 2 :"
+
+#: Source/gui/TabPresetEditor.cpp:105
+msgid "Category 3:"
+msgstr "Catégorie 3 :"
+
+#: Source/gui/TabPresetEditor.cpp:116
+msgid "Category 4:"
+msgstr "Catégorie 4 :"
+
+#: Source/gui/TabPresetEditor.cpp:630
+msgid "Choose a WAV file to open..."
+msgstr "Choisir un fichier WAV à ouvrir..."
+
+#: Source/gui/TabPresetEditor.cpp:647
+msgid "Choose a XML file to open..."
+msgstr "Choisir un fichier XML à ouvrir..."
+
+#: Source/gui/TabPresetEditor.cpp:664
+msgid "Choose a XML file to save..."
+msgstr "Choisir un fichier XML à enregistrer..."
+
+#: Source/gui/TabPreferences.cpp:335
+msgid "Choose a preset file to open..."
+msgstr "Choisir un fichier de préréglage à ouvrir..."
+
+#: Source/gui/DownloadDbComponent.cpp:93
+msgid "Click link to download:"
+msgstr "Cliquez sur le lien de téléchargement :"
+
+#: Source/gui/DownloadDbComponent.cpp:82
+msgid "Copyright Notice"
+msgstr "Mention de Propriété Intellectuelle"
+
+#: Source/gui/TabPresetEditor.cpp:355
+msgid "Delete"
+msgstr "Supprimer"
+
+#: Source/gui/TabMain.cpp:220
+msgid "Dry Gain"
+msgstr "Gain Direct"
+
+#: Source/PresetManager.cpp:127 Source/PresetManager.cpp:162
+#: Source/SampleData.cpp:122 Source/SampleData.cpp:135
+#: Source/SampleData.cpp:148 Source/SystemConfig.cpp:118
+#: Source/SystemConfig.cpp:183 Source/gui/Editor.cpp:140
+#: Source/gui/Editor.cpp:163
+msgid "Error"
+msgstr "Erreur"
+
+#: Source/gui/Editor.cpp:135 Source/gui/Editor.cpp:158
+msgid "Error extracting database file"
+msgstr ""
+
+#: Source/SampleData.cpp:119 Source/SampleData.cpp:132
+#: Source/SampleData.cpp:145
+msgid "Error reading audio file"
+msgstr ""
+
+#: Source/SystemConfig.cpp:113
+msgid "Error reading preferences file"
+msgstr ""
+
+#: Source/PresetManager.cpp:122
+msgid "Error reading preset file"
+msgstr ""
+
+#: Source/SystemConfig.cpp:178
+msgid "Error reading wisdom file"
+msgstr ""
+
+#: Source/PresetManager.cpp:159
+msgid "Error writing preset file"
+msgstr ""
+
+#: Source/gui/TabPreferences.cpp:171
+msgid ""
+"FIG1: Generation of a sound field as simulated in a virtual environment at a "
+"given listener position by a virtual coincidence microphone array with the "
+"outlined directivity pattern"
+msgstr ""
+"FIG1 : Génération d'un champ sonore tel que simulé dans un environnement "
+"virtuel à une position d'écoute donnée, par coincidence virtuelle d'une "
+"série de microphones dont il est illustré le motif de directivité"
+
+#: Source/gui/TabAbout.cpp:44
+msgid ""
+"FIG2: Me at the \"Social Event\" of the 35th Int. AES conference (\"Audio "
+"for Games\"). Please note how extraordinary good the colors of the various "
+"image components match the color theme of this plugin!\n"
+msgstr ""
+"FIG2 : Moi à l'\"Événement Social\" de la 35è conférence AES Int. (\"Audio "
+"for Games\"). Veuillez remarquer comme les composantes de couleur de cette "
+"image correspondent remarquablement bien au thème de couleurs de ce greffon !"
+
+#: Source/gui/TabPreferences.cpp:38
+msgid "Help"
+msgstr "Aide"
+
+#: Source/gui/TabPreferences.cpp:284 Source/gui/TabPreferences.cpp:307
+#: Source/gui/TabPreferences.cpp:361
+msgid "HybridReverb2 needs to be restarted to make your changes effective."
+msgstr ""
+"HybridReverb2 doit être redémarré afin de rendre les changements effectifs."
+
+#: Source/gui/DownloadDbComponent.cpp:62 Source/gui/DownloadDbComponent.cpp:66
+msgid "HybridReverb2_large_database.zip"
+msgstr ""
+
+#: Source/gui/TabMain.cpp:142
+msgid "Impulse Response"
+msgstr "Réponse Impulsionnelle"
+
+#: Source/gui/TabPreferences.cpp:283 Source/gui/TabPreferences.cpp:306
+#: Source/gui/TabPreferences.cpp:360
+msgid "Info"
+msgstr "Info"
+
+#: Source/gui/TabMain.cpp:158
+msgid "Initial Gap"
+msgstr "Intervalle Initial"
+
+#: Source/gui/DownloadDbComponent.cpp:104
+msgid "Install the file:"
+msgstr "Installer le fichier :"
+
+#: Source/MasterAndCommander.cpp:70
+msgid "Invalid preset file. Please choose another file to open..."
+msgstr ""
+"Fichier de préréglages invalide. Veuillez choisir un autre fichier à "
+"ouvrir..."
+
+#: Source/gui/TabPreferences.cpp:93
+msgid "Latency:"
+msgstr "Latence :"
+
+#: Source/gui/TabMain.cpp:179
+msgid "Length"
+msgstr "Durée"
+
+#: Source/gui/DownloadDbComponent.cpp:46
+msgid "Load database file..."
+msgstr "Charger fichier de données..."
+
+#: Source/gui/TabPreferences.cpp:86
+msgid "Lowest Mean Processing Load"
+msgstr "Charge de Calcul à Moindre Moyenne"
+
+#: Source/gui/EditorComponent.cpp:47
+msgid "Main"
+msgstr "Général"
+
+#: Source/gui/TabMain.cpp:47
+msgid "Main Controls"
+msgstr "Contrôles Principaux"
+
+#: Source/gui/TabMain.cpp:260
+msgid "Master Gain"
+msgstr "Gain Global"
+
+#: Source/gui/TabModulation.cpp:38
+msgid "Modulation Configuration"
+msgstr "Configuration de la Modulation"
+
+#: Source/gui/TabPresetEditor.cpp:66 Source/gui/TabMain.cpp:41
+msgid "Notes"
+msgstr "Notes"
+
+#: Source/gui/TabPresetEditor.cpp:341
+msgid "Open..."
+msgstr "Ouvrir..."
+
+#: Source/gui/Editor.cpp:74
+msgid "Please choose a file to load..."
+msgstr "Veuillez choisir un fichier à charger..."
+
+#: Source/gui/TabMain.cpp:200
+msgid "Pre-Delay"
+msgstr "Délai Amont"
+
+#: Source/gui/EditorComponent.cpp:73
+msgid "Preferences"
+msgstr "Préferences"
+
+#: Source/gui/EditorComponent.cpp:67
+msgid "Preset Editor"
+msgstr "Éditeur de Préréglages"
+
+#: Source/gui/TabPreferences.cpp:44
+msgid "Preset File:"
+msgstr "Fichier de Préréglage :"
+
+#: Source/gui/TabPresetEditor.cpp:42
+msgid "Preset Selection"
+msgstr "Sélection du Préréglage"
+
+#: Source/gui/TabMain.cpp:67
+msgid "Preset Selector"
+msgstr "Sélecteur de Préréglage"
+
+#: Source/gui/TabPresetEditor.cpp:320
+msgid "Save"
+msgstr "Enregistrer"
+
+#: Source/gui/TabPresetEditor.cpp:327
+msgid "Save as..."
+msgstr "Enregistrer sous..."
+
+#: Source/gui/TabPreferences.cpp:68
+msgid "Segmentation Strategy"
+msgstr "Stratégie de Segmentation"
+
+#: Source/gui/DownloadDbComponent.cpp:39
+msgid "Setup Preset Database"
+msgstr "Installer la Base de Données de Préréglages"
+
+#: Source/gui/TabTimbre.cpp:62
+msgid "Smoothing Factor:"
+msgstr "Taux de Lissage :"
+
+#: Source/gui/TabPresetEditor.cpp:72
+msgid "Tag:"
+msgstr "Désignation :"
+
+#: Source/gui/DownloadDbComponent.cpp:157
+msgid ""
+"These room impulse responses for HybridReverb2 are property of the Institute "
+"of Communication Acoustics, Ruhr Universität Bochum, Germany."
+msgstr ""
+"Ces réponses impulsionnelles de salles pour HybridReverb2 sont la propriété "
+"de l'Institut d'Acoustique de Communication, Ruhr Universität Bochum, "
+"Allemagne."
+
+#: Source/gui/DownloadDbComponent.cpp:123
+msgid ""
+"They are free for non-commercial use.\n"
+"For commercial use, please contact:"
+msgstr ""
+"Elles sont gratuites pour un usage non-commercial.\n"
+"Pour usage commercial, veuillez contacter :"
+
+#: Source/gui/DownloadDbComponent.cpp:143
+msgid "They were generated with the \"tinyAVE\" software."
+msgstr "Elles ont été générées par le logiciel \"tinyAVE\"."
+
+#: Source/gui/DownloadDbComponent.cpp:52
+msgid "This software must install some impulse responses to continue."
+msgstr ""
+"Ce logiciel nécessite l'installation de réponses impulsionnelles pour "
+"continuer."
+
+#: Source/gui/EditorComponent.cpp:61
+msgid "Timbre"
+msgstr "Timbre"
+
+#: Source/gui/TabPreferences.cpp:76
+msgid "Uniform Processing Load"
+msgstr "Charge de Calcul Uniforme"
+
+#: Source/gui/TabPresetEditor.cpp:127
+msgid "Wavefile: L->L"
+msgstr "Fichier Wave : L->L"
+
+#: Source/gui/TabPresetEditor.cpp:138
+msgid "Wavefile: L->R"
+msgstr "Fichier Wave : L->R"
+
+#: Source/gui/TabPresetEditor.cpp:149
+msgid "Wavefile: R->L"
+msgstr "Fichier Wave : R->L"
+
+#: Source/gui/TabPresetEditor.cpp:160
+msgid "Wavefile: R->R"
+msgstr "Fichier Wave : R->R"
+
+#: Source/gui/TabMain.cpp:249
+msgid "Wet Gain"
+msgstr "Gain Traitement"
+
+#: Source/gui/TabTimbre.cpp:41
+msgid "Wet Timbre"
+msgstr "Timbre du Signal Traité"
+
+#: Source/gui/TabPreferences.cpp:56
+msgid "XML formatted preset file"
+msgstr "Fichier de préréglage en format XML"
+
+#: Source/gui/TabMain.cpp:91
+msgid "channels: front"
+msgstr ""
+
+#: Source/gui/IRPlot.cpp:114 Source/gui/TabMain.cpp:356
+#: Source/gui/TabMain.cpp:359 Source/gui/TabMain.cpp:362
+#: Source/gui/TabMain.cpp:365 Source/gui/TabMain.cpp:368
+#: Source/gui/TabMain.cpp:371 Source/gui/TabMain.cpp:374
+msgid "dB"
+msgstr "dB"
+
+#: Source/gui/TabMain.cpp:124
+msgid "distance: 1m"
+msgstr ""
+
+#: Source/gui/TabPreferences.cpp:164
+msgid "file chooser"
+msgstr ""
+
+#: Source/gui/DownloadDbComponent.cpp:114
+#: Source/gui/DownloadDbComponent.cpp:117
+#: Source/gui/DownloadDbComponent.cpp:118
+msgid "http://www.ruhr-uni-bochum.de/ika/"
+msgstr ""
+
+#: Source/gui/DownloadDbComponent.cpp:65
+msgid ""
+"http://www2.ika.ruhr-uni-bochum.de/HybridReverb2/"
+"HybridReverb2_large_database.zip"
+msgstr ""
+
+#: Source/gui/TabPreferences.cpp:105
+msgid "latency selection"
+msgstr "sélection de la latence"
+
+#: Source/gui/TabPreferences.cpp:85
+msgid "lowest overall processing load with load peaks"
+msgstr "charge de calcul globalement la plus basse, avec pics éventuels"
+
+#: Source/gui/DownloadDbComponent.cpp:137
+msgid "mailto:rainer.martin@ruhr-uni-bochum.de"
+msgstr ""
+
+#. [UserPreSize]
+#: Source/gui/IRPlot.cpp:128 Source/gui/IRPlot.cpp:131
+#: Source/gui/IRPlot.cpp:197 Source/gui/TabMain.cpp:347
+#: Source/gui/TabMain.cpp:353
+msgid "ms"
+msgstr "ms"
+
+#: Source/gui/TabPresetEditor.cpp:566 Source/gui/TabPresetEditor.cpp:567
+#: Source/gui/TabPresetEditor.cpp:568 Source/gui/TabPresetEditor.cpp:569
+msgid "new category"
+msgstr ""
+
+#: Source/gui/TabPresetEditor.cpp:565
+msgid "new preset"
+msgstr ""
+
+#: Source/HybridReverb2Processor.cpp:109
+msgid "preset nr."
+msgstr ""
+
+#: Source/gui/TabMain.cpp:113
+msgid "purpose: music"
+msgstr ""
+
+#: Source/gui/DownloadDbComponent.cpp:134
+#: Source/gui/DownloadDbComponent.cpp:138
+msgid "rainer.martin@ruhr-uni-bochum.de"
+msgstr ""
+
+#: Source/gui/TabMain.cpp:102
+msgid "room: large concert hall"
+msgstr ""
+
+#: Source/gui/IRPlot.cpp:191 Source/gui/TabMain.cpp:350
+msgid "s"
+msgstr "s"
+
+#: Source/gui/TabPreferences.cpp:75
+msgid "slightly higher, but constant processing load"
+msgstr "charge de calcul légèrement plus élevée, mais constante"
+
+#: Source/gui/Editor.cpp:161
+msgid "the database did not contain valid preset data."
+msgstr "la base de données ne contient pas de préréglage valide."

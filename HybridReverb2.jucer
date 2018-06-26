@@ -9,6 +9,11 @@
               bundleIdentifier="de.rub.ika.borss" defines="NO_OMP" includeBinaryInJuceHeader="0"
               maxBinaryFileSize="10485760">
   <MAINGROUP id="XTukN1" name="HybridReverb2">
+    <GROUP id="{FEC4EED5-67C9-4FDE-AD66-308AED96CDBA}" name="I18n">
+      <GROUP id="{ADA8F650-A883-F5D0-1155-8C7C6BEAE057}" name="release">
+        <FILE id="woofVT" name="I18nResource_fr" compile="0" resource="1" file="I18n/release/I18nResource_fr"/>
+      </GROUP>
+    </GROUP>
     <GROUP id="{4CD1814B-E97C-B0DF-8D84-59A8C4FC9DC8}" name="Config">
       <FILE id="zgJ2Cw" name="partition_wisdom.xml" compile="0" resource="1"
             file="Config/partition_wisdom.xml"/>

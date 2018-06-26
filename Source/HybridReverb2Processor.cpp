@@ -32,6 +32,7 @@
 AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
     std::shared_ptr<SystemConfig> systemConfig(new SystemConfig);
+    systemConfig->setupLanguage();
     return new HybridReverb2Processor(systemConfig);
 }
 

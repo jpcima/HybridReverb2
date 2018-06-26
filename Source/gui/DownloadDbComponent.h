@@ -64,7 +64,7 @@ private:
     std::unique_ptr<TextButton> btnLoadFile;
     std::unique_ptr<Label> label;
     std::unique_ptr<HyperlinkButton> hyperlinkButton;
-    std::unique_ptr<Label> label2;
+    std::unique_ptr<Label> propertyLabel;
     std::unique_ptr<Label> label3;
     std::unique_ptr<Label> label4;
     std::unique_ptr<Label> label5;

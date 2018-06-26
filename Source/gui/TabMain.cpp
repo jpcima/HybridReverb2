@@ -163,7 +163,7 @@ TabMain::TabMain (MasterAndCommander *m)
     labelInitialGap->setColour (TextEditor::textColourId, Colours::black);
     labelInitialGap->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
-    labelInitialGap->setBounds (24, 344, 80, 24);
+    labelInitialGap->setBounds (16, 344, 96, 24);
 
     sliderLength.reset (new Slider ("new slider"));
     addAndMakeVisible (sliderLength.get());
@@ -184,7 +184,7 @@ TabMain::TabMain (MasterAndCommander *m)
     labelLength->setColour (TextEditor::textColourId, Colours::black);
     labelLength->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
-    labelLength->setBounds (128, 344, 80, 24);
+    labelLength->setBounds (120, 344, 96, 24);
 
     sliderPreDelay.reset (new Slider ("new slider"));
     addAndMakeVisible (sliderPreDelay.get());
@@ -205,7 +205,7 @@ TabMain::TabMain (MasterAndCommander *m)
     labelPreDelay->setColour (TextEditor::textColourId, Colours::black);
     labelPreDelay->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
-    labelPreDelay->setBounds (232, 344, 80, 24);
+    labelPreDelay->setBounds (224, 344, 96, 24);
 
     sliderDryGain.reset (new Slider ("new slider"));
     addAndMakeVisible (sliderDryGain.get());
@@ -225,7 +225,7 @@ TabMain::TabMain (MasterAndCommander *m)
     labelDryGain->setColour (TextEditor::textColourId, Colours::black);
     labelDryGain->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
-    labelDryGain->setBounds (32, 472, 72, 24);
+    labelDryGain->setBounds (16, 472, 96, 24);
 
     sliderWetGain.reset (new Slider ("new slider"));
     addAndMakeVisible (sliderWetGain.get());
@@ -254,7 +254,7 @@ TabMain::TabMain (MasterAndCommander *m)
     labelWetGain->setColour (TextEditor::textColourId, Colours::black);
     labelWetGain->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
-    labelWetGain->setBounds (128, 472, 80, 24);
+    labelWetGain->setBounds (120, 472, 96, 24);
 
     labelMasterGain.reset (new Label ("new label",
                                       TRANS("Master Gain")));
@@ -265,7 +265,7 @@ TabMain::TabMain (MasterAndCommander *m)
     labelMasterGain->setColour (TextEditor::textColourId, Colours::black);
     labelMasterGain->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
-    labelMasterGain->setBounds (232, 472, 80, 24);
+    labelMasterGain->setBounds (224, 472, 96, 24);
 
     sliderPresetIncDec.reset (new Slider ("new slider"));
     addAndMakeVisible (sliderPresetIncDec.get());
@@ -869,7 +869,7 @@ BEGIN_JUCER_METADATA
           textBoxWidth="72" textBoxHeight="20" skewFactor="1.00000000000000000000"
           needsCallback="1"/>
   <LABEL name="new label" id="5798d3217c731b41" memberName="labelInitialGap"
-         virtualName="" explicitFocusOrder="0" pos="24 344 80 24" edTextCol="ff000000"
+         virtualName="" explicitFocusOrder="0" pos="16 344 96 24" edTextCol="ff000000"
          edBkgCol="0" labelText="Initial Gap" editableSingleClick="0"
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
          fontsize="15.00000000000000000000" kerning="0.00000000000000000000"
@@ -881,7 +881,7 @@ BEGIN_JUCER_METADATA
           textBoxWidth="72" textBoxHeight="20" skewFactor="1.00000000000000000000"
           needsCallback="1"/>
   <LABEL name="new label" id="f3c2b7440b347a61" memberName="labelLength"
-         virtualName="" explicitFocusOrder="0" pos="128 344 80 24" edTextCol="ff000000"
+         virtualName="" explicitFocusOrder="0" pos="120 344 96 24" edTextCol="ff000000"
          edBkgCol="0" labelText="Length" editableSingleClick="0" editableDoubleClick="0"
          focusDiscardsChanges="0" fontname="Default font" fontsize="15.00000000000000000000"
          kerning="0.00000000000000000000" bold="0" italic="0" justification="36"/>
@@ -892,7 +892,7 @@ BEGIN_JUCER_METADATA
           textBoxEditable="1" textBoxWidth="72" textBoxHeight="20" skewFactor="1.00000000000000000000"
           needsCallback="1"/>
   <LABEL name="new label" id="c38c84e89303b7bb" memberName="labelPreDelay"
-         virtualName="" explicitFocusOrder="0" pos="232 344 80 24" edTextCol="ff000000"
+         virtualName="" explicitFocusOrder="0" pos="224 344 96 24" edTextCol="ff000000"
          edBkgCol="0" labelText="Pre-Delay" editableSingleClick="0" editableDoubleClick="0"
          focusDiscardsChanges="0" fontname="Default font" fontsize="15.00000000000000000000"
          kerning="0.00000000000000000000" bold="0" italic="0" justification="36"/>
@@ -902,7 +902,7 @@ BEGIN_JUCER_METADATA
           textBoxPos="TextBoxAbove" textBoxEditable="1" textBoxWidth="72"
           textBoxHeight="20" skewFactor="1.00000000000000000000" needsCallback="1"/>
   <LABEL name="new label" id="62ee2c982a920e38" memberName="labelDryGain"
-         virtualName="" explicitFocusOrder="0" pos="32 472 72 24" edTextCol="ff000000"
+         virtualName="" explicitFocusOrder="0" pos="16 472 96 24" edTextCol="ff000000"
          edBkgCol="0" labelText="Dry Gain" editableSingleClick="0" editableDoubleClick="0"
          focusDiscardsChanges="0" fontname="Default font" fontsize="15.00000000000000000000"
          kerning="0.00000000000000000000" bold="0" italic="0" justification="36"/>
@@ -917,12 +917,12 @@ BEGIN_JUCER_METADATA
           textBoxPos="TextBoxAbove" textBoxEditable="1" textBoxWidth="72"
           textBoxHeight="20" skewFactor="1.00000000000000000000" needsCallback="1"/>
   <LABEL name="new label" id="578ba82700669d32" memberName="labelWetGain"
-         virtualName="" explicitFocusOrder="0" pos="128 472 80 24" edTextCol="ff000000"
+         virtualName="" explicitFocusOrder="0" pos="120 472 96 24" edTextCol="ff000000"
          edBkgCol="0" labelText="Wet Gain" editableSingleClick="0" editableDoubleClick="0"
          focusDiscardsChanges="0" fontname="Default font" fontsize="15.00000000000000000000"
          kerning="0.00000000000000000000" bold="0" italic="0" justification="36"/>
   <LABEL name="new label" id="49662ce77eee2baf" memberName="labelMasterGain"
-         virtualName="" explicitFocusOrder="0" pos="232 472 80 24" edTextCol="ff000000"
+         virtualName="" explicitFocusOrder="0" pos="224 472 96 24" edTextCol="ff000000"
          edBkgCol="0" labelText="Master Gain" editableSingleClick="0"
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
          fontsize="15.00000000000000000000" kerning="0.00000000000000000000"

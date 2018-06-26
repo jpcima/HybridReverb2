@@ -77,7 +77,7 @@ TabPresetEditor::TabPresetEditor (MasterAndCommander *m)
     label->setColour (TextEditor::textColourId, Colours::black);
     label->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
-    label->setBounds (296, 16, 104, 20);
+    label->setBounds (296, 16, 144, 20);
 
     label2.reset (new Label ("new label",
                              TRANS("Category 1:")));
@@ -88,7 +88,7 @@ TabPresetEditor::TabPresetEditor (MasterAndCommander *m)
     label2->setColour (TextEditor::textColourId, Colours::black);
     label2->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
-    label2->setBounds (296, 40, 104, 20);
+    label2->setBounds (296, 40, 144, 20);
 
     label3.reset (new Label ("new label",
                              TRANS("Category 2:")));
@@ -99,7 +99,7 @@ TabPresetEditor::TabPresetEditor (MasterAndCommander *m)
     label3->setColour (TextEditor::textColourId, Colours::black);
     label3->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
-    label3->setBounds (296, 64, 104, 20);
+    label3->setBounds (296, 64, 144, 20);
 
     label4.reset (new Label ("new label",
                              TRANS("Category 3:")));
@@ -110,7 +110,7 @@ TabPresetEditor::TabPresetEditor (MasterAndCommander *m)
     label4->setColour (TextEditor::textColourId, Colours::black);
     label4->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
-    label4->setBounds (296, 88, 104, 20);
+    label4->setBounds (296, 88, 144, 20);
 
     label5.reset (new Label ("new label",
                              TRANS("Category 4:")));
@@ -121,7 +121,7 @@ TabPresetEditor::TabPresetEditor (MasterAndCommander *m)
     label5->setColour (TextEditor::textColourId, Colours::black);
     label5->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
-    label5->setBounds (296, 112, 104, 20);
+    label5->setBounds (296, 112, 144, 20);
 
     label6.reset (new Label ("new label",
                              TRANS("Wavefile: L->L")));
@@ -132,7 +132,7 @@ TabPresetEditor::TabPresetEditor (MasterAndCommander *m)
     label6->setColour (TextEditor::textColourId, Colours::black);
     label6->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
-    label6->setBounds (296, 136, 104, 20);
+    label6->setBounds (296, 136, 144, 20);
 
     label7.reset (new Label ("new label",
                              TRANS("Wavefile: L->R")));
@@ -143,7 +143,7 @@ TabPresetEditor::TabPresetEditor (MasterAndCommander *m)
     label7->setColour (TextEditor::textColourId, Colours::black);
     label7->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
-    label7->setBounds (296, 160, 104, 20);
+    label7->setBounds (296, 160, 144, 20);
 
     label8.reset (new Label ("new label",
                              TRANS("Wavefile: R->L")));
@@ -154,7 +154,7 @@ TabPresetEditor::TabPresetEditor (MasterAndCommander *m)
     label8->setColour (TextEditor::textColourId, Colours::black);
     label8->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
-    label8->setBounds (296, 184, 104, 20);
+    label8->setBounds (296, 184, 144, 20);
 
     label9.reset (new Label ("new label",
                              TRANS("Wavefile: R->R")));
@@ -165,7 +165,7 @@ TabPresetEditor::TabPresetEditor (MasterAndCommander *m)
     label9->setColour (TextEditor::textColourId, Colours::black);
     label9->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
-    label9->setBounds (296, 208, 104, 20);
+    label9->setBounds (296, 208, 144, 20);
 
     textButtonChooserLL.reset (new TextButton ("new button"));
     addAndMakeVisible (textButtonChooserLL.get());
@@ -184,7 +184,7 @@ TabPresetEditor::TabPresetEditor (MasterAndCommander *m)
     textEditorFileLL->setPopupMenuEnabled (true);
     textEditorFileLL->setText (String());
 
-    textEditorFileLL->setBounds (400, 136, 380, 20);
+    textEditorFileLL->setBounds (440, 136, 340, 20);
 
     textEditorFileLR.reset (new TextEditor ("textEditorFileLR"));
     addAndMakeVisible (textEditorFileLR.get());
@@ -196,7 +196,7 @@ TabPresetEditor::TabPresetEditor (MasterAndCommander *m)
     textEditorFileLR->setPopupMenuEnabled (true);
     textEditorFileLR->setText (String());
 
-    textEditorFileLR->setBounds (400, 160, 380, 20);
+    textEditorFileLR->setBounds (440, 160, 340, 20);
 
     textEditorFileRL.reset (new TextEditor ("textEditorFileRL"));
     addAndMakeVisible (textEditorFileRL.get());
@@ -208,7 +208,7 @@ TabPresetEditor::TabPresetEditor (MasterAndCommander *m)
     textEditorFileRL->setPopupMenuEnabled (true);
     textEditorFileRL->setText (String());
 
-    textEditorFileRL->setBounds (400, 184, 380, 20);
+    textEditorFileRL->setBounds (440, 184, 340, 20);
 
     textEditorFileRR.reset (new TextEditor ("textEditorFileRR"));
     addAndMakeVisible (textEditorFileRR.get());
@@ -220,7 +220,7 @@ TabPresetEditor::TabPresetEditor (MasterAndCommander *m)
     textEditorFileRR->setPopupMenuEnabled (true);
     textEditorFileRR->setText (String());
 
-    textEditorFileRR->setBounds (400, 208, 380, 20);
+    textEditorFileRR->setBounds (440, 208, 340, 20);
 
     textButtonChooserLR.reset (new TextButton ("new button"));
     addAndMakeVisible (textButtonChooserLR.get());
@@ -265,7 +265,7 @@ TabPresetEditor::TabPresetEditor (MasterAndCommander *m)
     textEditorTag->setPopupMenuEnabled (true);
     textEditorTag->setText (String());
 
-    textEditorTag->setBounds (400, 16, 190, 20);
+    textEditorTag->setBounds (440, 16, 190, 20);
 
     textEditorCat1.reset (new TextEditor ("textEditorCat1"));
     addAndMakeVisible (textEditorCat1.get());
@@ -277,7 +277,7 @@ TabPresetEditor::TabPresetEditor (MasterAndCommander *m)
     textEditorCat1->setPopupMenuEnabled (true);
     textEditorCat1->setText (String());
 
-    textEditorCat1->setBounds (400, 40, 380, 20);
+    textEditorCat1->setBounds (440, 40, 340, 20);
 
     textEditorCat2.reset (new TextEditor ("textEditorCat2"));
     addAndMakeVisible (textEditorCat2.get());
@@ -289,7 +289,7 @@ TabPresetEditor::TabPresetEditor (MasterAndCommander *m)
     textEditorCat2->setPopupMenuEnabled (true);
     textEditorCat2->setText (String());
 
-    textEditorCat2->setBounds (400, 64, 380, 20);
+    textEditorCat2->setBounds (440, 64, 340, 20);
 
     textEditorCat3.reset (new TextEditor ("textEditorCat3"));
     addAndMakeVisible (textEditorCat3.get());
@@ -301,7 +301,7 @@ TabPresetEditor::TabPresetEditor (MasterAndCommander *m)
     textEditorCat3->setPopupMenuEnabled (true);
     textEditorCat3->setText (String());
 
-    textEditorCat3->setBounds (400, 88, 380, 20);
+    textEditorCat3->setBounds (440, 88, 340, 20);
 
     textEditorCat4.reset (new TextEditor ("textEditorCat4"));
     addAndMakeVisible (textEditorCat4.get());
@@ -313,49 +313,49 @@ TabPresetEditor::TabPresetEditor (MasterAndCommander *m)
     textEditorCat4->setPopupMenuEnabled (true);
     textEditorCat4->setText (String());
 
-    textEditorCat4->setBounds (400, 112, 380, 20);
+    textEditorCat4->setBounds (440, 112, 340, 20);
 
     textButtonSave.reset (new TextButton ("new button"));
     addAndMakeVisible (textButtonSave.get());
     textButtonSave->setButtonText (TRANS("Save"));
     textButtonSave->addListener (this);
 
-    textButtonSave->setBounds (512, 472, 94, 32);
+    textButtonSave->setBounds (426, 472, 125, 32);
 
     textButtonSaveAs.reset (new TextButton ("new button"));
     addAndMakeVisible (textButtonSaveAs.get());
     textButtonSaveAs->setButtonText (TRANS("Save as..."));
     textButtonSaveAs->addListener (this);
 
-    textButtonSaveAs->setBounds (616, 472, 94, 32);
+    textButtonSaveAs->setBounds (556, 472, 125, 32);
 
     textButtonApply.reset (new TextButton ("new button"));
     addAndMakeVisible (textButtonApply.get());
     textButtonApply->setButtonText (TRANS("Apply"));
     textButtonApply->addListener (this);
 
-    textButtonApply->setBounds (720, 472, 94, 32);
+    textButtonApply->setBounds (686, 472, 125, 32);
 
     textButtonOpen.reset (new TextButton ("new button"));
     addAndMakeVisible (textButtonOpen.get());
     textButtonOpen->setButtonText (TRANS("Open..."));
     textButtonOpen->addListener (this);
 
-    textButtonOpen->setBounds (408, 472, 94, 32);
+    textButtonOpen->setBounds (296, 472, 125, 32);
 
     textButtonAdd.reset (new TextButton ("new button"));
     addAndMakeVisible (textButtonAdd.get());
     textButtonAdd->setButtonText (TRANS("Add"));
     textButtonAdd->addListener (this);
 
-    textButtonAdd->setBounds (24, 468, 64, 24);
+    textButtonAdd->setBounds (24, 468, 100, 24);
 
     textButtonDelete.reset (new TextButton ("new button"));
     addAndMakeVisible (textButtonDelete.get());
     textButtonDelete->setButtonText (TRANS("Delete"));
     textButtonDelete->addListener (this);
 
-    textButtonDelete->setBounds (100, 468, 64, 24);
+    textButtonDelete->setBounds (140, 468, 100, 24);
 
 
     //[UserPreSize]
@@ -897,54 +897,54 @@ BEGIN_JUCER_METADATA
   <GROUPCOMPONENT name="new group" id="feef6879e095fd42" memberName="groupNotes"
                   virtualName="" explicitFocusOrder="0" pos="296 232 520 232" title="Notes"/>
   <LABEL name="new label" id="2a92bdd8797a5c0c" memberName="label" virtualName=""
-         explicitFocusOrder="0" pos="296 16 104 20" edTextCol="ff000000"
+         explicitFocusOrder="0" pos="296 16 144 20" edTextCol="ff000000"
          edBkgCol="0" labelText="Tag:" editableSingleClick="0" editableDoubleClick="0"
          focusDiscardsChanges="0" fontname="Default font" fontsize="15.00000000000000000000"
          kerning="0.00000000000000000000" bold="0" italic="0" justification="33"/>
   <LABEL name="new label" id="d60f95ae51be6fc9" memberName="label2" virtualName=""
-         explicitFocusOrder="0" pos="296 40 104 20" edTextCol="ff000000"
+         explicitFocusOrder="0" pos="296 40 144 20" edTextCol="ff000000"
          edBkgCol="0" labelText="Category 1:" editableSingleClick="0"
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
          fontsize="15.00000000000000000000" kerning="0.00000000000000000000"
          bold="0" italic="0" justification="33"/>
   <LABEL name="new label" id="da0065a01bd61087" memberName="label3" virtualName=""
-         explicitFocusOrder="0" pos="296 64 104 20" edTextCol="ff000000"
+         explicitFocusOrder="0" pos="296 64 144 20" edTextCol="ff000000"
          edBkgCol="0" labelText="Category 2:" editableSingleClick="0"
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
          fontsize="15.00000000000000000000" kerning="0.00000000000000000000"
          bold="0" italic="0" justification="33"/>
   <LABEL name="new label" id="5e4e7210d6b88d44" memberName="label4" virtualName=""
-         explicitFocusOrder="0" pos="296 88 104 20" edTextCol="ff000000"
+         explicitFocusOrder="0" pos="296 88 144 20" edTextCol="ff000000"
          edBkgCol="0" labelText="Category 3:" editableSingleClick="0"
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
          fontsize="15.00000000000000000000" kerning="0.00000000000000000000"
          bold="0" italic="0" justification="33"/>
   <LABEL name="new label" id="89087cb7602b5cf1" memberName="label5" virtualName=""
-         explicitFocusOrder="0" pos="296 112 104 20" edTextCol="ff000000"
+         explicitFocusOrder="0" pos="296 112 144 20" edTextCol="ff000000"
          edBkgCol="0" labelText="Category 4:" editableSingleClick="0"
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
          fontsize="15.00000000000000000000" kerning="0.00000000000000000000"
          bold="0" italic="0" justification="33"/>
   <LABEL name="new label" id="474b7e931bda8352" memberName="label6" virtualName=""
-         explicitFocusOrder="0" pos="296 136 104 20" edTextCol="ff000000"
+         explicitFocusOrder="0" pos="296 136 144 20" edTextCol="ff000000"
          edBkgCol="0" labelText="Wavefile: L-&gt;L" editableSingleClick="0"
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
          fontsize="15.00000000000000000000" kerning="0.00000000000000000000"
          bold="0" italic="0" justification="33"/>
   <LABEL name="new label" id="63a88d206c97e029" memberName="label7" virtualName=""
-         explicitFocusOrder="0" pos="296 160 104 20" edTextCol="ff000000"
+         explicitFocusOrder="0" pos="296 160 144 20" edTextCol="ff000000"
          edBkgCol="0" labelText="Wavefile: L-&gt;R" editableSingleClick="0"
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
          fontsize="15.00000000000000000000" kerning="0.00000000000000000000"
          bold="0" italic="0" justification="33"/>
   <LABEL name="new label" id="63e75ec5961dcc92" memberName="label8" virtualName=""
-         explicitFocusOrder="0" pos="296 184 104 20" edTextCol="ff000000"
+         explicitFocusOrder="0" pos="296 184 144 20" edTextCol="ff000000"
          edBkgCol="0" labelText="Wavefile: R-&gt;L" editableSingleClick="0"
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
          fontsize="15.00000000000000000000" kerning="0.00000000000000000000"
          bold="0" italic="0" justification="33"/>
   <LABEL name="new label" id="220822917c93aab0" memberName="label9" virtualName=""
-         explicitFocusOrder="0" pos="296 208 104 20" edTextCol="ff000000"
+         explicitFocusOrder="0" pos="296 208 144 20" edTextCol="ff000000"
          edBkgCol="0" labelText="Wavefile: R-&gt;R" editableSingleClick="0"
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
          fontsize="15.00000000000000000000" kerning="0.00000000000000000000"
@@ -953,19 +953,19 @@ BEGIN_JUCER_METADATA
               virtualName="" explicitFocusOrder="0" pos="784 136 30 20" buttonText="..."
               connectedEdges="0" needsCallback="1" radioGroupId="0"/>
   <TEXTEDITOR name="textEditorFileLL" id="46c2d54dbfae1739" memberName="textEditorFileLL"
-              virtualName="" explicitFocusOrder="0" pos="400 136 380 20" initialText=""
+              virtualName="" explicitFocusOrder="0" pos="440 136 340 20" initialText=""
               multiline="0" retKeyStartsLine="0" readonly="0" scrollbars="1"
               caret="1" popupmenu="1"/>
   <TEXTEDITOR name="textEditorFileLR" id="f707b69bdbfdd0b9" memberName="textEditorFileLR"
-              virtualName="" explicitFocusOrder="0" pos="400 160 380 20" initialText=""
+              virtualName="" explicitFocusOrder="0" pos="440 160 340 20" initialText=""
               multiline="0" retKeyStartsLine="0" readonly="0" scrollbars="1"
               caret="1" popupmenu="1"/>
   <TEXTEDITOR name="textEditorFileRL" id="b6400ded9229175" memberName="textEditorFileRL"
-              virtualName="" explicitFocusOrder="0" pos="400 184 380 20" initialText=""
+              virtualName="" explicitFocusOrder="0" pos="440 184 340 20" initialText=""
               multiline="0" retKeyStartsLine="0" readonly="0" scrollbars="1"
               caret="1" popupmenu="1"/>
   <TEXTEDITOR name="textEditorFileRR" id="17bae52fab2672ad" memberName="textEditorFileRR"
-              virtualName="" explicitFocusOrder="0" pos="400 208 380 20" initialText=""
+              virtualName="" explicitFocusOrder="0" pos="440 208 340 20" initialText=""
               multiline="0" retKeyStartsLine="0" readonly="0" scrollbars="1"
               caret="1" popupmenu="1"/>
   <TEXTBUTTON name="new button" id="5e63fc03d289e661" memberName="textButtonChooserLR"
@@ -982,42 +982,42 @@ BEGIN_JUCER_METADATA
               multiline="1" retKeyStartsLine="1" readonly="0" scrollbars="1"
               caret="1" popupmenu="1"/>
   <TEXTEDITOR name="textEditorTag" id="27591352b6e79c34" memberName="textEditorTag"
-              virtualName="" explicitFocusOrder="0" pos="400 16 190 20" initialText=""
+              virtualName="" explicitFocusOrder="0" pos="440 16 190 20" initialText=""
               multiline="0" retKeyStartsLine="0" readonly="0" scrollbars="1"
               caret="1" popupmenu="1"/>
   <TEXTEDITOR name="textEditorCat1" id="eb6538ed8c693c7f" memberName="textEditorCat1"
-              virtualName="" explicitFocusOrder="0" pos="400 40 380 20" initialText=""
+              virtualName="" explicitFocusOrder="0" pos="440 40 340 20" initialText=""
               multiline="0" retKeyStartsLine="0" readonly="0" scrollbars="1"
               caret="1" popupmenu="1"/>
   <TEXTEDITOR name="textEditorCat2" id="4a356d146f0932bd" memberName="textEditorCat2"
-              virtualName="" explicitFocusOrder="0" pos="400 64 380 20" initialText=""
+              virtualName="" explicitFocusOrder="0" pos="440 64 340 20" initialText=""
               multiline="0" retKeyStartsLine="0" readonly="0" scrollbars="1"
               caret="1" popupmenu="1"/>
   <TEXTEDITOR name="textEditorCat3" id="da136f3e3d107a28" memberName="textEditorCat3"
-              virtualName="" explicitFocusOrder="0" pos="400 88 380 20" initialText=""
+              virtualName="" explicitFocusOrder="0" pos="440 88 340 20" initialText=""
               multiline="0" retKeyStartsLine="0" readonly="0" scrollbars="1"
               caret="1" popupmenu="1"/>
   <TEXTEDITOR name="textEditorCat4" id="f10d7c42ed179cbd" memberName="textEditorCat4"
-              virtualName="" explicitFocusOrder="0" pos="400 112 380 20" initialText=""
+              virtualName="" explicitFocusOrder="0" pos="440 112 340 20" initialText=""
               multiline="0" retKeyStartsLine="0" readonly="0" scrollbars="1"
               caret="1" popupmenu="1"/>
   <TEXTBUTTON name="new button" id="6a7feedb9b89f7ad" memberName="textButtonSave"
-              virtualName="" explicitFocusOrder="0" pos="512 472 94 32" buttonText="Save"
+              virtualName="" explicitFocusOrder="0" pos="426 472 125 32" buttonText="Save"
               connectedEdges="0" needsCallback="1" radioGroupId="0"/>
   <TEXTBUTTON name="new button" id="f91685d349299ec3" memberName="textButtonSaveAs"
-              virtualName="" explicitFocusOrder="0" pos="616 472 94 32" buttonText="Save as..."
+              virtualName="" explicitFocusOrder="0" pos="556 472 125 32" buttonText="Save as..."
               connectedEdges="0" needsCallback="1" radioGroupId="0"/>
   <TEXTBUTTON name="new button" id="98eaa2308e3dff56" memberName="textButtonApply"
-              virtualName="" explicitFocusOrder="0" pos="720 472 94 32" buttonText="Apply"
+              virtualName="" explicitFocusOrder="0" pos="686 472 125 32" buttonText="Apply"
               connectedEdges="0" needsCallback="1" radioGroupId="0"/>
   <TEXTBUTTON name="new button" id="bb782d1bce6654d4" memberName="textButtonOpen"
-              virtualName="" explicitFocusOrder="0" pos="408 472 94 32" buttonText="Open..."
+              virtualName="" explicitFocusOrder="0" pos="296 472 125 32" buttonText="Open..."
               connectedEdges="0" needsCallback="1" radioGroupId="0"/>
   <TEXTBUTTON name="new button" id="a317b7ab8939b36b" memberName="textButtonAdd"
-              virtualName="" explicitFocusOrder="0" pos="24 468 64 24" buttonText="Add"
+              virtualName="" explicitFocusOrder="0" pos="24 468 100 24" buttonText="Add"
               connectedEdges="0" needsCallback="1" radioGroupId="0"/>
   <TEXTBUTTON name="new button" id="d19eab292b14a30a" memberName="textButtonDelete"
-              virtualName="" explicitFocusOrder="0" pos="100 468 64 24" buttonText="Delete"
+              virtualName="" explicitFocusOrder="0" pos="140 468 100 24" buttonText="Delete"
               connectedEdges="0" needsCallback="1" radioGroupId="0"/>
 </JUCER_COMPONENT>
 

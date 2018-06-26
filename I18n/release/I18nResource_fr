@@ -3,7 +3,7 @@
 /* This file is distributed under the same license as the HybridReverb package. */
 /*  <jp-dev@inbox.ru>, 2018. */
 /* */
-"" = "Project-Id-Version: HybridReverb 2\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2018-06-26 14:56+0200\nPO-Revision-Date: 2018-06-26 14:56+0200\nLast-Translator: Automatically generated\nLanguage-Team: none\nLanguage: en_US\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=(n != 1);\n";
+"" = "Project-Id-Version: HybridReverb 2\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2018-06-26 15:37+0200\nPO-Revision-Date: 2018-06-26 15:37+0200\nLast-Translator: Automatically generated\nLanguage-Team: none\nLanguage: en_US\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=(n != 1);\n";
 
 /* File: Source/gui/TabPreferences.cpp:109 */
 "(no choices)" = "(aucun choix)";
@@ -61,13 +61,16 @@
 /* File: Source/gui/EditorComponent.cpp:79 */
 "About" = "À propos";
 
+/* File: Source/gui/TabAbout.cpp:96 */
+"About Me and HybridReverb2:\n\nAs a research associate at the Institute of Communication Acoustics, Ruhr-Universität Bochum, Germany, I'm currently persuing a Dr.-Ing. degree in electrical engineering. I benefited from free and open source software for so many years that I felt that I should give something back to the community. As I'm working in the field of virtual acoustics and spatial audio, writing a room effect plugin kind of suggested itself. I hope you enjoy the sound as much as I do!\n\nBest regards,\nChristian Borß <christian.borss@rub.de>\n\n\nCredits:\n\n- Julian Storer for his JUCE library\n- The development team of the Jucetice project (jost, juced, etc.)\n- Matteo Frigo, Steven G. Johnson, and anybody else who contributed to the FFTW library\n- Prof. Rainer Martin for supporting my research\n- Björn Kapteina for the implementation of the Windows installer\n\n\nReferences:\n\nBorß, C., Martin, R. (2009). \"An Improved Parametric Model for Perception-Based Design of Virtual Acoustics\", AES 35th Int. Conference, London, UK, Feb. 2009.\n\nBorß, C. (2009). \"A Novel Approach for Optimally Matching a Late Reverberation Model to an Image Source Model - Or: What Does a Football Have to Do With Shoebox Shaped Rooms?\", Auralization Symposium of the European Acoustics Association, Espoo, Finland, Jun. 2009.\n\nBorß, C. (2009). \"A VST Reverberation Effect Plugin Based on Synthetic Room Impulse Responses\", 12th Int. Conference on Digital Audio Effects (DAFx-09), Como, Italy, Sep. 2009." = "À propos de Moi et de HybridReverb2:\n\nEn tant qu'associé de recherche à l'Institut d'Acoustique de Communication, Ruhr-Universität Bochum, Allemagne, je passe actuellement un diplôme de Dr.-Ing. en ingénierie de l'électronique. Ayant tiré bénéfice des logiciels libres et ouverts pendant de nombreuses années et j'ai souhaité donner un contribution personnelle à la communauté en retour.Étant donné que je travaille dans le domaine de l'acoustique virtuelle et l'audio spatialisé, l'écriture d'un greffon d'effet était une suggestion évidente. J'espère que vous apprécierez le son autant que moi !\n\nMeilleures salutations,\nChristian Borß <christian.borss@rub.de>\n\n\nAccréditations :\n\n- Julian Storer pour sa bibliothèque JUCE\n- L'équipe de développement du projet Jucetice (jost, juced, etc.)\n- Matteo Frigo, Steven G. Johnson, et toute autre personne ayant contribué à la bibliothèque FFTW\n- Le Prof. Rainer Martin pour son soutien à mon travail de recherche\n- Björn Kapteina pour son implémentation de l'installateur Windows\n\n\nRéférences :\n\nBorß, C., Martin, R. (2009). \"An Improved Parametric Model for Perception-Based Design of Virtual Acoustics\", AES 35th Int. Conference, London, UK, Feb. 2009.\n\nBorß, C. (2009). \"A Novel Approach for Optimally Matching a Late Reverberation Model to an Image Source Model - Or: What Does a Football Have to Do With Shoebox Shaped Rooms?\", Auralization Symposium of the European Acoustics Association, Espoo, Finland, Jun. 2009.\n\nBorß, C. (2009). \"A VST Reverberation Effect Plugin Based on Synthetic Room Impulse Responses\", 12th Int. Conference on Digital Audio Effects (DAFx-09), Como, Italy, Sep. 2009.";
+
 /* File: Source/gui/TabPresetEditor.cpp:348 */
 "Add" = "Ajouter";
 
 /* File: Source/gui/TabPresetEditor.cpp:334 */
 "Apply" = "Appliquer";
 
-/* File: Source/gui/TabAbout.cpp:38 */
+/* File: Source/gui/TabAbout.cpp:39 */
 "Background Information and Credits" = "Informations Générales et Accréditations";
 
 /* File: Source/gui/TabPresetEditor.cpp:83 */
@@ -141,7 +144,7 @@
 /* File: Source/gui/TabPreferences.cpp:157 */
 "FIG1: Generation of a sound field as simulated in a virtual environment at a given listener position by a virtual coincidence microphone array with the outlined directivity pattern" = "FIG1 : Génération d'un champ sonore tel que simulé dans un environnement virtuel à une position d'écoute donnée, par coincidence virtuelle d'une série de microphones dont il est illustré le motif de directivité";
 
-/* File: Source/gui/TabAbout.cpp:44 */
+/* File: Source/gui/TabAbout.cpp:45 */
 "FIG2: Me at the \"Social Event\" of the 35th Int. AES conference (\"Audio for Games\"). Please note how extraordinary good the colors of the various image components match the color theme of this plugin!\n" = "FIG2 : Moi à l'\"Événement Social\" de la 35è conférence AES Int. (\"Audio for Games\"). Veuillez remarquer comme les composantes de couleur de cette image correspondent remarquablement bien au thème de couleurs de ce greffon !";
 
 /* File: Source/gui/TabPreferences.cpp:38 */

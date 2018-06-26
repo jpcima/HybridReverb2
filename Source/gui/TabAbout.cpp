@@ -19,6 +19,7 @@
 
 //[Headers] You can add your own extra header files here...
 #include "../MasterAndCommander.h"
+#include "../I18nTools.h"
 //[/Headers]
 
 #include "TabAbout.h"
@@ -59,56 +60,63 @@ TabAbout::TabAbout (MasterAndCommander *m)
     textEditor->setScrollbarsShown (true);
     textEditor->setCaretVisible (false);
     textEditor->setPopupMenuEnabled (true);
-    textEditor->setText (CharPointer_UTF8 ("\n"
-    "  About Me and HybridReverb2:\n"
+    textEditor->setColour (TextEditor::backgroundColourId, Colour (0x00ffffff));
+    textEditor->setText (CharPointer_UTF8 ("About Me and HybridReverb2:\n"
     "\n"
-    "  As a research associate at the Institute of Communication\n"
-    "  Acoustics, Ruhr-Universit\xc3\xa4t Bochum, Germany, I\'m currently\n"
-    "  persuing a Dr.-Ing. degree in electrical engineering.\n"
-    "  I benefited from free and open source software for so many\n"
-    "  years that I felt that I should give something back to the\n"
-    "  community. As I\'m working in the field of virtual acoustics\n"
-    "  and spatial audio, writing a room effect plugin kind of\n"
-    "  suggested itself. I hope you enjoy the sound as much as I\n"
-    "  do!\n"
+    "As a research associate at the Institute of Communication Acoustics, Ruhr-Universit\xc3\xa4t Bochum, Germany, I\'m currently persuing a Dr.-Ing. degree in electrical engineering. I benefited from free and open source software for so many years that I felt that I should give something back to the community. As I\'m working in the field of virtual acoustics and spatial audio, writing a room effect plugin kind of suggested itself. I hope you enjoy the sound as much as I do!\n"
     "\n"
-    "  Best regards,\n"
-    "  Christian Bor\xc3\x9f <christian.borss@rub.de>\n"
+    "Best regards,\n"
+    "Christian Bor\xc3\x9f <christian.borss@rub.de>\n"
     "\n"
     "\n"
-    "  Credits:\n"
+    "Credits:\n"
     "\n"
-    "  - Julian Storer for his JUCE library\n"
-    "  - The development team of the Jucetice project (jost, juced,\n"
-    "    etc.)\n"
-    "  - Matteo Frigo, Steven G. Johnson, and anybody else who\n"
-    "    contributed to the FFTW library\n"
-    "  - Prof. Rainer Martin for supporting my research\n"
-    "  - Bj\xc3\xb6rn Kapteina for the implementation of the Windows\n"
-    "    installer\n"
+    "- Julian Storer for his JUCE library\n"
+    "- The development team of the Jucetice project (jost, juced, etc.)\n"
+    "- Matteo Frigo, Steven G. Johnson, and anybody else who contributed to the FFTW library\n"
+    "- Prof. Rainer Martin for supporting my research\n"
+    "- Bj\xc3\xb6rn Kapteina for the implementation of the Windows installer\n"
     "\n"
     "\n"
-    "  References:\n"
+    "References:\n"
     "\n"
-    "  Bor\xc3\x9f, C., Martin, R. (2009). \"An Improved Parametric Model\n"
-    "  for Perception-Based Design of Virtual Acoustics\", AES 35th\n"
-    "  Int. Conference, London, UK, Feb. 2009.\n"
+    "Bor\xc3\x9f, C., Martin, R. (2009). \"An Improved Parametric Model for Perception-Based Design of Virtual Acoustics\", AES 35th Int. Conference, London, UK, Feb. 2009.\n"
     "\n"
-    "  Bor\xc3\x9f, C. (2009). \"A Novel Approach for Optimally Matching a\n"
-    "  Late Reverberation Model to an Image Source Model - Or:\n"
-    "  What Does a Football Have to Do With Shoebox Shaped\n"
-    "  Rooms?\", Auralization Symposium of the European Acoustics\n"
-    "  Association, Espoo, Finland, Jun. 2009.\n"
+    "Bor\xc3\x9f, C. (2009). \"A Novel Approach for Optimally Matching a Late Reverberation Model to an Image Source Model - Or: What Does a Football Have to Do With Shoebox Shaped Rooms?\", Auralization Symposium of the European Acoustics Association, Espoo, Finland, Jun. 2009.\n"
     "\n"
-    "  Bor\xc3\x9f, C. (2009). \"A VST Reverberation Effect Plugin Based on\n"
-    "  Synthetic Room Impulse Responses\", 12th Int. Conference\n"
-    "  on Digital Audio Effects (DAFx-09), Como, Italy, Sep. 2009.\n"));
+    "Bor\xc3\x9f, C. (2009). \"A VST Reverberation Effect Plugin Based on Synthetic Room Impulse Responses\", 12th Int. Conference on Digital Audio Effects (DAFx-09), Como, Italy, Sep. 2009."));
 
-    textEditor->setBounds (24, 32, 408, 464);
+    textEditor->setBounds (32, 40, 392, 448);
 
     cachedImage_aes_cb_jpg_1 = ImageCache::getFromMemory (aes_cb_jpg, aes_cb_jpgSize);
 
     //[UserPreSize]
+    textEditor->setText(
+        TRANS_UTF8(
+            "About Me and HybridReverb2:\n"
+            "\n"
+            "As a research associate at the Institute of Communication Acoustics, Ruhr-Universit\xc3\xa4t Bochum, Germany, I\'m currently persuing a Dr.-Ing. degree in electrical engineering. I benefited from free and open source software for so many years that I felt that I should give something back to the community. As I\'m working in the field of virtual acoustics and spatial audio, writing a room effect plugin kind of suggested itself. I hope you enjoy the sound as much as I do!\n"
+            "\n"
+            "Best regards,\n"
+            "Christian Bor\xc3\x9f <christian.borss@rub.de>\n"
+            "\n"
+            "\n"
+            "Credits:\n"
+            "\n"
+            "- Julian Storer for his JUCE library\n"
+            "- The development team of the Jucetice project (jost, juced, etc.)\n"
+            "- Matteo Frigo, Steven G. Johnson, and anybody else who contributed to the FFTW library\n"
+            "- Prof. Rainer Martin for supporting my research\n"
+            "- Bj\xc3\xb6rn Kapteina for the implementation of the Windows installer\n"
+            "\n"
+            "\n"
+            "References:\n"
+            "\n"
+            "Bor\xc3\x9f, C., Martin, R. (2009). \"An Improved Parametric Model for Perception-Based Design of Virtual Acoustics\", AES 35th Int. Conference, London, UK, Feb. 2009.\n"
+            "\n"
+            "Bor\xc3\x9f, C. (2009). \"A Novel Approach for Optimally Matching a Late Reverberation Model to an Image Source Model - Or: What Does a Football Have to Do With Shoebox Shaped Rooms?\", Auralization Symposium of the European Acoustics Association, Espoo, Finland, Jun. 2009.\n"
+            "\n"
+            "Bor\xc3\x9f, C. (2009). \"A VST Reverberation Effect Plugin Based on Synthetic Room Impulse Responses\", 12th Int. Conference on Digital Audio Effects (DAFx-09), Como, Italy, Sep. 2009."));
     //[/UserPreSize]
 
     setSize (828, 548);
@@ -166,6 +174,15 @@ void TabAbout::paint (Graphics& g)
                            false);
     }
 
+    {
+        int x = 24, y = 32, width = 408, height = 464;
+        Colour fillColour = Colours::white;
+        //[UserPaintCustomArguments] Customize the painting arguments here..
+        //[/UserPaintCustomArguments]
+        g.setColour (fillColour);
+        g.fillRect (x, y, width, height);
+    }
+
     //[UserPaint] Add your own custom painting code here..
     //[/UserPaint]
 }
@@ -204,6 +221,7 @@ BEGIN_JUCER_METADATA
           strokeColour="solid: ff808080"/>
     <IMAGE pos="464 16 345 419" resource="aes_cb_jpg" opacity="1.00000000000000000000"
            mode="2"/>
+    <RECT pos="24 32 408 464" fill="solid: ffffffff" hasStroke="0"/>
   </BACKGROUND>
   <GROUPCOMPONENT name="new group" id="57b3760d83423318" memberName="groupComponent"
                   virtualName="" explicitFocusOrder="0" pos="8 8 440 500" title="Background Information and Credits"/>
@@ -215,7 +233,8 @@ BEGIN_JUCER_METADATA
          kerning="0.00000000000000000000" bold="0" italic="1" justification="9"
          typefaceStyle="Italic"/>
   <TEXTEDITOR name="new text editor" id="b96c3e517f8c9a27" memberName="textEditor"
-              virtualName="" explicitFocusOrder="0" pos="24 32 408 464" initialText="&#10;  About Me and HybridReverb2:&#10;&#10;  As a research associate at the Institute of Communication&#10;  Acoustics, Ruhr-Universit&#228;t Bochum, Germany, I'm currently&#10;  persuing a Dr.-Ing. degree in electrical engineering.&#10;  I benefited from free and open source software for so many&#10;  years that I felt that I should give something back to the&#10;  community. As I'm working in the field of virtual acoustics&#10;  and spatial audio, writing a room effect plugin kind of&#10;  suggested itself. I hope you enjoy the sound as much as I&#10;  do!&#10;&#10;  Best regards,&#10;  Christian Bor&#223; &lt;christian.borss@rub.de&gt;&#10;&#10;&#10;  Credits:&#10;&#10;  - Julian Storer for his JUCE library&#10;  - The development team of the Jucetice project (jost, juced,&#10;    etc.)&#10;  - Matteo Frigo, Steven G. Johnson, and anybody else who&#10;    contributed to the FFTW library&#10;  - Prof. Rainer Martin for supporting my research&#10;  - Bj&#246;rn Kapteina for the implementation of the Windows&#10;    installer&#10;&#10;&#10;  References:&#10;&#10;  Bor&#223;, C., Martin, R. (2009). &quot;An Improved Parametric Model&#10;  for Perception-Based Design of Virtual Acoustics&quot;, AES 35th&#10;  Int. Conference, London, UK, Feb. 2009.&#10;&#10;  Bor&#223;, C. (2009). &quot;A Novel Approach for Optimally Matching a&#10;  Late Reverberation Model to an Image Source Model - Or:&#10;  What Does a Football Have to Do With Shoebox Shaped&#10;  Rooms?&quot;, Auralization Symposium of the European Acoustics&#10;  Association, Espoo, Finland, Jun. 2009.&#10;&#10;  Bor&#223;, C. (2009). &quot;A VST Reverberation Effect Plugin Based on&#10;  Synthetic Room Impulse Responses&quot;, 12th Int. Conference&#10;  on Digital Audio Effects (DAFx-09), Como, Italy, Sep. 2009.&#10;"
+              virtualName="" explicitFocusOrder="0" pos="32 40 392 448" bkgcol="ffffff"
+              initialText="About Me and HybridReverb2:&#10;&#10;As a research associate at the Institute of Communication Acoustics, Ruhr-Universit&#228;t Bochum, Germany, I'm currently persuing a Dr.-Ing. degree in electrical engineering. I benefited from free and open source software for so many years that I felt that I should give something back to the community. As I'm working in the field of virtual acoustics and spatial audio, writing a room effect plugin kind of suggested itself. I hope you enjoy the sound as much as I do!&#10;&#10;Best regards,&#10;Christian Bor&#223; &lt;christian.borss@rub.de&gt;&#10;&#10;&#10;Credits:&#10;&#10;- Julian Storer for his JUCE library&#10;- The development team of the Jucetice project (jost, juced, etc.)&#10;- Matteo Frigo, Steven G. Johnson, and anybody else who contributed to the FFTW library&#10;- Prof. Rainer Martin for supporting my research&#10;- Bj&#246;rn Kapteina for the implementation of the Windows installer&#10;&#10;&#10;References:&#10;&#10;Bor&#223;, C., Martin, R. (2009). &quot;An Improved Parametric Model for Perception-Based Design of Virtual Acoustics&quot;, AES 35th Int. Conference, London, UK, Feb. 2009.&#10;&#10;Bor&#223;, C. (2009). &quot;A Novel Approach for Optimally Matching a Late Reverberation Model to an Image Source Model - Or: What Does a Football Have to Do With Shoebox Shaped Rooms?&quot;, Auralization Symposium of the European Acoustics Association, Espoo, Finland, Jun. 2009.&#10;&#10;Bor&#223;, C. (2009). &quot;A VST Reverberation Effect Plugin Based on Synthetic Room Impulse Responses&quot;, 12th Int. Conference on Digital Audio Effects (DAFx-09), Como, Italy, Sep. 2009."
               multiline="1" retKeyStartsLine="1" readonly="1" scrollbars="1"
               caret="0" popupmenu="1"/>
 </JUCER_COMPONENT>

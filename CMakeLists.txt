@@ -7,6 +7,8 @@ set(HybridReverb2_VST2 "" CACHE STRING "Build VST2")
 set(HybridReverb2_LV2 "" CACHE STRING "Build LV2")
 set(HybridReverb2_Standalone "" CACHE STRING "Build Standalone")
 
+set(HybridReverb2_AdvancedJackStandalone "" CACHE STRING "Enable advanced Standalone for Jack")
+
 option(HybridReverb2_ASSERTIONS "Enable assertions" OFF)
 
 if(CMAKE_SYSTEM_NAME STREQUAL "Windows")
@@ -81,10 +83,19 @@ endif()
 if(HybridReverb2_Standalone STREQUAL "")
   set(HybridReverb2_Standalone "ON" CACHE STRING "Build Standalone" FORCE)
 endif()
+if(HybridReverb2_AdvancedJackStandalone STREQUAL "")
+  if(CMAKE_SYSTEM_NAME STREQUAL "Windows" OR
+      CMAKE_SYSTEM_NAME STREQUAL "Darwin")
+    set(HybridReverb2_AdvancedJackStandalone "OFF" CACHE STRING "Enable advanced Standalone for Jack" FORCE)
+  else()
+    set(HybridReverb2_AdvancedJackStandalone "ON" CACHE STRING "Enable advanced Standalone for Jack" FORCE)
+  endif()
+endif()
 
 message("Build VST2: ${HybridReverb2_VST2}")
 message("Build LV2: ${HybridReverb2_LV2}")
 message("Build Standalone: ${HybridReverb2_Standalone}")
+message("Advanced Jack Standalone: ${HybridReverb2_AdvancedJackStandalone}")
 
 include("${CMAKE_SOURCE_DIR}/JUCE-targets.cmake")
 

@@ -91,7 +91,8 @@ String SystemConfig::getPresetFilename()
     String presetFilename = paramPreferences.presetFile;
     if (presetFilename.isEmpty())
         presetFilename = "HybridReverb2_presets.xml";
-    return File(userdir).getChildFile(presetFilename).getFullPathName();
+    return File::isAbsolutePath(presetFilename) ? presetFilename :
+        File(userdir).getChildFile(presetFilename).getFullPathName();
 }
 
 

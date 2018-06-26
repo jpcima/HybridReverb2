@@ -150,12 +150,17 @@ void SystemConfig::setPreferences(const ParamPreferences & param)
     File prefFile = File(userdir).getChildFile("preferences.xml");
     prefFile.create();
 
-    String content = String("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n") +
-                     String("<preferences>\n") +
-                     String("  <presetFile>") + paramPreferences.presetFile       + String("</presetFile>\n") +
-                     String("  <sflen>")      + String(paramPreferences.sflen)    + String("</sflen>\n")      +
-                     String("  <strategy>")   + String(paramPreferences.strategy) + String("</strategy>\n")   +
-                     String("</preferences>");
+    XmlElement root("preferences");
+    XmlElement *element;
+    root.addChildElement((element = new XmlElement("presetFile")));
+    element->addTextElement(paramPreferences.presetFile);
+    root.addChildElement((element = new XmlElement("sflen")));
+    element->addTextElement(String(paramPreferences.sflen));
+    root.addChildElement((element = new XmlElement("strategy")));
+    element->addTextElement(String(paramPreferences.strategy));
+
+    String content = root.createDocument(String());
+    fprintf(stderr, "Save preferences: %s\n", prefFile.getFullPathName().toRawUTF8());
     prefFile.replaceWithText(content);
 }
 

@@ -52,7 +52,7 @@ private:
     ParamPreferences paramPreferences;
     ParamPartitionWisdom paramPartitionWisdom;
 
-    String getSubText(XmlElement *element);
+    static String getSubText(XmlElement *element);
 };
 
 

@@ -3,10 +3,7 @@
 /* This file is distributed under the same license as the HybridReverb package. */
 /*  <jp-dev@inbox.ru>, 2018. */
 /* */
-"" = "Project-Id-Version: HybridReverb 2\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2018-06-26 14:38+0200\nPO-Revision-Date: 2018-06-26 14:38+0200\nLast-Translator: Automatically generated\nLanguage-Team: none\nLanguage: en_US\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=(n != 1);\n";
-
-/* File: Source/gui/TabPreferences.cpp:129 */
-"\n  Preset File:\n\n  This XML file defines the preset set.\n  (default: HybridReverb2_presets.xml)\n\n\n  Latency:\n\n  HybridReverb2 convolves the input signal with room\n  impulse responses which are partitioned into segments\n  of different size. This option specifies the size of the\n  initial segments which introduce a certain processing\n  latency. A small segment size results in a lower latency\n  at the cost of a higher computational complexity. An\n  effect plugin for musical instruments requires signal\n  processing with low latency. If the latency is not relevant\n  for your application, you can choose a larger segment\n  size for better performance.\n\n\n  Segmentation Strategy:\n\n  \"Uniform Processing Load\": This strategy tries to avoid\n  processing load peaks at the cost of a slightly higher\n  mean processing load. This is the recommended choice\n  for signal processing with low latency.\n  \"Lowest Mean Processing Load\": This strategy results in\n  the best overall performance. This is the recommended\n  choice for offline rendering.\n" = "\n  Preset File:\n\n  This XML file defines the preset set.\n  (default: HybridReverb2_presets.xml)\n\n\n  Latency:\n\n  HybridReverb2 convolves the input signal with room\n  impulse responses which are partitioned into segments\n  of different size. This option specifies the size of the\n  initial segments which introduce a certain processing\n  latency. A small segment size results in a lower latency\n  at the cost of a higher computational complexity. An\n  effect plugin for musical instruments requires signal\n  processing with low latency. If the latency is not relevant\n  for your application, you can choose a larger segment\n  size for better performance.\n\n\n  Segmentation Strategy:\n\n  \"Uniform Processing Load\": This strategy tries to avoid\n  processing load peaks at the cost of a slightly higher\n  mean processing load. This is the recommended choice\n  for signal processing with low latency.\n  \"Lowest Mean Processing Load\": This strategy results in\n  the best overall performance. This is the recommended\n  choice for offline rendering.\n";
+"" = "Project-Id-Version: HybridReverb 2\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2018-06-26 14:56+0200\nPO-Revision-Date: 2018-06-26 14:56+0200\nLast-Translator: Automatically generated\nLanguage-Team: none\nLanguage: en_US\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=(n != 1);\n";
 
 /* File: Source/gui/TabPreferences.cpp:109 */
 "(no choices)" = "(aucun choix)";
@@ -17,7 +14,7 @@
 /* File: Source/gui/TabMain.cpp:123 */
 "---" = "---";
 
-/* File: Source/gui/TabPreferences.cpp:165 */
+/* File: Source/gui/TabPreferences.cpp:151 */
 /* File: Source/gui/TabPresetEditor.cpp:172 */
 /* File: Source/gui/TabPresetEditor.cpp:227 */
 /* File: Source/gui/TabPresetEditor.cpp:234 */
@@ -94,7 +91,7 @@
 /* File: Source/gui/TabPresetEditor.cpp:664 */
 "Choose a XML file to save..." = "Choisir un fichier XML à enregistrer...";
 
-/* File: Source/gui/TabPreferences.cpp:335 */
+/* File: Source/gui/TabPreferences.cpp:330 */
 "Choose a preset file to open..." = "Choisir un fichier de préréglage à ouvrir...";
 
 /* File: Source/gui/DownloadDbComponent.cpp:93 */
@@ -141,7 +138,7 @@
 /* File: Source/PresetManager.cpp:159 */
 "Error writing preset file" = "Error writing preset file";
 
-/* File: Source/gui/TabPreferences.cpp:171 */
+/* File: Source/gui/TabPreferences.cpp:157 */
 "FIG1: Generation of a sound field as simulated in a virtual environment at a given listener position by a virtual coincidence microphone array with the outlined directivity pattern" = "FIG1 : Génération d'un champ sonore tel que simulé dans un environnement virtuel à une position d'écoute donnée, par coincidence virtuelle d'une série de microphones dont il est illustré le motif de directivité";
 
 /* File: Source/gui/TabAbout.cpp:44 */
@@ -150,9 +147,9 @@
 /* File: Source/gui/TabPreferences.cpp:38 */
 "Help" = "Aide";
 
-/* File: Source/gui/TabPreferences.cpp:284 */
-/* File: Source/gui/TabPreferences.cpp:307 */
-/* File: Source/gui/TabPreferences.cpp:361 */
+/* File: Source/gui/TabPreferences.cpp:279 */
+/* File: Source/gui/TabPreferences.cpp:302 */
+/* File: Source/gui/TabPreferences.cpp:356 */
 "HybridReverb2 needs to be restarted to make your changes effective." = "HybridReverb2 doit être redémarré afin de rendre les changements effectifs.";
 
 /* File: Source/gui/DownloadDbComponent.cpp:62 */
@@ -162,9 +159,9 @@
 /* File: Source/gui/TabMain.cpp:142 */
 "Impulse Response" = "Réponse Impulsionnelle";
 
-/* File: Source/gui/TabPreferences.cpp:283 */
-/* File: Source/gui/TabPreferences.cpp:306 */
-/* File: Source/gui/TabPreferences.cpp:360 */
+/* File: Source/gui/TabPreferences.cpp:278 */
+/* File: Source/gui/TabPreferences.cpp:301 */
+/* File: Source/gui/TabPreferences.cpp:355 */
 "Info" = "Info";
 
 /* File: Source/gui/TabMain.cpp:158 */
@@ -221,6 +218,9 @@
 
 /* File: Source/gui/TabPreferences.cpp:44 */
 "Preset File:" = "Fichier de Préréglage :";
+
+/* File: Source/gui/TabPreferences.cpp:130 */
+"Preset File:\n\nThis XML file defines the preset set.\n(default: HybridReverb2_presets.xml)\n\n\nLatency:\n\nHybridReverb2 convolves the input signal with room impulse responses which are partitioned into segments of different size. This option specifies the size of the initial segments which introduce a certain processing latency. A small segment size results in a lower latency at the cost of a higher computational complexity. An effect plugin for musical instruments requires signal processing with low latency. If the latency is not relevant for your application, you can choose a larger segment size for better performance.\n\n\nSegmentation Strategy:\n\n\"Uniform Processing Load\": This strategy tries to avoid processing load peaks at the cost of a slightly higher mean processing load. This is the recommended choice for signal processing with low latency.\n\"Lowest Mean Processing Load\": This strategy results in the best overall performance. This is the recommended choice for offline rendering." = "Fichier de préréglages:\n\nCe fichier XML définit l'ensemble de préréglages.\n(par défaut : HybridReverb2_presets.xml)\n\n\nLatence :\n\nHybridReverb2 convolue le signal d'entrée avec des réponses impulsionnelles de salles qui sont partitionnées en segments de différentes tailles. Cette option définit la taille des segments initiaux qui introduisent une certaine latence de calcul. Une taille de segment réduite aboutit à une latence plus faible en contrepartie d'une complexité de calcul plus élevée. Un greffon d'effet pour instruments de musique requiert un traitement de signal à faible latence. Si la latence est sans importance pour votre utilisation, vous pouvez choisir une taille de segment plus grande pour de meilleures performances.\n\n\nStratégie de Segmentation :\n\n\"Charge de Calcul Uniforme\" : Cette stratégie tente d'éviter les pics de charge de calcul, augmentant légèrement la charge de calcul moyenne. Il s'agit du choix recommandé pour un traitement du signal à faible latence.\n\"Charge de Calcul à Moindre Moyenne\": Cette stratégie aboutit au niveau de performance globalement le plus élevé. Il s'agit du choix recommandé pour un rendu en différé.";
 
 /* File: Source/gui/TabPresetEditor.cpp:42 */
 "Preset Selection" = "Sélection du Préréglage";
@@ -301,7 +301,7 @@
 /* File: Source/gui/TabMain.cpp:124 */
 "distance: 1m" = "distance: 1m";
 
-/* File: Source/gui/TabPreferences.cpp:164 */
+/* File: Source/gui/TabPreferences.cpp:150 */
 "file chooser" = "file chooser";
 
 /* File: Source/gui/DownloadDbComponent.cpp:114 */

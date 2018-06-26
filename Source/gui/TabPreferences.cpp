@@ -126,38 +126,24 @@ TabPreferences::TabPreferences (MasterAndCommander *m)
     textEditorHelp->setScrollbarsShown (true);
     textEditorHelp->setCaretVisible (false);
     textEditorHelp->setPopupMenuEnabled (true);
-    textEditorHelp->setText (TRANS("\n"
-    "  Preset File:\n"
+    textEditorHelp->setColour (TextEditor::backgroundColourId, Colour (0x00ffffff));
+    textEditorHelp->setText (TRANS("Preset File:\n"
     "\n"
-    "  This XML file defines the preset set.\n"
-    "  (default: HybridReverb2_presets.xml)\n"
-    "\n"
-    "\n"
-    "  Latency:\n"
-    "\n"
-    "  HybridReverb2 convolves the input signal with room\n"
-    "  impulse responses which are partitioned into segments\n"
-    "  of different size. This option specifies the size of the\n"
-    "  initial segments which introduce a certain processing\n"
-    "  latency. A small segment size results in a lower latency\n"
-    "  at the cost of a higher computational complexity. An\n"
-    "  effect plugin for musical instruments requires signal\n"
-    "  processing with low latency. If the latency is not relevant\n"
-    "  for your application, you can choose a larger segment\n"
-    "  size for better performance.\n"
+    "This XML file defines the preset set.\n"
+    "(default: HybridReverb2_presets.xml)\n"
     "\n"
     "\n"
-    "  Segmentation Strategy:\n"
+    "Latency:\n"
     "\n"
-    "  \"Uniform Processing Load\": This strategy tries to avoid\n"
-    "  processing load peaks at the cost of a slightly higher\n"
-    "  mean processing load. This is the recommended choice\n"
-    "  for signal processing with low latency.\n"
-    "  \"Lowest Mean Processing Load\": This strategy results in\n"
-    "  the best overall performance. This is the recommended\n"
-    "  choice for offline rendering.\n"));
+    "HybridReverb2 convolves the input signal with room impulse responses which are partitioned into segments of different size. This option specifies the size of the initial segments which introduce a certain processing latency. A small segment size results in a lower latency at the cost of a higher computational complexity. An effect plugin for musical instruments requires signal processing with low latency. If the latency is not relevant for your application, you can choose a larger segment size for better performance.\n"
+    "\n"
+    "\n"
+    "Segmentation Strategy:\n"
+    "\n"
+    "\"Uniform Processing Load\": This strategy tries to avoid processing load peaks at the cost of a slightly higher mean processing load. This is the recommended choice for signal processing with low latency.\n"
+    "\"Lowest Mean Processing Load\": This strategy results in the best overall performance. This is the recommended choice for offline rendering."));
 
-    textEditorHelp->setBounds (432, 32, 368, 456);
+    textEditorHelp->setBounds (440, 40, 352, 440);
 
     textButton.reset (new TextButton ("new button"));
     addAndMakeVisible (textButton.get());
@@ -234,6 +220,15 @@ void TabPreferences::paint (Graphics& g)
                            x, y, width, height,
                            RectanglePlacement::centred,
                            false);
+    }
+
+    {
+        int x = 432, y = 32, width = 368, height = 456;
+        Colour fillColour = Colours::white;
+        //[UserPaintCustomArguments] Customize the painting arguments here..
+        //[/UserPaintCustomArguments]
+        g.setColour (fillColour);
+        g.fillRect (x, y, width, height);
     }
 
     //[UserPaint] Add your own custom painting code here..
@@ -391,6 +386,7 @@ BEGIN_JUCER_METADATA
   <BACKGROUND backgroundColour="ffffe000">
     <IMAGE pos="24 232 362 216" resource="directivity2_png" opacity="0.20000000000000001110"
            mode="1"/>
+    <RECT pos="432 32 368 456" fill="solid: ffffffff" hasStroke="0"/>
   </BACKGROUND>
   <GROUPCOMPONENT name="new group" id="735a0a2a7a30ed50" memberName="groupComponentHelp"
                   virtualName="" explicitFocusOrder="0" pos="416 8 400 500" title="Help"/>
@@ -424,7 +420,8 @@ BEGIN_JUCER_METADATA
             editable="0" layout="33" items="64 samples (latency: 1.3ms at 48kHz)&#10;128 samples (latency: 2.7ms at 48kHz)&#10;256 samples (latency: 5.3ms at 48kHz)&#10;512 samples (latency: 10.7ms at 48kHz)&#10;1024 samples (latency: 21.3ms at 48kHz)&#10;2048 samples (latency: 42.7ms at 48kHz)&#10;4096 samples (latency: 85.3ms at 48kHz)"
             textWhenNonSelected="" textWhenNoItems="(no choices)"/>
   <TEXTEDITOR name="new text editor" id="bd5b83d29aa4002" memberName="textEditorHelp"
-              virtualName="" explicitFocusOrder="0" pos="432 32 368 456" initialText="&#10;  Preset File:&#10;&#10;  This XML file defines the preset set.&#10;  (default: HybridReverb2_presets.xml)&#10;&#10;&#10;  Latency:&#10;&#10;  HybridReverb2 convolves the input signal with room&#10;  impulse responses which are partitioned into segments&#10;  of different size. This option specifies the size of the&#10;  initial segments which introduce a certain processing&#10;  latency. A small segment size results in a lower latency&#10;  at the cost of a higher computational complexity. An&#10;  effect plugin for musical instruments requires signal&#10;  processing with low latency. If the latency is not relevant&#10;  for your application, you can choose a larger segment&#10;  size for better performance.&#10;&#10;&#10;  Segmentation Strategy:&#10;&#10;  &quot;Uniform Processing Load&quot;: This strategy tries to avoid&#10;  processing load peaks at the cost of a slightly higher&#10;  mean processing load. This is the recommended choice&#10;  for signal processing with low latency.&#10;  &quot;Lowest Mean Processing Load&quot;: This strategy results in&#10;  the best overall performance. This is the recommended&#10;  choice for offline rendering.&#10;"
+              virtualName="" explicitFocusOrder="0" pos="440 40 352 440" bkgcol="ffffff"
+              initialText="Preset File:&#10;&#10;This XML file defines the preset set.&#10;(default: HybridReverb2_presets.xml)&#10;&#10;&#10;Latency:&#10;&#10;HybridReverb2 convolves the input signal with room impulse responses which are partitioned into segments of different size. This option specifies the size of the initial segments which introduce a certain processing latency. A small segment size results in a lower latency at the cost of a higher computational complexity. An effect plugin for musical instruments requires signal processing with low latency. If the latency is not relevant for your application, you can choose a larger segment size for better performance.&#10;&#10;&#10;Segmentation Strategy:&#10;&#10;&quot;Uniform Processing Load&quot;: This strategy tries to avoid processing load peaks at the cost of a slightly higher mean processing load. This is the recommended choice for signal processing with low latency.&#10;&quot;Lowest Mean Processing Load&quot;: This strategy results in the best overall performance. This is the recommended choice for offline rendering."
               multiline="1" retKeyStartsLine="1" readonly="1" scrollbars="1"
               caret="0" popupmenu="1"/>
   <TEXTBUTTON name="new button" id="f637ba2e28c2e2ba" memberName="textButton"

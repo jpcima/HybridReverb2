@@ -119,24 +119,24 @@
 
 /* File: Source/gui/Editor.cpp:135 */
 /* File: Source/gui/Editor.cpp:158 */
-"Error extracting database file" = "Error extracting database file";
+"Error extracting database file" = "Erreur d'extraction du fichier de données";
 
 /* File: Source/SampleData.cpp:119 */
 /* File: Source/SampleData.cpp:132 */
 /* File: Source/SampleData.cpp:145 */
-"Error reading audio file" = "Error reading audio file";
+"Error reading audio file" = "Erreur de lecture du fichier audio";
 
 /* File: Source/SystemConfig.cpp:113 */
-"Error reading preferences file" = "Error reading preferences file";
+"Error reading preferences file" = "Erreur de lecture du fichier de préférences";
 
 /* File: Source/PresetManager.cpp:122 */
-"Error reading preset file" = "Error reading preset file";
+"Error reading preset file" = "Erreur de lecture du fichier de préréglages";
 
 /* File: Source/SystemConfig.cpp:178 */
-"Error reading wisdom file" = "Error reading wisdom file";
+"Error reading wisdom file" = "Erreur de lecture du fichier \"wisdom\"";
 
 /* File: Source/PresetManager.cpp:159 */
-"Error writing preset file" = "Error writing preset file";
+"Error writing preset file" = "Erreur d'écriture du fichier de préréglages";
 
 /* File: Source/gui/TabPreferences.cpp:157 */
 "FIG1: Generation of a sound field as simulated in a virtual environment at a given listener position by a virtual coincidence microphone array with the outlined directivity pattern" = "FIG1 : Génération d'un champ sonore tel que simulé dans un environnement virtuel à une position d'écoute donnée, par coincidence virtuelle d'une série de microphones dont il est illustré le motif de directivité";

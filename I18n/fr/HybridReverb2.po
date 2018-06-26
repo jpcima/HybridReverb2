@@ -152,28 +152,28 @@ msgstr "Erreur"
 
 #: Source/gui/Editor.cpp:135 Source/gui/Editor.cpp:158
 msgid "Error extracting database file"
-msgstr ""
+msgstr "Erreur d'extraction du fichier de données"
 
 #: Source/SampleData.cpp:119 Source/SampleData.cpp:132
 #: Source/SampleData.cpp:145
 msgid "Error reading audio file"
-msgstr ""
+msgstr "Erreur de lecture du fichier audio"
 
 #: Source/SystemConfig.cpp:113
 msgid "Error reading preferences file"
-msgstr ""
+msgstr "Erreur de lecture du fichier de préférences"
 
 #: Source/PresetManager.cpp:122
 msgid "Error reading preset file"
-msgstr ""
+msgstr "Erreur de lecture du fichier de préréglages"
 
 #: Source/SystemConfig.cpp:178
 msgid "Error reading wisdom file"
-msgstr ""
+msgstr "Erreur de lecture du fichier \"wisdom\""
 
 #: Source/PresetManager.cpp:159
 msgid "Error writing preset file"
-msgstr ""
+msgstr "Erreur d'écriture du fichier de préréglages"
 
 #: Source/gui/TabPreferences.cpp:157
 msgid ""

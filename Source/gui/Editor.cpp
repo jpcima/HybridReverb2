@@ -55,8 +55,23 @@ HybridReverb2Editor::HybridReverb2Editor(
     }
     else
     {
+#if defined(USE_LOCAL_DATABASE)
+        // go back to using the default presets
+        fprintf(stderr, "Presets not found, falling back to default.\n");
+
+        ParamPreferences prefs = systemConfig->getPreferences();
+        prefs.presetFile = String();
+        systemConfig->setPreferences(prefs);
+
+        ec->setVisible(true);
+        readyListener->onReadyEditor();
+#else
+        // prompt for database download
+        fprintf(stderr, "Presets not found, asking to download.\n");
+
         dl->setCentrePosition(getBounds().getCentre());
         dl->setVisible(true);
+#endif
     }
 }
 

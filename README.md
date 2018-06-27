@@ -41,6 +41,15 @@ cmake -DCMAKE_BUILD_TYPE=Release ..
 cmake --build .
 ```
 
+| Build option                                  | Description                                                     |
+| --------------------------------------------- | --------------------------------------------------------------- |
+| -DHybridReverb2_VST2=ON/OFF                   | Build a VST2 plugin                                             |
+| -DHybridReverb2_LV2=ON/OFF                    | Build a LV2 plugin                                              |
+| -DHybridReverb2_Standalone=ON/OFF             | Build a standalone program                                      |
+| -DHybridReverb2_AdvancedJackStandalone=ON/OFF | Build a standalone for Jack with better features                |
+| -DHybridReverb2_UseLocalDatabase=ON/OFF       | Use a preinstalled RIR database in `PREFIX`/share/HybridReverb2 |
+| -DHybridReverb2_Assertions=ON/OFF             | Force building with assertions regardless of build type         |
+
 ## Usage
 
 The LV2 plugin is identified as `https://github.com/jpcima/HybridReverb2`.  

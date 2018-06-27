@@ -269,7 +269,14 @@ if(HybridReverb2_Standalone)
   set_property(TARGET HybridReverb2_Standalone PROPERTY OUTPUT_NAME "HybridReverb2")
   install(TARGETS HybridReverb2_Standalone DESTINATION "bin")
   install(FILES "Source/resources/hybridreverb2.desktop" DESTINATION "share/applications")
-  install(FILES "Source/resources/HybridReverb2.png" DESTINATION "share/pixmaps")
+  install(FILES "Source/resources/HybridReverb2_32.png"
+    DESTINATION "share/pixmaps"
+    RENAME "HybridReverb2.png")
+  foreach(size 32;96)
+    install(FILES "Source/resources/HybridReverb2_${size}.png"
+      DESTINATION "share/icons/hicolor/${size}x${size}/apps"
+      RENAME "HybridReverb2.png")
+  endforeach()
   install(FILES "Source/resources/hybridreverb2.1" DESTINATION "share/man/man1")
   install(FILES "Source/resources/hybridreverb2.fr.1" DESTINATION "share/man/fr/man1" RENAME "hybridreverb2.1")
 endif()

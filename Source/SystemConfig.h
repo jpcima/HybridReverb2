@@ -39,6 +39,7 @@ public:
     String getDBdir() const;
 
     static String getDefaultUserDir();
+    static String getDefaultUserPresetFilename();
     static String getDefaultPresetFilename();
 
     String getPresetFilename() const;

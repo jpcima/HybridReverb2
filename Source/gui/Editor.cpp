@@ -99,6 +99,11 @@ void HybridReverb2Editor::onSetupSuccess()
     editorComponent->setVisible(true);
     MouseCursor::hideWaitCursor();
     asyncSetupStarted = false;
+
+    ParamPreferences prefs = systemConfig->getPreferences();
+    prefs.presetFile = SystemConfig::getDefaultUserPresetFilename();
+    systemConfig->setPreferences(prefs);
+
     readyListener->onReadyEditor();
 }
 
@@ -115,7 +120,7 @@ void HybridReverb2Editor::performAsyncSetup(
     ZipFile zip(zipFile);
 
     File presetDir = SystemConfig::getDefaultUserDir();
-    File presetFile = SystemConfig::getDefaultPresetFilename();
+    File presetFile = SystemConfig::getDefaultUserPresetFilename();
 
     fprintf(stderr, "EditorAsync: about to unzip\n");
     Result zipResult = zip.uncompressTo(presetDir);

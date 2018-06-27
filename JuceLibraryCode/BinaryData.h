@@ -15,7 +15,7 @@ namespace BinaryData
     const int            partition_wisdom_xmlSize = 959;
 
     extern const char*   preferences_xml;
-    const int            preferences_xmlSize = 173;
+    const int            preferences_xmlSize = 170;
 
     extern const char*   LiberationMonoBold_ttf_gz;
     const int            LiberationMonoBold_ttf_gzSize = 171228;

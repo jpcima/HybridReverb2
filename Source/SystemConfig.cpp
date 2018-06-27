@@ -88,10 +88,20 @@ String SystemConfig::getDefaultUserDir()
 }
 
 
-String SystemConfig::getDefaultPresetFilename()
+String SystemConfig::getDefaultUserPresetFilename()
 {
     return File(getDefaultUserDir())
         .getChildFile("HybridReverb2_presets.xml").getFullPathName();
+}
+
+
+String SystemConfig::getDefaultPresetFilename()
+{
+#if defined(USE_LOCAL_DATABASE)
+    return INSTALL_PREFIX "/share/HybridReverb2/HybridReverb2_presets.xml";
+#else
+    return getDefaultUserPresetFilename();
+#endif
 }
 
 

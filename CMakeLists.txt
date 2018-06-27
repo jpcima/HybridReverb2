@@ -8,6 +8,7 @@ set(HybridReverb2_LV2 "" CACHE STRING "Build LV2")
 set(HybridReverb2_Standalone "" CACHE STRING "Build Standalone")
 
 set(HybridReverb2_AdvancedJackStandalone "" CACHE STRING "Enable advanced Standalone for Jack")
+set(HybridReverb2_UseLocalDatabase "OFF" CACHE STRING "Uses the local RIR database in <PREFIX>/share/")
 
 option(HybridReverb2_ASSERTIONS "Enable assertions" OFF)
 
@@ -137,6 +138,9 @@ add_library(HybridReverb2_core STATIC
   "Source/SystemConfig.cpp"
   "Source/TextList.cpp")
 target_compile_definitions(HybridReverb2_core PRIVATE "INSTALL_PREFIX=\"${CMAKE_INSTALL_PREFIX}\"")
+if(HybridReverb2_UseLocalDatabase)
+  target_compile_definitions(HybridReverb2_core PRIVATE "USE_LOCAL_DATABASE")
+endif()
 target_compile_definitions(HybridReverb2_core PRIVATE "NO_OMP") # OpenMP is not good for realtime
 target_include_directories(HybridReverb2_core PRIVATE "Source")
 target_link_libraries(HybridReverb2_core PUBLIC

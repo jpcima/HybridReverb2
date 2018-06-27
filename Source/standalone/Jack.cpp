@@ -70,15 +70,22 @@ private:
 #if defined(WITH_NSM_SESSION_SUPPORT)
     static int session_open(const char *path, const char *display_name, const char *client_id, char **out_msg, void *userdata);
     static int session_save(char **out_msg, void *userdata);
+    static void session_show_optional_gui(void *userdata);
+    static void session_hide_optional_gui(void *userdata);
+    void session_notify_gui_visibility();
 
     nsm_client_u nsmclient_;
     File session_dir_;
+    bool session_gui_shown_ = false;
 #endif
 };
 
 void Application_Jack::initialise(const String &args)
 {
     handle_interrupts();
+
+    Application_Window *window = new Application_Window(getApplicationName());
+    window_.reset(window);
 
 #if defined(WITH_NSM_SESSION_SUPPORT)
     if (const char *url = getenv("NSM_URL")) {
@@ -92,15 +99,20 @@ void Application_Jack::initialise(const String &args)
 
         nsm_set_open_callback(nsmclient, &session_open, this);
         nsm_set_save_callback(nsmclient, &session_save, this);
+        nsm_set_show_optional_gui_callback(nsmclient, &session_show_optional_gui, this);
+        nsm_set_hide_optional_gui_callback(nsmclient, &session_hide_optional_gui, this);
 
-        const char *capabilities = "";
+        const char *capabilities = ":switch:optional-gui:";
         nsm_send_announce(
             nsmclient, JucePlugin_Name, capabilities, juce_argv[0]);
+
+        session_notify_gui_visibility();
     }
     else
 #endif
     {
         open(JucePlugin_Name, String());
+        window_->setVisible(true);
     }
 
     Idle_Timer *idle_timer = new Idle_Timer(this);
@@ -174,14 +186,14 @@ void Application_Jack::open(const String &client_name, const String &pref_file)
     if (jack_activate(client) != 0)
         throw std::runtime_error("error activating Jack client");
 
-    Application_Window *window = new Application_Window(
-        getApplicationName() + " [jack:" + (const char *)jack_get_client_name(client) + "]");
-    window_.reset(window);
+    String effective_name = jack_get_client_name(client);
+
+    Application_Window *window = window_.get();
+    window->setName(getApplicationName() + " [jack:" + effective_name + "]");
 
     HybridReverb2Editor *editor = static_cast<HybridReverb2Editor *>(
         processor->createEditor());
     window->setContentOwned(editor, true);
-    window->setVisible(true);
 }
 
 void Application_Jack::save()
@@ -252,14 +264,18 @@ int Application_Jack::session_open(const char *path, const char *display_name, c
 {
     Application_Jack *self = reinterpret_cast<Application_Jack *>(userdata);
 
-    if (self->is_open())
-        return ERR_GENERAL;
-
     File session_dir(path);
     self->session_dir_ = session_dir;
     session_dir.createDirectory();
 
     self->open(client_id, session_dir.getFullPathName());
+
+    bool session_gui_shown = session_dir.getChildFile("gui_shown").existsAsFile();
+    self->window_->setVisible(session_gui_shown);
+    if (self->session_gui_shown_ != session_gui_shown) {
+        self->session_gui_shown_ = session_gui_shown;
+        self->session_notify_gui_visibility();
+    }
 
     HybridReverb2Processor &processor = *self->processor_;
     File state_file = session_dir.getChildFile("state.dat");
@@ -283,7 +299,50 @@ int Application_Jack::session_save(char **out_msg, void *userdata)
     processor.getStateInformation(state);
     state_file.replaceWithData(state.getData(), state.getSize());
 
+    File gui_shown_file = session_dir.getChildFile("gui_shown");
+    if (self->session_gui_shown_)
+        gui_shown_file.create();
+    else
+        gui_shown_file.deleteFile();
+
     return 0;
+}
+
+void Application_Jack::session_show_optional_gui(void *userdata)
+{
+    Application_Jack *self = reinterpret_cast<Application_Jack *>(userdata);
+    Application_Window &window = *self->window_;
+    nsm_client_t *nsmclient = self->nsmclient_.get();
+
+    self->session_gui_shown_ = true;
+    if (self->is_open_)
+        window.setVisible(true);
+
+    self->session_notify_gui_visibility();
+}
+
+void Application_Jack::session_hide_optional_gui(void *userdata)
+{
+    Application_Jack *self = reinterpret_cast<Application_Jack *>(userdata);
+    Application_Window &window = *self->window_;
+    nsm_client_t *nsmclient = self->nsmclient_.get();
+
+    self->session_gui_shown_ = false;
+    if (self->is_open_)
+        window.setVisible(false);
+
+    self->session_notify_gui_visibility();
+}
+
+void Application_Jack::session_notify_gui_visibility()
+{
+    Application_Window &window = *window_;
+    nsm_client_t *nsmclient = nsmclient_.get();
+
+    if (session_gui_shown_)
+        nsm_send_gui_is_shown(nsmclient);
+    else
+        nsm_send_gui_is_hidden(nsmclient);
 }
 #endif
 

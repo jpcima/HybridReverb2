@@ -82,7 +82,7 @@ TabTimbre::TabTimbre (MasterAndCommander *m)
     f0 = sampleRate / float(2 * numLevel);
     for (int n = 0; n < numLevel; n++)
     {
-        float f = (n + 1.0) * f0;
+        // float f = (n + 1.0) * f0;
         level[n] = 0.0;
     }
 

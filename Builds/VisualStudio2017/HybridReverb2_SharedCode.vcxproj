@@ -147,6 +147,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\libHybridConv\libHybridConv.c"/>
+    <ClCompile Include="..\..\Source\utility\TextList.cpp"/>
+    <ClCompile Include="..\..\Source\utility\XmlUtil.cpp"/>
+    <ClCompile Include="..\..\Source\model\PresetCollection.cpp"/>
+    <ClCompile Include="..\..\Source\model\SampleData.cpp"/>
+    <ClCompile Include="..\..\Source\model\SystemConfig.cpp"/>
     <ClCompile Include="..\..\Source\gui\AppLookAndFeel.cpp"/>
     <ClCompile Include="..\..\Source\gui\DownloadDbComponent.cpp"/>
     <ClCompile Include="..\..\Source\gui\Editor.cpp"/>
@@ -167,10 +172,6 @@
     <ClCompile Include="..\..\Source\LagrangeInterpolator.cpp"/>
     <ClCompile Include="..\..\Source\MasterAndCommander.cpp"/>
     <ClCompile Include="..\..\Source\Partitioner.cpp"/>
-    <ClCompile Include="..\..\Source\PresetManager.cpp"/>
-    <ClCompile Include="..\..\Source\SampleData.cpp"/>
-    <ClCompile Include="..\..\Source\SystemConfig.cpp"/>
-    <ClCompile Include="..\..\Source\TextList.cpp"/>
     <ClCompile Include="..\..\Thirdparty\JUCE\modules\juce_audio_basics\buffers\juce_AudioChannelSet.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
@@ -1926,6 +1927,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\libHybridConv\libHybridConv.h"/>
+    <ClInclude Include="..\..\Source\utility\I18nTools.h"/>
+    <ClInclude Include="..\..\Source\utility\TextList.h"/>
+    <ClInclude Include="..\..\Source\utility\XmlUtil.h"/>
+    <ClInclude Include="..\..\Source\model\Parameter.h"/>
+    <ClInclude Include="..\..\Source\model\PresetCollection.h"/>
+    <ClInclude Include="..\..\Source\model\SampleData.h"/>
+    <ClInclude Include="..\..\Source\model\SystemConfig.h"/>
     <ClInclude Include="..\..\Source\gui\AppLookAndFeel.h"/>
     <ClInclude Include="..\..\Source\gui\DownloadDbComponent.h"/>
     <ClInclude Include="..\..\Source\gui\Editor.h"/>
@@ -1945,19 +1953,7 @@
     <ClInclude Include="..\..\Source\HybridReverb2Processor.h"/>
     <ClInclude Include="..\..\Source\LagrangeInterpolator.h"/>
     <ClInclude Include="..\..\Source\MasterAndCommander.h"/>
-    <ClInclude Include="..\..\Source\ParamCategory.h"/>
-    <ClInclude Include="..\..\Source\ParamEnvelope.h"/>
-    <ClInclude Include="..\..\Source\ParamGainDelay.h"/>
-    <ClInclude Include="..\..\Source\ParamImpulseResponses.h"/>
-    <ClInclude Include="..\..\Source\ParamPartitionWisdom.h"/>
-    <ClInclude Include="..\..\Source\ParamPreferences.h"/>
-    <ClInclude Include="..\..\Source\ParamPreset.h"/>
-    <ClInclude Include="..\..\Source\ParamTimbre.h"/>
     <ClInclude Include="..\..\Source\Partitioner.h"/>
-    <ClInclude Include="..\..\Source\PresetManager.h"/>
-    <ClInclude Include="..\..\Source\SampleData.h"/>
-    <ClInclude Include="..\..\Source\SystemConfig.h"/>
-    <ClInclude Include="..\..\Source\TextList.h"/>
     <ClInclude Include="..\..\Thirdparty\JUCE\modules\juce_audio_basics\audio_play_head\juce_AudioPlayHead.h"/>
     <ClInclude Include="..\..\Thirdparty\JUCE\modules\juce_audio_basics\buffers\juce_AudioChannelSet.h"/>
     <ClInclude Include="..\..\Thirdparty\JUCE\modules\juce_audio_basics\buffers\juce_AudioDataConverters.h"/>

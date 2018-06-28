@@ -23,7 +23,7 @@
 #include "EditorComponent.h"
 #include "DownloadDbComponent.h"
 #include "AppLookAndFeel.h"
-#include "../SystemConfig.h"
+#include "../model/SystemConfig.h"
 
 
 HybridReverb2Editor::HybridReverb2Editor(

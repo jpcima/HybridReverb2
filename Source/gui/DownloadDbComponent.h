@@ -56,7 +56,6 @@ public:
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
     HybridReverb2Editor *editor = nullptr;
-    double progressValue = 0;
     //[/UserVariables]
 
     //==============================================================================

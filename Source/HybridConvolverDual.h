@@ -24,7 +24,7 @@
 
 
 #include "HybridConvolver.h"
-#include "SampleData.h"
+#include "model/SampleData.h"
 #include "../JuceLibraryCode/JuceHeader.h"
 
 extern "C" {

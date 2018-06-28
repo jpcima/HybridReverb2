@@ -312,7 +312,6 @@ void Application_Jack::session_show_optional_gui(void *userdata)
 {
     Application_Jack *self = reinterpret_cast<Application_Jack *>(userdata);
     Application_Window &window = *self->window_;
-    nsm_client_t *nsmclient = self->nsmclient_.get();
 
     self->session_gui_shown_ = true;
     if (self->is_open_)
@@ -325,7 +324,6 @@ void Application_Jack::session_hide_optional_gui(void *userdata)
 {
     Application_Jack *self = reinterpret_cast<Application_Jack *>(userdata);
     Application_Window &window = *self->window_;
-    nsm_client_t *nsmclient = self->nsmclient_.get();
 
     self->session_gui_shown_ = false;
     if (self->is_open_)

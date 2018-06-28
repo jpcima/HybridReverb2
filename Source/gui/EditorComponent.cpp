@@ -189,5 +189,5 @@ void EditorComponent::updateParametersFromFilter()
              filter->lastUIHeight);
     int currentPreset = roundf(fvalue * 255.0 + 1.0);
     master->print(String("EditorComponent::updateParametersFromFilter(): new preset nr. ") + String(currentPreset) + String("\n"));
-    master->onValueChangedPresetNum(currentPreset);
+    master->onValueChangedPresetNum(currentPreset, nullptr);
 }

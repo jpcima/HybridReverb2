@@ -21,11 +21,11 @@
 
 //[Headers]     -- You can add your own extra header files here --
 #include "../../JuceLibraryCode/JuceHeader.h"
-#include "../ParamPreset.h"
+#include "../model/Parameter.h"
 
 // forward declarations
 class MasterAndCommander;
-class PresetManager;
+class PresetCollection;
 //[/Headers]
 
 
@@ -50,7 +50,7 @@ public:
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
-    void setPresetManager (PresetManager *man);
+    void setPresetCollection (PresetCollection *man);
     void updateListBox();
     void onComponentSelected(void);
     String getWavFileChooserOpen(String dir);
@@ -93,7 +93,7 @@ public:
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
     MasterAndCommander* master;
-    PresetManager* presetManager;
+    PresetCollection* presetManager;
     std::vector<ParamPreset> presetDB_copy;
     int selectedRow;
     int currentPresetNum;

@@ -19,7 +19,7 @@
 
 //[Headers] You can add your own extra header files here...
 #include "../MasterAndCommander.h"
-#include "../PresetManager.h"
+#include "../model/PresetCollection.h"
 #include "IRPlot.h"
 #include <iostream>
 //[/Headers]
@@ -583,7 +583,7 @@ void TabMain::sliderValueChanged (Slider* sliderThatWasMoved)
         }
         String str(value);
         labelPresetNum->setText (str, dontSendNotification);
-        master->onValueChangedPresetNum(value);
+        master->onValueChangedPresetNum(value, nullptr);
         //[/UserSliderCode_sliderPresetIncDec]
     }
     else if (sliderThatWasMoved == slider0ms.get())
@@ -623,7 +623,7 @@ void TabMain::sliderValueChanged (Slider* sliderThatWasMoved)
 
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
 
-void TabMain::setPresetManager(PresetManager *man)
+void TabMain::setPresetCollection(PresetCollection *man)
 {
     presetManager = man;
 }

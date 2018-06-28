@@ -19,9 +19,7 @@
 
 //[Headers] You can add your own extra header files here...
 #include "../MasterAndCommander.h"
-#include "../PresetManager.h"
-#include "../ParamCategory.h"
-#include "../ParamImpulseResponses.h"
+#include "../model/PresetCollection.h"
 //[/Headers]
 
 #include "TabPresetEditor.h"
@@ -550,7 +548,7 @@ void TabPresetEditor::buttonClicked (Button* buttonThatWasClicked)
         String filename = getXmlFileChooserOpen(dir);
         if (filename != String())
         {
-            presetManager->readFile(filename);
+            presetManager->readFile(filename, nullptr);
             presetDB_copy.clear();
             presetDB_copy = presetManager->getPresetDBcopy();
             updateListBox();
@@ -590,7 +588,7 @@ void TabPresetEditor::buttonClicked (Button* buttonThatWasClicked)
 
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
 
-void TabPresetEditor::setPresetManager(PresetManager *man)
+void TabPresetEditor::setPresetCollection(PresetCollection *man)
 {
     presetManager = man;
     presetDB_copy = presetManager->getPresetDBcopy();
@@ -673,7 +671,9 @@ String TabPresetEditor::getXmlFileChooserSave(String dir)
         return chosenFile.getFullPathName();
     }
     else
-        int debug_me = 1;
+    {
+        // debug me
+    }
 
     return String();
 }

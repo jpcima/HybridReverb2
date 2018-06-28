@@ -24,12 +24,7 @@
 
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "ParamGainDelay.h"
-#include "ParamEnvelope.h"
-#include "ParamTimbre.h"
-#include "ParamPreset.h"
-#include "ParamPreferences.h"
-#include "ParamPartitionWisdom.h"
+#include "model/Parameter.h"
 #include <vector>
 
 
@@ -44,7 +39,7 @@ class TabAbout;
 class IRPlot;
 class FreqPlot;
 class SampleData;
-class PresetManager;
+class PresetCollection;
 class HybridReverb2Processor;
 class SystemConfig;
 
@@ -70,7 +65,7 @@ public:
 
     // "Main" tab methods
     void registerTabMain(TabMain *tab);
-    void onValueChangedPresetNum(int value, bool force = false);
+    void onValueChangedPresetNum(int value, std::vector<String> *errors, bool force = false);
     void onValueChangedGainDelay(ParamGainDelay *param);
     void onValueChangedEnvelope(ParamEnvelope *param);
 
@@ -124,7 +119,7 @@ private:
     ParamPreset       preset;
     ParamPreferences  paramPreferences;
     std::shared_ptr<SystemConfig>      systemConfig;
-    std::unique_ptr<PresetManager>     presetManager;
+    std::unique_ptr<PresetCollection>     presetManager;
     HybridReverb2Processor      *audioPlugin = nullptr;
     String           logMessage;
     bool             changeFilter = true;

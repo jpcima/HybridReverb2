@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include "../HybridReverb2Processor.h"
-#include "../SystemConfig.h"
+#include "../model/SystemConfig.h"
 #include "../gui/Editor.h"
 #if defined(WITH_NSM_SESSION_SUPPORT)
 #include "nsm.h"

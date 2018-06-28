@@ -31,7 +31,7 @@ enum CONST_PARTITIONER {
 
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "ParamPartitionWisdom.h"
+#include "model/Parameter.h"
 
 
 class Partitioner

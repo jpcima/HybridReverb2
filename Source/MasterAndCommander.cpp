@@ -24,10 +24,9 @@
 #endif
 
 #include "MasterAndCommander.h"
-#include "ParamGainDelay.h"
-#include "ParamEnvelope.h"
-#include "ParamTimbre.h"
-#include "ParamPreferences.h"
+#include "model/PresetCollection.h"
+#include "model/SampleData.h"
+#include "model/SystemConfig.h"
 #include "gui/EditorComponent.h"
 #include "gui/TabMain.h"
 #include "gui/TabModulation.h"
@@ -36,10 +35,6 @@
 #include "gui/TabPreferences.h"
 #include "gui/TabAbout.h"
 #include "gui/IRPlot.h"
-#include "SampleData.h"
-#include "SystemConfig.h"
-#include "PresetManager.h"
-#include <stdio.h>
 
 
 MasterAndCommander::MasterAndCommander (HybridReverb2Processor *ap, const std::shared_ptr<SystemConfig> &systemConfig)
@@ -53,7 +48,7 @@ MasterAndCommander::MasterAndCommander (HybridReverb2Processor *ap, const std::s
 
     this->systemConfig = systemConfig;
     paramPreferences = systemConfig->getPreferences();
-    presetManager.reset(new PresetManager());
+    presetManager.reset(new PresetCollection());
 }
 
 MasterAndCommander::~MasterAndCommander()
@@ -64,7 +59,7 @@ MasterAndCommander::~MasterAndCommander()
 void MasterAndCommander::loadInitialPreset()
 {
     String presetFilename = systemConfig->getPresetFilename();
-    currentPreset = presetManager->readFile(presetFilename);
+    currentPreset = presetManager->readFile(presetFilename, nullptr);
     while (currentPreset < 0)
     {
         FileChooser fc(TRANS("Invalid preset file. Please choose another file to open..."),
@@ -75,7 +70,7 @@ void MasterAndCommander::loadInitialPreset()
         {
             File chosenFile = fc.getResult();
             paramPreferences.presetFile = chosenFile.getFullPathName();
-            currentPreset = presetManager->readFile(paramPreferences.presetFile);
+            currentPreset = presetManager->readFile(paramPreferences.presetFile, nullptr);
             systemConfig->setPreferences(paramPreferences);
         }
     }
@@ -90,7 +85,7 @@ void MasterAndCommander::loadInitialPreset()
 void MasterAndCommander::onGuiReady(void)
 {
     print("MasterAndCommander::onGuiReady()\n");
-    onValueChangedPresetNum(currentPreset, true);
+    onValueChangedPresetNum(currentPreset, nullptr, true);
 }
 
 
@@ -148,11 +143,12 @@ void MasterAndCommander::registerEditorComponent(EditorComponent *comp)
 void MasterAndCommander::registerTabMain(TabMain *tab)
 {
     tabMain = tab;
-    tab->setPresetManager(presetManager.get());
+    tab->setPresetCollection(presetManager.get());
 }
 
 
-void MasterAndCommander::onValueChangedPresetNum(int value, bool force)
+void MasterAndCommander::onValueChangedPresetNum(
+    int value, std::vector<String> *errors, bool force)
 {
     print("MasterAndCommander::onValueChangedPresetNum(" + String(value) + ", " + (force ? "true" : "false") + ") called\n");
     changeFilter = changeFilter || (value != currentPreset);
@@ -173,7 +169,7 @@ void MasterAndCommander::onValueChangedPresetNum(int value, bool force)
     tabMain->setNotes(preset.notes);
 
     String dbDir = systemConfig->getDBdir();
-    dataOriginal->applyLoadFiles(dbDir, &preset.impulseResponses);
+    dataOriginal->applyLoadFiles(dbDir, &preset.impulseResponses, errors);
 
     for (int i = 0; i < 4; i++)
     {
@@ -364,7 +360,7 @@ void MasterAndCommander::onValueChangedTimbre(ParamTimbre *param)
 void MasterAndCommander::registerTabPresetEditor(TabPresetEditor *tab)
 {
     tabPresetEditor = tab;
-    tab->setPresetManager(presetManager.get());
+    tab->setPresetCollection(presetManager.get());
 }
 
 
@@ -378,14 +374,14 @@ void MasterAndCommander::setPresetDB(const std::vector<ParamPreset> & newPresetD
         currentPreset = 1;
 
     // apply changes
-    onValueChangedPresetNum(currentPreset, true);
+    onValueChangedPresetNum(currentPreset, nullptr, true);
 }
 
 
 void MasterAndCommander::savePresetDB(const std::vector<ParamPreset> & newPresetDB)
 {
     setPresetDB(newPresetDB);
-    presetManager->save();
+    presetManager->save(nullptr);
 }
 
 
@@ -393,7 +389,7 @@ void MasterAndCommander::savePresetDBas(const std::vector<ParamPreset> & newPres
                                         const String & presetFile)
 {
     setPresetDB(newPresetDB);
-    presetManager->saveAs(presetFile);
+    presetManager->saveAs(presetFile, nullptr);
 }
 
 
@@ -454,8 +450,6 @@ void MasterAndCommander::registerFreqPlot(FreqPlot *plot)
 
 void MasterAndCommander::updateOriginal(void)
 {
-    SampleData *dataCurrent = 0;
-
     updateTimbre();
 }
 

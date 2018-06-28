@@ -59,7 +59,6 @@ private:
     float freqLevel = 1.0;
     std::unique_ptr<float[]> level;
     std::unique_ptr<float[]> impulse;
-    float fs = 0;
 
 private:
     //==============================================================================

@@ -50,6 +50,25 @@
         <FILE id="L5hCnf" name="libHybridConv.c" compile="1" resource="0" file="Source/libHybridConv/libHybridConv.c"/>
         <FILE id="UWmGxU" name="libHybridConv.h" compile="0" resource="0" file="Source/libHybridConv/libHybridConv.h"/>
       </GROUP>
+      <GROUP id="{1E45DC95-2A32-E4D7-F241-950FDD1A92DC}" name="utility">
+        <FILE id="rgQXCp" name="I18nTools.h" compile="0" resource="0" file="Source/utility/I18nTools.h"/>
+        <FILE id="nFNbXQ" name="TextList.cpp" compile="1" resource="0" file="Source/utility/TextList.cpp"/>
+        <FILE id="ZIoww8" name="TextList.h" compile="0" resource="0" file="Source/utility/TextList.h"/>
+        <FILE id="oCRgIA" name="XmlUtil.cpp" compile="1" resource="0" file="Source/utility/XmlUtil.cpp"/>
+        <FILE id="YfdTaJ" name="XmlUtil.h" compile="0" resource="0" file="Source/utility/XmlUtil.h"/>
+      </GROUP>
+      <GROUP id="{35E4D8B8-C286-3CBD-5FD3-071D8F4A9DCF}" name="model">
+        <FILE id="kTDQle" name="Parameter.h" compile="0" resource="0" file="Source/model/Parameter.h"/>
+        <FILE id="vhowvn" name="PresetCollection.cpp" compile="1" resource="0"
+              file="Source/model/PresetCollection.cpp"/>
+        <FILE id="PkjA31" name="PresetCollection.h" compile="0" resource="0"
+              file="Source/model/PresetCollection.h"/>
+        <FILE id="myrB5d" name="SampleData.cpp" compile="1" resource="0" file="Source/model/SampleData.cpp"/>
+        <FILE id="CAiA5w" name="SampleData.h" compile="0" resource="0" file="Source/model/SampleData.h"/>
+        <FILE id="trlSDt" name="SystemConfig.cpp" compile="1" resource="0"
+              file="Source/model/SystemConfig.cpp"/>
+        <FILE id="YYDUTt" name="SystemConfig.h" compile="0" resource="0" file="Source/model/SystemConfig.h"/>
+      </GROUP>
       <GROUP id="{D5C47CB0-DEEA-2A2F-79EB-C4E9E878CAF9}" name="gui">
         <FILE id="EZ1ZDc" name="AppLookAndFeel.cpp" compile="1" resource="0"
               file="Source/gui/AppLookAndFeel.cpp"/>
@@ -115,30 +134,8 @@
             file="Source/MasterAndCommander.cpp"/>
       <FILE id="bLgSBa" name="MasterAndCommander.h" compile="0" resource="0"
             file="Source/MasterAndCommander.h"/>
-      <FILE id="E2oLeO" name="ParamCategory.h" compile="0" resource="0" file="Source/ParamCategory.h"/>
-      <FILE id="apjd5S" name="ParamEnvelope.h" compile="0" resource="0" file="Source/ParamEnvelope.h"/>
-      <FILE id="b0Bqbe" name="ParamGainDelay.h" compile="0" resource="0"
-            file="Source/ParamGainDelay.h"/>
-      <FILE id="DbvOQr" name="ParamImpulseResponses.h" compile="0" resource="0"
-            file="Source/ParamImpulseResponses.h"/>
-      <FILE id="oIqjjD" name="ParamPartitionWisdom.h" compile="0" resource="0"
-            file="Source/ParamPartitionWisdom.h"/>
-      <FILE id="EohTAY" name="ParamPreferences.h" compile="0" resource="0"
-            file="Source/ParamPreferences.h"/>
-      <FILE id="JRCEmg" name="ParamPreset.h" compile="0" resource="0" file="Source/ParamPreset.h"/>
-      <FILE id="h4GlCU" name="ParamTimbre.h" compile="0" resource="0" file="Source/ParamTimbre.h"/>
       <FILE id="cN2loN" name="Partitioner.cpp" compile="1" resource="0" file="Source/Partitioner.cpp"/>
       <FILE id="o9XH9v" name="Partitioner.h" compile="0" resource="0" file="Source/Partitioner.h"/>
-      <FILE id="zEUNeO" name="PresetManager.cpp" compile="1" resource="0"
-            file="Source/PresetManager.cpp"/>
-      <FILE id="nNA6Vf" name="PresetManager.h" compile="0" resource="0" file="Source/PresetManager.h"/>
-      <FILE id="o0oOD9" name="SampleData.cpp" compile="1" resource="0" file="Source/SampleData.cpp"/>
-      <FILE id="LZA3UE" name="SampleData.h" compile="0" resource="0" file="Source/SampleData.h"/>
-      <FILE id="XAbYk1" name="SystemConfig.cpp" compile="1" resource="0"
-            file="Source/SystemConfig.cpp"/>
-      <FILE id="lhoNCb" name="SystemConfig.h" compile="0" resource="0" file="Source/SystemConfig.h"/>
-      <FILE id="h8sDdI" name="TextList.cpp" compile="1" resource="0" file="Source/TextList.cpp"/>
-      <FILE id="VtDwrf" name="TextList.h" compile="0" resource="0" file="Source/TextList.h"/>
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>

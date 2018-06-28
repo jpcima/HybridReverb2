@@ -19,7 +19,7 @@
 
 //[Headers] You can add your own extra header files here...
 #include "../MasterAndCommander.h"
-#include "../I18nTools.h"
+#include "../utility/I18nTools.h"
 //[/Headers]
 
 #include "TabAbout.h"

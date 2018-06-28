@@ -21,14 +21,13 @@
 
 //[Headers]     -- You can add your own extra header files here --
 #include "../../JuceLibraryCode/JuceHeader.h"
-#include "../ParamGainDelay.h"
-#include "../ParamEnvelope.h"
-#include "../TextList.h"
+#include "../model/Parameter.h"
+#include "../utility/TextList.h"
 #include <vector>
 
 // forward declarations
 class MasterAndCommander;
-class PresetManager;
+class PresetCollection;
 
 class IRPlot;
 //[/Headers]
@@ -54,7 +53,7 @@ public:
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
-    void setPresetManager (PresetManager *man);
+    void setPresetCollection (PresetCollection *man);
     void setGainDelayRange (ParamGainDelay *min,
                             ParamGainDelay *value,
                             ParamGainDelay *max);
@@ -78,7 +77,7 @@ public:
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
     MasterAndCommander* master = nullptr;
-    PresetManager* presetManager = nullptr;
+    PresetCollection* presetManager = nullptr;
     ParamGainDelay paramGainDelay;
     ParamEnvelope paramEnvelope;
     //[/UserVariables]

@@ -17,6 +17,12 @@
     <Filter Include="HybridReverb2\Source\libHybridConv">
       <UniqueIdentifier>{54BA4AA3-94A6-26A2-514B-5B544532C5D5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="HybridReverb2\Source\utility">
+      <UniqueIdentifier>{6A6E4285-E87C-E5AC-9067-8E9546B7FF22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HybridReverb2\Source\model">
+      <UniqueIdentifier>{5847E9AC-40A7-478C-3854-F355BE42B48D}</UniqueIdentifier>
+    </Filter>
     <Filter Include="HybridReverb2\Source\gui">
       <UniqueIdentifier>{CB13ED8E-BB76-A7A1-D360-67D2C619C4B8}</UniqueIdentifier>
     </Filter>
@@ -433,6 +439,21 @@
     <ClCompile Include="..\..\Source\libHybridConv\libHybridConv.c">
       <Filter>HybridReverb2\Source\libHybridConv</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\utility\TextList.cpp">
+      <Filter>HybridReverb2\Source\utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\utility\XmlUtil.cpp">
+      <Filter>HybridReverb2\Source\utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\model\PresetCollection.cpp">
+      <Filter>HybridReverb2\Source\model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\model\SampleData.cpp">
+      <Filter>HybridReverb2\Source\model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\model\SystemConfig.cpp">
+      <Filter>HybridReverb2\Source\model</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\gui\AppLookAndFeel.cpp">
       <Filter>HybridReverb2\Source\gui</Filter>
     </ClCompile>
@@ -491,18 +512,6 @@
       <Filter>HybridReverb2\Source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Partitioner.cpp">
-      <Filter>HybridReverb2\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\PresetManager.cpp">
-      <Filter>HybridReverb2\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\SampleData.cpp">
-      <Filter>HybridReverb2\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\SystemConfig.cpp">
-      <Filter>HybridReverb2\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\TextList.cpp">
       <Filter>HybridReverb2\Source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Thirdparty\JUCE\modules\juce_audio_basics\buffers\juce_AudioChannelSet.cpp">
@@ -2409,6 +2418,27 @@
     <ClInclude Include="..\..\Source\libHybridConv\libHybridConv.h">
       <Filter>HybridReverb2\Source\libHybridConv</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\utility\I18nTools.h">
+      <Filter>HybridReverb2\Source\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\utility\TextList.h">
+      <Filter>HybridReverb2\Source\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\utility\XmlUtil.h">
+      <Filter>HybridReverb2\Source\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\model\Parameter.h">
+      <Filter>HybridReverb2\Source\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\model\PresetCollection.h">
+      <Filter>HybridReverb2\Source\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\model\SampleData.h">
+      <Filter>HybridReverb2\Source\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\model\SystemConfig.h">
+      <Filter>HybridReverb2\Source\model</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\gui\AppLookAndFeel.h">
       <Filter>HybridReverb2\Source\gui</Filter>
     </ClInclude>
@@ -2466,43 +2496,7 @@
     <ClInclude Include="..\..\Source\MasterAndCommander.h">
       <Filter>HybridReverb2\Source</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\ParamCategory.h">
-      <Filter>HybridReverb2\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\ParamEnvelope.h">
-      <Filter>HybridReverb2\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\ParamGainDelay.h">
-      <Filter>HybridReverb2\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\ParamImpulseResponses.h">
-      <Filter>HybridReverb2\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\ParamPartitionWisdom.h">
-      <Filter>HybridReverb2\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\ParamPreferences.h">
-      <Filter>HybridReverb2\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\ParamPreset.h">
-      <Filter>HybridReverb2\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\ParamTimbre.h">
-      <Filter>HybridReverb2\Source</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Source\Partitioner.h">
-      <Filter>HybridReverb2\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\PresetManager.h">
-      <Filter>HybridReverb2\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\SampleData.h">
-      <Filter>HybridReverb2\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\SystemConfig.h">
-      <Filter>HybridReverb2\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\TextList.h">
       <Filter>HybridReverb2\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Thirdparty\JUCE\modules\juce_audio_basics\audio_play_head\juce_AudioPlayHead.h">

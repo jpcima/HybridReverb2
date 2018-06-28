@@ -25,14 +25,13 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "gui/Editor.h"
-#include "SampleData.h"
+#include "model/Parameter.h"
+#include "model/SampleData.h"
 #include "HybridConvolver.h"
 #include "HybridConvolverTripple.h"
 #include "HybridConvolverDual.h"
 #include "HybridConvolverSingle.h"
 #include "Partitioner.h"
-#include "ParamPreferences.h"
-#include "ParamPartitionWisdom.h"
 
 
 // forward declarations

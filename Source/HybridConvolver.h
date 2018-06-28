@@ -23,7 +23,7 @@
 #define __HybridConvolver__
 
 
-#include "SampleData.h"
+#include "model/SampleData.h"
 #include "../JuceLibraryCode/JuceHeader.h"
 
 extern "C" {

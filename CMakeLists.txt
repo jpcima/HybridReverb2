@@ -31,9 +31,12 @@ set(CMAKE_VISIBILITY_INLINES_HIDDEN "ON")
 #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=thread")
 
 enable_gnu_warning("all")
+disable_gnu_warning("unknown-warning-option")
 disable_gnu_warning("multichar")
 # this one is all over JUCE code
 disable_gnu_warning("class-memaccess")
+# fatal warnings
+enable_gnu_warning("error=return-type")
 
 set(HybridReverb2_ENABLE_SSE "OFF")
 if(CMAKE_SYSTEM_PROCESSOR MATCHES "^i.86$" OR
@@ -114,6 +117,11 @@ include("${CMAKE_SOURCE_DIR}/JUCE-targets.cmake")
 
 add_library(HybridReverb2_core STATIC
   "JuceLibraryCode/BinaryData.cpp"
+  "Source/utility/TextList.cpp"
+  "Source/utility/XmlUtil.cpp"
+  "Source/model/PresetCollection.cpp"
+  "Source/model/SampleData.cpp"
+  "Source/model/SystemConfig.cpp"
   "Source/gui/AppLookAndFeel.cpp"
   "Source/gui/Editor.cpp"
   "Source/gui/EditorComponent.cpp"
@@ -133,13 +141,8 @@ add_library(HybridReverb2_core STATIC
   "Source/HybridConvolverTripple.cpp"
   "Source/HybridReverb2Processor.cpp"
   "Source/LagrangeInterpolator.cpp"
-  "Source/Main.cpp"
   "Source/MasterAndCommander.cpp"
-  "Source/Partitioner.cpp"
-  "Source/PresetManager.cpp"
-  "Source/SampleData.cpp"
-  "Source/SystemConfig.cpp"
-  "Source/TextList.cpp")
+  "Source/Partitioner.cpp")
 target_compile_definitions(HybridReverb2_core PRIVATE "INSTALL_PREFIX=\"${CMAKE_INSTALL_PREFIX}\"")
 if(HybridReverb2_UseLocalDatabase)
   target_compile_definitions(HybridReverb2_core PRIVATE "USE_LOCAL_DATABASE")
@@ -178,7 +181,7 @@ target_link_libraries(HybridReverb2_core PRIVATE "${FFTWF_LIBRARY}")
 target_include_directories(HybridReverb2_core PRIVATE "${FFTW_INCLUDE_DIR}")
 
 macro(add_plugin NAME)
-  add_library("${NAME}" MODULE "Source/Main.cpp" ${ARGN})
+  add_library("${NAME}" MODULE "Source/utility/Nothing.cpp" ${ARGN})
   set_property(TARGET "${NAME}" PROPERTY PREFIX "")
   if(CMAKE_SYSTEM_NAME STREQUAL "Windows" AND CMAKE_COMPILER_IS_GNUCXX)
     # forces the static link of standard libraries
@@ -261,7 +264,7 @@ if(HybridReverb2_LV2)
 endif()
 
 if(HybridReverb2_Standalone)
-  add_executable(HybridReverb2_Standalone "Source/Main.cpp")
+  add_executable(HybridReverb2_Standalone "Source/utility/Nothing.cpp")
   target_link_libraries(HybridReverb2_Standalone PRIVATE juce_audio_plugin_client_Standalone HybridReverb2_core)
   if(CMAKE_SYSTEM_NAME STREQUAL "Windows")
     if(CMAKE_SYSTEM_PROCESSOR MATCHES "^i.86$" OR

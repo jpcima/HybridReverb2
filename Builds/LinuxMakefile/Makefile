@@ -95,6 +95,11 @@ OBJECTS_STANDALONE_PLUGIN := \
 
 OBJECTS_SHARED_CODE := \
   $(JUCE_OBJDIR)/libHybridConv_628888dc.o \
+  $(JUCE_OBJDIR)/TextList_8efbf437.o \
+  $(JUCE_OBJDIR)/XmlUtil_cf3f3c77.o \
+  $(JUCE_OBJDIR)/PresetCollection_358a570c.o \
+  $(JUCE_OBJDIR)/SampleData_da7f08a3.o \
+  $(JUCE_OBJDIR)/SystemConfig_3f6f2980.o \
   $(JUCE_OBJDIR)/AppLookAndFeel_5a47e3fa.o \
   $(JUCE_OBJDIR)/DownloadDbComponent_d04f884.o \
   $(JUCE_OBJDIR)/Editor_6c4d05ca.o \
@@ -115,10 +120,6 @@ OBJECTS_SHARED_CODE := \
   $(JUCE_OBJDIR)/LagrangeInterpolator_7b527adb.o \
   $(JUCE_OBJDIR)/MasterAndCommander_53c180ac.o \
   $(JUCE_OBJDIR)/Partitioner_c0b143f8.o \
-  $(JUCE_OBJDIR)/PresetManager_fc30642f.o \
-  $(JUCE_OBJDIR)/SampleData_f4002ffd.o \
-  $(JUCE_OBJDIR)/SystemConfig_fd43e25a.o \
-  $(JUCE_OBJDIR)/TextList_c8bb9874.o \
   $(JUCE_OBJDIR)/BinaryData_ce4232d4.o \
   $(JUCE_OBJDIR)/include_juce_audio_basics_8a4e984a.o \
   $(JUCE_OBJDIR)/include_juce_audio_devices_63111d02.o \
@@ -178,6 +179,31 @@ $(JUCE_OBJDIR)/libHybridConv_628888dc.o: ../../Source/libHybridConv/libHybridCon
 	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
 	@echo "Compiling libHybridConv.c"
 	$(V_AT)$(CC) $(JUCE_CFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/TextList_8efbf437.o: ../../Source/utility/TextList.cpp
+	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling TextList.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/XmlUtil_cf3f3c77.o: ../../Source/utility/XmlUtil.cpp
+	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling XmlUtil.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/PresetCollection_358a570c.o: ../../Source/model/PresetCollection.cpp
+	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling PresetCollection.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/SampleData_da7f08a3.o: ../../Source/model/SampleData.cpp
+	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling SampleData.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/SystemConfig_3f6f2980.o: ../../Source/model/SystemConfig.cpp
+	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling SystemConfig.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
 
 $(JUCE_OBJDIR)/AppLookAndFeel_5a47e3fa.o: ../../Source/gui/AppLookAndFeel.cpp
 	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
@@ -277,26 +303,6 @@ $(JUCE_OBJDIR)/MasterAndCommander_53c180ac.o: ../../Source/MasterAndCommander.cp
 $(JUCE_OBJDIR)/Partitioner_c0b143f8.o: ../../Source/Partitioner.cpp
 	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
 	@echo "Compiling Partitioner.cpp"
-	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
-
-$(JUCE_OBJDIR)/PresetManager_fc30642f.o: ../../Source/PresetManager.cpp
-	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
-	@echo "Compiling PresetManager.cpp"
-	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
-
-$(JUCE_OBJDIR)/SampleData_f4002ffd.o: ../../Source/SampleData.cpp
-	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
-	@echo "Compiling SampleData.cpp"
-	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
-
-$(JUCE_OBJDIR)/SystemConfig_fd43e25a.o: ../../Source/SystemConfig.cpp
-	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
-	@echo "Compiling SystemConfig.cpp"
-	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
-
-$(JUCE_OBJDIR)/TextList_c8bb9874.o: ../../Source/TextList.cpp
-	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
-	@echo "Compiling TextList.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
 
 $(JUCE_OBJDIR)/BinaryData_ce4232d4.o: ../../JuceLibraryCode/BinaryData.cpp

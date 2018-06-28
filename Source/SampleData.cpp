@@ -112,6 +112,8 @@ void SampleData::applyLoadFiles(String dir, ParamImpulseResponses *param)
 
 int SampleData::loadSingleFile(String filename, int num)
 {
+    fprintf(stderr, "Load single file: %s\n", filename.toRawUTF8());
+
     File audioFile(filename);
     if (audioFile.existsAsFile() == false)
     {

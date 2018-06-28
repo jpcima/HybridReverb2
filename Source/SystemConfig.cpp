@@ -129,12 +129,9 @@ void SystemConfig::readPreferencesFile()
 
     if (!element)
     {
-        String message = TRANS("Error reading preferences file") + " \"" +
-                         prefFile.getFullPathName() +
-                         "\"" + TRANS(":") + "\n" +
-                         xmlDoc->getLastParseError();
-        AlertWindow::showMessageBox(AlertWindow::WarningIcon,
-                                    TRANS("Error"), message);
+        fprintf(stderr, "Error reading preferences file \"%s\": %s\n",
+            prefFile.getFullPathName().toRawUTF8(),
+            xmlDoc->getLastParseError().toRawUTF8());
 
         String xmlData(BinaryData::preferences_xml, BinaryData::preferences_xmlSize);
         xmlDoc.reset(new XmlDocument(xmlData));
@@ -198,12 +195,9 @@ void SystemConfig::readPartitionWisdomFile()
 
     if (!element)
     {
-        String message = TRANS("Error reading wisdom file") + " \"" +
-                         wisdomFile.getFullPathName() +
-                         "\"" + TRANS(":") + "\n" +
-                         xmlDoc->getLastParseError();
-        AlertWindow::showMessageBox(AlertWindow::WarningIcon,
-                                    TRANS("Error"), message);
+        fprintf(stderr, "Error reading wisdom file \"%s\": %s\n",
+            wisdomFile.getFullPathName().toRawUTF8(),
+            xmlDoc->getLastParseError().toRawUTF8());
 
         String xmlData(BinaryData::partition_wisdom_xml, BinaryData::partition_wisdom_xmlSize);
         xmlDoc.reset(new XmlDocument(xmlData));

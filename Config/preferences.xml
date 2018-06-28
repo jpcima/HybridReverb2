@@ -2,5 +2,5 @@
 <preferences>
   <presetFile><!-- default file  --></presetFile>
   <sflen>256</sflen>
-  <strategy>1</strategy>
+  <strategy>0</strategy>
 </preferences>

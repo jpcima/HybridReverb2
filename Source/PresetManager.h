@@ -38,7 +38,6 @@ class PresetManager
 {
 public:
     PresetManager();
-    PresetManager(int num);
     ~PresetManager();
 
     int getNumPresets(void);
@@ -46,7 +45,7 @@ public:
     void setCurrentPresetNum(int num);
     int getDefaultPresetNum(void);
     void setDefaultPresetNum(int num);
-    const std::vector<ParamPreset> & getPresetDB(void);
+    std::vector<ParamPreset> getPresetDBcopy(void);
     void setPresetDB(const std::vector<ParamPreset> & newPresetDB);
     int readFile(const String &presetFilename);
     int save(void);
@@ -93,11 +92,11 @@ private:
     String retSubText;
     std::unique_ptr<XmlDocument> xmlDoc;
     std::unique_ptr<XmlElement> xmlRoot;
-    int maxPresets = 256;
-    std::vector<ParamPreset> preset;
+    enum { maxPresets = 256 };
+    std::unique_ptr<ParamPreset[]> preset;
     int numPresets = 0;
-    int currentPresetNum;
-    int defaultPresetNum;
+    int currentPresetNum = 1;
+    int defaultPresetNum = 1;
 
     ParamPreset           emptyPreset;
     ParamImpulseResponses emptyImpulseResponses;

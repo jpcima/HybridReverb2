@@ -81,7 +81,7 @@ float HybridReverb2Processor::getParameter (int index)
     float ret = 0.0;
     switch (index) {
     case 0:
-        ret = (currentPreset - 1.0) / 255.0;
+        ret = (currentPreset - 1) / 255.0f;
         break;
     }
     return ret;
@@ -91,7 +91,7 @@ void HybridReverb2Processor::setParameter (int index, float newValue)
 {
     switch (index) {
     case 0:
-        int newPreset = roundf(newValue * 255.0 + 1.0);
+        int newPreset = roundf(newValue * 255.0f) + 1;
         if (currentPreset != newPreset)
         {
             // if this is changing the preset number, broadcast a change message which

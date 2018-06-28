@@ -552,7 +552,7 @@ void TabPresetEditor::buttonClicked (Button* buttonThatWasClicked)
         {
             presetManager->readFile(filename);
             presetDB_copy.clear();
-            presetDB_copy = presetManager->getPresetDB();
+            presetDB_copy = presetManager->getPresetDBcopy();
             updateListBox();
             master->setPresetDB(presetDB_copy, false);
         }
@@ -593,7 +593,7 @@ void TabPresetEditor::buttonClicked (Button* buttonThatWasClicked)
 void TabPresetEditor::setPresetManager(PresetManager *man)
 {
     presetManager = man;
-    presetDB_copy = presetManager->getPresetDB();
+    presetDB_copy = presetManager->getPresetDBcopy();
     selectedRow = 0;
     updateListBox();
 }
@@ -617,7 +617,7 @@ void TabPresetEditor::onComponentSelected(void)
     //FIXME: remove this
     printf("TabPresetEditor selected\n");
 
-    presetDB_copy = presetManager->getPresetDB();
+    presetDB_copy = presetManager->getPresetDBcopy();
     defaultPresetNum = presetManager->getDefaultPresetNum();
     currentPresetNum = presetManager->getCurrentPresetNum();
     selectedRow = currentPresetNum - 1;

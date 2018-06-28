@@ -26,19 +26,8 @@
 
 
 PresetManager::PresetManager()
-    : currentPresetNum(1),
-      defaultPresetNum(1)
 {
-    for (int i = 0; i < maxPresets; i++)
-        preset.push_back( ParamPreset() );
-}
-
-PresetManager::PresetManager(int num)
-    : maxPresets(num),
-      defaultPresetNum(0)
-{
-    for (int i = 0; i < 7; i++)
-        preset.push_back( ParamPreset() );
+    preset.reset(new ParamPreset[maxPresets]);
 }
 
 PresetManager::~PresetManager()
@@ -53,7 +42,7 @@ PresetManager::~PresetManager()
 
 int PresetManager::getNumPresets(void)
 {
-    return preset.size();
+    return numPresets;
 }
 
 
@@ -81,17 +70,22 @@ void PresetManager::setDefaultPresetNum(int num)
 }
 
 
-const std::vector<ParamPreset> & PresetManager::getPresetDB(void)
+std::vector<ParamPreset> PresetManager::getPresetDBcopy(void)
 {
-    return preset;
+    return std::vector<ParamPreset>(
+        preset.get(), preset.get() + numPresets);
 }
 
 
 void PresetManager::setPresetDB(const std::vector<ParamPreset> & newPresetDB)
 {
-    preset.clear();
-    preset = newPresetDB;
-    numPresets = preset.size();
+    numPresets = newPresetDB.size();
+    if (numPresets > maxPresets)
+        numPresets = maxPresets;
+
+    std::copy(
+        newPresetDB.data(), newPresetDB.data() + numPresets,
+        preset.get());
 
     // reorganize "category index" for selection via the combo boxes
     vectorCat1.clear();
@@ -129,10 +123,7 @@ int PresetManager::readFile(const String &presetFilename)
         return -1;
     }
 
-    preset.clear();
     defaultPresetNum = parseRoot(xmlRoot.get());
-    numPresets = preset.size();
-
     return defaultPresetNum;
 }
 
@@ -147,7 +138,7 @@ int PresetManager::save(void)
     XmlElement* textElement;
     xmlDefault->addChildElement(textElement = XmlElement::createTextElement(String(defaultPresetNum)));
 
-    for (int i = 0; i < preset.size(); i++)
+    for (int i = 0; i < numPresets; i++)
     {
         xmlRoot.addChildElement(paramPresetToXML(preset[i], i + 1));
     }
@@ -178,23 +169,18 @@ int PresetManager::parseRoot(XmlElement *element)
 {
     int ret = 1;
 
-    if (numPresets > 0)
-    {
-        preset.clear();
-        numPresets = 0;
-    }
+    numPresets = 0;
 
     forEachXmlChildElement(*element, child)
     {
         if (numPresets < maxPresets && child->hasTagName("preset"))
         {
-            preset.push_back(ParamPreset());
+            ParamPreset &p = preset[numPresets++];
             for (int i = 0; i < 4; i++)
                 catIndex[i] = -1;
-            preset.at(numPresets) = parsePreset(child);
+            p = parsePreset(child);
             for (int i = 0; i < 4; i++)
-                preset.at(numPresets).catIndex[i] = catIndex[i];
-            numPresets++;
+                p.catIndex[i] = catIndex[i];
         }
         else if (child->hasTagName("default"))
         {
@@ -370,85 +356,99 @@ const ParamTimbre & PresetManager::parseParamTimbre(XmlElement *element)
 
 const ParamPreset & PresetManager::getPreset(int num)
 {
-    return preset.at(num - 1);
+    jassert(num > 0 && num <= numPresets);
+    return preset[num - 1];
 }
 
 
 const String & PresetManager::getName(int num)
 {
-    return preset.at(num - 1).name;
+    jassert(num > 0 && num <= numPresets);
+    return preset[num - 1].name;
 }
 
 
 const ParamImpulseResponses & PresetManager::getImpulseResponses(int num)
 {
-    return preset.at(num - 1).impulseResponses;
+    jassert(num > 0 && num <= numPresets);
+    return preset[num - 1].impulseResponses;
 }
 
 
 const ParamCategory & PresetManager::getCategory(int num)
 {
-    return preset.at(num - 1).category;
+    jassert(num > 0 && num <= numPresets);
+    return preset[num - 1].category;
 }
 
 
 const ParamTimbre & PresetManager::getTimbre(int num)
 {
-    return preset.at(num - 1).timbre;
+    jassert(num > 0 && num <= numPresets);
+    return preset[num - 1].timbre;
 }
 
 
 const ParamGainDelay & PresetManager::getGainDelay(int num)
 {
-    return preset.at(num - 1).gainDelay;
+    jassert(num > 0 && num <= numPresets);
+    return preset[num - 1].gainDelay;
 }
 
 
 const ParamEnvelope & PresetManager::getEnvelope(int num)
 {
-    return preset.at(num - 1).envelope;
+    jassert(num > 0 && num <= numPresets);
+    return preset[num - 1].envelope;
 }
 
 
 const String & PresetManager::getNotes(int num)
 {
-    return preset.at(num - 1).notes;
+    jassert(num > 0 && num <= numPresets);
+    return preset[num - 1].notes;
 }
 
 
 void PresetManager::setPreset(int num, const ParamPreset & param)
 {
-    preset.at(num - 1) = param;
+    jassert(num > 0 && num <= numPresets);
+    preset[num - 1] = param;
 }
 
 
 void PresetManager::setImpulseResponses(int num, const ParamImpulseResponses & param)
 {
-    preset.at(num - 1).impulseResponses = param;
+    jassert(num > 0 && num <= numPresets);
+    preset[num - 1].impulseResponses = param;
 }
 
 
 void PresetManager::setCategory(int num, const ParamCategory & param)
 {
-    preset.at(num - 1).category = param;
+    jassert(num > 0 && num <= numPresets);
+    preset[num - 1].category = param;
 }
 
 
 void PresetManager::setEnvelope(int num, const ParamEnvelope & param)
 {
-    preset.at(num - 1).envelope = param;
+    jassert(num > 0 && num <= numPresets);
+    preset[num - 1].envelope = param;
 }
 
 
 void PresetManager::setGainDelay(int num, const ParamGainDelay & param)
 {
-    preset.at(num - 1).gainDelay = param;
+    jassert(num > 0 && num <= numPresets);
+    preset[num - 1].gainDelay = param;
 }
 
 
 void PresetManager::setTimbre(int num, const ParamTimbre & param)
 {
-    preset.at(num - 1).timbre = param;
+    jassert(num > 0 && num <= numPresets);
+    preset[num - 1].timbre = param;
 }
 
 
@@ -470,7 +470,8 @@ const std::vector<String> & PresetManager::getList(int category)
 
 int PresetManager::getCategoryIndex(int num, int category)
 {
-    return preset.at(num - 1).catIndex[category];
+    jassert(num > 0 && num <= numPresets);
+    return preset[num - 1].catIndex[category];
 }
 
 
@@ -486,13 +487,14 @@ int PresetManager::getSimilarPreset(int current_preset, int cat, int cat_index)
     penalty[1] = numPresets * numPresets;
     penalty[0] = numPresets * numPresets * numPresets;
 
+    jassert(current_preset > 0 && current_preset <= numPresets);
     for (int i = 0; i < 4; i++)
-        catIndex_wish[i] = preset.at(current_preset - 1).catIndex[i];
+        catIndex_wish[i] = preset[current_preset - 1].catIndex[i];
     catIndex_wish[cat] = cat_index;
 
     for (int p = 0; p < numPresets; p++)
     {
-        int *loop_catIndex = preset.at(p).catIndex;
+        int *loop_catIndex = preset[p].catIndex;
         if (loop_catIndex[cat] == cat_index)
         {
             double distance = 0.0;

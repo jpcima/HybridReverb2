@@ -134,6 +134,7 @@ add_library(HybridReverb2_core STATIC
   "Source/gui/TabPresetEditor.cpp"
   "Source/gui/TabTimbre.cpp"
   "Source/gui/DownloadDbComponent.cpp"
+  "Source/gui/Updater.cpp"
   "Source/libHybridConv/libHybridConv.c"
   "Source/HybridConvolver.cpp"
   "Source/HybridConvolverDual.cpp"

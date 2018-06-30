@@ -348,7 +348,7 @@ void IRPlot::samples2plot(float *imp1, float *imp2, float *imp3, float *imp4, in
 }
 
 
-void IRPlot::setEnvelope(ParamEnvelope *param)
+void IRPlot::setEnvelope(const ParamEnvelope *param)
 {
     paramEnvelope->db0ms   = param->db0ms;
     paramEnvelope->db20ms  = param->db20ms;

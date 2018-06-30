@@ -32,11 +32,13 @@ extern "C" {
 }
 
 
-class SampleData
+class SampleData : public ReferenceCountedObject
 {
 public:
     SampleData ();
     ~SampleData();
+
+    typedef ReferenceCountedObjectPtr<SampleData> Ptr;
 
     int applyLoadFiles(const String &dir,
                        const String &fileLL,

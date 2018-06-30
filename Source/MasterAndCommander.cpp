@@ -24,28 +24,31 @@
 #endif
 
 #include "MasterAndCommander.h"
+#include "HybridReverb2Processor.h"
 #include "model/PresetCollection.h"
 #include "model/SampleData.h"
 #include "model/SystemConfig.h"
-#include "gui/EditorComponent.h"
 #include "gui/TabMain.h"
-#include "gui/TabModulation.h"
 #include "gui/TabTimbre.h"
 #include "gui/TabPresetEditor.h"
 #include "gui/TabPreferences.h"
-#include "gui/TabAbout.h"
 #include "gui/IRPlot.h"
+#include "gui/Updater.h"
 
 
 MasterAndCommander::MasterAndCommander (HybridReverb2Processor *ap, const std::shared_ptr<SystemConfig> &systemConfig)
-    : audioPlugin(ap)
+    : audioPlugin(ap),
+      dataOriginal(new SampleData),
+      dataTimbre(new SampleData),
+      dataModulation(new SampleData),
+      dataGainDelay(new SampleData),
+      dataEnvelope(new SampleData),
+      metaUpdater(new MetaUpdater),
+      envelopeUpdater(new EnvelopeUpdater),
+      timbreUpdater(new TimbreUpdater),
+      gainDelayUpdater(new GainDelayUpdater),
+      irPlotUpdater(new IRPlotUpdater)
 {
-    dataOriginal.reset(new SampleData());
-    dataTimbre.reset(new SampleData());
-    dataModulation.reset(new SampleData());
-    dataGainDelay.reset(new SampleData());
-    dataEnvelope.reset(new SampleData());
-
     this->systemConfig = systemConfig;
     paramPreferences = systemConfig->getPreferences();
     presetManager.reset(new PresetCollection());
@@ -115,24 +118,15 @@ const ParamPartitionWisdom & MasterAndCommander::getPartitionWisdom()
 
 ////////////////////////////////////////////////////////////////
 //
-//    "Main" component methods
-//
-
-void MasterAndCommander::registerEditorComponent(EditorComponent *comp)
-{
-    compMain = comp;
-    fprintf(stderr, "----[ EditorComponent registered ]----\n");
-}
-
-
-////////////////////////////////////////////////////////////////
-//
 //    "Main" tab methods
 //
 
 void MasterAndCommander::registerTabMain(TabMain *tab)
 {
-    tabMain = tab;
+    metaUpdater->tabMain = tab;
+    envelopeUpdater->tabMain = tab;
+    gainDelayUpdater->tabMain = tab;
+
     tab->setPresetCollection(presetManager.get());
 }
 
@@ -146,28 +140,29 @@ void MasterAndCommander::onValueChangedPresetNum(
     if (changeFilter == false && force == false)
         return;
 
+    ParamGainDelay *paramGainDelay = &preset.gainDelay;
+    ParamEnvelope  *paramEnvelope = &preset.envelope;
+    ParamTimbre    *paramTimbre = &preset.timbre;
+
     currentPreset = value;
     presetManager->setCurrentPresetNum(value);
     fprintf(stderr, "Master :    new PRESET NUM value : %d\n", value);
 
     preset = presetManager->getPreset(value);
-    paramGainDelay = &preset.gainDelay;
-    paramEnvelope  = &preset.envelope;
-    paramTimbre    = &preset.timbre;
-
-    tabMain->setNum(value);
-    tabMain->setID(preset.name);
-    tabMain->setNotes(preset.notes);
 
     String dbDir = systemConfig->getDBdir();
     dataOriginal->applyLoadFiles(dbDir, &preset.impulseResponses, errors);
 
+    metaUpdater->cancelPendingUpdate();
+    metaUpdater->num = value;
+    metaUpdater->name = preset.name;
+    metaUpdater->notes = preset.notes;
     for (int i = 0; i < 4; i++)
     {
-        tabMain->setComboText(i, presetManager->getList(i));
-        int index = presetManager->getCategoryIndex(value, i);
-        tabMain->setComboIndex(i, index);
+        metaUpdater->categories[i] = presetManager->getList(i);
+        metaUpdater->categoryIndex[i] = presetManager->getCategoryIndex(value, i);
     }
+    metaUpdater->triggerAsyncUpdate();
 
     ParamGainDelay pMin, pMax;
 
@@ -193,7 +188,11 @@ void MasterAndCommander::onValueChangedPresetNum(
     pMin.masterGain = -40.0;
     pMax.masterGain =  40.0;
 
-    tabMain->setGainDelayRange(&pMin, paramGainDelay, &pMax);
+    gainDelayUpdater->cancelPendingUpdate();
+    gainDelayUpdater->param = *paramGainDelay;
+    gainDelayUpdater->min = pMin;
+    gainDelayUpdater->max = pMax;
+    gainDelayUpdater->triggerAsyncUpdate();
 
     if (pMax.length - paramGainDelay->length < 0.0005)
         paramGainDelay->length = -1.0;
@@ -211,7 +210,10 @@ void MasterAndCommander::onValueChangedPresetNum(
     if (fabs(paramGainDelay->masterGain) > 0.05)
         enabledGainDelay = true;
 
-    tabMain->setEnvelope(paramEnvelope);
+    envelopeUpdater->cancelPendingUpdate();
+    envelopeUpdater->param = *paramEnvelope;
+    envelopeUpdater->triggerAsyncUpdate();
+
     enabledEnvelope = false;
     if (fabs(paramEnvelope->db0ms)   > 0.05)
         enabledEnvelope = true;
@@ -222,7 +224,10 @@ void MasterAndCommander::onValueChangedPresetNum(
     if (fabs(paramEnvelope->dbENDms) > 0.05)
         enabledEnvelope = true;
 
-    tabTimbre->setTimbre(paramTimbre);
+    timbreUpdater->cancelPendingUpdate();
+    timbreUpdater->param = *paramTimbre;
+    timbreUpdater->triggerAsyncUpdate();
+
     enabledTimbre = false;
     for (int i = 0; enabledTimbre == false && i < paramTimbre->num; i++)
     {
@@ -243,6 +248,8 @@ void MasterAndCommander::onValueChangedGainDelay(ParamGainDelay *param)
     fprintf(stderr, "Master#  Gain/Delay values : %5.1f %6.3f %6.1f %5.1f %5.1f %5.1f\n",
             param->initialGap, param->length, param->preDelay,
             param->dryGain, param->wetGain, param->masterGain);
+
+    ParamGainDelay *paramGainDelay = &preset.gainDelay;
 
     paramGainDelay->initialGap = param->initialGap;
     paramGainDelay->length     = param->length;
@@ -283,6 +290,8 @@ void MasterAndCommander::onValueChangedEnvelope(ParamEnvelope *param)
     fprintf(stderr, "Master#  Envelope values : %7.2f %7.2f %7.2f %7.2f\n",
             param->db0ms, param->db20ms, param->db120ms, param->dbENDms);
 
+    ParamEnvelope *paramEnvelope = &preset.envelope;
+
     paramEnvelope->db0ms   = param->db0ms;
     paramEnvelope->db20ms  = param->db20ms;
     paramEnvelope->db120ms = param->db120ms;
@@ -305,28 +314,21 @@ void MasterAndCommander::onValueChangedEnvelope(ParamEnvelope *param)
 
 ////////////////////////////////////////////////////////////////
 //
-//    "Modulation" tab methods
-//
-
-void MasterAndCommander::registerTabModulation(TabModulation *tab)
-{
-    tabModulation = tab;
-}
-
-
-////////////////////////////////////////////////////////////////
-//
 //    "Timbre" tab methods
 //
 
 void MasterAndCommander::registerTabTimbre(TabTimbre *tab)
 {
     tabTimbre = tab;
+
+    timbreUpdater->tabTimbre = tab;
 }
 
 
 void MasterAndCommander::onValueChangedTimbre(ParamTimbre *param)
 {
+    ParamTimbre       *paramTimbre = &preset.timbre;
+
     changeFilter = true;
     fprintf(stderr, "MasterAndCommander::onValueChangedTimbre() called\n");
     enabledTimbre = false;
@@ -350,7 +352,6 @@ void MasterAndCommander::onValueChangedTimbre(ParamTimbre *param)
 
 void MasterAndCommander::registerTabPresetEditor(TabPresetEditor *tab)
 {
-    tabPresetEditor = tab;
     tab->setPresetCollection(presetManager.get());
 }
 
@@ -391,8 +392,7 @@ void MasterAndCommander::savePresetDBas(const std::vector<ParamPreset> & newPres
 
 void MasterAndCommander::registerTabPreferences(TabPreferences *tab)
 {
-    tabPreferences = tab;
-    tabPreferences->setPreferences(paramPreferences);
+    tab->setPreferences(paramPreferences);
 }
 
 
@@ -405,22 +405,12 @@ void MasterAndCommander::onValueChangedPreferences(const ParamPreferences & para
 
 ////////////////////////////////////////////////////////////////
 //
-//    "About" tab methods
-//
-
-void MasterAndCommander::registerTabAbout(TabAbout *tab)
-{
-    tabAbout = tab;
-}
-
-
-////////////////////////////////////////////////////////////////
-//
 //    "IRPlot" component methods
 //
 void MasterAndCommander::registerIRPlot(IRPlot *plot)
 {
     irPlot = plot;
+    irPlotUpdater->irPlot = plot;
 }
 
 
@@ -484,8 +474,9 @@ void MasterAndCommander::updateModulation(void)
 
 void MasterAndCommander::updateGainDelay(void)
 {
-    SampleData *dataCurrent = 0;
+    ParamGainDelay *paramGainDelay = &preset.gainDelay;
 
+    SampleData *dataCurrent = 0;
     if (enabledModulation)
         dataCurrent = dataModulation.get();
     else if (enabledTimbre)
@@ -504,8 +495,9 @@ void MasterAndCommander::updateGainDelay(void)
 
 void MasterAndCommander::updateEnvelope(void)
 {
-    SampleData *dataCurrent = 0;
+    ParamEnvelope *paramEnvelope = &preset.envelope;
 
+    SampleData *dataCurrent = 0;
     if (enabledGainDelay)
         dataCurrent = dataGainDelay.get();
     else if (enabledModulation)
@@ -527,7 +519,6 @@ void MasterAndCommander::updateEnvelope(void)
 void MasterAndCommander::updateFinal(void)
 {
     SampleData *dataCurrent = 0;
-
     if (enabledEnvelope)
         dataCurrent = dataEnvelope.get();
     else if (enabledGainDelay)
@@ -538,12 +529,9 @@ void MasterAndCommander::updateFinal(void)
         dataCurrent = dataTimbre.get();
     else dataCurrent = dataOriginal.get();
 
-    irPlot->samples2plot(dataCurrent->getData(0),
-                         dataCurrent->getData(1),
-                         dataCurrent->getData(2),
-                         dataCurrent->getData(3),
-                         dataCurrent->getDataLen(),
-                         dataCurrent->getSampleRate());
+    irPlotUpdater->cancelPendingUpdate();
+    irPlotUpdater->sampleData = dataCurrent;
+    irPlotUpdater->triggerAsyncUpdate();
 
     if (changeFilter == true)
     {

@@ -57,7 +57,7 @@ public:
     float* getFilter();
     int getFilterLen();
     void updateData();
-    void setTimbre (ParamTimbre *param);
+    void setTimbre (const ParamTimbre *param);
     void sliderDragEnded (Slider* sliderThatWasMoved) override;
     //[/UserMethods]
 

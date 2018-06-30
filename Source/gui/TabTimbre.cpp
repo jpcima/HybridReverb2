@@ -380,7 +380,7 @@ void TabTimbre::updateData()
 }
 
 
-void TabTimbre::setTimbre (ParamTimbre *param)
+void TabTimbre::setTimbre (const ParamTimbre *param)
 {
     *paramTimbre = *param;
     for (int i = 0; i < paramTimbre->num; i++)

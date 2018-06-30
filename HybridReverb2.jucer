@@ -105,6 +105,8 @@
               file="Source/gui/TabPresetEditor.h"/>
         <FILE id="ffQYI6" name="TabTimbre.cpp" compile="1" resource="0" file="Source/gui/TabTimbre.cpp"/>
         <FILE id="ZF5ekR" name="TabTimbre.h" compile="0" resource="0" file="Source/gui/TabTimbre.h"/>
+        <FILE id="OVcwly" name="Updater.cpp" compile="1" resource="0" file="Source/gui/Updater.cpp"/>
+        <FILE id="V8lQVI" name="Updater.h" compile="0" resource="0" file="Source/gui/Updater.h"/>
       </GROUP>
       <FILE id="dK2sPE" name="HybridConvolver.cpp" compile="1" resource="0"
             file="Source/HybridConvolver.cpp"/>

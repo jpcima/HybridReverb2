@@ -31,7 +31,6 @@
 // forward declarations
 class EditorComponent;
 class TabMain;
-class TabModulation;
 class TabTimbre;
 class TabPresetEditor;
 class TabPreferences;
@@ -43,6 +42,11 @@ class PresetCollection;
 class HybridReverb2Processor;
 class SystemConfig;
 
+struct MetaUpdater;
+struct EnvelopeUpdater;
+struct TimbreUpdater;
+struct GainDelayUpdater;
+struct IRPlotUpdater;
 
 class MasterAndCommander
 {
@@ -59,17 +63,11 @@ public:
     const ParamPreferences & getPreferences();
     const ParamPartitionWisdom & getPartitionWisdom();
 
-    // "Main" component methods
-    void registerEditorComponent(EditorComponent *comp);
-
     // "Main" tab methods
     void registerTabMain(TabMain *tab);
     void onValueChangedPresetNum(int value, std::vector<String> *errors, bool force = false);
     void onValueChangedGainDelay(ParamGainDelay *param);
     void onValueChangedEnvelope(ParamEnvelope *param);
-
-    // "Modulation" tab methods
-    void registerTabModulation(TabModulation *tab);
 
     // "Timbre" tab methods
     void registerTabTimbre(TabTimbre *tab);
@@ -87,9 +85,6 @@ public:
     void registerTabPreferences(TabPreferences *tab);
     void onValueChangedPreferences(const ParamPreferences & param);
 
-    // "About" tab methods
-    void registerTabAbout(TabAbout *tab);
-
     // "IRPlot" component methods
     void registerIRPlot(IRPlot *plot);
 
@@ -98,23 +93,17 @@ public:
 
 
 private:
-    EditorComponent   *compMain = nullptr;
-    TabMain           *tabMain = nullptr;
-    TabModulation     *tabModulation = nullptr;
     TabTimbre         *tabTimbre = nullptr;
-    TabPresetEditor   *tabPresetEditor = nullptr;
-    TabPreferences    *tabPreferences = nullptr;
-    TabAbout          *tabAbout = nullptr;
     IRPlot            *irPlot = nullptr;
     FreqPlot          *freqPlot = nullptr;
-    std::unique_ptr<SampleData>        dataOriginal;
-    std::unique_ptr<SampleData>        dataTimbre;
-    std::unique_ptr<SampleData>        dataModulation;
-    std::unique_ptr<SampleData>        dataGainDelay;
-    std::unique_ptr<SampleData>        dataEnvelope;
-    ParamGainDelay    *paramGainDelay = nullptr;
-    ParamEnvelope     *paramEnvelope = nullptr;
-    ParamTimbre       *paramTimbre = nullptr;
+
+    typedef ReferenceCountedObjectPtr<SampleData> SampleDataPtr;
+    SampleDataPtr dataOriginal;
+    SampleDataPtr dataTimbre;
+    SampleDataPtr dataModulation;
+    SampleDataPtr dataGainDelay;
+    SampleDataPtr dataEnvelope;
+
     ParamPreset       preset;
     ParamPreferences  paramPreferences;
     std::shared_ptr<SystemConfig>      systemConfig;
@@ -134,6 +123,12 @@ private:
     void updateGainDelay(void);
     void updateEnvelope(void);
     void updateFinal(void);
+
+    const std::unique_ptr<MetaUpdater> metaUpdater;
+    const std::unique_ptr<EnvelopeUpdater> envelopeUpdater;
+    const std::unique_ptr<TimbreUpdater> timbreUpdater;
+    const std::unique_ptr<GainDelayUpdater> gainDelayUpdater;
+    const std::unique_ptr<IRPlotUpdater> irPlotUpdater;
 
 private:
     //==============================================================================

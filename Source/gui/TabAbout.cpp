@@ -29,8 +29,7 @@
 //[/MiscUserDefs]
 
 //==============================================================================
-TabAbout::TabAbout (MasterAndCommander *m)
-    : master (m)
+TabAbout::TabAbout ()
 {
     //[Constructor_pre] You can add your own custom stuff here..
     //[/Constructor_pre]
@@ -123,8 +122,6 @@ TabAbout::TabAbout (MasterAndCommander *m)
 
 
     //[Constructor] You can add your own custom stuff here..
-//    master->print("TabAbout::TabAbout : Waiting for your commands, Sir!");
-    master->registerTabAbout(this);
     //[/Constructor]
 }
 
@@ -212,10 +209,9 @@ void TabAbout::resized()
 BEGIN_JUCER_METADATA
 
 <JUCER_COMPONENT documentType="Component" className="TabAbout" componentName=""
-                 parentClasses="public Component" constructorParams="MasterAndCommander *m"
-                 variableInitialisers="master (m)" snapPixels="8" snapActive="1"
-                 snapShown="1" overlayOpacity="0.330" fixedSize="0" initialWidth="828"
-                 initialHeight="548">
+                 parentClasses="public Component" constructorParams="" variableInitialisers=""
+                 snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330"
+                 fixedSize="0" initialWidth="828" initialHeight="548">
   <BACKGROUND backgroundColour="ffffe000">
     <RECT pos="462 14 348 422" fill="solid: ffffffff" hasStroke="1" stroke="1, mitered, butt"
           strokeColour="solid: ff808080"/>

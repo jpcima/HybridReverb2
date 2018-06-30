@@ -23,7 +23,6 @@
 #include "../../JuceLibraryCode/JuceHeader.h"
 
 // forward declarations
-class MasterAndCommander;
 //[/Headers]
 
 
@@ -40,7 +39,7 @@ class TabModulation  : public Component
 {
 public:
     //==============================================================================
-    TabModulation (MasterAndCommander *m);
+    TabModulation ();
     ~TabModulation();
 
     //==============================================================================
@@ -54,7 +53,6 @@ public:
 
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
-    MasterAndCommander* master;
     //[/UserVariables]
 
     //==============================================================================

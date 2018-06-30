@@ -629,9 +629,9 @@ void TabMain::setPresetCollection(PresetCollection *man)
 }
 
 
-void TabMain::setGainDelayRange (ParamGainDelay *min,
-                                 ParamGainDelay *value,
-                                 ParamGainDelay *max)
+void TabMain::setGainDelayRange (const ParamGainDelay *min,
+                                 const ParamGainDelay *value,
+                                 const ParamGainDelay *max)
 {
     paramGainDelay.initialGap = value->initialGap;
     paramGainDelay.length     = value->length;
@@ -666,7 +666,7 @@ void TabMain::setGainDelayRange (ParamGainDelay *min,
 }
 
 
-void TabMain::setEnvelope (ParamEnvelope *param)
+void TabMain::setEnvelope (const ParamEnvelope *param)
 {
     paramEnvelope.db0ms   = param->db0ms;
     paramEnvelope.db20ms  = param->db20ms;

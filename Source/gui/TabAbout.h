@@ -40,7 +40,7 @@ class TabAbout  : public Component
 {
 public:
     //==============================================================================
-    TabAbout (MasterAndCommander *m);
+    TabAbout ();
     ~TabAbout();
 
     //==============================================================================
@@ -57,7 +57,6 @@ public:
 
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
-    MasterAndCommander* master;
     //[/UserVariables]
 
     //==============================================================================

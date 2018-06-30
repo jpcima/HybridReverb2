@@ -75,7 +75,7 @@ EditorComponent::EditorComponent(HybridReverb2Processor* processor)
                               tabPreferences,
                               true);
 
-    tabAbout = new TabAbout(master);
+    tabAbout = new TabAbout;
     myTabbedComponent->addTab(TRANS("About"),
                               Colour(0xffffe000),
                               tabAbout,
@@ -100,8 +100,6 @@ EditorComponent::EditorComponent(HybridReverb2Processor* processor)
     // class to tell us when something has changed, and this will call our changeListenerCallback()
     // method.
     processor->addChangeListener (this);
-
-    master->registerEditorComponent(this);
 }
 
 EditorComponent::~EditorComponent()

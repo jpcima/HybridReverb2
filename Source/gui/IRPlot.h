@@ -45,7 +45,7 @@ public:
     void resized();
 
     void samples2plot(float *imp1, float *imp2, float *imp3, float *imp4, int len, int fs);
-    void setEnvelope(ParamEnvelope *param);
+    void setEnvelope(const ParamEnvelope *param);
 
 private:
     MasterAndCommander* master = nullptr;

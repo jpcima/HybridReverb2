@@ -490,6 +490,9 @@
     <ClCompile Include="..\..\Source\gui\TabTimbre.cpp">
       <Filter>HybridReverb2\Source\gui</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\gui\Updater.cpp">
+      <Filter>HybridReverb2\Source\gui</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\HybridConvolver.cpp">
       <Filter>HybridReverb2\Source</Filter>
     </ClCompile>
@@ -2473,6 +2476,9 @@
       <Filter>HybridReverb2\Source\gui</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\gui\TabTimbre.h">
+      <Filter>HybridReverb2\Source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\gui\Updater.h">
       <Filter>HybridReverb2\Source\gui</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\HybridConvolver.h">

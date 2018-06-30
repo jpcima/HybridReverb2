@@ -54,10 +54,10 @@ public:
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
     void setPresetCollection (PresetCollection *man);
-    void setGainDelayRange (ParamGainDelay *min,
-                            ParamGainDelay *value,
-                            ParamGainDelay *max);
-    void setEnvelope (ParamEnvelope *param);
+    void setGainDelayRange (const ParamGainDelay *min,
+                            const ParamGainDelay *value,
+                            const ParamGainDelay *max);
+    void setEnvelope (const ParamEnvelope *param);
     void setNum(int num);
     void setID(const String &id);
     void setNotes(const String &notes);

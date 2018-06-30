@@ -28,8 +28,7 @@
 //[/MiscUserDefs]
 
 //==============================================================================
-TabModulation::TabModulation (MasterAndCommander *m)
-    : master (m)
+TabModulation::TabModulation ()
 {
     //[Constructor_pre] You can add your own custom stuff here..
     //[/Constructor_pre]
@@ -48,8 +47,6 @@ TabModulation::TabModulation (MasterAndCommander *m)
 
 
     //[Constructor] You can add your own custom stuff here..
-//    master->print("TabModulation::TabModulation : Waiting for your commands, Sir!");
-    master->registerTabModulation(this);
     //[/Constructor]
 }
 
@@ -102,10 +99,9 @@ void TabModulation::resized()
 BEGIN_JUCER_METADATA
 
 <JUCER_COMPONENT documentType="Component" className="TabModulation" componentName=""
-                 parentClasses="public Component" constructorParams="MasterAndCommander *m"
-                 variableInitialisers="master (m)" snapPixels="8" snapActive="1"
-                 snapShown="1" overlayOpacity="0.330" fixedSize="0" initialWidth="828"
-                 initialHeight="548">
+                 parentClasses="public Component" constructorParams="" variableInitialisers=""
+                 snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330"
+                 fixedSize="0" initialWidth="828" initialHeight="548">
   <BACKGROUND backgroundColour="ffffe000"/>
   <GROUPCOMPONENT name="new group" id="fada51a9ace7abb" memberName="groupComponent"
                   virtualName="" explicitFocusOrder="0" pos="8 8 808 500" title="Modulation Configuration"/>

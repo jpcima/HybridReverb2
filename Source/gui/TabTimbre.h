@@ -54,8 +54,10 @@ public:
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
-    float* getFilter();
-    int getFilterLen();
+    const float *getFilter() const
+        { return impulse.get(); }
+    int getFilterLen() const
+        { return 2 * numLevel; }
     void updateData();
     void setTimbre (const ParamTimbre *param);
     void sliderDragEnded (Slider* sliderThatWasMoved) override;
@@ -95,7 +97,7 @@ private:
     int offsetY;
     float sampleRate;
     std::unique_ptr<float[]> level;
-    int numLevel;
+    enum { numLevel = 2048 };
     float f0;
     std::unique_ptr<float[], FftwfDeleter> impulse;
     std::unique_ptr<float[], FftwfDeleter> window;

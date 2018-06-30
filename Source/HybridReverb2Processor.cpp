@@ -29,21 +29,21 @@
     This function must be implemented to create a new instance of your
     plugin object.
 */
-AudioProcessor* JUCE_CALLTYPE createPluginFilter(const String &userDir)
+AudioProcessor *JUCE_CALLTYPE createPluginFilter(const String &userDir)
 {
-    std::shared_ptr<SystemConfig> systemConfig(new SystemConfig(userDir));
+    SystemConfig::Ptr systemConfig(new SystemConfig(userDir));
     systemConfig->setupLanguage();
     return new HybridReverb2Processor(systemConfig);
 }
 
-AudioProcessor* JUCE_CALLTYPE createPluginFilter()
+AudioProcessor *JUCE_CALLTYPE createPluginFilter()
 {
     return createPluginFilter(String());
 }
 
 
 //==============================================================================
-HybridReverb2Processor::HybridReverb2Processor(const std::shared_ptr<SystemConfig> &systemConfig)
+HybridReverb2Processor::HybridReverb2Processor(const SystemConfig::Ptr &systemConfig)
     : AudioProcessor(BusesProperties()
                      .withInput("Input", AudioChannelSet::stereo(), true)
                      .withOutput("Output", AudioChannelSet::stereo(), true)),

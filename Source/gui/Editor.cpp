@@ -29,7 +29,7 @@
 HybridReverb2Editor::HybridReverb2Editor(
     HybridReverb2Processor *ownerFilter,
     ReadyListener *readyListener,
-    const std::shared_ptr<SystemConfig> &systemConfig)
+    const SystemConfig::Ptr &systemConfig)
     : AudioProcessorEditor(ownerFilter),
       systemConfig(systemConfig),
       readyListener(readyListener)
@@ -37,7 +37,7 @@ HybridReverb2Editor::HybridReverb2Editor(
     lf.reset(new AppLookAndFeel);
     LookAndFeel::setDefaultLookAndFeel(lf.get());
 
-    EditorComponent *ec = new EditorComponent(ownerFilter);
+    EditorComponent *ec = new EditorComponent(ownerFilter, systemConfig);
     editorComponent.reset(ec);
     addChildComponent(ec);
 

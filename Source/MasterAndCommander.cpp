@@ -36,7 +36,7 @@
 #include "gui/Updater.h"
 
 
-MasterAndCommander::MasterAndCommander (HybridReverb2Processor *ap, const std::shared_ptr<SystemConfig> &systemConfig)
+MasterAndCommander::MasterAndCommander (HybridReverb2Processor *ap, const SystemConfig::Ptr &systemConfig)
     : audioPlugin(ap),
       dataOriginal(new SampleData),
       dataTimbre(new SampleData),
@@ -390,12 +390,6 @@ void MasterAndCommander::savePresetDBas(const std::vector<ParamPreset> & newPres
 //    "Preferences" tab methods
 //
 
-void MasterAndCommander::registerTabPreferences(TabPreferences *tab)
-{
-    tab->setPreferences(paramPreferences);
-}
-
-
 void MasterAndCommander::onValueChangedPreferences(const ParamPreferences & param)
 {
     paramPreferences = param;
@@ -426,6 +420,19 @@ void MasterAndCommander::registerFreqPlot(FreqPlot *plot)
 
 ////////////////////////////////////////////////////////////////
 //
+void MasterAndCommander::setImpulse(const float *data, int len)
+{
+    if (impulseLen != len)
+    {
+        impulse.reset(new float[len]);
+        impulseLen = len;
+    }
+    memcpy(impulse.get(), data, len * sizeof(float));
+}
+
+
+////////////////////////////////////////////////////////////////
+//
 //    private methods
 //
 
@@ -445,9 +452,7 @@ void MasterAndCommander::updateTimbre(void)
     if (enabledTimbre)
     {
         // dataCurrent -> dataTimbre
-        int filterLen = tabTimbre->getFilterLen();
-        float *filter = tabTimbre->getFilter();
-        dataTimbre->applyTimbre(dataCurrent, filterLen, filter);
+        dataTimbre->applyTimbre(dataCurrent, impulseLen, impulse.get());
     }
 
     updateModulation();

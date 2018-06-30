@@ -27,6 +27,7 @@
 #include "gui/Editor.h"
 #include "model/Parameter.h"
 #include "model/SampleData.h"
+#include "model/SystemConfig.h"
 #include "HybridConvolver.h"
 #include "HybridConvolverTripple.h"
 #include "HybridConvolverDual.h"
@@ -36,7 +37,6 @@
 
 // forward declarations
 class MasterAndCommander;
-class SystemConfig;
 
 
 //==============================================================================
@@ -51,7 +51,7 @@ class HybridReverb2Processor  : public AudioProcessor,
 {
 public:
     //==============================================================================
-    explicit HybridReverb2Processor(const std::shared_ptr<SystemConfig> &systemConfig);
+    explicit HybridReverb2Processor(const SystemConfig::Ptr &systemConfig);
     ~HybridReverb2Processor();
 
     //==============================================================================
@@ -126,7 +126,7 @@ private:
     // this is our current preset - the UI and the host can access this by getting/setting
     // parameter 0.
     int currentPreset = 1;
-    std::shared_ptr<SystemConfig> systemConfig;
+    SystemConfig::Ptr systemConfig;
     std::unique_ptr<MasterAndCommander> master;
     std::unique_ptr<Partitioner> partitioner;
     std::unique_ptr<HybridConvolver> convolver;

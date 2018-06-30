@@ -82,8 +82,6 @@ public:
 
 private:
     String presetFile;
-    std::unique_ptr<XmlDocument> xmlDoc;
-    std::unique_ptr<XmlElement> xmlRoot;
     enum { maxPresets = 256 };
     std::unique_ptr<ParamPreset[]> preset;
     int numPresets = 0;

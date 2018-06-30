@@ -77,7 +77,6 @@ TabTimbre::TabTimbre (MasterAndCommander *m)
     offsetY = 36 + 8;
 
     sampleRate = 48000.0;
-    numLevel = 2048;
     level.reset(new float[numLevel]);
     f0 = sampleRate / float(2 * numLevel);
     for (int n = 0; n < numLevel; n++)
@@ -339,18 +338,6 @@ void TabTimbre::sliderValueChanged (Slider* sliderThatWasMoved)
 
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
 
-float* TabTimbre::getFilter()
-{
-    return impulse.get();
-}
-
-
-int TabTimbre::getFilterLen()
-{
-    return 2 * numLevel;
-}
-
-
 void TabTimbre::updateData()
 {
     float sign = -1.0;
@@ -377,6 +364,8 @@ void TabTimbre::updateData()
 
     freqPlot->setLevel(level.get());
     freqPlot->setImpulse(impulse.get());
+
+    master->setImpulse(impulse.get(), 2 * numLevel);
 }
 
 

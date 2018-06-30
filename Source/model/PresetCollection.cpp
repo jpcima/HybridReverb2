@@ -110,19 +110,19 @@ int PresetCollection::readFile(const String &presetFilename, String *error)
     File presetFile(presetFilename);
     this->presetFile = presetFilename;
 
-    xmlDoc.reset(new XmlDocument(presetFile));
-    xmlRoot.reset(xmlDoc->getDocumentElement());
+
+    XmlDocument xmlDoc(presetFile);
+    std::unique_ptr<XmlElement> xmlRoot(xmlDoc.getDocumentElement());
 
     if (!xmlRoot)
     {
         String message = TRANS("Error reading preset file") + " \"" +
             presetFile.getFullPathName() + "\"" + TRANS(":") + "\n" +
-            xmlDoc->getLastParseError();
+            xmlDoc.getLastParseError();
         if (error)
             *error = message;
         else
             fprintf(stderr, "%s\n", message.toRawUTF8());
-        xmlDoc.reset();
         return -1;
     }
 

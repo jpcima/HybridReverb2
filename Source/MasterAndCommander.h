@@ -25,6 +25,7 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "model/Parameter.h"
+#include "model/SystemConfig.h"
 #include <vector>
 
 
@@ -40,7 +41,6 @@ class FreqPlot;
 class SampleData;
 class PresetCollection;
 class HybridReverb2Processor;
-class SystemConfig;
 
 struct MetaUpdater;
 struct EnvelopeUpdater;
@@ -51,7 +51,7 @@ struct IRPlotUpdater;
 class MasterAndCommander
 {
 public:
-    MasterAndCommander(HybridReverb2Processor *ap, const std::shared_ptr<SystemConfig> &systemConfig);
+    MasterAndCommander(HybridReverb2Processor *ap, const SystemConfig::Ptr &systemConfig);
     ~MasterAndCommander();
 
     void loadInitialPreset();
@@ -82,7 +82,6 @@ public:
                         const String & presetFile);
 
     // "Preferences" tab methods
-    void registerTabPreferences(TabPreferences *tab);
     void onValueChangedPreferences(const ParamPreferences & param);
 
     // "IRPlot" component methods
@@ -91,6 +90,8 @@ public:
     // "FreqPlot" component methods
     void registerFreqPlot(FreqPlot *plot);
 
+    //
+    void setImpulse(const float *data, int len);
 
 private:
     TabTimbre         *tabTimbre = nullptr;
@@ -106,7 +107,7 @@ private:
 
     ParamPreset       preset;
     ParamPreferences  paramPreferences;
-    std::shared_ptr<SystemConfig>      systemConfig;
+    SystemConfig::Ptr systemConfig;
     std::unique_ptr<PresetCollection>     presetManager;
     HybridReverb2Processor      *audioPlugin = nullptr;
     String           logMessage;
@@ -116,6 +117,9 @@ private:
     bool             enabledGainDelay = true;
     bool             enabledEnvelope = true;
     int              currentPreset = -1;
+
+    std::unique_ptr<float[]> impulse;
+    int impulseLen = 0;
 
     void updateOriginal(void);
     void updateTimbre(void);

@@ -89,7 +89,7 @@ public:
         When created, this will register itself with the filter for changes. It's
         safe to assume that the filter won't be deleted before this object is.
     */
-    explicit EditorComponent(HybridReverb2Processor* processor);
+    EditorComponent(HybridReverb2Processor *processor, const SystemConfig::Ptr &systemConfig);
 
     /** Destructor. */
     ~EditorComponent();

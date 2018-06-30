@@ -27,11 +27,13 @@
 #include "../model/Parameter.h"
 
 
-class SystemConfig
+class SystemConfig : public ReferenceCountedObject
 {
 public:
     explicit SystemConfig(const String &customUserDir);
     ~SystemConfig();
+
+    typedef ReferenceCountedObjectPtr<SystemConfig> Ptr;
 
     const String &getUserdir() const
         { return userdir; }

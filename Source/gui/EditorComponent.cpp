@@ -29,7 +29,7 @@
 #include "TabAbout.h"
 
 //==============================================================================
-EditorComponent::EditorComponent(HybridReverb2Processor* processor)
+EditorComponent::EditorComponent(HybridReverb2Processor *processor, const SystemConfig::Ptr &systemConfig)
     : processor(processor),
       tabMain(0),
 //      tabModulation(0),
@@ -82,6 +82,8 @@ EditorComponent::EditorComponent(HybridReverb2Processor* processor)
                               true);
 
     myTabbedComponent->setCurrentTabIndex (0);
+
+    tabPreferences->setPreferences(systemConfig->getPreferences());
 
     // create our gain slider..
 //    addAndMakeVisible (gainSlider = new Slider (T("gain")));

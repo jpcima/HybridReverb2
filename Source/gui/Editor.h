@@ -23,11 +23,11 @@
 #define __EDITOR_H__
 
 #include "../../JuceLibraryCode/JuceHeader.h"
+#include "../model/SystemConfig.h"
 
 class HybridReverb2Processor;
 class EditorComponent;
 class DownloadDbComponent;
-class SystemConfig;
 
 class HybridReverb2Editor : public AudioProcessorEditor
 {
@@ -37,7 +37,7 @@ public:
     HybridReverb2Editor(
         HybridReverb2Processor *ownerFilter,
         ReadyListener *readyListener,
-        const std::shared_ptr<SystemConfig> &systemConfig);
+        const SystemConfig::Ptr &systemConfig);
     ~HybridReverb2Editor();
 
     class ReadyListener
@@ -57,7 +57,7 @@ private:
     static void performAsyncSetup(
         Component::SafePointer<HybridReverb2Editor> self, const File &zipFile);
 
-    std::shared_ptr<SystemConfig> systemConfig;
+    SystemConfig::Ptr systemConfig;
     std::unique_ptr<EditorComponent> editorComponent;
     std::unique_ptr<DownloadDbComponent> downloadDbComponent;
     ReadyListener *readyListener = nullptr;

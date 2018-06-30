@@ -176,8 +176,6 @@ TabPreferences::TabPreferences (MasterAndCommander *m)
 
 
     //[Constructor] You can add your own custom stuff here..
-//    fprintf(stderr, "TabPreferences::TabPreferences : Waiting for your commands, Sir!\n");
-    master->registerTabPreferences(this);
     //[/Constructor]
 }
 

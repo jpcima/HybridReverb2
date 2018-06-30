@@ -176,7 +176,7 @@ TabPreferences::TabPreferences (MasterAndCommander *m)
 
 
     //[Constructor] You can add your own custom stuff here..
-//    master->print("TabPreferences::TabPreferences : Waiting for your commands, Sir!");
+//    fprintf(stderr, "TabPreferences::TabPreferences : Waiting for your commands, Sir!\n");
     master->registerTabPreferences(this);
     //[/Constructor]
 }
@@ -253,7 +253,7 @@ void TabPreferences::buttonClicked (Button* buttonThatWasClicked)
     {
         //[UserButtonCode_toggleButtonUniform] -- add your button handler code here..
         paramPreferences.strategy = STRATEGY_UNIFORM;
-        master->print(String::formatted("TabPreferences: strategy = %d\n", STRATEGY_UNIFORM));
+        fprintf(stderr, "TabPreferences: strategy = %d\n", STRATEGY_UNIFORM);
         master->onValueChangedPreferences(paramPreferences);
         //[/UserButtonCode_toggleButtonUniform]
     }
@@ -261,7 +261,7 @@ void TabPreferences::buttonClicked (Button* buttonThatWasClicked)
     {
         //[UserButtonCode_toggleButtonLowest] -- add your button handler code here..
         paramPreferences.strategy = STRATEGY_LOWEST;
-        master->print(String::formatted("TabPreferences: strategy = %d\n", STRATEGY_LOWEST));
+        fprintf(stderr, "TabPreferences: strategy = %d\n", STRATEGY_LOWEST);
         master->onValueChangedPreferences(paramPreferences);
         //[/UserButtonCode_toggleButtonLowest]
     }
@@ -273,7 +273,7 @@ void TabPreferences::buttonClicked (Button* buttonThatWasClicked)
         {
             paramPreferences.presetFile = filename;
             textEditorPreset->setText(filename, false);
-            master->print("TabPreferences: preset file = " + filename);
+            fprintf(stderr, "TabPreferences: preset file = %s\n", filename.toRawUTF8());
             AlertWindow::showMessageBox(AlertWindow::InfoIcon,
                                         TRANS("Info"),
                                         TRANS("HybridReverb2 needs to be restarted to make your changes effective."));
@@ -296,7 +296,7 @@ void TabPreferences::comboBoxChanged (ComboBox* comboBoxThatHasChanged)
         //[UserComboBoxCode_comboBoxLatency] -- add your combo box handling code here..
         int index = comboBoxThatHasChanged->getSelectedItemIndex();
         paramPreferences.sflen = 64 << index;
-        master->print(String::formatted("TabPreferences: SFLEN = %d\n", paramPreferences.sflen));
+        fprintf(stderr, "TabPreferences: SFLEN = %d\n", paramPreferences.sflen);
         AlertWindow::showMessageBox(AlertWindow::InfoIcon,
                                     TRANS("Info"),
                                     TRANS("HybridReverb2 needs to be restarted to make your changes effective."));
@@ -350,7 +350,7 @@ void TabPreferences::textEditorTextChanged (TextEditor &editor)
 void TabPreferences::textEditorReturnKeyPressed (TextEditor &editor)
 {
     paramPreferences.presetFile = editor.getText();
-    master->print("TabPreferences: preset file = " + paramPreferences.presetFile);
+    fprintf(stderr, "TabPreferences: preset file = %s\n", paramPreferences.presetFile.toRawUTF8());
     AlertWindow::showMessageBox(AlertWindow::InfoIcon,
                                 TRANS("Info"),
                                 TRANS("HybridReverb2 needs to be restarted to make your changes effective."));

@@ -84,18 +84,8 @@ void MasterAndCommander::loadInitialPreset()
 
 void MasterAndCommander::onGuiReady(void)
 {
-    print("MasterAndCommander::onGuiReady()\n");
+    fprintf(stderr, "MasterAndCommander::onGuiReady()\n");
     onValueChangedPresetNum(currentPreset, nullptr, true);
-}
-
-
-void MasterAndCommander::print(String msg)
-{
-#if defined(DEBUG)
-    logMessage += msg;
-    if (tabMain != 0)
-        tabMain->setNotes(logMessage);
-#endif
 }
 
 
@@ -131,7 +121,7 @@ const ParamPartitionWisdom & MasterAndCommander::getPartitionWisdom()
 void MasterAndCommander::registerEditorComponent(EditorComponent *comp)
 {
     compMain = comp;
-    print("----[ EditorComponent registered ]----\n");
+    fprintf(stderr, "----[ EditorComponent registered ]----\n");
 }
 
 
@@ -150,7 +140,8 @@ void MasterAndCommander::registerTabMain(TabMain *tab)
 void MasterAndCommander::onValueChangedPresetNum(
     int value, std::vector<String> *errors, bool force)
 {
-    print("MasterAndCommander::onValueChangedPresetNum(" + String(value) + ", " + (force ? "true" : "false") + ") called\n");
+    fprintf(stderr, "MasterAndCommander::onValueChangedPresetNum(%d, %s) called\n",
+            value, force ? "true" : "false");
     changeFilter = changeFilter || (value != currentPreset);
     if (changeFilter == false && force == false)
         return;
@@ -248,7 +239,7 @@ void MasterAndCommander::onValueChangedPresetNum(
 void MasterAndCommander::onValueChangedGainDelay(ParamGainDelay *param)
 {
     changeFilter = true;
-    print("MasterAndCommander::onValueChangedGainDelay() called\n(");
+    fprintf(stderr, "MasterAndCommander::onValueChangedGainDelay() called\n");
     fprintf(stderr, "Master#  Gain/Delay values : %5.1f %6.3f %6.1f %5.1f %5.1f %5.1f\n",
             param->initialGap, param->length, param->preDelay,
             param->dryGain, param->wetGain, param->masterGain);
@@ -288,7 +279,7 @@ void MasterAndCommander::onValueChangedGainDelay(ParamGainDelay *param)
 void MasterAndCommander::onValueChangedEnvelope(ParamEnvelope *param)
 {
     changeFilter = true;
-    print("MasterAndCommander::onValueChangedEnvelope() called\n(");
+    fprintf(stderr, "MasterAndCommander::onValueChangedEnvelope() called\n");
     fprintf(stderr, "Master#  Envelope values : %7.2f %7.2f %7.2f %7.2f\n",
             param->db0ms, param->db20ms, param->db120ms, param->dbENDms);
 
@@ -337,7 +328,7 @@ void MasterAndCommander::registerTabTimbre(TabTimbre *tab)
 void MasterAndCommander::onValueChangedTimbre(ParamTimbre *param)
 {
     changeFilter = true;
-    print("MasterAndCommander::onValueChangedTimbre() called\n");
+    fprintf(stderr, "MasterAndCommander::onValueChangedTimbre() called\n");
     enabledTimbre = false;
     for (int i = 0; enabledTimbre == false && i < param->num; i++)
     {

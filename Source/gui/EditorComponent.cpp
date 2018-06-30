@@ -106,7 +106,7 @@ EditorComponent::EditorComponent(HybridReverb2Processor* processor)
 
 EditorComponent::~EditorComponent()
 {
-    master->print("%%% EditorComponent destructor called%%%\n\n");
+    fputs("%%% EditorComponent destructor called %%%\n", stderr);
     getFilter()->removeChangeListener (this);
     deleteAndZero (myTabbedComponent);
     myTabbedComponent = 0;
@@ -188,6 +188,7 @@ void EditorComponent::updateParametersFromFilter()
     setSize (filter->lastUIWidth,
              filter->lastUIHeight);
     int currentPreset = roundf(fvalue * 255.0 + 1.0);
-    master->print(String("EditorComponent::updateParametersFromFilter(): new preset nr. ") + String(currentPreset) + String("\n"));
+    fprintf(stderr, "EditorComponent::updateParametersFromFilter(): new preset nr. %d\n",
+            currentPreset);
     master->onValueChangedPresetNum(currentPreset, nullptr);
 }

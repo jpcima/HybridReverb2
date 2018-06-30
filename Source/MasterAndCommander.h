@@ -54,7 +54,6 @@ public:
 
     // common methods
     void onGuiReady(void);
-    void print(String msg);
     const String & getUserdir();
     String getDBdir();
     const ParamPreferences & getPreferences();

@@ -242,9 +242,8 @@ void HybridReverb2Processor::getStateInformation (MemoryBlock& destData)
     // use this helper function to stuff it into the binary blob and return it..
     copyXmlToBinary (xmlState, destData);
 
-    master->print(String("saving preset: ") +
-                  String(currentPreset) +
-                  String(" [HybridReverb2Processor::getStateInformation()]\n"));
+    if (false)
+        fprintf(stderr, "saving preset: %d [HybridReverb2Processor::getStateInformation()]\n", currentPreset);
 }
 
 void HybridReverb2Processor::setStateInformation (const void* data, int sizeInBytes)
@@ -263,9 +262,8 @@ void HybridReverb2Processor::setStateInformation (const void* data, int sizeInBy
             lastUIWidth = xmlState->getIntAttribute ("uiWidth", lastUIWidth);
             lastUIHeight = xmlState->getIntAttribute ("uiHeight", lastUIHeight);
 
-            master->print(String("restoring preset: ") +
-                          String(currentPreset) +
-                          String(" [HybridReverb2Processor::setStateInformation()]\n"));
+            if (false)
+                fprintf(stderr, "restoring preset: %d [HybridReverb2Processor::setStateInformation()]\n", currentPreset);
 
             sendChangeMessage ();
         }
@@ -279,7 +277,7 @@ void HybridReverb2Processor::setNewFilterSet(SampleData *impulses)
     int hlen, type, sflen, mflen, lflen;
     std::unique_ptr<HybridConvolver> brandnewConvolver;
 
-    master->print("*** updating filter ***\n");
+    fprintf(stderr, "*** updating filter ***\n");
     paramPreferences = master->getPreferences();
     hlen = impulses->getDataLen();
     sflen = paramPreferences.sflen;

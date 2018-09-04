@@ -133,10 +133,7 @@ endif()
 if(HybridReverb2_Standalone)
   set(Standalone_SOURCES
     "${PROJECT_SOURCE_DIR}/JuceLibraryCode/include_juce_audio_plugin_client_utils.cpp")
-  if(HybridReverb2_AdvancedJackStandalone)
-    list(APPEND Standalone_SOURCES
-      "${PROJECT_SOURCE_DIR}/Source/standalone/Jack.cpp")
-  else()
+  if(NOT HybridReverb2_StandaloneCustom)
     list(APPEND Standalone_SOURCES
       "${PROJECT_SOURCE_DIR}/JuceLibraryCode/include_juce_audio_plugin_client_Standalone.cpp")
   endif()

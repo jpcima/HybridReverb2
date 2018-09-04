@@ -23,7 +23,7 @@
 #define __FREQPLOT_H__
 
 
-#include "../../JuceLibraryCode/JuceHeader.h"
+#include "JuceHeader.h"
 
 
 // forward declarations

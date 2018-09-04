@@ -23,7 +23,7 @@
 #define __IRPLOT_H__
 
 
-#include "../../JuceLibraryCode/JuceHeader.h"
+#include "JuceHeader.h"
 #include "../ParamEnvelope.h"
 
 

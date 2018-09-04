@@ -23,7 +23,7 @@
 #define __AUDIOPLUGIN_H__
 
 
-#include "../JuceLibraryCode/JuceHeader.h"
+#include "JuceHeader.h"
 #include "gui/Editor.h"
 #include "SampleData.h"
 #include "HybridConvolver.h"

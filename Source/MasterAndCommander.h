@@ -23,7 +23,7 @@
 #define __MASTERANDCOMMANDER_H__
 
 
-#include "../JuceLibraryCode/JuceHeader.h"
+#include "JuceHeader.h"
 #include "ParamGainDelay.h"
 #include "ParamEnvelope.h"
 #include "ParamTimbre.h"

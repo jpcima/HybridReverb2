@@ -22,7 +22,7 @@
 #ifndef __EDITOR_H__
 #define __EDITOR_H__
 
-#include "../../JuceLibraryCode/JuceHeader.h"
+#include "JuceHeader.h"
 
 class HybridReverb2Processor;
 class EditorComponent;

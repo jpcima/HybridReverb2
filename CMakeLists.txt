@@ -97,10 +97,12 @@ if(HybridReverb2_AdvancedJackStandalone STREQUAL "")
 endif()
 
 if(HybridReverb2_AdvancedJackStandalone)
+  set(HybridReverb2_StandaloneCustom "ON")
   include(FindPkgConfig)
   pkg_check_modules(LIBLO "liblo")
   set(HybridReverb2_NonSessionManager "${LIBLO_FOUND}")
 else()
+  set(HybridReverb2_StandaloneCustom "OFF")
   set(HybridReverb2_NonSessionManager "OFF")
 endif()
 
@@ -145,7 +147,7 @@ if(HybridReverb2_UseLocalDatabase)
   target_compile_definitions(HybridReverb2_core PRIVATE "USE_LOCAL_DATABASE")
 endif()
 target_compile_definitions(HybridReverb2_core PRIVATE "NO_OMP") # OpenMP is not good for realtime
-target_include_directories(HybridReverb2_core PRIVATE "Source")
+target_include_directories(HybridReverb2_core PUBLIC "Source" "JuceLibraryCode")
 target_link_libraries(HybridReverb2_core PUBLIC
   juce_core juce_events juce_data_structures
   juce_audio_basics juce_audio_devices juce_audio_formats juce_audio_processors juce_audio_utils
@@ -262,6 +264,10 @@ endif()
 
 if(HybridReverb2_Standalone)
   add_executable(HybridReverb2_Standalone "Source/Main.cpp")
+  if(HybridReverb2_AdvancedJackStandalone)
+    target_sources(HybridReverb2_Standalone
+      PRIVATE "${PROJECT_SOURCE_DIR}/Source/standalone/Jack.cpp")
+  endif()
   target_link_libraries(HybridReverb2_Standalone PRIVATE juce_audio_plugin_client_Standalone HybridReverb2_core)
   if(CMAKE_SYSTEM_NAME STREQUAL "Windows")
     if(CMAKE_SYSTEM_PROCESSOR MATCHES "^i.86$" OR

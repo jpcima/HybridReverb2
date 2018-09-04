@@ -22,7 +22,7 @@
 #ifndef __PARAMIMPULSERESPONSES_H__
 #define __PARAMIMPULSERESPONSES_H__
 
-#include "../JuceLibraryCode/JuceHeader.h"
+#include "JuceHeader.h"
 
 class ParamImpulseResponses
 {

@@ -23,7 +23,7 @@
 #define __SYSTEMCONFIG_H__
 
 
-#include "../JuceLibraryCode/JuceHeader.h"
+#include "JuceHeader.h"
 #include "ParamPreferences.h"
 #include "ParamPartitionWisdom.h"
 

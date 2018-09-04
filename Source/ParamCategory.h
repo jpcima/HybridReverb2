@@ -22,7 +22,7 @@
 #ifndef __PARAMCATEGORY_H__
 #define __PARAMCATEGORY_H__
 
-#include "../JuceLibraryCode/JuceHeader.h"
+#include "JuceHeader.h"
 
 class ParamCategory
 {

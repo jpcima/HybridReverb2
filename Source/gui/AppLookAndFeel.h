@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 
-#include "../../JuceLibraryCode/JuceHeader.h"
+#include "JuceHeader.h"
 
 
 class AppLookAndFeel : public LookAndFeel_V3

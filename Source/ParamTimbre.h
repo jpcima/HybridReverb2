@@ -23,7 +23,7 @@
 #define __PARAMTIMBRE_H__
 
 
-#include "../JuceLibraryCode/JuceHeader.h"
+#include "JuceHeader.h"
 
 
 class ParamTimbre

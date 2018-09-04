@@ -24,7 +24,7 @@
 
 
 #include "SampleData.h"
-#include "../JuceLibraryCode/JuceHeader.h"
+#include "JuceHeader.h"
 
 extern "C" {
 #include "libHybridConv/libHybridConv.h"

@@ -23,7 +23,7 @@
 #define __TEXTLIST_H__
 
 
-#include "../JuceLibraryCode/JuceHeader.h"
+#include "JuceHeader.h"
 #include <vector>
 
 

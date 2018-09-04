@@ -22,7 +22,7 @@
 #ifndef __PARAMPREFERENCES_H__
 #define __PARAMPREFERENCES_H__
 
-#include "../JuceLibraryCode/JuceHeader.h"
+#include "JuceHeader.h"
 
 enum {
     STRATEGY_UNIFORM = 0,

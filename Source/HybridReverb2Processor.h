@@ -30,7 +30,6 @@
 #include "HybridConvolverTripple.h"
 #include "HybridConvolverDual.h"
 #include "HybridConvolverSingle.h"
-#include "Partitioner.h"
 #include "Param.h"
 
 
@@ -128,7 +127,6 @@ private:
     int currentPreset = 1;
     std::shared_ptr<SystemConfig> systemConfig;
     std::unique_ptr<MasterAndCommander> master;
-    std::unique_ptr<Partitioner> partitioner;
     std::unique_ptr<HybridConvolver> convolver;
     bool newConvolver = false;
     ParamPreferences paramPreferences;

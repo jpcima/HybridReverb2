@@ -89,6 +89,10 @@
         <FILE id="ffQYI6" name="TabTimbre.cpp" compile="1" resource="0" file="Source/gui/TabTimbre.cpp"/>
         <FILE id="ZF5ekR" name="TabTimbre.h" compile="0" resource="0" file="Source/gui/TabTimbre.h"/>
       </GROUP>
+      <FILE id="qfjuSn" name="ConvolverFactory.cpp" compile="1" resource="0"
+            file="Source/ConvolverFactory.cpp"/>
+      <FILE id="nloEl3" name="ConvolverFactory.h" compile="0" resource="0"
+            file="Source/ConvolverFactory.h"/>
       <FILE id="dK2sPE" name="HybridConvolver.cpp" compile="1" resource="0"
             file="Source/HybridConvolver.cpp"/>
       <FILE id="Mfdkth" name="HybridConvolver.h" compile="0" resource="0"

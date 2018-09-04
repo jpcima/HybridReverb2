@@ -159,6 +159,7 @@
     <ClCompile Include="..\..\Source\gui\TabPreferences.cpp"/>
     <ClCompile Include="..\..\Source\gui\TabPresetEditor.cpp"/>
     <ClCompile Include="..\..\Source\gui\TabTimbre.cpp"/>
+    <ClCompile Include="..\..\Source\ConvolverFactory.cpp"/>
     <ClCompile Include="..\..\Source\HybridConvolver.cpp"/>
     <ClCompile Include="..\..\Source\HybridConvolverDual.cpp"/>
     <ClCompile Include="..\..\Source\HybridConvolverSingle.cpp"/>
@@ -1933,6 +1934,7 @@
     <ClInclude Include="..\..\Source\gui\TabPreferences.h"/>
     <ClInclude Include="..\..\Source\gui\TabPresetEditor.h"/>
     <ClInclude Include="..\..\Source\gui\TabTimbre.h"/>
+    <ClInclude Include="..\..\Source\ConvolverFactory.h"/>
     <ClInclude Include="..\..\Source\HybridConvolver.h"/>
     <ClInclude Include="..\..\Source\HybridConvolverDual.h"/>
     <ClInclude Include="..\..\Source\HybridConvolverSingle.h"/>

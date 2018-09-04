@@ -107,6 +107,7 @@ OBJECTS_SHARED_CODE := \
   $(JUCE_OBJDIR)/TabPreferences_9df69980.o \
   $(JUCE_OBJDIR)/TabPresetEditor_9909f06e.o \
   $(JUCE_OBJDIR)/TabTimbre_b502d6ff.o \
+  $(JUCE_OBJDIR)/ConvolverFactory_fa435d41.o \
   $(JUCE_OBJDIR)/HybridConvolver_ea6744b7.o \
   $(JUCE_OBJDIR)/HybridConvolverDual_b3077253.o \
   $(JUCE_OBJDIR)/HybridConvolverSingle_13c7379f.o \
@@ -236,6 +237,11 @@ $(JUCE_OBJDIR)/TabPresetEditor_9909f06e.o: ../../Source/gui/TabPresetEditor.cpp
 $(JUCE_OBJDIR)/TabTimbre_b502d6ff.o: ../../Source/gui/TabTimbre.cpp
 	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
 	@echo "Compiling TabTimbre.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/ConvolverFactory_fa435d41.o: ../../Source/ConvolverFactory.cpp
+	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling ConvolverFactory.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_SHARED_CODE) $(JUCE_CFLAGS_SHARED_CODE) -o "$@" -c "$<"
 
 $(JUCE_OBJDIR)/HybridConvolver_ea6744b7.o: ../../Source/HybridConvolver.cpp

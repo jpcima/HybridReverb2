@@ -22,6 +22,7 @@
 #include "HybridReverb2Processor.h"
 #include "MasterAndCommander.h"
 #include "SystemConfig.h"
+#include "ConvolverFactory.h"
 
 
 //==============================================================================
@@ -52,7 +53,6 @@ HybridReverb2Processor::HybridReverb2Processor(const std::shared_ptr<SystemConfi
     master.reset(new MasterAndCommander(this, systemConfig));
     paramPreferences = master->getPreferences();
     paramPartitionWisdom = master->getPartitionWisdom();
-    partitioner.reset(new Partitioner(paramPartitionWisdom));
 
     setLatencySamples(paramPreferences.sflen);
 }
@@ -276,28 +276,12 @@ void HybridReverb2Processor::setStateInformation (const void* data, int sizeInBy
 //==============================================================================
 void HybridReverb2Processor::setNewFilterSet(SampleData *impulses)
 {
-    int hlen, type, sflen, mflen, lflen;
-    std::unique_ptr<HybridConvolver> brandnewConvolver;
-
     master->print("*** updating filter ***\n");
-    paramPreferences = master->getPreferences();
-    hlen = impulses->getDataLen();
-    sflen = paramPreferences.sflen;
-    partitioner->analyze(hlen, sflen, paramPreferences.strategy);
-    mflen = partitioner->getM();
-    lflen = partitioner->getL();
-    type  = partitioner->getType();
 
-    switch (type) {
-    case PARTITION_TYPE_TRIPPLE:
-        brandnewConvolver.reset(new HybridConvolverTripple(sflen, mflen, lflen, impulses));
-        break;
-    case PARTITION_TYPE_DUAL:
-        brandnewConvolver.reset(new HybridConvolverDual(sflen, mflen, impulses));
-        break;
-    default:
-        brandnewConvolver.reset(new HybridConvolverSingle(sflen, impulses));
-    }
+    ConvolverFactory factory;
+    std::unique_ptr<HybridConvolver> brandnewConvolver(
+        factory.create(paramPartitionWisdom, impulses,
+                       paramPreferences.sflen, paramPreferences.strategy));
 
     // critical section
     suspendProcessing(true);

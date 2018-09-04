@@ -36,6 +36,7 @@
 		EFE661881EE1DE97620183A7 = {isa = PBXBuildFile; fileRef = F2CF182EAA9D8F5E8CD7F435; };
 		A5AC7EF43F574F3C5EE0521C = {isa = PBXBuildFile; fileRef = 69D0D43889F141C175ABD7D0; };
 		56EA6300779FDFD336BAFF96 = {isa = PBXBuildFile; fileRef = 62E6DBE194BF5A2ECF0B478F; };
+		4168F384F2E0B723F316C0C2 = {isa = PBXBuildFile; fileRef = D6EA4B22556FEA88B2604FF1; };
 		4A08D27FF4DA2E3EC4EC45CB = {isa = PBXBuildFile; fileRef = DB85C162A5A6AAFC84BF5A73; };
 		EEAD7B906C6EBE961F552A23 = {isa = PBXBuildFile; fileRef = BF5EC8A3AC197C0D3E9EA295; };
 		8BDD065DD119A6AC461A6936 = {isa = PBXBuildFile; fileRef = 3EB82C29F3B0AC1439500FF5; };
@@ -105,6 +106,7 @@
 		543044CB6D1C20B4AD691833 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = EditorComponent.h; path = ../../Source/gui/EditorComponent.h; sourceTree = "SOURCE_ROOT"; };
 		54DCC671C7A066F3483DCE5D = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "include_juce_audio_plugin_client_LV2.cpp"; path = "../../JuceLibraryCode/include_juce_audio_plugin_client_LV2.cpp"; sourceTree = "SOURCE_ROOT"; };
 		58054CB63842B20F1332D945 = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
+		5877FF778C01E415D24068D0 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ConvolverFactory.h; path = ../../Source/ConvolverFactory.h; sourceTree = "SOURCE_ROOT"; };
 		5A28036DA662041F6078B969 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TextList.h; path = ../../Source/TextList.h; sourceTree = "SOURCE_ROOT"; };
 		5C9D42C80A1D240B0E7A26AE = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HybridConvolver.h; path = ../../Source/HybridConvolver.h; sourceTree = "SOURCE_ROOT"; };
 		5CCDA3257F3E16784F2EE628 = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SystemConfig.cpp; path = ../../Source/SystemConfig.cpp; sourceTree = "SOURCE_ROOT"; };
@@ -172,6 +174,7 @@
 		D386179544484FE82BF37C05 = {isa = PBXFileReference; lastKnownFileType = file.gz; name = "LiberationSerif-Italic.ttf.gz"; path = "../../Source/resources/LiberationSerif-Italic.ttf.gz"; sourceTree = "SOURCE_ROOT"; };
 		D48E7E09F1CFB67D7F6A0BD9 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BinaryData.h; path = ../../JuceLibraryCode/BinaryData.h; sourceTree = "SOURCE_ROOT"; };
 		D5AC969BC591D638F8AF90E3 = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AppLookAndFeel.cpp; path = ../../Source/gui/AppLookAndFeel.cpp; sourceTree = "SOURCE_ROOT"; };
+		D6EA4B22556FEA88B2604FF1 = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ConvolverFactory.cpp; path = ../../Source/ConvolverFactory.cpp; sourceTree = "SOURCE_ROOT"; };
 		DB85C162A5A6AAFC84BF5A73 = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = HybridConvolver.cpp; path = ../../Source/HybridConvolver.cpp; sourceTree = "SOURCE_ROOT"; };
 		DC0336931B9704A41B31873D = {isa = PBXFileReference; lastKnownFileType = file.gz; name = "LiberationSerif-Regular.ttf.gz"; path = "../../Source/resources/LiberationSerif-Regular.ttf.gz"; sourceTree = "SOURCE_ROOT"; };
 		DD7F1B01E7D6A11BF9BB16C2 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PresetManager.h; path = ../../Source/PresetManager.h; sourceTree = "SOURCE_ROOT"; };
@@ -245,6 +248,8 @@
 					A917EE85F8662F7533A44B8A,
 					DE6BF5836C186C15C31CAFE0,
 					49E998CB4B2D4493E8F2F804,
+					D6EA4B22556FEA88B2604FF1,
+					5877FF778C01E415D24068D0,
 					DB85C162A5A6AAFC84BF5A73,
 					5C9D42C80A1D240B0E7A26AE,
 					BF5EC8A3AC197C0D3E9EA295,
@@ -846,6 +851,7 @@
 					EFE661881EE1DE97620183A7,
 					A5AC7EF43F574F3C5EE0521C,
 					56EA6300779FDFD336BAFF96,
+					4168F384F2E0B723F316C0C2,
 					4A08D27FF4DA2E3EC4EC45CB,
 					EEAD7B906C6EBE961F552A23,
 					8BDD065DD119A6AC461A6936,

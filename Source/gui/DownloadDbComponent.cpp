@@ -60,15 +60,15 @@ DownloadDbComponent::DownloadDbComponent (HybridReverb2Editor *editor)
     label->setBounds (32, 40, 536, 24);
 
     hyperlinkButton.reset (new HyperlinkButton (TRANS("HybridReverb2_large_database.zip"),
-                                                URL ("http://www2.ika.ruhr-uni-bochum.de/HybridReverb2/HybridReverb2_large_database.zip")));
+                                                URL ("https://github.com/jpcima/HybridReverb2-impulse-response-database/archive/v1.0.0.zip")));
     addAndMakeVisible (hyperlinkButton.get());
-    hyperlinkButton->setTooltip (TRANS("http://www2.ika.ruhr-uni-bochum.de/HybridReverb2/HybridReverb2_large_database.zip"));
+    hyperlinkButton->setTooltip (TRANS("https://github.com/jpcima/HybridReverb2-impulse-response-database/archive/v1.0.0.zip"));
     hyperlinkButton->setButtonText (TRANS("HybridReverb2_large_database.zip"));
 
     hyperlinkButton->setBounds (296, 72, 272, 24);
 
     propertyLabel.reset (new Label ("new label",
-                                    CharPointer_UTF8 ("These room impulse responses for HybridReverb2 are property of the Institute of Communication Acoustics, Ruhr Universit\xc3\xa4t Bochum, Germany.")));
+                                    CharPointer_UTF8 ("These impulse responses are property of the Institute of Communication Acoustics, Ruhr Universit\xc3\xa4t Bochum, Germany. They used to be released as \"free for non-commercial use\" but are now released under the CC-BY-SA 4.0 license since July 2018, thanks to Prof. Dr.-Ing. Rainer Martin.")));
     addAndMakeVisible (propertyLabel.get());
     propertyLabel->setFont (Font (15.0f, Font::plain).withTypefaceStyle ("Regular"));
     propertyLabel->setJustificationType (Justification::centredLeft);
@@ -76,7 +76,7 @@ DownloadDbComponent::DownloadDbComponent (HybridReverb2Editor *editor)
     propertyLabel->setColour (TextEditor::textColourId, Colours::black);
     propertyLabel->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
-    propertyLabel->setBounds (32, 176, 536, 32);
+    propertyLabel->setBounds (32, 176, 536, 64);
 
     label3.reset (new Label ("new label",
                              TRANS("Copyright Notice")));
@@ -117,11 +117,10 @@ DownloadDbComponent::DownloadDbComponent (HybridReverb2Editor *editor)
     hyperlinkButton2->setTooltip (TRANS("http://www.ruhr-uni-bochum.de/ika/"));
     hyperlinkButton2->setButtonText (TRANS("http://www.ruhr-uni-bochum.de/ika/"));
 
-    hyperlinkButton2->setBounds (40, 216, 272, 24);
+    hyperlinkButton2->setBounds (40, 240, 272, 24);
 
     label6.reset (new Label ("new label",
-                             TRANS("They are free for non-commercial use.\n"
-                             "For commercial use, please contact:")));
+                             TRANS("For more information, see:")));
     addAndMakeVisible (label6.get());
     label6->setFont (Font (15.0f, Font::plain).withTypefaceStyle ("Regular"));
     label6->setJustificationType (Justification::centredLeft);
@@ -129,15 +128,15 @@ DownloadDbComponent::DownloadDbComponent (HybridReverb2Editor *editor)
     label6->setColour (TextEditor::textColourId, Colours::black);
     label6->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
-    label6->setBounds (32, 248, 536, 32);
+    label6->setBounds (32, 266, 536, 32);
 
-    hyperlinkButton3.reset (new HyperlinkButton (TRANS("rainer.martin@ruhr-uni-bochum.de"),
-                                                 URL ("mailto:rainer.martin@ruhr-uni-bochum.de")));
+    hyperlinkButton3.reset (new HyperlinkButton (TRANS("https://creativecommons.org/licenses/by-sa/4.0/"),
+                                                 URL ("https://creativecommons.org/licenses/by-sa/4.0/")));
     addAndMakeVisible (hyperlinkButton3.get());
-    hyperlinkButton3->setTooltip (TRANS("mailto:rainer.martin@ruhr-uni-bochum.de"));
-    hyperlinkButton3->setButtonText (TRANS("rainer.martin@ruhr-uni-bochum.de"));
+    hyperlinkButton3->setTooltip (TRANS("https://creativecommons.org/licenses/by-sa/4.0/"));
+    hyperlinkButton3->setButtonText (TRANS("https://creativecommons.org/licenses/by-sa/4.0/"));
 
-    hyperlinkButton3->setBounds (40, 288, 272, 24);
+    hyperlinkButton3->setBounds (40, 296, 352, 24);
 
     label7.reset (new Label ("new label",
                              TRANS("They were generated with the \"tinyAVE\" software.")));
@@ -148,7 +147,7 @@ DownloadDbComponent::DownloadDbComponent (HybridReverb2Editor *editor)
     label7->setColour (TextEditor::textColourId, Colours::black);
     label7->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
-    label7->setBounds (32, 320, 536, 24);
+    label7->setBounds (32, 328, 536, 24);
 
     progressBar.reset (new ProgressBar (progressValue));
     addAndMakeVisible (progressBar.get());
@@ -160,8 +159,11 @@ DownloadDbComponent::DownloadDbComponent (HybridReverb2Editor *editor)
     //[UserPreSize]
     propertyLabel->setText(
         TRANS_UTF8(
-            "These room impulse responses for HybridReverb2 are property of the "
-            "Institute of Communication Acoustics, Ruhr Universität Bochum, Germany."),
+            "These impulse responses are property of the Institute of "
+            "Communication Acoustics, Ruhr Universität Bochum, Germany. "
+            "They used to be released as \"free for non-commercial use\" but "
+            "are now released under the CC-BY-SA 4.0 license since July 2018, "
+            "thanks to Prof. Dr.-Ing. Rainer Martin."),
         dontSendNotification);
     //[/UserPreSize]
 
@@ -265,12 +267,12 @@ BEGIN_JUCER_METADATA
          fontname="Default font" fontsize="15.0" kerning="0.0" bold="0"
          italic="0" justification="33"/>
   <HYPERLINKBUTTON name="new hyperlink" id="ab2dc46b149cd192" memberName="hyperlinkButton"
-                   virtualName="" explicitFocusOrder="0" pos="296 72 272 24" tooltip="http://www2.ika.ruhr-uni-bochum.de/HybridReverb2/HybridReverb2_large_database.zip"
+                   virtualName="" explicitFocusOrder="0" pos="296 72 272 24" tooltip="https://github.com/jpcima/HybridReverb2-impulse-response-database/archive/v1.0.0.zip"
                    buttonText="HybridReverb2_large_database.zip" connectedEdges="0"
-                   needsCallback="0" radioGroupId="0" url="http://www2.ika.ruhr-uni-bochum.de/HybridReverb2/HybridReverb2_large_database.zip"/>
+                   needsCallback="0" radioGroupId="0" url="https://github.com/jpcima/HybridReverb2-impulse-response-database/archive/v1.0.0.zip"/>
   <LABEL name="new label" id="ed5965b814f8c4c0" memberName="propertyLabel"
-         virtualName="" explicitFocusOrder="0" pos="32 176 536 32" edTextCol="ff000000"
-         edBkgCol="0" labelText="These room impulse responses for HybridReverb2 are property of the Institute of Communication Acoustics, Ruhr Universit&#228;t Bochum, Germany."
+         virtualName="" explicitFocusOrder="0" pos="32 176 536 64" edTextCol="ff000000"
+         edBkgCol="0" labelText="These impulse responses are property of the Institute of Communication Acoustics, Ruhr Universit&#228;t Bochum, Germany. They used to be released as &quot;free for non-commercial use&quot; but are now released under the CC-BY-SA 4.0 license since July 2018, thanks to Prof. Dr.-Ing. Rainer Martin."
          editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
          fontname="Default font" fontsize="15.0" kerning="0.0" bold="0"
          italic="0" justification="33"/>
@@ -291,21 +293,20 @@ BEGIN_JUCER_METADATA
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
          fontsize="15.0" kerning="0.0" bold="0" italic="0" justification="33"/>
   <HYPERLINKBUTTON name="new hyperlink" id="c2d7cbb2a3435d72" memberName="hyperlinkButton2"
-                   virtualName="" explicitFocusOrder="0" pos="40 216 272 24" tooltip="http://www.ruhr-uni-bochum.de/ika/"
+                   virtualName="" explicitFocusOrder="0" pos="40 240 272 24" tooltip="http://www.ruhr-uni-bochum.de/ika/"
                    buttonText="http://www.ruhr-uni-bochum.de/ika/" connectedEdges="0"
                    needsCallback="0" radioGroupId="0" url="http://www.ruhr-uni-bochum.de/ika/"/>
   <LABEL name="new label" id="f784da25f47214f" memberName="label6" virtualName=""
-         explicitFocusOrder="0" pos="32 248 536 32" edTextCol="ff000000"
-         edBkgCol="0" labelText="They are free for non-commercial use.&#10;For commercial use, please contact:"
-         editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
-         fontname="Default font" fontsize="15.0" kerning="0.0" bold="0"
-         italic="0" justification="33"/>
+         explicitFocusOrder="0" pos="32 266 536 32" edTextCol="ff000000"
+         edBkgCol="0" labelText="For more information, see:" editableSingleClick="0"
+         editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
+         fontsize="15.0" kerning="0.0" bold="0" italic="0" justification="33"/>
   <HYPERLINKBUTTON name="new hyperlink" id="cb7948d2fe4c0b41" memberName="hyperlinkButton3"
-                   virtualName="" explicitFocusOrder="0" pos="40 288 272 24" tooltip="mailto:rainer.martin@ruhr-uni-bochum.de"
-                   buttonText="rainer.martin@ruhr-uni-bochum.de" connectedEdges="0"
-                   needsCallback="0" radioGroupId="0" url="mailto:rainer.martin@ruhr-uni-bochum.de"/>
+                   virtualName="" explicitFocusOrder="0" pos="40 296 352 24" tooltip="https://creativecommons.org/licenses/by-sa/4.0/"
+                   buttonText="https://creativecommons.org/licenses/by-sa/4.0/"
+                   connectedEdges="0" needsCallback="0" radioGroupId="0" url="https://creativecommons.org/licenses/by-sa/4.0/"/>
   <LABEL name="new label" id="70aa8eb69a72c639" memberName="label7" virtualName=""
-         explicitFocusOrder="0" pos="32 320 536 24" edTextCol="ff000000"
+         explicitFocusOrder="0" pos="32 328 536 24" edTextCol="ff000000"
          edBkgCol="0" labelText="They were generated with the &quot;tinyAVE&quot; software."
          editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
          fontname="Default font" fontsize="15.0" kerning="0.0" bold="0"

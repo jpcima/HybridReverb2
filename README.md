@@ -23,7 +23,7 @@ Christian Borß
 
 [Windows development builds](http://jpcima.sdf1.org/software/development/HybridReverb2/)
 
-[Impulse response database](http://www2.ika.ruhr-uni-bochum.de/HybridReverb2/HybridReverb2_large_database.zip) - free for non-commercial use
+[Impulse response database](https://github.com/jpcima/HybridReverb2-impulse-response-database/archive/v1.0.0.zip) - CC-BY-SA 4.0 license
 
 ## Building
 

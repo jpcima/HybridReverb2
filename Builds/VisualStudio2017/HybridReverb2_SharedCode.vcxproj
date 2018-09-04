@@ -73,8 +73,8 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>..\..\JuceLibraryCode;..\..\Thirdparty\JUCE\modules;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_WINDOWS;DEBUG;_DEBUG;NO_OMP;JUCER_VS2017_78A5024=1;JUCE_APP_VERSION=2.0.2;JUCE_APP_VERSION_HEX=0x20002;JucePlugin_Build_VST=1;JucePlugin_Build_VST3=0;JucePlugin_Build_AU=0;JucePlugin_Build_AUv3=0;JucePlugin_Build_RTAS=0;JucePlugin_Build_AAX=0;JucePlugin_Build_Standalone=1;JUCE_SHARED_CODE=1;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\SDKs\VST_SDK\VST3_SDK;..\..\JuceLibraryCode;..\..\Thirdparty\JUCE\modules;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_WINDOWS;DEBUG;_DEBUG;NO_OMP;JUCER_VS2017_78A5024=1;JUCE_APP_VERSION=2.0.2;JUCE_APP_VERSION_HEX=0x20002;JucePlugin_Build_VST=1;JucePlugin_Build_VST3=0;JucePlugin_Build_AU=0;JucePlugin_Build_AUv3=0;JucePlugin_Build_RTAS=0;JucePlugin_Build_AAX=0;JucePlugin_Build_Standalone=1;JucePlugin_Build_Unity=0;JUCE_SHARED_CODE=1;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <PrecompiledHeader/>
@@ -113,8 +113,8 @@
     </Midl>
     <ClCompile>
       <Optimization>Full</Optimization>
-      <AdditionalIncludeDirectories>..\..\JuceLibraryCode;..\..\Thirdparty\JUCE\modules;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_WINDOWS;NDEBUG;NO_OMP;JUCER_VS2017_78A5024=1;JUCE_APP_VERSION=2.0.2;JUCE_APP_VERSION_HEX=0x20002;JucePlugin_Build_VST=1;JucePlugin_Build_VST3=0;JucePlugin_Build_AU=0;JucePlugin_Build_AUv3=0;JucePlugin_Build_RTAS=0;JucePlugin_Build_AAX=0;JucePlugin_Build_Standalone=1;JUCE_SHARED_CODE=1;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\SDKs\VST_SDK\VST3_SDK;..\..\JuceLibraryCode;..\..\Thirdparty\JUCE\modules;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_WINDOWS;NDEBUG;NO_OMP;JUCER_VS2017_78A5024=1;JUCE_APP_VERSION=2.0.2;JUCE_APP_VERSION_HEX=0x20002;JucePlugin_Build_VST=1;JucePlugin_Build_VST3=0;JucePlugin_Build_AU=0;JucePlugin_Build_AUv3=0;JucePlugin_Build_RTAS=0;JucePlugin_Build_AAX=0;JucePlugin_Build_Standalone=1;JucePlugin_Build_Unity=0;JUCE_SHARED_CODE=1;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <PrecompiledHeader/>
@@ -567,9 +567,6 @@
     <ClCompile Include="..\..\Thirdparty\JUCE\modules\juce_audio_plugin_client\Standalone\juce_StandaloneFilterApp.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\Thirdparty\JUCE\modules\juce_audio_plugin_client\Unity\juce_Unity_Wrapper.cpp">
-      <ExcludedFromBuild>true</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="..\..\Thirdparty\JUCE\modules\juce_audio_plugin_client\utility\juce_PluginUtilities.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
@@ -577,9 +574,6 @@
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\Thirdparty\JUCE\modules\juce_audio_plugin_client\juce_audio_plugin_client_LV2.cpp">
-      <ExcludedFromBuild>true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\..\Thirdparty\JUCE\modules\juce_audio_plugin_client\juce_audio_plugin_client_Unity.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\Thirdparty\JUCE\modules\juce_audio_plugin_client\juce_audio_plugin_client_utils.cpp">
@@ -1913,7 +1907,6 @@
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_audio_devices.cpp"/>
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_audio_formats.cpp"/>
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_audio_plugin_client_LV2.cpp"/>
-    <ClCompile Include="..\..\JuceLibraryCode\include_juce_audio_plugin_client_Unity.cpp"/>
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_audio_plugin_client_utils.cpp"/>
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_audio_processors.cpp"/>
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_audio_utils.cpp"/>
@@ -1927,11 +1920,13 @@
   <ItemGroup>
     <ClInclude Include="..\..\Source\libHybridConv\libHybridConv.h"/>
     <ClInclude Include="..\..\Source\gui\AppLookAndFeel.h"/>
+    <ClInclude Include="..\..\Source\gui\Definitions.h"/>
     <ClInclude Include="..\..\Source\gui\DownloadDbComponent.h"/>
     <ClInclude Include="..\..\Source\gui\Editor.h"/>
     <ClInclude Include="..\..\Source\gui\EditorComponent.h"/>
     <ClInclude Include="..\..\Source\gui\FreqPlot.h"/>
     <ClInclude Include="..\..\Source\gui\IRPlot.h"/>
+    <ClInclude Include="..\..\Source\Param.h"/>
     <ClInclude Include="..\..\Source\gui\TabAbout.h"/>
     <ClInclude Include="..\..\Source\gui\TabMain.h"/>
     <ClInclude Include="..\..\Source\gui\TabModulation.h"/>
@@ -1945,14 +1940,6 @@
     <ClInclude Include="..\..\Source\HybridReverb2Processor.h"/>
     <ClInclude Include="..\..\Source\LagrangeInterpolator.h"/>
     <ClInclude Include="..\..\Source\MasterAndCommander.h"/>
-    <ClInclude Include="..\..\Source\ParamCategory.h"/>
-    <ClInclude Include="..\..\Source\ParamEnvelope.h"/>
-    <ClInclude Include="..\..\Source\ParamGainDelay.h"/>
-    <ClInclude Include="..\..\Source\ParamImpulseResponses.h"/>
-    <ClInclude Include="..\..\Source\ParamPartitionWisdom.h"/>
-    <ClInclude Include="..\..\Source\ParamPreferences.h"/>
-    <ClInclude Include="..\..\Source\ParamPreset.h"/>
-    <ClInclude Include="..\..\Source\ParamTimbre.h"/>
     <ClInclude Include="..\..\Source\Partitioner.h"/>
     <ClInclude Include="..\..\Source\PresetManager.h"/>
     <ClInclude Include="..\..\Source\SampleData.h"/>

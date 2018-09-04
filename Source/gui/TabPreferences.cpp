@@ -18,6 +18,7 @@
 */
 
 //[Headers] You can add your own extra header files here...
+#include "Definitions.h"
 #include "../MasterAndCommander.h"
 //[/Headers]
 
@@ -330,7 +331,7 @@ String TabPreferences::getFileChooserResult(String dir)
     FileChooser fc(TRANS("Choose a preset file to open..."),
                    dir,
                    "*.xml",
-                   true);
+                   FileChooserUseNative);
 
     if (fc.browseForFileToOpen())
     {

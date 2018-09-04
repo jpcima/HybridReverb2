@@ -23,6 +23,7 @@
 #include "EditorComponent.h"
 #include "DownloadDbComponent.h"
 #include "AppLookAndFeel.h"
+#include "Definitions.h"
 #include "../SystemConfig.h"
 
 
@@ -89,7 +90,7 @@ void HybridReverb2Editor::chooseDbFileAndLoad()
     FileChooser fc(TRANS("Please choose a file to load..."),
                    File::getSpecialLocation(File::userDocumentsDirectory),
                    "*.zip",
-                   true);
+                   FileChooserUseNative);
 
     if (!fc.browseForFileToOpen())
     {
@@ -138,7 +139,18 @@ void HybridReverb2Editor::performAsyncSetup(
     File presetFile = SystemConfig::getDefaultUserPresetFilename();
 
     fprintf(stderr, "EditorAsync: about to unzip\n");
-    Result zipResult = zip.uncompressTo(presetDir);
+    Result zipResult = uncompressDatabaseTo(zip, presetDir,
+        [self](double progress) {
+            MessageManagerLock lock;
+            MessageManager::callAsync(
+                [self, progress]() {
+                    if (!self)
+                        return;
+
+                    self.getComponent()->downloadDbComponent->setProgress(progress);
+                }
+            );
+        });
 
     if (zipResult.failed())
     {
@@ -163,29 +175,6 @@ void HybridReverb2Editor::performAsyncSetup(
         return;
     }
 
-    if (!presetFile.exists())
-    {
-        fprintf(stderr, "EditorAsync: unzip bad contents\n");
-
-        MessageManagerLock lock;
-        MessageManager::callAsync(
-            [self, zipFile]()
-                {
-                    if (!self)
-                        return;
-
-                    String message = TRANS("Error extracting database file") + " \"" +
-                        zipFile.getFullPathName() +
-                        "\"" + TRANS(":") + "\n" +
-                        TRANS("the database did not contain valid preset data.");
-                    AlertWindow::showMessageBox(AlertWindow::WarningIcon,
-                                                TRANS("Error"), message);
-
-                    self.getComponent()->onSetupFailure();
-                });
-        return;
-    }
-
     fprintf(stderr, "EditorAsync: unzip success\n");
 
     MessageManagerLock lock;
@@ -197,6 +186,68 @@ void HybridReverb2Editor::performAsyncSetup(
 
                 self.getComponent()->onSetupSuccess();
             });
+}
+
+Result HybridReverb2Editor::uncompressDatabaseTo(ZipFile &zip, const File &presetDir,
+                                                 const std::function<void(double)> &onProgress)
+{
+    onProgress(0);
+
+    bool found = false;
+    String prefix;
+    for (unsigned i = 0, n = zip.getNumEntries(); !found && i < n; ++i) {
+        const ZipFile::ZipEntry *ent = zip.getEntry(i);
+        const String &filename = ent->filename;
+        if (filename == "HybridReverb2_presets.xml" || filename.endsWith("/HybridReverb2_presets.xml")) {
+            unsigned prefix_size = (unsigned)filename.length() - (unsigned)strlen("HybridReverb2_presets.xml");
+            prefix = filename.substring(0, prefix_size);
+            found = true;
+        }
+    }
+
+    if (!found)
+        return Result::fail(TRANS("the database did not contain valid preset data."));
+
+    for (unsigned i = 0, n = zip.getNumEntries(); i < n; ++i) {
+        const ZipFile::ZipEntry *ent = zip.getEntry(i);
+        const String &filename = ent->filename;
+        if (filename.isEmpty() || filename.endsWithChar('/') || !filename.startsWith(prefix))
+            continue;
+
+        File targetFile = presetDir.getChildFile(filename.substring(prefix.length()));
+        if (!targetFile.isAChildOf(presetDir))
+            continue;
+
+        std::unique_ptr<InputStream> istream(zip.createStreamForEntry(*ent));
+        if (!istream)
+            return Result::fail(TRANS("uncompression failed"));
+
+        if (ent->isSymbolicLink) {
+            String symlink(istream->readEntireStreamAsString());
+            if (!File::createSymbolicLink(targetFile, symlink, true))
+                return Result::fail(TRANS("write failed"));
+        }
+        else {
+            targetFile.getParentDirectory().createDirectory();
+            std::unique_ptr<FileOutputStream> ostream(targetFile.createOutputStream());
+            if (!ostream)
+                return Result::fail(TRANS("write failed"));
+
+            ostream->setPosition(0);
+            ostream->truncate();
+            ostream->writeFromInputStream(*istream, -1);
+            ostream->flush();
+
+            const Result &res = ostream->getStatus();
+            if (res.failed())
+                return res;
+        }
+
+        onProgress((double)(i + 1) / n);
+    }
+
+    onProgress(1.0);
+    return Result::ok();
 }
 
 void HybridReverb2Editor::paint(Graphics &g)

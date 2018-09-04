@@ -104,7 +104,7 @@ BEGIN_JUCER_METADATA
 <JUCER_COMPONENT documentType="Component" className="TabModulation" componentName=""
                  parentClasses="public Component" constructorParams="MasterAndCommander *m"
                  variableInitialisers="master (m)" snapPixels="8" snapActive="1"
-                 snapShown="1" overlayOpacity="0.330" fixedSize="0" initialWidth="828"
+                 snapShown="1" overlayOpacity="0.33" fixedSize="0" initialWidth="828"
                  initialHeight="548">
   <BACKGROUND backgroundColour="ffffe000"/>
   <GROUPCOMPONENT name="new group" id="fada51a9ace7abb" memberName="groupComponent"

@@ -51,7 +51,7 @@ DownloadDbComponent::DownloadDbComponent (HybridReverb2Editor *editor)
     label.reset (new Label ("new label",
                             TRANS("This software must install some impulse responses to continue.")));
     addAndMakeVisible (label.get());
-    label->setFont (Font (15.00f, Font::plain).withTypefaceStyle ("Regular"));
+    label->setFont (Font (15.0f, Font::plain).withTypefaceStyle ("Regular"));
     label->setJustificationType (Justification::centredLeft);
     label->setEditable (false, false, false);
     label->setColour (TextEditor::textColourId, Colours::black);
@@ -70,7 +70,7 @@ DownloadDbComponent::DownloadDbComponent (HybridReverb2Editor *editor)
     propertyLabel.reset (new Label ("new label",
                                     CharPointer_UTF8 ("These room impulse responses for HybridReverb2 are property of the Institute of Communication Acoustics, Ruhr Universit\xc3\xa4t Bochum, Germany.")));
     addAndMakeVisible (propertyLabel.get());
-    propertyLabel->setFont (Font (15.00f, Font::plain).withTypefaceStyle ("Regular"));
+    propertyLabel->setFont (Font (15.0f, Font::plain).withTypefaceStyle ("Regular"));
     propertyLabel->setJustificationType (Justification::centredLeft);
     propertyLabel->setEditable (false, false, false);
     propertyLabel->setColour (TextEditor::textColourId, Colours::black);
@@ -81,7 +81,7 @@ DownloadDbComponent::DownloadDbComponent (HybridReverb2Editor *editor)
     label3.reset (new Label ("new label",
                              TRANS("Copyright Notice")));
     addAndMakeVisible (label3.get());
-    label3->setFont (Font (15.00f, Font::plain).withTypefaceStyle ("Bold"));
+    label3->setFont (Font (15.0f, Font::plain).withTypefaceStyle ("Bold"));
     label3->setJustificationType (Justification::centredLeft);
     label3->setEditable (false, false, false);
     label3->setColour (TextEditor::textColourId, Colours::black);
@@ -92,7 +92,7 @@ DownloadDbComponent::DownloadDbComponent (HybridReverb2Editor *editor)
     label4.reset (new Label ("new label",
                              TRANS("Click link to download:")));
     addAndMakeVisible (label4.get());
-    label4->setFont (Font (15.00f, Font::plain).withTypefaceStyle ("Regular"));
+    label4->setFont (Font (15.0f, Font::plain).withTypefaceStyle ("Regular"));
     label4->setJustificationType (Justification::centredLeft);
     label4->setEditable (false, false, false);
     label4->setColour (TextEditor::textColourId, Colours::black);
@@ -103,7 +103,7 @@ DownloadDbComponent::DownloadDbComponent (HybridReverb2Editor *editor)
     label5.reset (new Label ("new label",
                              TRANS("Install the file:")));
     addAndMakeVisible (label5.get());
-    label5->setFont (Font (15.00f, Font::plain).withTypefaceStyle ("Regular"));
+    label5->setFont (Font (15.0f, Font::plain).withTypefaceStyle ("Regular"));
     label5->setJustificationType (Justification::centredLeft);
     label5->setEditable (false, false, false);
     label5->setColour (TextEditor::textColourId, Colours::black);
@@ -123,7 +123,7 @@ DownloadDbComponent::DownloadDbComponent (HybridReverb2Editor *editor)
                              TRANS("They are free for non-commercial use.\n"
                              "For commercial use, please contact:")));
     addAndMakeVisible (label6.get());
-    label6->setFont (Font (15.00f, Font::plain).withTypefaceStyle ("Regular"));
+    label6->setFont (Font (15.0f, Font::plain).withTypefaceStyle ("Regular"));
     label6->setJustificationType (Justification::centredLeft);
     label6->setEditable (false, false, false);
     label6->setColour (TextEditor::textColourId, Colours::black);
@@ -142,13 +142,19 @@ DownloadDbComponent::DownloadDbComponent (HybridReverb2Editor *editor)
     label7.reset (new Label ("new label",
                              TRANS("They were generated with the \"tinyAVE\" software.")));
     addAndMakeVisible (label7.get());
-    label7->setFont (Font (15.00f, Font::plain).withTypefaceStyle ("Regular"));
+    label7->setFont (Font (15.0f, Font::plain).withTypefaceStyle ("Regular"));
     label7->setJustificationType (Justification::centredLeft);
     label7->setEditable (false, false, false);
     label7->setColour (TextEditor::textColourId, Colours::black);
     label7->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
     label7->setBounds (32, 320, 536, 24);
+
+    progressBar.reset (new ProgressBar (progressValue));
+    addAndMakeVisible (progressBar.get());
+    progressBar->setName ("new component");
+
+    progressBar->setBounds (296, 128, 272, 24);
 
 
     //[UserPreSize]
@@ -183,6 +189,7 @@ DownloadDbComponent::~DownloadDbComponent()
     label6 = nullptr;
     hyperlinkButton3 = nullptr;
     label7 = nullptr;
+    progressBar = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -244,7 +251,7 @@ BEGIN_JUCER_METADATA
 <JUCER_COMPONENT documentType="Component" className="DownloadDbComponent" componentName=""
                  parentClasses="public Component" constructorParams="HybridReverb2Editor *editor"
                  variableInitialisers="" snapPixels="8" snapActive="1" snapShown="1"
-                 overlayOpacity="0.330" fixedSize="0" initialWidth="600" initialHeight="378">
+                 overlayOpacity="0.33" fixedSize="0" initialWidth="600" initialHeight="378">
   <BACKGROUND backgroundColour="ffffe000"/>
   <GROUPCOMPONENT name="new group" id="45a8c1e1ce67cc73" memberName="groupComponent"
                   virtualName="" explicitFocusOrder="0" pos="0 0 600 376" title="Setup Preset Database"/>
@@ -255,8 +262,8 @@ BEGIN_JUCER_METADATA
          explicitFocusOrder="0" pos="32 40 536 24" edTextCol="ff000000"
          edBkgCol="0" labelText="This software must install some impulse responses to continue."
          editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
-         fontname="Default font" fontsize="15.00000000000000000000" kerning="0.00000000000000000000"
-         bold="0" italic="0" justification="33"/>
+         fontname="Default font" fontsize="15.0" kerning="0.0" bold="0"
+         italic="0" justification="33"/>
   <HYPERLINKBUTTON name="new hyperlink" id="ab2dc46b149cd192" memberName="hyperlinkButton"
                    virtualName="" explicitFocusOrder="0" pos="296 72 272 24" tooltip="http://www2.ika.ruhr-uni-bochum.de/HybridReverb2/HybridReverb2_large_database.zip"
                    buttonText="HybridReverb2_large_database.zip" connectedEdges="0"
@@ -265,26 +272,24 @@ BEGIN_JUCER_METADATA
          virtualName="" explicitFocusOrder="0" pos="32 176 536 32" edTextCol="ff000000"
          edBkgCol="0" labelText="These room impulse responses for HybridReverb2 are property of the Institute of Communication Acoustics, Ruhr Universit&#228;t Bochum, Germany."
          editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
-         fontname="Default font" fontsize="15.00000000000000000000" kerning="0.00000000000000000000"
-         bold="0" italic="0" justification="33"/>
+         fontname="Default font" fontsize="15.0" kerning="0.0" bold="0"
+         italic="0" justification="33"/>
   <LABEL name="new label" id="2683eec4ab09418b" memberName="label3" virtualName=""
          explicitFocusOrder="0" pos="32 144 536 24" edTextCol="ff000000"
          edBkgCol="0" labelText="Copyright Notice" editableSingleClick="0"
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
-         fontsize="15.00000000000000000000" kerning="0.00000000000000000000"
-         bold="1" italic="0" justification="33" typefaceStyle="Bold"/>
+         fontsize="15.0" kerning="0.0" bold="1" italic="0" justification="33"
+         typefaceStyle="Bold"/>
   <LABEL name="new label" id="f40fe395ed330642" memberName="label4" virtualName=""
          explicitFocusOrder="0" pos="56 72 232 24" edTextCol="ff000000"
          edBkgCol="0" labelText="Click link to download:" editableSingleClick="0"
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
-         fontsize="15.00000000000000000000" kerning="0.00000000000000000000"
-         bold="0" italic="0" justification="33"/>
+         fontsize="15.0" kerning="0.0" bold="0" italic="0" justification="33"/>
   <LABEL name="new label" id="391914e76a33d4d9" memberName="label5" virtualName=""
          explicitFocusOrder="0" pos="56 104 232 24" edTextCol="ff000000"
          edBkgCol="0" labelText="Install the file:" editableSingleClick="0"
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
-         fontsize="15.00000000000000000000" kerning="0.00000000000000000000"
-         bold="0" italic="0" justification="33"/>
+         fontsize="15.0" kerning="0.0" bold="0" italic="0" justification="33"/>
   <HYPERLINKBUTTON name="new hyperlink" id="c2d7cbb2a3435d72" memberName="hyperlinkButton2"
                    virtualName="" explicitFocusOrder="0" pos="40 216 272 24" tooltip="http://www.ruhr-uni-bochum.de/ika/"
                    buttonText="http://www.ruhr-uni-bochum.de/ika/" connectedEdges="0"
@@ -293,8 +298,8 @@ BEGIN_JUCER_METADATA
          explicitFocusOrder="0" pos="32 248 536 32" edTextCol="ff000000"
          edBkgCol="0" labelText="They are free for non-commercial use.&#10;For commercial use, please contact:"
          editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
-         fontname="Default font" fontsize="15.00000000000000000000" kerning="0.00000000000000000000"
-         bold="0" italic="0" justification="33"/>
+         fontname="Default font" fontsize="15.0" kerning="0.0" bold="0"
+         italic="0" justification="33"/>
   <HYPERLINKBUTTON name="new hyperlink" id="cb7948d2fe4c0b41" memberName="hyperlinkButton3"
                    virtualName="" explicitFocusOrder="0" pos="40 288 272 24" tooltip="mailto:rainer.martin@ruhr-uni-bochum.de"
                    buttonText="rainer.martin@ruhr-uni-bochum.de" connectedEdges="0"
@@ -303,8 +308,11 @@ BEGIN_JUCER_METADATA
          explicitFocusOrder="0" pos="32 320 536 24" edTextCol="ff000000"
          edBkgCol="0" labelText="They were generated with the &quot;tinyAVE&quot; software."
          editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
-         fontname="Default font" fontsize="15.00000000000000000000" kerning="0.00000000000000000000"
-         bold="0" italic="0" justification="33"/>
+         fontname="Default font" fontsize="15.0" kerning="0.0" bold="0"
+         italic="0" justification="33"/>
+  <GENERICCOMPONENT name="new component" id="5890f2c4f4ffafee" memberName="progressBar"
+                    virtualName="ProgressBar" explicitFocusOrder="0" pos="296 128 272 24"
+                    class="Component" params="progressValue"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA

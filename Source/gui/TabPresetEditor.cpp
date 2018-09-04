@@ -18,6 +18,7 @@
 */
 
 //[Headers] You can add your own extra header files here...
+#include "Definitions.h"
 #include "../MasterAndCommander.h"
 #include "../PresetManager.h"
 #include "../Param.h"
@@ -629,7 +630,7 @@ String TabPresetEditor::getWavFileChooserOpen(String dir)
     FileChooser fc(TRANS("Choose a WAV file to open..."),
                    dir,
                    "*.wav",
-                   true);
+                   FileChooserUseNative);
 
     if (fc.browseForFileToOpen())
     {
@@ -646,7 +647,7 @@ String TabPresetEditor::getXmlFileChooserOpen(String dir)
     FileChooser fc(TRANS("Choose a XML file to open..."),
                    dir,
                    "*.xml",
-                   true);
+                   FileChooserUseNative);
 
     if (fc.browseForFileToOpen())
     {
@@ -663,7 +664,7 @@ String TabPresetEditor::getXmlFileChooserSave(String dir)
     FileChooser fc(TRANS("Choose a XML file to save..."),
                    dir,
                    "*.xml",
-                   true);
+                   FileChooserUseNative);
 
     if (fc.browseForFileToSave(true))
     {

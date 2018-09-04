@@ -7,7 +7,7 @@
               version="2.0.2" pluginRTASCategory="8" pluginVSTCategory="kPlugCategRoomFx"
               pluginVST3Category="Reverb" pluginAAXCategory="8" cppLanguageStandard="11"
               bundleIdentifier="de.rub.ika.borss" defines="NO_OMP" includeBinaryInJuceHeader="0"
-              maxBinaryFileSize="10485760">
+              maxBinaryFileSize="10485760" pluginFormats="buildAU,buildStandalone,buildVST">
   <MAINGROUP id="XTukN1" name="HybridReverb2">
     <GROUP id="{FEC4EED5-67C9-4FDE-AD66-308AED96CDBA}" name="I18n">
       <GROUP id="{ADA8F650-A883-F5D0-1155-8C7C6BEAE057}" name="release">
@@ -55,6 +55,7 @@
               file="Source/gui/AppLookAndFeel.cpp"/>
         <FILE id="OHII9V" name="AppLookAndFeel.h" compile="0" resource="0"
               file="Source/gui/AppLookAndFeel.h"/>
+        <FILE id="qD5LVV" name="Definitions.h" compile="0" resource="0" file="Source/gui/Definitions.h"/>
         <FILE id="GtBx2L" name="DownloadDbComponent.cpp" compile="1" resource="0"
               file="Source/gui/DownloadDbComponent.cpp"/>
         <FILE id="mW54Nd" name="DownloadDbComponent.h" compile="0" resource="0"
@@ -69,6 +70,7 @@
         <FILE id="qAx5xB" name="FreqPlot.h" compile="0" resource="0" file="Source/gui/FreqPlot.h"/>
         <FILE id="t4JMfW" name="IRPlot.cpp" compile="1" resource="0" file="Source/gui/IRPlot.cpp"/>
         <FILE id="koAc29" name="IRPlot.h" compile="0" resource="0" file="Source/gui/IRPlot.h"/>
+        <FILE id="We1yPV" name="Param.h" compile="0" resource="0" file="Source/Param.h"/>
         <FILE id="ktDZ5F" name="TabAbout.cpp" compile="1" resource="0" file="Source/gui/TabAbout.cpp"/>
         <FILE id="QpdURQ" name="TabAbout.h" compile="0" resource="0" file="Source/gui/TabAbout.h"/>
         <FILE id="CFbedC" name="TabMain.cpp" compile="1" resource="0" file="Source/gui/TabMain.cpp"/>
@@ -115,18 +117,6 @@
             file="Source/MasterAndCommander.cpp"/>
       <FILE id="bLgSBa" name="MasterAndCommander.h" compile="0" resource="0"
             file="Source/MasterAndCommander.h"/>
-      <FILE id="E2oLeO" name="ParamCategory.h" compile="0" resource="0" file="Source/ParamCategory.h"/>
-      <FILE id="apjd5S" name="ParamEnvelope.h" compile="0" resource="0" file="Source/ParamEnvelope.h"/>
-      <FILE id="b0Bqbe" name="ParamGainDelay.h" compile="0" resource="0"
-            file="Source/ParamGainDelay.h"/>
-      <FILE id="DbvOQr" name="ParamImpulseResponses.h" compile="0" resource="0"
-            file="Source/ParamImpulseResponses.h"/>
-      <FILE id="oIqjjD" name="ParamPartitionWisdom.h" compile="0" resource="0"
-            file="Source/ParamPartitionWisdom.h"/>
-      <FILE id="EohTAY" name="ParamPreferences.h" compile="0" resource="0"
-            file="Source/ParamPreferences.h"/>
-      <FILE id="JRCEmg" name="ParamPreset.h" compile="0" resource="0" file="Source/ParamPreset.h"/>
-      <FILE id="h4GlCU" name="ParamTimbre.h" compile="0" resource="0" file="Source/ParamTimbre.h"/>
       <FILE id="cN2loN" name="Partitioner.cpp" compile="1" resource="0" file="Source/Partitioner.cpp"/>
       <FILE id="o9XH9v" name="Partitioner.h" compile="0" resource="0" file="Source/Partitioner.h"/>
       <FILE id="zEUNeO" name="PresetManager.cpp" compile="1" resource="0"

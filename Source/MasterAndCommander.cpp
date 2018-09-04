@@ -33,6 +33,7 @@
 #include "gui/TabPreferences.h"
 #include "gui/TabAbout.h"
 #include "gui/IRPlot.h"
+#include "gui/Definitions.h"
 #include "SampleData.h"
 #include "SystemConfig.h"
 #include "PresetManager.h"
@@ -67,7 +68,7 @@ void MasterAndCommander::loadInitialPreset()
         FileChooser fc(TRANS("Invalid preset file. Please choose another file to open..."),
                        systemConfig->getUserdir(),
                        "*.xml",
-                       true);
+                       FileChooserUseNative);
         if (fc.browseForFileToOpen())
         {
             File chosenFile = fc.getResult();

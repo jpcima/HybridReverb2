@@ -38,6 +38,7 @@
 namespace ProjectInfo
 {
     const char* const  projectName    = "HybridReverb2";
+    const char* const  companyName    = "";
     const char* const  versionString  = "2.0.2";
     const int          versionNumber  = 0x20002;
 }

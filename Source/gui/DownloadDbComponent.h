@@ -45,6 +45,11 @@ public:
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
+    void setProgress(double p)
+    {
+        progressValue = p;
+        progressBar->repaint();
+    }
     //[/UserMethods]
 
     void paint (Graphics& g) override;
@@ -72,6 +77,7 @@ private:
     std::unique_ptr<Label> label6;
     std::unique_ptr<HyperlinkButton> hyperlinkButton3;
     std::unique_ptr<Label> label7;
+    std::unique_ptr<ProgressBar> progressBar;
 
 
     //==============================================================================

@@ -57,6 +57,9 @@ private:
     static void performAsyncSetup(
         Component::SafePointer<HybridReverb2Editor> self, const File &zipFile);
 
+    static Result uncompressDatabaseTo(ZipFile &zip, const File &presetDir,
+                                       const std::function<void(double)> &onProgress);
+
     std::shared_ptr<SystemConfig> systemConfig;
     std::unique_ptr<EditorComponent> editorComponent;
     std::unique_ptr<DownloadDbComponent> downloadDbComponent;

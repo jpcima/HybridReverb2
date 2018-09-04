@@ -20,8 +20,7 @@
 //[Headers] You can add your own extra header files here...
 #include "../MasterAndCommander.h"
 #include "../PresetManager.h"
-#include "../ParamCategory.h"
-#include "../ParamImpulseResponses.h"
+#include "../Param.h"
 //[/Headers]
 
 #include "TabPresetEditor.h"

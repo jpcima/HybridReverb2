@@ -20,7 +20,7 @@
 
 
 #include "Partitioner.h"
-#include "ParamPreferences.h"
+#include "Param.h"
 #include <math.h>
 #include <stdio.h>
 

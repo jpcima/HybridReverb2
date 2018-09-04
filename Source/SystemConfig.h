@@ -24,8 +24,7 @@
 
 
 #include "JuceHeader.h"
-#include "ParamPreferences.h"
-#include "ParamPartitionWisdom.h"
+#include "Param.h"
 
 
 class SystemConfig

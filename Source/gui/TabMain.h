@@ -21,8 +21,7 @@
 
 //[Headers]     -- You can add your own extra header files here --
 #include "JuceHeader.h"
-#include "../ParamGainDelay.h"
-#include "../ParamEnvelope.h"
+#include "../Param.h"
 #include "../TextList.h"
 #include <vector>
 

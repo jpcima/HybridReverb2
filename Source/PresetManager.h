@@ -24,12 +24,7 @@
 
 
 #include "JuceHeader.h"
-#include "ParamCategory.h"
-#include "ParamEnvelope.h"
-#include "ParamGainDelay.h"
-#include "ParamImpulseResponses.h"
-#include "ParamPreset.h"
-#include "ParamTimbre.h"
+#include "Param.h"
 #include "TextList.h"
 #include <vector>
 

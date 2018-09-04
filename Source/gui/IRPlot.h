@@ -24,7 +24,7 @@
 
 
 #include "JuceHeader.h"
-#include "../ParamEnvelope.h"
+#include "../Param.h"
 
 
 enum IRPLOT_CONSTANTS { IRPLOT_GRID_X = 25,

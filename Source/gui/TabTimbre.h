@@ -21,7 +21,7 @@
 
 //[Headers]     -- You can add your own extra header files here --
 #include "JuceHeader.h"
-#include "../ParamTimbre.h"
+#include "../Param.h"
 
 #include <fftw3.h>
 

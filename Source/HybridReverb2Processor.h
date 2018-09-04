@@ -31,8 +31,7 @@
 #include "HybridConvolverDual.h"
 #include "HybridConvolverSingle.h"
 #include "Partitioner.h"
-#include "ParamPreferences.h"
-#include "ParamPartitionWisdom.h"
+#include "Param.h"
 
 
 // forward declarations

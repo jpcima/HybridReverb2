@@ -24,10 +24,7 @@
 #endif
 
 #include "MasterAndCommander.h"
-#include "ParamGainDelay.h"
-#include "ParamEnvelope.h"
-#include "ParamTimbre.h"
-#include "ParamPreferences.h"
+#include "Param.h"
 #include "gui/EditorComponent.h"
 #include "gui/TabMain.h"
 #include "gui/TabModulation.h"

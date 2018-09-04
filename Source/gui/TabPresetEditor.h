@@ -21,7 +21,7 @@
 
 //[Headers]     -- You can add your own extra header files here --
 #include "JuceHeader.h"
-#include "../ParamPreset.h"
+#include "../Param.h"
 
 // forward declarations
 class MasterAndCommander;

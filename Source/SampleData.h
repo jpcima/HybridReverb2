@@ -24,9 +24,7 @@
 
 
 #include "JuceHeader.h"
-#include "ParamGainDelay.h"
-#include "ParamEnvelope.h"
-#include "ParamImpulseResponses.h"
+#include "Param.h"
 
 extern "C" {
 #include "libHybridConv/libHybridConv.h"

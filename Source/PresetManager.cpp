@@ -108,8 +108,8 @@ int PresetManager::readFile(const String &presetFilename)
     File presetFile(presetFilename);
     this->presetFile = presetFilename;
 
-    xmlDoc.reset(new XmlDocument(presetFile));
-    xmlRoot.reset(xmlDoc->getDocumentElement());
+    std::unique_ptr<XmlDocument> xmlDoc(new XmlDocument(presetFile));
+    std::unique_ptr<XmlElement> xmlRoot(xmlDoc->getDocumentElement());
 
     if (!xmlRoot)
     {
@@ -123,7 +123,7 @@ int PresetManager::readFile(const String &presetFilename)
         return -1;
     }
 
-    defaultPresetNum = parseRoot(xmlRoot.get());
+    defaultPresetNum = parseRoot(*xmlRoot);
     return defaultPresetNum;
 }
 
@@ -165,20 +165,21 @@ int PresetManager::saveAs(const String &presetFile)
 }
 
 
-int PresetManager::parseRoot(XmlElement *element)
+int PresetManager::parseRoot(const XmlElement &element)
 {
     int ret = 1;
 
     numPresets = 0;
 
-    forEachXmlChildElement(*element, child)
+    forEachXmlChildElement(element, child)
     {
         if (numPresets < maxPresets && child->hasTagName("preset"))
         {
             ParamPreset &p = preset[numPresets++];
+            int catIndex[4] = {-1, -1, -1, -1};
             for (int i = 0; i < 4; i++)
                 catIndex[i] = -1;
-            p = parsePreset(child);
+            p = parsePreset(*child, catIndex);
             for (int i = 0; i < 4; i++)
                 p.catIndex[i] = catIndex[i];
         }
@@ -196,24 +197,24 @@ int PresetManager::parseRoot(XmlElement *element)
 }
 
 
-const ParamPreset & PresetManager::parsePreset(XmlElement *element)
+ParamPreset PresetManager::parsePreset(const XmlElement &element, int catIndex[4])
 {
-    retPreset = emptyPreset;
+    ParamPreset retPreset;
 
-    forEachXmlChildElement(*element, child)
+    forEachXmlChildElement(element, child)
     {
         if (child->hasTagName("name"))
             retPreset.name = getSubText(child);
         else if (child->hasTagName("impulse_responses"))
-            retPreset.impulseResponses = parseImpulseResponses(child);
+            retPreset.impulseResponses = parseImpulseResponses(*child);
         else if (child->hasTagName("category"))
-            retPreset.category = parseCategory(child);
+            retPreset.category = parseCategory(*child, catIndex);
         else if (child->hasTagName("param_envelope"))
-            retPreset.envelope = parseParamEnvelope(child);
+            retPreset.envelope = parseParamEnvelope(*child);
         else if (child->hasTagName("param_gain_delay"))
-            retPreset.gainDelay = parseParamGainDelay(child);
+            retPreset.gainDelay = parseParamGainDelay(*child);
         else if (child->hasTagName("param_timbre"))
-            retPreset.timbre = parseParamTimbre(child);
+            retPreset.timbre = parseParamTimbre(*child);
         else if (child->hasTagName("notes"))
             retPreset.notes = getSubText(child);
     }
@@ -222,11 +223,11 @@ const ParamPreset & PresetManager::parsePreset(XmlElement *element)
 }
 
 
-const ParamImpulseResponses & PresetManager::parseImpulseResponses(XmlElement *element)
+ParamImpulseResponses PresetManager::parseImpulseResponses(const XmlElement &element)
 {
-    retImpulseResponses = emptyImpulseResponses;
+    ParamImpulseResponses retImpulseResponses;
 
-    forEachXmlChildElement(*element, child)
+    forEachXmlChildElement(element, child)
     {
         if (child->hasTagName("ll"))
             retImpulseResponses.ll = getSubText(child);
@@ -242,11 +243,11 @@ const ParamImpulseResponses & PresetManager::parseImpulseResponses(XmlElement *e
 }
 
 
-const ParamCategory & PresetManager::parseCategory(XmlElement *element)
+ParamCategory PresetManager::parseCategory(const XmlElement &element, int catIndex[4])
 {
-    retCategory = emptyCategory;
+    ParamCategory retCategory;
 
-    forEachXmlChildElement(*element, child)
+    forEachXmlChildElement(element, child)
     {
         if (child->hasTagName("cat_1"))
         {
@@ -274,12 +275,12 @@ const ParamCategory & PresetManager::parseCategory(XmlElement *element)
 }
 
 
-const ParamEnvelope & PresetManager::parseParamEnvelope(XmlElement *element)
+ParamEnvelope PresetManager::parseParamEnvelope(const XmlElement &element)
 {
-    retEnvelope = emptyEnvelope;
+    ParamEnvelope retEnvelope;
     int counter = 0;
 
-    forEachXmlChildElement(*element, child)
+    forEachXmlChildElement(element, child)
     {
         if (child->hasTagName("gain"))
         {
@@ -306,11 +307,11 @@ const ParamEnvelope & PresetManager::parseParamEnvelope(XmlElement *element)
 }
 
 
-const ParamGainDelay & PresetManager::parseParamGainDelay(XmlElement *element)
+ParamGainDelay PresetManager::parseParamGainDelay(const XmlElement &element)
 {
-    retGainDelay = emptyGainDelay;
+    ParamGainDelay retGainDelay;
 
-    forEachXmlChildElement(*element, child)
+    forEachXmlChildElement(element, child)
     {
         String text = getSubText(child);
         float value = text.getFloatValue();
@@ -332,12 +333,12 @@ const ParamGainDelay & PresetManager::parseParamGainDelay(XmlElement *element)
 }
 
 
-const ParamTimbre & PresetManager::parseParamTimbre(XmlElement *element)
+ParamTimbre PresetManager::parseParamTimbre(const XmlElement &element)
 {
-    retTimbre = emptyTimbre;
+    ParamTimbre retTimbre;
     int counter = 0;
 
-    forEachXmlChildElement(*element, child)
+    forEachXmlChildElement(element, child)
     {
         String text = getSubText(child);
         float value = text.getFloatValue();
@@ -780,16 +781,12 @@ XmlElement* PresetManager::paramEnvelopeToXML(const ParamEnvelope & param)
 //    private methods
 //
 
-const String & PresetManager::getSubText(XmlElement *element)
+String PresetManager::getSubText(XmlElement *element)
 {
     forEachXmlChildElement(*element, child)
     {
         if (child->isTextElement())
-        {
-            retSubText = child->getText();
-            return retSubText;
-        }
+            return child->getText();
     }
-    retSubText = String();
-    return retSubText;
+    return String();
 }

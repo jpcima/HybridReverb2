@@ -45,13 +45,13 @@ public:
     int readFile(const String &presetFilename);
     int save(void);
     int saveAs(const String &presetFile);
-    int parseRoot(XmlElement *element);
-    const ParamPreset & parsePreset(XmlElement *element);
-    const ParamImpulseResponses & parseImpulseResponses(XmlElement *element);
-    const ParamCategory & parseCategory(XmlElement *element);
-    const ParamEnvelope & parseParamEnvelope(XmlElement *element);
-    const ParamGainDelay & parseParamGainDelay(XmlElement *element);
-    const ParamTimbre & parseParamTimbre(XmlElement *element);
+    int parseRoot(const XmlElement &element);
+    ParamPreset parsePreset(const XmlElement &element, int catIndex[4]);
+    ParamImpulseResponses parseImpulseResponses(const XmlElement &element);
+    ParamCategory parseCategory(const XmlElement &element, int catIndex[4]);
+    ParamEnvelope parseParamEnvelope(const XmlElement &element);
+    ParamGainDelay parseParamGainDelay(const XmlElement &element);
+    ParamTimbre parseParamTimbre(const XmlElement &element);
 
     const ParamPreset           & getPreset(int num);
     const String                & getName(int num);
@@ -81,38 +81,20 @@ public:
     XmlElement* paramEnvelopeToXML         (const ParamEnvelope         & param);
 
 private:
-    const String & getSubText(XmlElement *element);
+    static String getSubText(XmlElement *element);
 
     String presetFile;
-    String retSubText;
-    std::unique_ptr<XmlDocument> xmlDoc;
-    std::unique_ptr<XmlElement> xmlRoot;
     enum { maxPresets = 256 };
     std::unique_ptr<ParamPreset[]> preset;
     int numPresets = 0;
     int currentPresetNum = 1;
     int defaultPresetNum = 1;
 
-    ParamPreset           emptyPreset;
-    ParamImpulseResponses emptyImpulseResponses;
-    ParamCategory         emptyCategory;
-    ParamEnvelope         emptyEnvelope;
-    ParamGainDelay        emptyGainDelay;
-    ParamTimbre           emptyTimbre;
-
-    ParamPreset           retPreset;
-    ParamImpulseResponses retImpulseResponses;
-    ParamCategory         retCategory;
-    ParamEnvelope         retEnvelope;
-    ParamGainDelay        retGainDelay;
-    ParamTimbre           retTimbre;
-
     TextList vectorCat1;
     TextList vectorCat2;
     TextList vectorCat3;
     TextList vectorCat4;
     TextList vectorEmpty;
-    int catIndex[4];
 
 private:
     //==============================================================================

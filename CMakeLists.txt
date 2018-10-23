@@ -18,6 +18,8 @@ else()
   set(HybridReverb2_STATIC_FFTW "OFF" CACHE STRING "Use static FFTW")
 endif()
 
+include(GNUInstallDirs)
+
 list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/CMake")
 include(GNUWarnings)
 include(LinkHelpers)
@@ -220,7 +222,7 @@ if(HybridReverb2_VST2)
       "-P" "${PROJECT_SOURCE_DIR}/cmake/ConfigureFile.cmake"
       DEPENDS "${PROJECT_SOURCE_DIR}/juce/Builds/MacOSX/Info-VST.plist")
   endif()
-  install(TARGETS HybridReverb2_VST2 DESTINATION "lib/vst")
+  install(TARGETS HybridReverb2_VST2 DESTINATION "${CMAKE_INSTALL_LIBDIR}/vst")
 endif()
 
 if(HybridReverb2_LV2)
@@ -258,7 +260,7 @@ if(HybridReverb2_LV2)
     DEPENDS ${HybridReverb2_LV2_MANIFESTS}
     WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}")
 
-  set(HybridReverb2_LV2_INSTALL_DIR "lib/lv2/HybridReverb2.lv2")
+  set(HybridReverb2_LV2_INSTALL_DIR "${CMAKE_INSTALL_LIBDIR}/lv2/HybridReverb2.lv2")
   install(TARGETS HybridReverb2_LV2 DESTINATION "${HybridReverb2_LV2_INSTALL_DIR}")
   install(FILES ${HybridReverb2_LV2_MANIFESTS} DESTINATION "${HybridReverb2_LV2_INSTALL_DIR}")
 endif()
@@ -281,16 +283,16 @@ if(HybridReverb2_Standalone)
     require_symbols(HybridReverb2_Standalone "main")
   endif()
   set_property(TARGET HybridReverb2_Standalone PROPERTY OUTPUT_NAME "HybridReverb2")
-  install(TARGETS HybridReverb2_Standalone DESTINATION "bin")
-  install(FILES "Source/resources/hybridreverb2.desktop" DESTINATION "share/applications")
+  install(TARGETS HybridReverb2_Standalone DESTINATION "${CMAKE_INSTALL_BINDIR}")
+  install(FILES "Source/resources/hybridreverb2.desktop" DESTINATION "${CMAKE_INSTALL_DATADIR}/applications")
   install(FILES "Source/resources/HybridReverb2_32.png"
-    DESTINATION "share/pixmaps"
+    DESTINATION "${CMAKE_INSTALL_DATADIR}/pixmaps"
     RENAME "HybridReverb2.png")
   foreach(size 32;96)
     install(FILES "Source/resources/HybridReverb2_${size}.png"
-      DESTINATION "share/icons/hicolor/${size}x${size}/apps"
+      DESTINATION "${CMAKE_INSTALL_DATADIR}/icons/hicolor/${size}x${size}/apps"
       RENAME "HybridReverb2.png")
   endforeach()
-  install(FILES "Source/resources/hybridreverb2.1" DESTINATION "share/man/man1")
-  install(FILES "Source/resources/hybridreverb2.fr.1" DESTINATION "share/man/fr/man1" RENAME "hybridreverb2.1")
+  install(FILES "Source/resources/hybridreverb2.1" DESTINATION "${CMAKE_INSTALL_DATADIR}/man/man1")
+  install(FILES "Source/resources/hybridreverb2.fr.1" DESTINATION "${CMAKE_INSTALL_DATADIR}/man/fr/man1" RENAME "hybridreverb2.1")
 endif()

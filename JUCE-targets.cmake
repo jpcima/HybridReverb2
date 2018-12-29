@@ -129,6 +129,7 @@ if(HybridReverb2_LV2)
 
   target_compile_definitions(juce_audio_plugin_client_LV2
     PUBLIC "JucePlugin_Build_LV2=1"
+    PUBLIC "JucePlugin_Build_LV2_FileCreator=1"
     PUBLIC "JucePlugin_LV2URI=\"${HybridReverb2_URI}\"")
 endif()
 

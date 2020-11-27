@@ -8,8 +8,7 @@ Current maintainer: [Jean Pierre Cimalando](https://github.com/jpcima)
 Contributor: [Olivier Humbert](https://github.com/trebmuh)
 
 The goal of this project is to keep the HybridReverb2 project maintained and fix the issues.  
-The original 2009 research paper is still available [A VST REVERBERATION EFFECT PLUGIN BASED ON SYNTHETIC ROOM IMPULSE
-RESPONSES](http://dafx.de/paper-archive/2009/papers/paper_48.pdf).
+The original 2009 page is [archived](https://web.archive.org/web/20200127211945/http://www.ika.ruhr-uni-bochum.de/HybridReverb2/) and the research paper is available [A VST Reverberation Effect Plugin Based on Synthetic Room Impulse Responses](http://dafx.de/paper-archive/2009/papers/paper_48.pdf).
 
 ## Introduction
 

@@ -135,7 +135,7 @@ void SystemConfig::readPreferencesFile()
 
         String xmlData(BinaryData::preferences_xml, BinaryData::preferences_xmlSize);
         xmlDoc.reset(new XmlDocument(xmlData));
-        element.reset(xmlDoc->getDocumentElement());
+        element = xmlDoc->getDocumentElement();
         jassert(element);
     }
 
@@ -201,7 +201,7 @@ void SystemConfig::readPartitionWisdomFile()
 
         String xmlData(BinaryData::partition_wisdom_xml, BinaryData::partition_wisdom_xmlSize);
         xmlDoc.reset(new XmlDocument(xmlData));
-        element.reset(xmlDoc->getDocumentElement());
+        element = xmlDoc->getDocumentElement();
         jassert(element);
     }
 

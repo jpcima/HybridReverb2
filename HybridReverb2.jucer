@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="nyQPjd" name="HybridReverb2" projectType="audioplug" jucerVersion="5.3.2"
-              pluginDesc="HybridReverb2 Reverb Plugin" pluginName="HybridReverb2"
-              pluginManufacturer="Christian Bor&#223;" pluginManufacturerCode="Bor&#223;"
-              pluginCode="HRev" pluginChannelConfigs="{2,2},{1,1}" pluginCharacteristicsValue="pluginEditorRequiresKeys"
-              version="2.0.2" pluginRTASCategory="8" pluginVSTCategory="kPlugCategRoomFx"
-              pluginVST3Category="Reverb" pluginAAXCategory="8" cppLanguageStandard="11"
-              bundleIdentifier="de.rub.ika.borss" defines="NO_OMP" includeBinaryInJuceHeader="0"
-              maxBinaryFileSize="10485760" pluginFormats="buildAU,buildStandalone,buildVST">
+<JUCERPROJECT id="nyQPjd" name="HybridReverb2" projectType="audioplug" pluginDesc="HybridReverb2 Reverb Plugin"
+              pluginName="HybridReverb2" pluginManufacturer="Christian Bor&#223;"
+              pluginManufacturerCode="Bor&#223;" pluginCode="HRev" pluginChannelConfigs="{2,2},{1,1}"
+              pluginCharacteristicsValue="pluginEditorRequiresKeys" version="2.0.2"
+              pluginRTASCategory="8" pluginVSTCategory="kPlugCategRoomFx" pluginVST3Category="Reverb"
+              pluginAAXCategory="8" cppLanguageStandard="11" bundleIdentifier="de.rub.ika.borss"
+              defines="NO_OMP" includeBinaryInJuceHeader="0" maxBinaryFileSize="10485760"
+              pluginFormats="buildAU,buildStandalone,buildVST" jucerFormatVersion="1">
   <MAINGROUP id="XTukN1" name="HybridReverb2">
     <GROUP id="{FEC4EED5-67C9-4FDE-AD66-308AED96CDBA}" name="I18n">
       <GROUP id="{ADA8F650-A883-F5D0-1155-8C7C6BEAE057}" name="release">
